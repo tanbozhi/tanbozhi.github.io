@@ -31,7 +31,7 @@
     <title>hexo-快速搭建静态博客</title>
     <url>/2021/02/13/hexo-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>Windows系统搭建静态博客</p>
-<p>第一步 s</p>
+<p>第一步 </p>
 <p>​    1.注册一个github账号   github.com</p>
 <p>​    2.创建公开代码仓库</p>
 <p>第二步</p>
@@ -42,42 +42,41 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 
 <p>​    3.本地创建目录:github-blog</p>
-<p>​    4.进入目录 cd github-blog</p>
-<p>​       初始化目录:  执行:hexo init</p>
-<p>​                执行:npm install</p>
-<p> 5.启动服务         执行: hexo server</p>
+<p>​    4.进入目录并初始化目录,执行以下代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd github-blog</span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p> 5.启动服务         执行以下代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 <p> 6.在浏览器中打开cmd返回的网址,这就是初始博客网页</p>
 <p>第三步  上传第一篇文章</p>
-<p>​    1.在github-blog目录中  执行: npm i –save hexo-deployer-git</p>
+<p>​    1.在github-blog目录中  执行以下代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
 <p>​    2.编辑: _config.yml</p>
 <p>​        在github-blog目录下找到 _config.yml 文件并打开</p>
 <p>​        在这个文件末尾添加</p>
-<p>​                         deploy:</p>
-<p>​                         type: git</p>
-<p>​                         repo: https: //github.com/username/username.github.io</p>
-<p>​                         branch: master</p>
+<p>​            </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: https: &#x2F;&#x2F;github.com&#x2F;username&#x2F;username.github.io</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
 <p>​        注意:  上面repo后面的网址填写github上自己创建个人公开仓库的网址</p>
-<p>​    3.在github-blog目录中</p>
-<p>​                     执行:hexo d-g</p>
-<p>​        进入隐藏目   执行:  cd .deploy_git</p>
-<p>​        声明github账号:</p>
-<p>​                    执行: git config user.email“youremail@github”</p>
-<p>​                    执行:git config user.name“yourname”</p>
+<p>​    3.在github-blog目录中   </p>
+<p>​                     执行:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d-g</span><br></pre></td></tr></table></figure>
+<p>​        进入隐藏目录:  执行以下代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd .deploy_git</span><br></pre></td></tr></table></figure>
+<p>​        声明github账号:  执行以下代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config user.email“youremail@github”</span><br><span class="line">git config user.name“yourname”</span><br></pre></td></tr></table></figure>
 <p>​            注意: 上面yourname 和 youremail@github  填自己的用户名与邮箱</p>
 <p>​        返回github-blog目录:</p>
-<p>​                    执行:cd ..</p>
-<p>​                    执行:hexo d</p>
-<pre><code> 4. 还是在github-blog目录中
- 5.    执行: hexo new &quot;my-first-git&quot;       # 引号里的是文章名
- 6. ​    执行上面一步后,会得到一个路径
- 7. ​                        执行      hexo new &quot;my-first-git&quot;
- 8. ​                      例    INFO  Validating config
- 9. ​                            INFO  Created: D:\python--start\github-blog\source\_posts\my-first-git.md
- 10. ​    到D:\python--start\github-blog\source\_posts中打开  my-first-git.md文件 在这个文件中就可以写上自己的文章
- 11. 5.git到仓库里
- 12.    执行: hexo d -g
-</code></pre>
-<p>​     喝杯茶什么的就可以到远程仓库里看看了,这样就完成了上传文章.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ..</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><p>还是在github-blog目录中</p>
+<p>   执行: hexo new “my-first-git”       # 引号里的是文章名</p>
+<p>执行上面一步后,会得到一个路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;my-first-git&quot;               # 执行这一句,得到下面两句</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\python--start\github-blog\source\_posts\my-first-git.md</span><br></pre></td></tr></table></figure>
+<p>到D:\python–start\github-blog\source_posts中打开  my-first-git.md文件 在这个文件中就可以写上自己的文章</p>
+<p>5.git到远程仓库里</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<p>喝杯茶什么的就可以到远程仓库里看看了,这样就完成了上传文章.</p>
+</li>
+</ol>
 <p>第四步  更换主题</p>
 <p>​    1.到   <a href="https://hexo.io/themes/">https://hexo.io/themes/</a>   网站中找到自己需要的主题</p>
 <p>​    2.按照文档说明操作就可以更换主题了</p>
