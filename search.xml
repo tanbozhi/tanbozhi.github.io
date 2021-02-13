@@ -15,16 +15,16 @@
 ]]></content>
   </entry>
   <entry>
-    <title>post_name</title>
-    <url>/2021/02/12/post_name/</url>
+    <title>tan-bo-zhi</title>
+    <url>/2021/02/12/tan-bo-zhi/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>分类1</category>
         <category>分类2</category>
       </categories>
       <tags>
+        <tag>标签1</tag>
         <tag>标签2</tag>
-        <tag>静态博客</tag>
       </tags>
   </entry>
 </search>
