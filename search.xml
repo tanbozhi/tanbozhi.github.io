@@ -14,7 +14,7 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
       <tags>
-        <tag>7676</tag>
+        <tag>hello world</tag>
       </tags>
   </entry>
   <entry>
@@ -78,21 +78,62 @@
   </entry>
   <entry>
     <title>安装-Django</title>
-    <url>/2021/02/15/%E5%AE%89%E8%A3%85-Django/</url>
+    <url>/2021/02/15/Django-%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<p>[TOC]</p>
 <h3 id="1-安装Django"><a href="#1-安装Django" class="headerlink" title="1.安装Django"></a>1.安装Django</h3><h5 id="1-1安装Django"><a href="#1-1安装Django" class="headerlink" title="1.1安装Django"></a>1.1安装Django</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install Django</span><br></pre></td></tr></table></figure>
-<h5 id="1-2指定安装Django版本"><a href="#1-2指定安装Django版本" class="headerlink" title="1.2指定安装Django版本"></a>1.2指定安装Django版本</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install Django&#x3D;&#x3D;2.2        #指定2.2的版本</span><br></pre></td></tr></table></figure>
+<h5 id="1-2指定安装Django版本"><a href="#1-2指定安装Django版本" class="headerlink" title="1.2指定安装Django版本"></a>1.2指定安装Django版本</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install Django==<span class="number">2.2</span>        <span class="comment">#指定2.2的版本</span></span><br></pre></td></tr></table></figure>
 <h5 id="1-3查验版本"><a href="#1-3查验版本" class="headerlink" title="1.3查验版本"></a>1.3查验版本</h5><p>进入Python交互模式后输入以下指令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import django</span><br><span class="line">django.get_version()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> django</span><br><span class="line">django.get_version()</span><br></pre></td></tr></table></figure>
 <h3 id="2-创建项目"><a href="#2-创建项目" class="headerlink" title="2.创建项目"></a>2.创建项目</h3><h5 id="2-1创建项目目录"><a href="#2-1创建项目目录" class="headerlink" title="2.1创建项目目录"></a>2.1创建项目目录</h5><p>​    进入目录</p>
 <p>​    执行创建项目命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir myproject       # 创建目录</span><br><span class="line">cd myproject    #进入目录</span><br><span class="line"></span><br><span class="line">django-admin startproject mysite .   # mysite 是项目名称 可以自己修改,mysite后面的那个点不要忽略了,意思是在当前文件夹下创建项目</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mkdir myproject       <span class="comment"># 创建目录</span></span><br><span class="line">cd myproject    <span class="comment">#进入目录</span></span><br><span class="line"></span><br><span class="line">django-admin startproject mysite .   <span class="comment"># mysite 是项目名称 可以自己修改,mysite后面的那个点不要忽略了,意思是在当前文件夹下创建项目</span></span><br></pre></td></tr></table></figure>
 <p>此刻 myproject 文件夹下应该有以下文件或文件夹</p>
 <p>manage.py       mysite</p>
-<h5 id="2-2执行运行项目指令"><a href="#2-2执行运行项目指令" class="headerlink" title="2.2执行运行项目指令"></a>2.2执行运行项目指令</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Python manage.py runserver</span><br></pre></td></tr></table></figure>
+<h5 id="2-2执行运行项目指令"><a href="#2-2执行运行项目指令" class="headerlink" title="2.2执行运行项目指令"></a>2.2执行运行项目指令</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Python manage.py runserver</span><br></pre></td></tr></table></figure>
 <p>​    执行成功后打开返回的网址</p>
 <p>​    一般是这个网址( <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> )</p>
 <p>​    打开后能看见一个绿色的小火箭就说明成功了</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>应用与路由</title>
+    <url>/2021/02/15/Django-%E5%BA%94%E7%94%A8%E4%B8%8E%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<h3 id="1-项目与应用"><a href="#1-项目与应用" class="headerlink" title="1.项目与应用"></a>1.项目与应用</h3><h5 id="1-1创建应用"><a href="#1-1创建应用" class="headerlink" title="1.1创建应用"></a>1.1创建应用</h5><p>​     django-admin 可以查看Django命令</p>
+<p>​    一个项目可以对应多个应用</p>
+<p>​    在项目根目录(myproject)下创建应用:blog</p>
+<p>​    执行以下命令</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python manage.py startapp blog</span><br></pre></td></tr></table></figure>
+<p>​    用 编辑器(vscode,pycharm) 打开myproject文件夹</p>
+<p>​    在blog目录下会有以下已经自动生成的py文件,这就体现出了Django框    架的意义了</p>
+<h5 id="1-2-文件说明"><a href="#1-2-文件说明" class="headerlink" title="1.2 文件说明"></a>1.2 文件说明</h5><p>settings.py    主要是对项目做一些初始化的设置,针对整个项目进行有关参数的配置,在settings文件的INSTALLED_APPS里面末尾添加应用名字  ‘blog’  不要忘记 逗号.</p>
+<p>​                        在77行有一个DATABASE,这个是设置数据库的,我们这边使用默认设置.</p>
+<p>​                        26行的DEBUG 在开发模式下需要改成 DEBUG=True,在生产环境下DEBUG=False</p>
+<p>​                        107 行    LANGUAGE_CODE = ‘zh-hans’   显示中文</p>
+<p>​                                        TIME_ZONE = ‘Asia/Shanghai’   设置时区(东八区)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSTALLED_APPS &#x3D; [</span><br><span class="line">    &#39;django.contrib.admin&#39;,</span><br><span class="line">    &#39;django.contrib.auth&#39;,</span><br><span class="line">    &#39;django.contrib.contenttypes&#39;,</span><br><span class="line">    &#39;django.contrib.sessions&#39;,</span><br><span class="line">    &#39;django.contrib.messages&#39;,</span><br><span class="line">    &#39;django.contrib.staticfiles&#39;,</span><br><span class="line">    &#39;blog&#39;,     #在这儿添加,这个在settings.py文件的33行</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>urls.py    这个文件是用来配置URL的,将里面末尾代码修改成以下这样</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from django.urls import path,include</span><br><span class="line"></span><br><span class="line">urlpatterns &#x3D; [</span><br><span class="line">    path(&#39;admin&#x2F;&#39;, admin.site.urls),</span><br><span class="line">    path(&#39;blog&#x2F;&#39;,include(&#39;blog.urls&#39;)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>admin.py    可以自定义Django管理工具</p>
+<p>app.py       对应用的一些配置</p>
+<p>models.py    数据模型文件</p>
+<p>tests.py       测试文档</p>
+<p>views.py    用于保存响应各种请求的函数或者类</p>
+<h3 id="2-编辑应用"><a href="#2-编辑应用" class="headerlink" title="2.编辑应用"></a>2.编辑应用</h3><p>在views.py 文件中简单写一个视图函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span>(<span class="params">request</span>):</span>   <span class="comment"># request 必不可少</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&#x27;hello world&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>在urls.py文件中配置一下路由</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>,views.home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>保存上面所有修改的文件</p>
+<h3 id="3-启动项目"><a href="#3-启动项目" class="headerlink" title="3.启动项目"></a>3.启动项目</h3><p>​    执行 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Python manage runserver</span><br></pre></td></tr></table></figure>
+<p>打开返回的网址 <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> </p>
+<p>需要在网址后面加上 blog    <a href="http://127.0.0.1:8000/blog">http://127.0.0.1:8000/blog</a>   </p>
+<p>这样就成功的创建了一个项目</p>
 ]]></content>
       <categories>
         <category>web前端</category>
