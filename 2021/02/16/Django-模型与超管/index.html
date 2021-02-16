@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Django-模型与超管 - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="[TOC]
+1.模型1.1网页内容来源
+​    静态: 直接写到HTML文件中
+
+​    动态: 来自数据库
+​            使用sql语句读取数据库
+​            Dja,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Django-模型与超管</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Django-模型与超管</h1>
+        <div class="stuff">
+            <span>二月 16, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Django/" rel="tag">Django</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>[TOC]</p>
+<h3 id="1-模型"><a href="#1-模型" class="headerlink" title="1.模型"></a>1.模型</h3><h5 id="1-1网页内容来源"><a href="#1-1网页内容来源" class="headerlink" title="1.1网页内容来源"></a>1.1网页内容来源</h5><ul>
+<li><p>​    静态: 直接写到HTML文件中</p>
+</li>
+<li><p>​    动态: 来自数据库</p>
+<p>​            使用sql语句读取数据库</p>
+<p>​            Django通过ORM实现对数据库的读写</p>
+<p>​            </p>
+</li>
+</ul>
+<h5 id="1-2-ORM"><a href="#1-2-ORM" class="headerlink" title="1.2  ORM"></a>1.2  ORM</h5><p>​    ORM优点: 可移植性强,安全性好,查询语法简单</p>
+<p>​    ORM实现方法</p>
+<ul>
+<li><p>编写数据类型</p>
+</li>
+<li><p>位置:models.py(也可以是其他文件)</p>
+</li>
+<li><p>继承:django.db.models.Model</p>
+</li>
+<li><p>对应的数据表: appname_modelname,     (都是小写字母)</p>
+</li>
+<li><p>创建数据表库: 迁移操作</p>
+<p>​    Python manage.py makemigrations</p>
+<p>​    python manage.py  migrate</p>
+</li>
+</ul>
+<p>在models.py文件下写入以下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> django.utils <span class="keyword">import</span> timezone    <span class="comment">#引入时间模块</span></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlogArticles</span>(<span class="params">models.Model</span>):</span>    <span class="comment"># 定义模型类名称BlogArticles,继承models.Model类</span></span><br><span class="line">    title = models.CharField(max_length=<span class="number">300</span>)    <span class="comment"># 字段 每一个字段后面都有一个field类的实例</span></span><br><span class="line">    author = models.ForeignKey(User, on_delete=models.CASCADE,related_name=<span class="string">&#x27;blog_posts&#x27;</span>)</span><br><span class="line">    body = models.TextField()       </span><br><span class="line">    <span class="comment">#字段类型查看网址 https://docs.djangoproject.com/zh-hans/3.0/ref/models/fields/#model-field-types</span></span><br><span class="line"></span><br><span class="line">    publish = models.DateTimeField(default=timezone.now)     <span class="comment"># 字段</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Mata</span>:</span>                            <span class="comment"># 内部类</span></span><br><span class="line">        orderby = (<span class="string">&#x27;-publish&#x27;</span>,)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.title</span><br></pre></td></tr></table></figure>
+<img src="C:\Users\15486\Desktop\QQ截图20210216144907.png" style="zoom: 67%;" />
+
+<p> author = models.ForeignKey(User, on_delete=models.CASCADE,<br>        related_name=’blog_posts’)        </p>
+<p>​         ForeignKey:外键,—对多(多对一)关系</p>
+<p>​        User:被关联的类</p>
+<p>​        on_delete=models.CASCADE:联级删除</p>
+<p>​        related_name=‘blog _posts’: User的实例以blog _posts属性反向查询到BlogArticles的实例</p>
+<h5 id="1-3-迁移数据"><a href="#1-3-迁移数据" class="headerlink" title="1.3 迁移数据"></a>1.3 迁移数据</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py mekemigrations</span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+<p>查看数据表结构</p>
+<p>​        可视化方法   :<a target="_blank" rel="noopener" href="https://sqlitestudio.pl/index.rvt">https://sqlitestudio.pl/index.rvt</a></p>
+<p>​        sqlite操作界面</p>
+<h3 id="2-超管"><a href="#2-超管" class="headerlink" title="2.超管"></a>2.超管</h3><h5 id="2-1创建超管并登录界面"><a href="#2-1创建超管并登录界面" class="headerlink" title="2.1创建超管并登录界面"></a>2.1创建超管并登录界面</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python manage.py createsuperuser  #创建超管 并按照提示设置用户名,邮箱,密码</span><br><span class="line"></span><br><span class="line">python manage.py runserver   #运行项目</span><br></pre></td></tr></table></figure>
+<p>运行项目并用浏览器打开这个网址   <a target="_blank" rel="noopener" href="http://localhost:8000/admin/">http://localhost:8000/admin/</a></p>
+<h5 id="2-2将blog模型增加到管理应用里面"><a href="#2-2将blog模型增加到管理应用里面" class="headerlink" title="2.2将blog模型增加到管理应用里面"></a>2.2将blog模型增加到管理应用里面</h5><p>编辑blog下面的admin.py文件,编辑如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from .models import BlogArticles</span><br><span class="line"></span><br><span class="line">admin.site.register(BlogArticles)</span><br></pre></td></tr></table></figure>
+<p>保存后刷新上面的网页,就可以发布博客了</p>
+<p>如果想要博客列表展示更多信息可以修改admin.py下的代码,例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from .models import BlogArticles</span><br><span class="line"></span><br><span class="line">class BlogArticlesAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display &#x3D; (&#39;title&#39;,&#39;author&#39;,&#39;publish&#39;)</span><br><span class="line">    list_filter &#x3D; (&#39;publish&#39;,&#39;author&#39;)</span><br><span class="line">    search_fields &#x3D; (&#39;title&#39;,&#39;body&#39;)</span><br><span class="line">    raw_id_fields &#x3D; (&#39;author&#39;,)</span><br><span class="line">    date_hierarchy &#x3D; &#39;publish&#39;</span><br><span class="line">    ordering &#x3D; [&#39;-publish&#39;,&#39;author&#39;]</span><br><span class="line"></span><br><span class="line">admin.site.register(BlogArticles,BlogArticlesAdmin)</span><br></pre></td></tr></table></figure>
+<p>保存,刷新网页</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/qq/003YC3p31HyR96.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
