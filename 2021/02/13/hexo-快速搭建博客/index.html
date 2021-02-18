@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      510 字
+      497 字
     </span>
   
 
@@ -227,8 +227,7 @@
             <h1 style="display: none">hexo-快速搭建静态博客</h1>
             
             <div class="markdown-body">
-              <p>Windows系统搭建静态博客</p>
-<p>第一步 </p>
+              <p>第一步 </p>
 <p>​    1.注册一个github账号   github.com</p>
 <p>​    2.创建公开代码仓库</p>
 <p>第二步</p>
@@ -236,41 +235,41 @@
 <p>​        到node官方网站下载安装包,直接安装就行,node安装好后npm也就安装好了</p>
 <p>​        官方网站: <a target="_blank" rel="noopener" href="https://nodejs.org/">https://nodejs.org</a></p>
 <p>​    2.安装hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">npm install hexo-<span class="hljs-keyword">cli</span> -g<br></code></pre></td></tr></table></figure>
 
 <p>​    3.本地创建目录:github-blog</p>
 <p>​    4.进入目录并初始化目录,执行以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd github-blog</span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> github-blog<br>hexo init<br>npm install<br></code></pre></td></tr></table></figure>
 <p> 5.启动服务         执行以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta">hexo <span class="hljs-keyword">server</span><br></code></pre></td></tr></table></figure>
 <p> 6.在浏览器中打开cmd返回的网址,这就是初始博客网页</p>
 <p>第三步  上传第一篇文章</p>
 <p>​    1.在github-blog目录中  执行以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm i <span class="hljs-comment">--save hexo-deployer-git</span><br></code></pre></td></tr></table></figure>
 <p>​    2.编辑: _config.yml</p>
 <p>​        在github-blog目录下找到 _config.yml 文件并打开</p>
 <p>​        在这个文件末尾添加</p>
 <p>​            </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: https: &#x2F;&#x2F;github.com&#x2F;username&#x2F;username.github.io</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">    type:</span> git<br><span class="hljs-symbol">    repo:</span> https: <span class="hljs-comment">//github.com/username/username.github.io</span><br><span class="hljs-symbol">    branch:</span> master<br></code></pre></td></tr></table></figure>
 <p>​        注意:  上面repo后面的网址填写github上自己创建个人公开仓库的网址</p>
 <p>​    3.在github-blog目录中   </p>
 <p>​                     执行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d-g</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo d-g</span><br></code></pre></td></tr></table></figure>
 <p>​        进入隐藏目录:  执行以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd .deploy_git</span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">cd</span> <span class="hljs-string">.deploy_git</span><br></code></pre></td></tr></table></figure>
 <p>​        声明github账号:  执行以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.email“youremail@github”</span><br><span class="line">git config user.name“yourname”</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git config <span class="hljs-keyword">user</span>.email“youremail@github”<br>git config <span class="hljs-keyword">user</span>.name“yourname”<br></code></pre></td></tr></table></figure>
 <p>​            注意: 上面yourname 和 youremail@github  填自己的用户名与邮箱</p>
 <p>​        返回github-blog目录:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-function"><span class="hljs-title">cd</span></span> ..<br>hexo d<br></code></pre></td></tr></table></figure>
 <ol start="4">
 <li><p>还是在github-blog目录中</p>
 <p>   执行: hexo new “my-first-git”       # 引号里的是文章名</p>
 <p>执行上面一步后,会得到一个路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;my-first-git&quot;               # 执行这一句,得到下面两句</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\python--start\github-blog\source\_posts\my-first-git.md</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">hexo new <span class="hljs-string">&quot;my-first-git&quot;</span>               # 执行这一句,得到下面两句<br><span class="hljs-builtin-name">INFO</span>  Validating config<br><span class="hljs-builtin-name">INFO</span>  Created: D:\python--start\github-blog\source\_posts\my-first-git.md<br></code></pre></td></tr></table></figure>
 <p>到D:\python–start\github-blog\source_posts中打开  my-first-git.md文件 在这个文件中就可以写上自己的文章</p>
 <p>5.git到远程仓库里</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo d -g</span><br></code></pre></td></tr></table></figure>
 <p>喝杯茶什么的就可以到远程仓库里看看了,这样就完成了上传文章.</p>
 </li>
 </ol>
