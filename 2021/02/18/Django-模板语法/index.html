@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      531 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      8
        分钟
     </span>
   
@@ -227,7 +227,39 @@
             <h1 style="display: none">模板语法</h1>
             
             <div class="markdown-body">
-              
+              <h3 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h3><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">var_name</span>&#125;&#125;</span><span class="xml">       变量样式</span><br></code></pre></td></tr></table></figure>
+<p>当模板引擎遇到一个变量,他将从context中获取这个变量的值,然后用值替换他本身</p>
+<h3 id="2-标签"><a href="#2-标签" class="headerlink" title="2.标签"></a>2.标签</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">&#123;% <span class="hljs-keyword">tag</span> <span class="hljs-title">%&#125;        标签样式</span><br></code></pre></td></tr></table></figure>
+
+
+<p>django自带了很多内置标签</p>
+<h5 id="for循环标签"><a href="#for循环标签" class="headerlink" title="for循环标签"></a>for循环标签</h5><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><span class="xml">  </span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h5 id="条件标签"><a href="#条件标签" class="headerlink" title="条件标签"></a>条件标签</h5><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">if</span></span> blog %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="xml">    </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">    </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">else</span></span> %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这儿什么都没有<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endif</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-模板继承"><a href="#3-模板继承" class="headerlink" title="3.模板继承"></a>3.模板继承</h3><p>建立一个包含网站所有公共元素的基本骨架,在里面可以定义一些区块,模板的字模板可以重写这些区块.</p>
+<h6 id="base-html-创建基本骨架模板"><a href="#base-html-创建基本骨架模板" class="headerlink" title="base.html      创建基本骨架模板"></a>base.html      创建基本骨架模板</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-cn&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>blog titles<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>   &#123;% block content %&#125;<br>    <br>   &#123;% endblock %&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>muban1.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">&#123;% extends &quot;base.html&quot; %&#125;<br>&#123;% block content %&#125;<br>	&#123;% for blog in blogs %&#125;<br>    	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123;blog.title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   <br>    &#123;% endfor %&#125;<br>&#123;% endblock %&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>这样base.html中的     地方就会被模板1取代.</p>
+<h6 id="优化blog应用"><a href="#优化blog应用" class="headerlink" title="优化blog应用"></a>优化blog应用</h6><p>在templates文件下创建base.html</p>
+<p>在settings.py末尾加入以下代码,并在myproject文件下创建static/images  ,该文件夹放入需要的图片</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">STATICFILES_DIRS</span> = [<br>    os.path.join(BASE_DIR,<span class="hljs-string">&quot;static&quot;</span>)<br>]<br></code></pre></td></tr></table></figure>
+<p>引入图片</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">load</span></span> static %&#125;</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">static</span></span> &#x27;./images/图片名.png&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+
+<p>响应详细内容</p>
+<p>​    添上超链接</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; blog.id &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>	#这个地方加上a标签</span><br><span class="xml">        </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><span class="xml">  </span><br></code></pre></td></tr></table></figure>
+<p>​    响应内容请求的视图函数</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_article</span><span class="hljs-params">(request,article_id)</span></span><span class="hljs-symbol">:</span><br>    article = BlogArticles.objects.get(id=article_id)<br>    pub = article.publish<br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/content.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;article&#x27;</span><span class="hljs-symbol">:article</span>,<span class="hljs-string">&#x27;publish&#x27;</span><span class="hljs-symbol">:pub</span>&#125;)<br></code></pre></td></tr></table></figure>
+<p>​    编写前端模板页面</p>
+<p>​    对应的URL配置</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">urlpatterns</span> = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, views.blog_title),<br>    path(<span class="hljs-string">&#x27;&lt;int:article_id&gt;&#x27;</span>, views.blog_article)     <span class="hljs-comment">#写上这一行</span><br>]<br></code></pre></td></tr></table></figure>
+
             </div>
             <hr>
             <div>

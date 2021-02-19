@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      367 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      5
        分钟
     </span>
   
@@ -227,7 +227,26 @@
             <h1 style="display: none">Django-视图函数和模板</h1>
             
             <div class="markdown-body">
-              
+              <h3 id="本章目标"><a href="#本章目标" class="headerlink" title="本章目标"></a>本章目标</h3><p>​    1.编写视图函数 </p>
+<p>​    2.编写前端模板 </p>
+<p>​    3.设置应用内的路由</p>
+<h3 id="1-视图函数"><a href="#1-视图函数" class="headerlink" title="1.视图函数"></a>1.视图函数</h3><p>​        概念:当用户向服务器发起一个请求时,接收用户请求的应用程序,并根据请求响应,返回一些信息.</p>
+<p>​        分类:—基于函数的视图 —基于类的视图</p>
+<p>​        放置位置: views.py</p>
+<p>编写基于函数的视图</p>
+<p>在views.py文件下写入以下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render<br><span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> BlogArticles<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_title</span>(<span class="hljs-params">request</span>):</span>	<span class="hljs-comment"># request 是 用户请求所有信息的对象</span><br>    blogs = BlogArticles.objects.<span class="hljs-built_in">all</span>()   <span class="hljs-comment">#读出BlogArticles模型类中的所有信息</span><br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/titles.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;blogs&#x27;</span>:blogs&#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="%5Cimg%5CQQ%E6%88%AA%E5%9B%BE20210218111255.png" srcset="/img/loading.gif"></p>
+<p><img src="%5Cimg%5Crender-20210218112456.png" srcset="/img/loading.gif"></p>
+<h3 id="2-模板"><a href="#2-模板" class="headerlink" title="2.模板"></a>2.模板</h3><p>模板规定:使用默认规定</p>
+<p>默认规定位置:setting.py文件中,55行左右的TEMPLATES里</p>
+<p>在blog文件夹下创建一个templates文件夹,在templates文件夹下创建blog文件夹并放入titles.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-cn&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>blog titles<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            &#123;% for blog in blogs %&#125;    #在网页中循环出blog标题<br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123;blog.title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   <br>            &#123;% endfor %&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>在blog应用下的urls中写入路由</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path<br><span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, views.blog_title),<br>]<br></code></pre></td></tr></table></figure>
+<p>启动应用  python manage.py runserver</p>
+<p>打开返回的网址,在网址后面加上blog就行了(127.0.0.1:8000/blog/) </p>
+
             </div>
             <hr>
             <div>
