@@ -232,8 +232,8 @@
 <p>编写基于函数的视图</p>
 <p>在views.py文件下写入以下代码</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render<br><span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> BlogArticles<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_title</span>(<span class="hljs-params">request</span>):</span>	<span class="hljs-comment"># request 是 用户请求所有信息的对象</span><br>    blogs = BlogArticles.objects.<span class="hljs-built_in">all</span>()   <span class="hljs-comment">#读出BlogArticles模型类中的所有信息</span><br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/titles.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;blogs&#x27;</span>:blogs&#125;)<br></code></pre></td></tr></table></figure>
-<p><img src="%5Cimg%5CQQ%E6%88%AA%E5%9B%BE20210218111255.png"></p>
-<p><img src="%5Cimg%5Crender-20210218112456.png"></p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210218111255.png"></p>
+<p><img src="/img/render-20210218112456.png"></p>
 <h3 id="2-模板"><a href="#2-模板" class="headerlink" title="2.模板"></a>2.模板</h3><p>模板规定:使用默认规定</p>
 <p>默认规定位置:setting.py文件中,55行左右的TEMPLATES里</p>
 <p>在blog文件夹下创建一个templates文件夹,在templates文件夹下创建blog文件夹并放入titles.html</p>
