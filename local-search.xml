@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>Django-表单</title>
+    <link href="/2021/02/21/Django-%E8%A1%A8%E5%8D%95/"/>
+    <url>/2021/02/21/Django-%E8%A1%A8%E5%8D%95/</url>
+    
+    <content type="html"><![CDATA[<p>表单:用于收集不同类型的用户输入</p><p>​    是一个包含表单元素的区域。<br>​    表单元素是允许用户在表单中输入内容，比如:文本域(textarea)、下拉列表、单选框(radio-buttons)、复选框(checkboxes)等等。<br>​    表单使用表单标签( <form>)来设置</p><p>目标:实现登录</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs Django"><span class="xml"># 配置setting.py</span><br><span class="xml">INSTALLED_APPS=[</span><br><span class="xml">&#x27;account&#x27;,          #在括号里加上account, 其他不修改</span><br><span class="xml">]</span><br><br><span class="xml">#配置根目录下的urls.py</span><br><span class="xml">urlpatterns = [ </span><br><span class="xml">path(&#x27;account/&#x27;,include(&#x27;account.urls&#x27;,namespace=&#x27;account&#x27;))#添加这一行</span><br><span class="xml">]</span><br><br><span class="xml">#在account目录下创建urls.py文件并写入以下代码</span><br><br><span class="xml">from django.urls import path</span><br><span class="xml">from . import views</span><br><br><span class="xml">app_name = &#x27;account&#x27;</span><br><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;login/&#x27;, views.user_login,name=&#x27;user_login&#x27;),</span><br><span class="xml">]</span><br><br><span class="xml"># account目录下创建forms.py并写入以下代码</span><br><br><span class="xml">from django import forms</span><br><br><span class="xml">class LoginForm(forms.Form):</span><br><span class="xml">    username = forms.CharField()</span><br><span class="xml">    password = forms.CharField(widget=forms.PasswordInput)</span><br><br></code></pre></td></tr></table></figure><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs clean">代码意思<br>login_form = LoginForm#创建实例<br>login_form#待填写的表单<br>login_form.as_p()#以p标签包裹的表单<br>login_form.as_table()#以表格形式的表单<br>login_form.is_bound#返回<span class="hljs-literal">False</span>则表单为空,返回<span class="hljs-literal">True</span>则不为空<br><br>user1 =  &#123;<span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span> ,<span class="hljs-string">&#x27;password&#x27;</span>:<span class="hljs-string">&#x27;12456&#x27;</span>&#125;<br>user1_form = LoginForm(user1)<br>user1_form.is_bound<br>user1_form.is_valid()#提供的数据是否完整,完整返回<span class="hljs-literal">True</span><br>user1_form.cleaned_date#获取表单的值<br><br>user.is_authenticated#用户已登录返回true,没登录返回false<br><br><br>函数意思<br>authenticate#检查用户是不是我们网站的用户,以及用户名是否正确<br><br></code></pre></td></tr></table></figure><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="xml">点击登录就会跳转到登录页面</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">url</span></span> &#x27;account:user_login&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>web前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Django</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Django-MVC模式</title>
+    <link href="/2021/02/20/Django-MVC%E6%A8%A1%E5%BC%8F/"/>
+    <url>/2021/02/20/Django-MVC%E6%A8%A1%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><p>动态的程序设计,使后续对程序的修改和扩展简化,并使程序某一部分的重复利用成为可能</p><p>M: Model,代表数据存取层</p><p>V: View,系统中显示什么,怎么显示</p><p>C: Controller,根据用户输入和需要访问的类型</p><h3 id="MTV模式"><a href="#MTV模式" class="headerlink" title="MTV模式"></a>MTV模式</h3><p>MTV模式是以Django为框架的网站模式</p><p>M: Model,数据存取层</p><p>T : Template,表现层</p><p>V: View,业务逻辑层</p><p>请求响应流程</p><p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210220092928.png"></p><p>自定义模板位置</p><p>目的:模板目录位置不在应用内部</p><p>​        便于统一维护模板</p><p>编辑: 设置settings.py文件中的templates的值</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="xml">TEMPLATES = [</span><br><span class="xml">    &#123;</span><br><span class="xml">        &#x27;BACKEND&#x27;: &#x27;django.template.backends.django.DjangoTemplates&#x27;,</span><br><span class="xml">        &#x27;DIRS&#x27;: [os.path.join(BASE_DIR,&#x27;templates&#x27;)],   #将模板目录指定为根目录里的templates</span><br><span class="xml">        &#x27;APP_DIRS&#x27;: False,  #每个项目里面不在配置模板目录</span><br><span class="xml">        &#x27;OPTIONS&#x27;: &#123;</span><br><span class="xml">            &#x27;context_processors&#x27;: [</span><br><span class="xml">                &#x27;django.template.context_processors.debug&#x27;,</span><br><span class="xml">                &#x27;django.template.context_processors.request&#x27;,</span><br><span class="xml">                &#x27;django.contrib.auth.context_processors.auth&#x27;,</span><br><span class="xml">                &#x27;django.contrib.messages.context_processors.messages&#x27;,</span><br><span class="xml">            ],</span><br><span class="xml">        &#125;,</span><br><span class="xml">    &#125;,</span><br><span class="xml">]</span><br></code></pre></td></tr></table></figure><p>静态文件</p><p>下载botstrap解压后将里面的fonts,js,css文件夹放入static文件夹里</p><p>点击跳转跳转配置</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="xml">#<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">url</span></span> &#x27;blog:blog_title&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>小博丨博客<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><br><span class="xml">#修改mysite下的urls.py文件</span><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;admin/&#x27;, admin.site.urls),</span><br><span class="xml">    path(&#x27;blog/&#x27;,include(&#x27;blog.urls&#x27;,namespace=&#x27;blog&#x27;)),     #在这儿加上namespace=&#x27;blog&#x27;</span><br><span class="xml">]</span><br><br><span class="xml">#修改blog下的urls.py文件</span><br><span class="xml">app_name = &#x27;blog&#x27;#增加这一行</span><br><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;&#x27;, views.blog_title,name=&#x27;blog_title&#x27;),   #这儿加上name=&#x27;blog_title&#x27;</span><br><span class="xml">    path(&#x27;<span class="hljs-tag">&lt;<span class="hljs-name">int:article_id</span>&gt;</span>&#x27;, views.blog_article,name=&#x27;blog_article&#x27;)#这儿加上name=&#x27;blog_article&#x27;</span><br><span class="xml">]</span><br></code></pre></td></tr></table></figure><p>点击 小博丨博客  会跳转到 blog_title页面</p><p>引入html文件</p><p>base.html 如何引入刚刚写好的header与footer</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">include</span></span> &#x27;header.html&#x27; %&#125;</span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">include</span></span> &#x27;footer.html&#x27; %&#125;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>web前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Django</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>模板语法</title>
     <link href="/2021/02/18/Django-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/"/>
     <url>/2021/02/18/Django-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</url>
