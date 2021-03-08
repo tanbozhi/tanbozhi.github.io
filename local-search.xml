@@ -4,6 +4,156 @@
   
   
   <entry>
+    <title>Flask-模板输出</title>
+    <link href="/2021/03/08/Flask-%E6%A8%A1%E6%9D%BF%E8%BE%93%E5%87%BA/"/>
+    <url>/2021/03/08/Flask-%E6%A8%A1%E6%9D%BF%E8%BE%93%E5%87%BA/</url>
+    
+    <content type="html"><![CDATA[<h4 id="目标-模板输出"><a href="#目标-模板输出" class="headerlink" title="目标:    模板输出"></a>目标:    模板输出</h4><ol><li><p>创建templates目录</p><p>在myflask文件下创建templates文件夹</p><p>templates文件夹用于存放HTML文件</p></li><li><p>创建html文件模板</p><p>将写好的模板放到templates目录下</p></li><li><p>网页上输出模板</p><p>编写app.py</p><p>​    引入模块 render_templates</p><p>​    编写路由</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask,render_template<br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;index.html&quot;</span>)  <span class="hljs-comment">#index.html需要自己写好</span><br></code></pre></td></tr></table></figure></li><li><p>加载静态文件</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>web前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Flask</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>flask-起步</title>
+    <link href="/2021/03/08/flask-%E8%B5%B7%E6%AD%A5/"/>
+    <url>/2021/03/08/flask-%E8%B5%B7%E6%AD%A5/</url>
+    
+    <content type="html"><![CDATA[<h4 id="创建flask工程目录"><a href="#创建flask工程目录" class="headerlink" title="创建flask工程目录"></a>创建flask工程目录</h4><ol><li><h6 id="创建目录-进入目录"><a href="#创建目录-进入目录" class="headerlink" title="创建目录,进入目录"></a>创建目录,进入目录</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir myflask <span class="hljs-comment">#创建文件夹</span><br><span class="hljs-built_in">cd</span> myflask<span class="hljs-comment">#进入目录</span><br></code></pre></td></tr></table></figure></li><li><h6 id="安装虚拟环境pipenv-配置pipenv-可以不用安装-这步可以省略"><a href="#安装虚拟环境pipenv-配置pipenv-可以不用安装-这步可以省略" class="headerlink" title="安装虚拟环境pipenv,配置pipenv(可以不用安装,这步可以省略)"></a>安装虚拟环境pipenv,配置pipenv(可以不用安装,这步可以省略)</h6><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> pipenv<span class="hljs-comment">#安装pipenv</span><br><br><span class="hljs-comment">#在myflask目录下执行下面代码</span><br>pipenv <span class="hljs-keyword">install</span><span class="hljs-comment">#创建虚拟环境</span><br><br><span class="hljs-keyword">set</span> PIPENV_VENV_IN_PROJECT=<span class="hljs-number">1</span><span class="hljs-comment">#配置虚拟环境,linux系统将set 改为export,Windows系统项目不能在C盘</span><br><br>pipenv <span class="hljs-keyword">install</span><span class="hljs-comment">#在执行一遍</span><br><br></code></pre></td></tr></table></figure></li><li><h6 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h6><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">pipenv <span class="hljs-keyword">shell</span><br></code></pre></td></tr></table></figure><p>安装flask模块</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pipenv <span class="hljs-keyword">install</span> flask<br></code></pre></td></tr></table></figure><p>退出虚拟环境</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure><p>进入flask运行环境</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">flask <span class="hljs-keyword">shell</span><br></code></pre></td></tr></table></figure><p>#启动内置服务器,host(IP)和port(端口)可以不写</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript">flask <span class="hljs-built_in">run</span>  <span class="hljs-comment">--host **** --port**   </span><br><br><span class="hljs-comment">#Ctrl+c  中断服务器</span><br></code></pre></td></tr></table></figure></li><li><h6 id="创建app-py入口文件"><a href="#创建app-py入口文件" class="headerlink" title="创建app.py入口文件"></a>创建app.py入口文件</h6><p>​    1.myflask目录下创建一个名为app.py的文件名</p><p>​    2.实例化flask对象</p><p>​    3.创建视图函数</p><p>​    4.创建路由</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><br><span class="hljs-comment">#实例化flask对象</span><br>app = Flask(__name__)<br><br><span class="hljs-comment">#路由</span><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello world&quot;</span><br></code></pre></td></tr></table></figure><p>写好上面的代码后,执行flask run 运行</p></li><li><h6 id="进入开发模式"><a href="#进入开发模式" class="headerlink" title="进入开发模式"></a>进入开发模式</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#mac</span><br><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">FLASK_ENV</span>=development<br><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">FLASK_DEBUG</span>=<span class="hljs-literal">True</span><br><br><span class="hljs-comment">#windows</span><br><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">FLASK_ENV</span>=development<br><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">FLASK_DEBUG</span>=<span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>web前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Flask</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Django-图文编辑</title>
+    <link href="/2021/03/02/Django-%E5%9B%BE%E6%96%87%E7%BC%96%E8%BE%91/"/>
+    <url>/2021/03/02/Django-%E5%9B%BE%E6%96%87%E7%BC%96%E8%BE%91/</url>
+    
+    <content type="html"><![CDATA[<p>目标</p><p>​    注册用户发布博客</p><p>​    使用Markdown编辑器实现图文编辑</p><p>开发流程</p><ol><li>创建模型类BlogArtucles   (已有)</li><li>创建blog应用的forms.py文件</li><li>编写视图函数,处理用户提交的表单</li><li>设置路由</li><li>编写前端模板</li><li>设置发布博客的入口链接</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>web前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Django</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Django-ajax</title>
+    <link href="/2021/03/01/Django-ajax/"/>
+    <url>/2021/03/01/Django-ajax/</url>
+    
+    <content type="html"><![CDATA[<p>AJAX: Asynchronous JavaScript and XML,异步JavaScript和XML.</p><p>​    用JavaScript向服务器发送必要数据</p><p>​        XML</p><p>​        JSON</p><p>​    接受服务器的反馈</p><p>​    优点:不更新整个页面的前提下维护数据</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>web前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Django</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Django-个人信息</title>
+    <link href="/2021/02/28/Django-%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/"/>
+    <url>/2021/02/28/Django-%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>web前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Django</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Django-密码</title>
+    <link href="/2021/02/26/Django-%E5%AF%86%E7%A0%81/"/>
+    <url>/2021/02/26/Django-%E5%AF%86%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>web前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Django</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Django-注册</title>
     <link href="/2021/02/22/Django-%E6%B3%A8%E5%86%8C/"/>
     <url>/2021/02/22/Django-%E6%B3%A8%E5%86%8C/</url>
