@@ -379,7 +379,8 @@
 <p>static目录下放入js css  img fonts 等文件</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 通过static 可以引入css等</span><br>&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">&quot;static/css/bootstrap.css&quot;</span>/&gt;<br></code></pre></td></tr></table></figure>
 <p>url_for 可以根据视图函数生成URL</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">视图函数</span>,默认值) &#125;&#125;</span><br><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;static&quot;</span>,<span class="hljs-attr">filename</span>=<span class="hljs-string">&quot;资源路径&quot;</span>) &#125;&#125;</span><br><br><span class="xml">#例子</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;static&quot;</span>,<span class="hljs-attr">filename</span>=<span class="hljs-string">&quot;css/bootstrap.css&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="xml">   </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">视图函数</span>,默认值) &#125;&#125;</span><br><span class="xml">   </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;static&quot;</span>,<span class="hljs-attr">filename</span>=<span class="hljs-string">&quot;资源路径&quot;</span>) &#125;&#125;</span><br><span class="xml">   </span><br><span class="xml">   #例子</span><br><span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;static&quot;</span>,<span class="hljs-attr">filename</span>=<span class="hljs-string">&quot;css/bootstrap.css&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span><br><span class="xml">   </span><br><span class="xml">#例子</span><br><span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;login&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;register&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>注册<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
 </li>
 </ol>
 ]]></content>
@@ -553,6 +554,49 @@
 ]]></content>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flask-模板语法</title>
+    <url>/2021/03/09/Flask-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>MVC模式</p>
+<p>M -model     数据模型</p>
+<p>V -view    视图模板</p>
+<p>C  -控制器     业务逻辑控制既视图函数</p>
+<p>变量标记</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;  &#125;&#125;</span><br><span class="xml">变量输出以</span><span class="hljs-template-variable">&#123;&#123; &#125;&#125;</span><span class="xml">包裹</span><br><span class="xml">变量  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">变量名</span> &#125;&#125;</span><span class="xml">  比如</span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">myname</span> &#125;&#125;</span><br><span class="xml">对象  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">obj.属性</span> &#125;&#125;</span><br><span class="xml">字典  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">dict</span>[&#x27;key&#x27;] &#125;&#125;</span><br><span class="xml">列表  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">list</span>[i] &#125;&#125;</span><br><span class="xml">函数  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">func</span>() &#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>语句执行</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><code class="hljs gcode">&#123;<span class="hljs-meta">%</span>  <span class="hljs-meta">%</span>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>注释标签</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">&#123;#  #&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>条件语句</p>
+<p>根据条件选择显示不同的html部分</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">if</span> condition %&#125;<br>	html<br>&#123;% <span class="hljs-keyword">elif</span> condition %&#125;<br>	html<br>&#123;% <span class="hljs-keyword">else</span> %&#125;<br>	html<br>&#123;% endif %&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>for循环语句</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> items %&#125;<br>	html &#123;&#123; item &#125;&#125; html<br>&#123;% endfor %&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>模板继承</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">#父模板 base.html<br><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>       <br>&#123;% block nav %&#125;<br>html<br>&#123;% endblock %&#125;<br><br>&#123;% block content %&#125;<br>&#123;% endblock %&#125;<br><br>&#123;% block footer %&#125;<br>html<br>&#123;% endfooter %&#125;<br>     <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">#子模板</span><br><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">extends</span></span> &quot;base.html&quot; %&#125;</span><br><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">block</span></span> content %&#125;</span><br><span class="xml">页面内容</span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endblock</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>模板全局变量</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-comment">#上下文处理函数</span><br><br><span class="hljs-variable">@app</span>.context_processor<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">account</span><span class="hljs-params">()</span></span><span class="hljs-symbol">:</span><br>	username=<span class="hljs-string">&quot;小博&quot;</span><br>	<span class="hljs-keyword">return</span>&#123;<span class="hljs-string">&quot;username&quot;</span><span class="hljs-symbol">:username</span>&#125;<br><br><span class="hljs-comment">#每个视图函数执行的时候,会自动执行该函数,接收该变量并渲染模板</span><br><br><br><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>1.MVC 2.变量标记 3.if for 语句 4.模板语法</tag>
       </tags>
   </entry>
 </search>
