@@ -603,4 +603,49 @@
         <tag>Flask</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Flask-GET与POST</title>
+    <url>/2021/03/12/Flask-GET%E4%B8%8EPOST/</url>
+    <content><![CDATA[<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>get方式提交数据是通过URL地址传递数据</p>
+<p>例: http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
+<p>在服务器端通过request对象接收数据</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#获取username , password</span><br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;username&#x27;</span>)<br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;password&#x27;</span>)<br><br><span class="hljs-comment">#本次提交数据的方式</span><br>request.method<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="网址美化"><a href="#网址美化" class="headerlink" title="网址美化"></a>网址美化</h6><p>1.通过问号传递的网址最方便,但是不美观</p>
+<p>​    例  :    http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
+<p>2.传递参数像path路径一样的网址,更美观,爬虫更喜欢</p>
+<p>​    http:127.0.0.1:5000/xiaobo/123456/</p>
+<p>​    方法 : 制定相关路由</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.rote(<span class="hljs-params"><span class="hljs-string">&quot;/&lt;username&gt;/&lt;password&gt;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>(<span class="hljs-params">username,password</span>):</span><br>    print(username,password)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="POST-安全"><a href="#POST-安全" class="headerlink" title="POST(安全)"></a>POST(安全)</h4><p>通过 form 表单提交数据</p>
+<p>form表单属性</p>
+<p>​    action:  数据提交到哪个网址</p>
+<p>​    method:  数据提交方式  (get和post)</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>post方式提交数据需要在路由配置中添加设置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/login&quot;</span>,methods=[<span class="hljs-string">&quot;get&quot;</span>,<span class="hljs-string">&quot;post&quot;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>():</span><br>	request.form[<span class="hljs-string">&#x27;username&#x27;</span>]<br>    request.values[<span class="hljs-string">&#x27;usename&#x27;</span>]    <span class="hljs-comment">#既可接受get也可接收post</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flask-数据库与ORM</title>
+    <url>/2021/03/13/Flask-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8EORM/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
 </search>
