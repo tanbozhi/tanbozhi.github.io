@@ -798,4 +798,102 @@
         <tag>Flask</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Flask-一对多关系</title>
+    <url>/2021/03/24/Flask-%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/</url>
+    <content><![CDATA[<h4 id="分类管理"><a href="#分类管理" class="headerlink" title="分类管理"></a>分类管理</h4><ol>
+<li>创建分类模型（M）</li>
+<li>创建分类模板（V）</li>
+<li>创建分类视图（C）</li>
+</ol>
+<h6 id="分类模型"><a href="#分类模型" class="headerlink" title="分类模型"></a>分类模型</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span>(<span class="hljs-params">db.Model</span>):</span><br>    cate_id = db.Column(db.Integer, primary_key=<span class="hljs-literal">True</span>)<br>    cate_name = db.Column(db.String, unique=<span class="hljs-literal">True</span>)             <span class="hljs-comment">#unique=True 表示此字段不能重复</span><br>    cate_order = db.Column(db.Integer, default=<span class="hljs-number">0</span>)             <span class="hljs-comment">#排序</span><br></code></pre></td></tr></table></figure>
+<h6 id="分类模板"><a href="#分类模板" class="headerlink" title="分类模板"></a>分类模板</h6><p>添加增删改查的模板</p>
+<h6 id="分类视图"><a href="#分类视图" class="headerlink" title="分类视图"></a>分类视图</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 分类视图部分</span><br><span class="hljs-comment"># 添加分类</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/add_cate&quot;</span>, methods=[<span class="hljs-string">&#x27;get&#x27;</span>,<span class="hljs-string">&#x27;post&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">addCate</span>():</span><br>    message = <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&quot;POST&quot;</span>:<br>        cate_name = request.form[<span class="hljs-string">&#x27;name&#x27;</span>]<br>        cate_order    = request.form[<span class="hljs-string">&#x27;order&#x27;</span>]<br>        category = Category(<br>                    cate_name=cate_name,<br>                    cate_order=cate_order,<br>         )<br>        <span class="hljs-keyword">try</span>:<br>            db.session.add(category)<br>            db.session.commit()<br>            message = cate_name+<span class="hljs-string">&quot;添加成功&quot;</span><br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            message = <span class="hljs-string">&quot;发生了错误:&quot;</span> + <span class="hljs-built_in">str</span>(e)<br>            <span class="hljs-comment"># 如果插入失败，进行回滚操作,就是撤销刚刚对数据库的操作</span><br>            db.session.rollback()<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/add.html&quot;</span>, message=message)<br><br><br><span class="hljs-comment"># 获得分类列表</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_list&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cateList</span>():</span><br>    cates = Category.query.order_by(Category.cate_order.desc()).<span class="hljs-built_in">all</span>()<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/list.html&quot;</span>, cates=cates )<br><br><br><span class="hljs-comment"># 删除分类</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_delete/&lt;int:cate_id&gt;&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleteCate</span>(<span class="hljs-params">cate_id</span>):</span><br>    cate = Category.query.get(cate_id)<br>    db.session.delete(cate)<br>    db.session.commit()<br>    <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&quot;.cateList&quot;</span>))<br><br><br><span class="hljs-comment"># 分类修改</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_edit/&lt;int:cate_id&gt;&quot;</span>, methods=[<span class="hljs-string">&#x27;get&#x27;</span>, <span class="hljs-string">&#x27;post&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">editCate</span>(<span class="hljs-params">cate_id</span>):</span><br>    category = Category.query.get(cate_id)<br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&quot;POST&quot;</span>:<br>        category.cate_name = request.form[<span class="hljs-string">&#x27;name&#x27;</span>]<br>        category.cate_order = request.form[<span class="hljs-string">&#x27;order&#x27;</span>]<br>        db.session.commit()<br>        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&quot;.cateList&quot;</span>))<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/edit.html&quot;</span>, category=category)<br><br></code></pre></td></tr></table></figure>
+
+
+<p>用上下文管理器使每个页面都执行下面这个函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.context_processor</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getCatelist</span>():</span><br>    cates = Category.query.<span class="hljs-built_in">all</span>()<br>    <span class="hljs-keyword">return</span>&#123;<span class="hljs-string">&quot;cates&quot;</span>: cates&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="数据表关系"><a href="#数据表关系" class="headerlink" title="数据表关系"></a>数据表关系</h4><h6 id="模型关系"><a href="#模型关系" class="headerlink" title="模型关系"></a>模型关系</h6><p>我们已经建立了多个模型：用户模型，文章模型，分类模型。</p>
+<p>我们该如何给他们建立起联系呢</p>
+<p>联系：每个文章都有一个作者，每个文章都属于一个分类</p>
+<h6 id="数据表的关系"><a href="#数据表的关系" class="headerlink" title="数据表的关系"></a>数据表的关系</h6><ul>
+<li><p>主表：自己的主键或者唯一键是另一个表的外键</p>
+</li>
+<li><p>从表：自己的某一个字段值是另一个表的主键或者唯一键</p>
+</li>
+<li><p>外键：必须对应关联表中的主键或者具有唯一值得字段</p>
+</li>
+<li><p>关联关系</p>
+<p>一对多关系：一个作者可以对应多条文章</p>
+<p>多对一关系：多个文章属于一个作者</p>
+</li>
+</ul>
+<h6 id="模型关系创建"><a href="#模型关系创建" class="headerlink" title="模型关系创建"></a>模型关系创建</h6><p>在从表定义外键： db.Foreignkey(“主表.主键名”)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#例</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span>(<span class="hljs-params">db.Model</span>):</span><br>    ......<br>    cate_id = db.Column(db.Integer,db.ForeignKey(<span class="hljs-string">&#x27;Category.cate_id&#x27;</span>))<br></code></pre></td></tr></table></figure>
+<p>在主表中定义关系：db.relationship(“从表模型名”)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#例</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span>(<span class="hljs-params">db.Model</span>):</span><br>    ......<br>    articles = db.relationship(<span class="hljs-string">&quot;Article&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>两个表关联后记得更新数据表</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel"><span class="hljs-number">1</span>. 创建迁移数据：flask <span class="hljs-built_in">db</span> migrate -m <span class="hljs-string">&quot;更新说明&quot;</span><br><span class="hljs-number">2</span>. 更新数据库：flask <span class="hljs-built_in">db</span> upgrade <br></code></pre></td></tr></table></figure>
+<p>由于创建关系是，修改了字段，sqlite修改字段支持不在友好，需要修改一下app.py中的migrate对象。</p>
+<p>在MySQL中就没有这个问题，不需要修改。</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">#修改migrate对象</span><br><span class="hljs-attr">migrate</span> = Migrate(app,db,render_as_batch=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<p>级联删除  还没有弄清楚</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql安装与入门</title>
+    <url>/2021/03/31/mysql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<p>MySQL与MariaDB可以互相替代，有一些兼容性问题</p>
+<h3 id="MySQL下载与安装（windows）"><a href="#MySQL下载与安装（windows）" class="headerlink" title="MySQL下载与安装（windows）"></a>MySQL下载与安装（windows）</h3><ol>
+<li>打开<a href="http://www.mysql.com网页,进行下载相关版本,选择zip/">www.mysql.com网页，进行下载相关版本,选择ZIP</a> Archive下载</li>
+<li>将下载好的文件解压缩</li>
+<li>打开文件夹bin目录，其中MySQL.exe 是 运行MySQL客户端，mysqld.exe是 运行mysql服务器</li>
+</ol>
+<p>运行mysql</p>
+<ol>
+<li><p>初始化数据库date目录</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">打开cmd进入到bin目录执行以下命令<br>initialize是初始化，<span class="hljs-built_in">console</span>是显示输出，用于查看初始密码（这两个不能少）<br><br>mysqld.exe --initialize --<span class="hljs-built_in">console</span><br><br>得到root@localhost:后面跟的密码（记住这个密码）<br></code></pre></td></tr></table></figure></li>
+<li><p>运行服务器</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><code class="hljs ada">mysqld.exe <span class="hljs-comment">--console</span><br></code></pre></td></tr></table></figure></li>
+<li><p>连接mysql服务器</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">mysql<span class="hljs-selector-class">.exe</span> -u root -<span class="hljs-selector-tag">p</span><br></code></pre></td></tr></table></figure>
+<p>然后输入上面的密码，显示mysql &gt;就连接成功了</p>
+<p>修改密码：在mysql&gt;后边输入：alter user user() identified by ‘123456’;  #123456就是密码</p>
+</li>
+<li><p>将mysql安装成服务（在bin目录下执行以下命令）（必须在管理员身份运行cmd）</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">mysqld.exe <span class="hljs-keyword">install</span>			<span class="hljs-comment">#安装服务</span><br><br>mysqld.exe --<span class="hljs-keyword">remove</span> mysql	<span class="hljs-comment">#卸载服务（需要卸载时运行它）</span><br></code></pre></td></tr></table></figure>
+
+
+<p>   在windows开始处搜索 服务 ，打开服务，找到mysql点击以下，选择启动服务。</p>
+</li>
+<li><p>配置文件</p>
+<p>在mysql安装目录下创建my.ini文件，内容如下</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[client]</span><br><span class="hljs-attr">port</span>=<span class="hljs-number">3306</span><br><span class="hljs-attr">default-character-set</span>=utf8<br><br><span class="hljs-section">[mysqld]</span><br><br><span class="hljs-comment">#设置自己mysql的安装目录</span><br><span class="hljs-comment">#basedir=D:\mysql-5.7.28-winx64</span><br><span class="hljs-attr">basedir</span>=C:\Users\<span class="hljs-number">15486</span>\c-exe\mysql\mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">28</span>-winx64<br><br><span class="hljs-comment">#设置为mysql的数据目录（date就是数据目录）</span><br><span class="hljs-comment">#datadir=D:\mysql-5.7.28-winx64\data</span><br><span class="hljs-attr">datadir</span>=C:\Users\<span class="hljs-number">15486</span>\c-exe\mysql\mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">28</span>-winx64\data<br><br><span class="hljs-attr">port</span>=<span class="hljs-number">3306</span><br><span class="hljs-attr">character_set_server</span>=utf8<br><br><span class="hljs-comment">#服务器接收的数据包大小限制</span><br><span class="hljs-attr">max_allowed_packet</span>=<span class="hljs-number">8</span>M<br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="sql语句入门"><a href="#sql语句入门" class="headerlink" title="sql语句入门"></a>sql语句入门</h3><h6 id="SQL组成–DDL"><a href="#SQL组成–DDL" class="headerlink" title="SQL组成–DDL"></a>SQL组成–DDL</h6><p>​    数据定义语言，通过这些语句来创建数据库，数据表，字段，主键，索引等等，包含：create、drop、alter等</p>
+<figure class="highlight gauss"><table><tr><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">create</span> database dbname；		<span class="hljs-meta">#创建数据库，dbname为数据库名</span><br><span class="hljs-keyword">show</span> databases；				<span class="hljs-meta">#查看有哪些数据库</span><br><span class="hljs-keyword">use</span> dbname；					<span class="hljs-meta">#选择数据库</span><br><span class="hljs-keyword">show</span> tables；				<span class="hljs-meta">#查看数据表</span><br><span class="hljs-keyword">show</span> fields from users;		<span class="hljs-meta">#查看数据表明细（users是数据表名）</span><br><span class="hljs-built_in">drop</span> database dbname；		<span class="hljs-meta">#删除数据库</span><br><br><br><br>tips：每个语句后面记得加封号（；），不然会报错<br></code></pre></td></tr></table></figure>
+
+<h6 id="SQL组成–DML"><a href="#SQL组成–DML" class="headerlink" title="SQL组成–DML"></a>SQL组成–DML</h6><p>​    数据库操作语言，通过这些语句来插入，更新，删除数据，包含： insert、update、delete等</p>
+<h6 id="SQL组成–DQL"><a href="#SQL组成–DQL" class="headerlink" title="SQL组成–DQL"></a>SQL组成–DQL</h6><p>​    数据库查询语言，通过这些语句检索数据，包含： select、order by、group by等</p>
+<h6 id="SQL组成–DCL"><a href="#SQL组成–DCL" class="headerlink" title="SQL组成–DCL"></a>SQL组成–DCL</h6><p>​    数据库控制语言，通过这些语句控制数据访问权限，包含：grant等</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
 </search>
