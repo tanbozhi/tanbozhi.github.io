@@ -898,7 +898,7 @@
   </entry>
   <entry>
     <title>mysql创建数据表</title>
-    <url>/2021/03/31/mysql%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8/</url>
+    <url>/2021/04/01/mysql%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8/</url>
     <content><![CDATA[<h6 id="存储引擎（mysql）"><a href="#存储引擎（mysql）" class="headerlink" title="存储引擎（mysql）"></a>存储引擎（mysql）</h6><ul>
 <li><strong>innodb引擎</strong>：mysql默认的引擎，支持事务，行锁（大多数情况下）</li>
 <li><strong>myisam引擎</strong>：早期默认的引擎，查询速度快，不支持事务，只能锁表（经常读，写入少）</li>
@@ -907,10 +907,15 @@
 <h6 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h6><p>不同的编码方式占用不同的字节，utf-8中文占用3个字节。</p>
 <p>如果程序与数据库的编码不一致，可能导致乱码</p>
 <p><strong>大多数情况下，网页，程序，数据库都选用utf-8，以保持一致</strong></p>
-<h6 id="DDL建表语句"><a href="#DDL建表语句" class="headerlink" title="DDL建表语句"></a>DDL建表语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">#建表格式<br>create table tablename(<br>	fieldname1 filedtype constrains,<br>    fieldname1 filedtype constrains,<br> #   字段名      字段类型    约束，<br>    ............,<br>    primary key  key_field<br>)<br><br><br>#修改数据表<br>增加字段：<br>alter table &#96;table名&#96;<br>add column &#96;filedname&#96; fieldtype constrains;<br><br>删除字段：<br>alter table &#96;table名&#96;<br>drop column &#96;filed&#96;;<br></code></pre></td></tr></table></figure>
-<p>字段类型：<a href="https://blog.csdn.net/weixin_31534091/article/details/113608053?utm_source=app&amp;app_version=4.5.5">https://blog.csdn.net/weixin_31534091/article/details/113608053?utm_source=app&amp;app_version=4.5.5</a></p>
+<h6 id="DDL建表语句"><a href="#DDL建表语句" class="headerlink" title="DDL建表语句"></a>DDL建表语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">#建表格式<br>create table tablename(<br>	fieldname1 filedtype constrains,<br>    fieldname1 filedtype constrains,<br> #   字段名      字段类型    约束，<br>    ............,<br>    primary key  key_field<br>)<br><br><br>#修改数据表<br>增加字段：<br>alter table &#96;table名&#96;<br>add column &#96;filedname&#96; fieldtype constrains;<br><br>add column &#96;filedname&#96; fieldtype constrains after &#96;username&#96;;	#将此字段增加到username之后<br><br>删除字段：<br>alter table &#96;table名&#96;<br>drop column &#96;filed&#96;;<br></code></pre></td></tr></table></figure>
+<p>字段类型：<a href="https://blog.csdn.net/weixin_31534091/article/details/113608053?utm_source=app&amp;app_version=4.5.5%EF%BC%88%E6%9D%A5%E8%87%AACSDN%E7%94%A8%E6%88%B7%EF%BC%89">https://blog.csdn.net/weixin_31534091/article/details/113608053?utm_source=app&amp;app_version=4.5.5（来自CSDN用户）</a></p>
 <p>创建一个用户数据表</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">create table users(<br>	&#96;user_id&#96; int not null,<br>    &#96;username&#96; char(25) not null,<br>    &#96;realname&#96; char(25) not null,<br>    &#96;password&#96; char(64) not null,<br>    &#96;register_date&#96; datetime not null,<br>    primary key(&#96;user_id&#96;)<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="图形化管理工具（mysql-workbench）"><a href="#图形化管理工具（mysql-workbench）" class="headerlink" title="图形化管理工具（mysql workbench）"></a>图形化管理工具（mysql workbench）</h6><p>建表的可视化，可视化建表</p>
+<p>下载mysql workbench并安装（在mysql下载页面可以找到它）</p>
+<p>安装与使用教程：<a href="https://blog.csdn.net/zs1342084776/article/details/88701261?utm_source=app&amp;app_version=4.5.5%EF%BC%88%E8%BD%AC%E8%87%AACSDN%E7%94%A8%E6%88%B7%EF%BC%89">https://blog.csdn.net/zs1342084776/article/details/88701261?utm_source=app&amp;app_version=4.5.5（转自CSDN用户）</a></p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
