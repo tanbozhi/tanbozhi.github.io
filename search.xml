@@ -893,7 +893,7 @@
         <category>服务器运维</category>
       </categories>
       <tags>
-        <tag>数据库</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -922,7 +922,29 @@
         <category>服务器运维</category>
       </categories>
       <tags>
-        <tag>数据库</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql-插入语句insert与SQLAlchemy原理</title>
+    <url>/2021/04/04/mysql-%E6%8F%92%E5%85%A5%E8%AF%AD%E5%8F%A5insert%E4%B8%8ESQLAlchemy%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h6 id="插入语句（DML）"><a href="#插入语句（DML）" class="headerlink" title="插入语句（DML）"></a>插入语句（DML）</h6><ol>
+<li><p>第一种写法</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> (field1,field2,field3 ......)<br><span class="hljs-keyword">values</span>(val1,val2,val3 .....)<br><br>注：<span class="hljs-keyword">table</span>是表名，field是字段名，<span class="hljs-keyword">values</span>是值，插入值的时候字符串要加引号<br>不用列出所有字段，只需要列出需要赋值的字段，赋上相应的值就行，没有列出的字段使用默认值<br></code></pre></td></tr></table></figure></li>
+<li><p>第二种写法</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span><br><span class="hljs-keyword">values</span> (val1,val2,val3 ......)<br><br>注：值与字段数量必须匹配，且一一对应。<br></code></pre></td></tr></table></figure></li>
+<li><p>第三种写法</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">insert into table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=val1 , <span class="hljs-attribute">field2</span>=val2 <span class="hljs-built_in">..</span>.<br><br>注：字段名与值一一对应写出来，不容易写错，明了。<br></code></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h6 id="mysql连接服务器"><a href="#mysql连接服务器" class="headerlink" title="mysql连接服务器"></a>mysql连接服务器</h6>]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
       </tags>
   </entry>
 </search>
