@@ -939,7 +939,66 @@
 
 </li>
 </ol>
-<h6 id="mysql连接服务器"><a href="#mysql连接服务器" class="headerlink" title="mysql连接服务器"></a>mysql连接服务器</h6>]]></content>
+<h6 id="mysql连接服务器"><a href="#mysql连接服务器" class="headerlink" title="mysql连接服务器"></a>mysql连接服务器</h6><p>安装连接器</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> mysql-connector-python<br></code></pre></td></tr></table></figure>
+<p>通过mysql驱动连接数据库</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector		<span class="hljs-comment">#导入模块</span><br><br><span class="hljs-comment">#连接数据库,其中user，passWord，host，database分别代表的是数据库的用户名，密码，IP，数据库名。</span><br>cnx = mysql.connector.connector(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                               password=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>                               host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                               database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>创建游标对象cursor</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor = cnx.cursor()<br><br><span class="hljs-comment">#通过cursor对象执行SQL语句</span><br><span class="hljs-comment">#比如： </span><br>cursor.execute()		<span class="hljs-comment">#执行sql语句</span><br>cursor.fetchall()		<span class="hljs-comment">#执行查询</span><br><br>cnx.commit()			<span class="hljs-comment">#事务提交</span><br>cnx.rollback()			<span class="hljs-comment">#事务回滚</span><br><br>cursor.close()			<span class="hljs-comment">#关闭游标，重置所有结果</span><br><br>cnx.close()				<span class="hljs-comment">#释放连接资源</span><br></code></pre></td></tr></table></figure>
+<p>事务</p>
+<p>事务通常是需要执行一组sql语句</p>
+<p>innodb是一个事务型的存储引擎</p>
+<p>事务特性（ACID）</p>
+<p>A ：atomicity  – 原子性，操作不可分割</p>
+<p>C ：consistency   – 一致性，操作前后数据的完整性保持一致</p>
+<p>I：isolation  – 隔离性，不同事务之间不影响</p>
+<p>D：durability  – 持久性，事务执行后，对数据的更改是永久保存的</p>
+<h6 id="python创建数据表"><a href="#python创建数据表" class="headerlink" title="python创建数据表"></a>python创建数据表</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                                password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                                host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                                database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br>sql = <span class="hljs-string">&quot;create table books(&quot;</span>\<br>      <span class="hljs-string">&quot;`book_id` int not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_name` char(25) not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_autor` char(25) not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_pubdate` datetime not null,&quot;</span>\<br>      <span class="hljs-string">&quot;primary key (`book_id`) )&quot;</span><br><span class="hljs-keyword">try</span>:<br>    cursor.execute(sql)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    print(sql)<br>    print(e)<br><span class="hljs-keyword">else</span>:<br>    print(<span class="hljs-string">&quot;数据表创建成功&quot;</span>)<br><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="执行插入"><a href="#执行插入" class="headerlink" title="执行插入"></a>执行插入</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.conmector <span class="hljs-keyword">as</span> connector<br>sql = <span class="hljs-string">&quot;INSERT INTO</span><br><span class="hljs-string">`mydb`.`users`&quot;</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql-查询语句</title>
+    <url>/2021/04/05/mysql-%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<p>select语句</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">select</span> <span class="hljs-number">10</span> * <span class="hljs-number">10</span>			#计算<span class="hljs-number">10</span>*<span class="hljs-number">10</span><br><span class="hljs-attribute">select</span> <span class="hljs-number">10</span> * <span class="hljs-number">10</span> as num   #num=<span class="hljs-number">10</span>*<span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+
+
+<p>从表中检索数据</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">检索所有字段：<br>select * from table<br><br>检索特定字段：<br>select field1, field2, field3 from table<br><br>select &#96;field1&#96; as un, &#96;field2&#96; as rn from table	#将字段重命名，便于引用<br></code></pre></td></tr></table></figure>
+
+
+<p>where条件查询语句</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">select * from table where condition<br><br>&#x3D; , &gt; , &lt; , &gt;&#x3D; , &lt;&#x3D;<br>&lt;&gt; , !&#x3D;  #这两个都是不等于<br>&lt;&#x3D;&gt;      #null相等<br>is null			#是NULL值<br>is not null		#不是NULL值<br><br>例：<br>select * from users where user_id&gt;100;<br>select * from users where user_id&lt;&gt;100;<br><br></code></pre></td></tr></table></figure>
+<p>between-区间查询</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> table <span class="hljs-keyword">where</span> field <span class="hljs-keyword">between</span> <span class="hljs-built_in">min</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">max</span>;<br><br>例：<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> age <span class="hljs-keyword">between</span> <span class="hljs-number">18</span> <span class="hljs-keyword">and</span> <span class="hljs-number">25</span>;<br></code></pre></td></tr></table></figure>
+
+
+<p>in -存在于指定集合</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> table <span class="hljs-keyword">where</span> field <span class="hljs-title">in</span> (<span class="hljs-params">x,y,z</span>)</span>;<br><br>例：<br><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> user_id <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-number">2</span>,<span class="hljs-number">4</span></span>)</span>;<br></code></pre></td></tr></table></figure>
+
+
+<p>模糊查询</p>
+<p>like -通配符%匹配</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">%表示任意一个字符，_表示一个字符<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> field <span class="hljs-keyword">like</span> &quot;%博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">like</span> &quot;%博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">like</span> &quot;_博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">not</span> <span class="hljs-keyword">like</span> &quot;_博%&quot;;<br></code></pre></td></tr></table></figure>
+<p>regexp - 正则匹配</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">a-z</span>]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>&#125; <span class="hljs-meta">#3个字母</span><br><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> username regexp <span class="hljs-string">&quot;[a-z]+x&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>组合查询（and ，or）</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> (username <span class="hljs-keyword">like</span> <span class="hljs-string">&quot;%博%&quot;</span>) and (user_id&gt;<span class="hljs-number">3</span>);<br><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> (age&lt;<span class="hljs-number">18</span>) or (age&gt;<span class="hljs-number">60</span>)<br></code></pre></td></tr></table></figure>
+
+
+<p>python中查询实例</p>
+]]></content>
       <categories>
         <category>服务器运维</category>
       </categories>
