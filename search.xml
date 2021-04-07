@@ -1039,4 +1039,59 @@
         <tag>MySQL</tag>
       </tags>
   </entry>
+  <entry>
+    <title>mysql-统计与排序</title>
+    <url>/2021/04/07/mysql-%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p>limit限制</p>
+<p>当数据很多的时候，往往需要添加限制，取出想要的结果</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">table</span> <span class="hljs-keyword">limit</span> offset_start,<span class="hljs-built_in">row_count</span><br><br>offset_start : 偏移起始位置，默认为<span class="hljs-number">0</span>，查询结果不包含起始位置<br><span class="hljs-built_in">row_count</span> : 记录数，需要查询并显示多少条记录<br><br>例：<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">limit</span> <span class="hljs-number">0</span>,<span class="hljs-number">10</span>  #取出前<span class="hljs-number">10</span>条记录<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>   	#也是取出前<span class="hljs-number">10</span>条记录<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>,<span class="hljs-number">15</span>  #从<span class="hljs-number">10</span>的位置往后取出<span class="hljs-number">15</span>条记录<br></code></pre></td></tr></table></figure>
+
+
+<p>count统计</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span>			#<span class="hljs-keyword">table</span>中总共有多少条记录<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span>			#全部列统计，相当于统计有多少条记录<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(field1) <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span>		#<span class="hljs-keyword">table</span>中 field1 字段有多少个<br><br>例：统计上海（<span class="hljs-number">021</span>）的会员数量<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> city<span class="hljs-operator">=</span><span class="hljs-number">021</span><br></code></pre></td></tr></table></figure>
+
+
+<p>sum-求和 —-avg-求平均值—-max,min-最大值与最小值</p>
+<p>sum对某个列进行求和，count是统计有多少条记录</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(field) <span class="hljs-keyword">from</span> tables<br><br>例：统计上海会员money总额<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(money) <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> city<span class="hljs-operator">=</span><span class="hljs-number">021</span><br><br>统计北京会员的age总和<br><span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(age) <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> city<span class="hljs-operator">=</span><span class="hljs-number">010</span><br><br>将<span class="hljs-built_in">sum</span>(age)替换成<span class="hljs-built_in">avg</span>(age)就可以了，其他同理<br></code></pre></td></tr></table></figure>
+
+
+<p>group by 分组统计</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">select</span> func <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> field<br><br>例：<br>查询各个城市最有钱的<br><span class="hljs-keyword">select</span> max(<span class="hljs-type">money</span>) <span class="hljs-keyword">from</span> users <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> city<br><br>统计各个城市的会员数量<br><span class="hljs-keyword">select</span> count(<span class="hljs-number">1</span>) <span class="hljs-keyword">from</span> users <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> city<br><br><br>在count（<span class="hljs-number">1</span>）前加上city就可以分辨出是哪个城市有多少人<br><span class="hljs-keyword">select</span> city,count(<span class="hljs-number">1</span>) <span class="hljs-keyword">from</span> users <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> city<br></code></pre></td></tr></table></figure>
+
+
+<p>sqlalchemy中如何查询</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># -*- coding=utf-8 -*-</span><br><br><span class="hljs-keyword">from</span> select_sqlalchemy import session, Users<br><span class="hljs-keyword">from</span> sqlalchemy import func<br><br><br><span class="hljs-comment"># count方法不能用于分组统计</span><br><span class="hljs-comment"># res = session.query(Users).count()</span><br><br><span class="hljs-comment"># 使用func</span><br><span class="hljs-comment"># count</span><br>res = session.query(func.count(1),Users.city).group_by(Users.city).all()<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;count:&quot;</span>,res)<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;*&quot;</span><span class="hljs-number">*100</span>)<br><span class="hljs-comment"># avg</span><br>res = session.query(func.avg(Users.age),Users.city).group_by(Users.city).all()<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;avg:&quot;</span>, res)<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;*&quot;</span><span class="hljs-number">*100</span>)<br><br><span class="hljs-comment"># sum</span><br>res = session.query(func.sum(Users.age),Users.city).group_by(Users.city).all()<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;sum:&quot;</span>, res)<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;*&quot;</span><span class="hljs-number">*100</span>)<br><br><span class="hljs-comment">#max</span><br>res = session.query(func.max(Users.age),Users.city).group_by(Users.city).all()<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;max:&quot;</span>,res)<br></code></pre></td></tr></table></figure>
+
+
+<p>having 对查询结果过滤</p>
+<p>where 条件语句是对field字段的值进行过滤查询，有时候我们需要对查询结果字段进行过滤，比如count的结果中大于某个值进行过滤，这时候需要having。</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">select</span> count(*) <span class="hljs-keyword">as</span> num <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> field <span class="hljs-keyword">having</span> num&gt;<span class="hljs-number">20</span><br></code></pre></td></tr></table></figure>
+
+
+<p>order by  排序</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">根据字段值排序<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> field <span class="hljs-keyword">desc</span>|<span class="hljs-keyword">asc</span><br><span class="hljs-keyword">desc</span>:降序<br><span class="hljs-keyword">asc</span>:升序<br><br>例：<br>根据用户ID降序排列<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> oeder <span class="hljs-keyword">by</span> user_id <span class="hljs-keyword">desc</span><br><br>根据用户ID升序排列<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> oeder <span class="hljs-keyword">by</span> user_id <span class="hljs-keyword">asc</span><br></code></pre></td></tr></table></figure>
+
+
+<p>sqlalchemy中如何查询</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"># -*- coding=utf-<span class="hljs-number">8</span> -*-<br><br>from select_sqlalchemy import session, Users<br>from sqlalchemy import func<br><br><br><br>res = session.query(Users,<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Users</span>.</span></span>user_id,<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Users</span>.</span></span>username, <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Users</span>.</span></span>city)\<br>             .order<span class="hljs-constructor">_by(Users.<span class="hljs-params">user_id</span>.<span class="hljs-params">desc</span>()</span>).limit(<span class="hljs-number">10000</span>).offset(<span class="hljs-number">10</span>).all<span class="hljs-literal">()</span><br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> res:<br>    print(item)<br></code></pre></td></tr></table></figure>
+
+
+<p>翻页实现</p>
+<ol>
+<li>更具条件，使用count（）获得记录总数total</li>
+<li>设定每页显示记录数pagesize</li>
+<li>总页数计算公式：total_page=ceil(total/pagesize)</li>
+<li>根据当前页数查询偏移：start = (current_page-1)*pagesize</li>
+<li>使用limit获得相应的记录：limit start,pagesize</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># -*- coding=utf-8 -*-</span><br><br><span class="hljs-keyword">from</span> select_sqlalchemy import session, Users<br><span class="hljs-keyword">from</span> math import ceil<br><br><span class="hljs-comment"># 每页显示条数</span><br>PAGE_SIZE = 10<br><br><span class="hljs-comment"># 查询获得总条数</span><br>total = session.query(Users).count()<br><span class="hljs-builtin-name">print</span>(total)<br><br><span class="hljs-comment"># 根据总条数计算总页数</span><br>total_page = ceil(total/PAGE_SIZE)<br><span class="hljs-builtin-name">print</span>(total_page)<br><br><span class="hljs-comment"># 根据当前页计算start位置</span><br><span class="hljs-comment"># 第一页</span><br><span class="hljs-attribute">CURRENT_PAGE</span>=10<br><span class="hljs-comment"># limit start, offset</span><br><span class="hljs-comment"># 第一页是limit 0,10</span><br><span class="hljs-comment"># 因此计算方法为：</span><br>start = (CURRENT_PAGE-1)*PAGE_SIZE<br><br>res = session.query(Users).offset(start).limit(PAGE_SIZE).all()<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> res:<br>    <span class="hljs-builtin-name">print</span>(item.user_id, item.username)<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
 </search>
