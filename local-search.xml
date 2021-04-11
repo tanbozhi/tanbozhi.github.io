@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>mysql-索引</title>
+    <link href="/2021/04/11/mysql-%E7%B4%A2%E5%BC%95/"/>
+    <url>/2021/04/11/mysql-%E7%B4%A2%E5%BC%95/</url>
+    
+    <content type="html"><![CDATA[<p>索引</p><p>什么是索引？</p><p>MySQL中的索引是以B树（B-tree）结构为索引数据结构，各引擎使用的方式有所不同，innodb引擎以B+Tree结构构造索引</p><p>除了B树索引还有HASH索引</p><p>索引策略</p><p>分类：</p><ul><li>唯一索引</li><li>独立列索引</li><li>多列索引</li><li>全文索引</li></ul><p>创建与删除索引</p><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">#创建时指定索引：<br><span class="hljs-keyword">create</span> table <span class="hljs-symbol">`table_name`</span>(<br>id int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>field1 int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>field2 char(<span class="hljs-number">25</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br><span class="hljs-keyword">primary</span> <span class="hljs-keyword">key</span>(<span class="hljs-symbol">`id`</span>),<br><span class="hljs-keyword">key</span> <span class="hljs-symbol">`index_name`</span>(<span class="hljs-symbol">`field1`</span>)<br>);<br><br>#为已经存在的表添加索引 ：<br>#方法一：<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span><br><span class="hljs-keyword">index</span> name<br><span class="hljs-keyword">on</span> table(field)<br><br>#方法二：<br><span class="hljs-keyword">alter</span> table<span class="hljs-symbol">`table`</span><br>add <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span> (<span class="hljs-symbol">`field`</span>);<br><br>#删除索引<br>alter table `table`<br><span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span>;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>服务器运维</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MySQL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>mysql-三大范式</title>
     <link href="/2021/04/09/mysql-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/"/>
     <url>/2021/04/09/mysql-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/</url>
