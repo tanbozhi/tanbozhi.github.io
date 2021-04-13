@@ -929,20 +929,48 @@
   <entry>
     <title>mysql-索引</title>
     <url>/2021/04/11/mysql-%E7%B4%A2%E5%BC%95/</url>
-    <content><![CDATA[<p>索引</p>
-<p>什么是索引？</p>
-<p>MySQL中的索引是以B树（B-tree）结构为索引数据结构，各引擎使用的方式有所不同，innodb引擎以B+Tree结构构造索引</p>
+    <content><![CDATA[<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><h6 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h6><p>MySQL中的索引是以B树（B-tree）结构为索引数据结构，各引擎使用的方式有所不同，innodb引擎以B+Tree结构构造索引</p>
 <p>除了B树索引还有HASH索引</p>
-<p>索引策略</p>
-<p>分类：</p>
+<h6 id="索引策略"><a href="#索引策略" class="headerlink" title="索引策略"></a>索引策略</h6><p>分类：</p>
 <ul>
-<li>唯一索引</li>
+<li>普通索引(INDEX)</li>
+<li>唯一索引(UNIQUE)</li>
 <li>独立列索引</li>
 <li>多列索引</li>
-<li>全文索引</li>
+<li>全文索引(FULL TEXT)</li>
+<li>空间索引(SPATIAL)</li>
 </ul>
-<p>创建与删除索引</p>
-<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql">#创建时指定索引：<br><span class="hljs-keyword">create</span> table <span class="hljs-symbol">`table_name`</span>(<br>	id int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	field1 int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	field2 char(<span class="hljs-number">25</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	<span class="hljs-keyword">primary</span> <span class="hljs-keyword">key</span>(<span class="hljs-symbol">`id`</span>),<br>	<span class="hljs-keyword">key</span> <span class="hljs-symbol">`index_name`</span>(<span class="hljs-symbol">`field1`</span>)<br>	);<br>	<br>#为已经存在的表添加索引 ：<br>#方法一：<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span><br>	<span class="hljs-keyword">index</span> name<br><span class="hljs-keyword">on</span> table(field)<br><br>#方法二：<br><span class="hljs-keyword">alter</span> table<span class="hljs-symbol">`table`</span><br>add <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span> (<span class="hljs-symbol">`field`</span>);<br><br>#删除索引<br>alter table `table`<br><span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span>;<br><br></code></pre></td></tr></table></figure>
+<h6 id="创建与删除索引"><a href="#创建与删除索引" class="headerlink" title="创建与删除索引"></a>创建与删除索引</h6><figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql">#创建时指定索引：<br><span class="hljs-keyword">create</span> table <span class="hljs-symbol">`table_name`</span>(<br>	id int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	field1 int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	field2 char(<span class="hljs-number">25</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	<span class="hljs-keyword">primary</span> <span class="hljs-keyword">key</span>(<span class="hljs-symbol">`id`</span>),<br>	<span class="hljs-keyword">key</span> <span class="hljs-symbol">`index_name`</span>(<span class="hljs-symbol">`field1`</span>)<br>	);<br>	<br>#为已经存在的表添加索引 ：<br>#方法一：<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span><br>	<span class="hljs-keyword">index</span> name<br><span class="hljs-keyword">on</span> table(field)<br><br>#方法二：<br><span class="hljs-keyword">alter</span> table<span class="hljs-symbol">`table`</span><br>add <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span> (<span class="hljs-symbol">`field`</span>);<br><br>#删除索引<br>alter table `table`<br><span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span>;<br><br><br><br></code></pre></td></tr></table></figure>
+<p>也可以用MySQLworkbench可视化创建于删除索引</p>
+<h6 id="索引的设计原则"><a href="#索引的设计原则" class="headerlink" title="索引的设计原则"></a>索引的设计原则</h6><ol>
+<li>使用在where条件中出现的列，而不是select中出现的列</li>
+<li>索引列的数据分布。如果你有100万条件记录，然后根据性别索引，每个索引依然要扫描50万，没有太大意义，但是根据省份，城市这种多样化的字段做索引就比较有意义</li>
+<li>索引列长度尽量短。如果一个列的前缀索引就可以完成索引，比如真实姓名的姓部分，就可以只用姓部分做索引，而不要姓名整列做索引</li>
+<li>索引不是越多越好,索引影响插入性能</li>
+</ol>
+<h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><h6 id="内连接查询"><a href="#内连接查询" class="headerlink" title="内连接查询"></a>内连接查询</h6><p>关联表之间必须有相互匹配的记录</p>
+<p>隐式语法：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#user_id=1的用户的所有文章</span><br>select * <span class="hljs-keyword">from</span> users,articles<br>	where users.<span class="hljs-attribute">user_id</span>=articles.author <span class="hljs-keyword">and</span> <span class="hljs-attribute">user_id</span>=1;<br></code></pre></td></tr></table></figure>
+<p>显式语法：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-meta">#user_id=1的用户的所有文章</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users<br>	<span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> articles <span class="hljs-keyword">on</span> users.user_id=articles.article_author <span class="hljs-keyword">where</span> user_id=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="外连接查询"><a href="#外连接查询" class="headerlink" title="外连接查询"></a>外连接查询</h6><p>关联表之间不需要相互匹配，分左连接，右连接</p>
+<p>左连接，就是包含左边的这张表的查询记录，不管右边的表有没有对应的记录</p>
+<p>查询语法：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#以用户表为基准，查询该用户的文章</span><br>select * <span class="hljs-keyword">from</span><span class="hljs-built_in"> users </span>left join articles<br>	on users.<span class="hljs-attribute">user_id</span>=articles.article_author where <span class="hljs-attribute">user_id</span>=2<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h6><p>一条查询语句的结果作为另一条查询的条件</p>
+<p>查询语法：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span>)<br></code></pre></td></tr></table></figure>
+<p>子查询除了可以用in之外，还可以not in , != , = , exits(结果存在) , not exits(结果不存在)</p>
+<h6 id="记录联合"><a href="#记录联合" class="headerlink" title="记录联合"></a>记录联合</h6><p>union all（多个查询结果拼接，必须字段数量一致）</p>
+<p>查询语法：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br></code></pre></td></tr></table></figure>
+
+
+<p>union （与union all 不同的是去重复）</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
