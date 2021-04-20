@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>mysql-数据库管理 - tanbozhi-blog</title>
+  <title>Linux-ssh远程登录 - tanbozhi-blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="mysql-数据库管理">
+            <span class="h2" id="subtitle" title="Linux-ssh远程登录">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-14 12:37" pubdate>
-        2021年4月14日 下午
+      <time datetime="2021-04-15 20:12" pubdate>
+        2021年4月15日 晚上
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      586 字
+      734 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      8
        分钟
     </span>
   
@@ -224,49 +224,56 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">mysql-数据库管理</h1>
+            <h1 style="display: none">Linux-ssh远程登录</h1>
             
             <div class="markdown-body">
-              <h4 id="用户授权（DCL）"><a href="#用户授权（DCL）" class="headerlink" title="用户授权（DCL）"></a>用户授权（DCL）</h4><p>对已存在用户授权：</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">mysql&gt;&gt;&gt;grant privileges_type <span class="hljs-literal">on</span> dbname.tablename <span class="hljs-keyword">to</span> username@host<br></code></pre></td></tr></table></figure>
-
-
-<p>创建新用户并授权：</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">mysql&gt;&gt;&gt;grant privileges_type <span class="hljs-literal">on</span> dbname.tablename <span class="hljs-keyword">to</span> username@host identified <span class="hljs-keyword">by</span><span class="hljs-string">&#x27;password&#x27;</span><br></code></pre></td></tr></table></figure>
-
-
-<p>权限类型</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">privileges_type:</span><br>	<span class="hljs-attr">all privileges:</span> <span class="hljs-string">所有权限</span><br>	<span class="hljs-attr">select:</span> <span class="hljs-string">读取权限</span><br>	<span class="hljs-attr">delete:</span> <span class="hljs-string">删除权限</span><br>	<span class="hljs-attr">update:</span> <span class="hljs-string">更新权限</span><br>	<span class="hljs-attr">create:</span> <span class="hljs-string">创建权限</span><br>	<span class="hljs-attr">drop:</span> <span class="hljs-string">删除数据库，数据表权限</span><br></code></pre></td></tr></table></figure>
-
-
-<h4 id="日志类型与配置"><a href="#日志类型与配置" class="headerlink" title="日志类型与配置"></a>日志类型与配置</h4><h6 id="日志类型："><a href="#日志类型：" class="headerlink" title="日志类型："></a>日志类型：</h6><ul>
-<li>错误日志 - 记录数据库启动与停止，以及运行过程中发生的错误</li>
-<li>二进制日志 - 记录了所有ddl与dml的语句，不包括select语句，即数据发生变化的过程</li>
-<li>通用日志 - 记录了客户端的所有语句，一般情况下不开启</li>
-<li>慢查询日志 - 记录了数据库查询超过一定时间的语句</li>
+              <h4 id="ip"><a href="#ip" class="headerlink" title="ip"></a>ip</h4><h5 id="内网ip地址"><a href="#内网ip地址" class="headerlink" title="内网ip地址"></a>内网ip地址</h5><p>lp代表了一台主机在网络中的位置<br>每一块网卡介入互联网的时候都会分配一个ip，在自己家里每台电脑通常分配一个内部ip，内网ip可以自己定</p>
+<h5 id="外网ip地址"><a href="#外网ip地址" class="headerlink" title="外网ip地址"></a>外网ip地址</h5><p>如果你的电脑通过ISP服务商连接到互联网，就会被分配一个公网ip</p>
+<h5 id="ip地址规则"><a href="#ip地址规则" class="headerlink" title="ip地址规则"></a>ip地址规则</h5><h5 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h5><h5 id="OSI网络模型"><a href="#OSI网络模型" class="headerlink" title="OSI网络模型"></a>OSI网络模型</h5><h5 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP/IP模型"></a>TCP/IP模型</h5><p>OSI</p>
+<ul>
+<li>应用层</li>
+<li>表示层</li>
+<li>会话层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层</li>
 </ul>
-<h6 id="日志配置："><a href="#日志配置：" class="headerlink" title="日志配置："></a>日志配置：</h6><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># my.cnf</span><br><span class="hljs-comment">#开启通用日志</span><br><span class="hljs-attr">general_log</span>=<span class="hljs-number">1</span><br><span class="hljs-comment">#通用日志地址</span><br><span class="hljs-attr">general_log_file</span>=/usr/local/mysql/logs/general.log<br><span class="hljs-comment">#开启慢查询日志</span><br><span class="hljs-attr">slow_query_log</span>=<span class="hljs-number">1</span><br><span class="hljs-comment">#慢查询日志地址</span><br><span class="hljs-attr">slow_query_log_file</span>=/usr/local/mysql/logs/slow.log<br><span class="hljs-comment">#慢查询阀值</span><br><span class="hljs-attr">long_query_time</span>=<span class="hljs-number">5</span><br><span class="hljs-attr">log_output</span>= FILE<br><span class="hljs-comment">#二进制</span><br><span class="hljs-attr">--log-bin</span>=<span class="hljs-string">&quot;server_1_bin&quot;</span><br><span class="hljs-attr">server_id</span>=<span class="hljs-number">1</span><br><br></code></pre></td></tr></table></figure>
+<p>TCP/IP</p>
+<ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>网络接口层</li>
+</ul>
+<h5 id="网络层与传输层"><a href="#网络层与传输层" class="headerlink" title="网络层与传输层"></a>网络层与传输层</h5><p>网络层负责将数据根据传输协议打包成数据包进行传输(主机到主机)传输层负责将数据在不同主机的应用进程之间进行传输。<br>有两个协议: tcp与udp协议<br>tcp协议称为可靠协议udp协议为非可靠协议</p>
+<h5 id="应用层与端口"><a href="#应用层与端口" class="headerlink" title="应用层与端口"></a>应用层与端口</h5><p>主机接受到网络传来的数据，还需要对应的应用程序来将数据包重新还原为原来的数据格式。<br>ip只能定位主机，数据包到达主机后，交给哪个应用处理，需要依靠端口来分辨常用的一些网络协议端口</p>
+<h4 id="ip命令"><a href="#ip命令" class="headerlink" title="ip命令"></a>ip命令</h4><h6 id="ip-addr命令"><a href="#ip-addr命令" class="headerlink" title="ip addr命令"></a>ip addr命令</h6><p>ip命令可以查看本机网络ip配置</p>
+<p>命令格式： # ip addr</p>
+<h6 id="修改网卡配置"><a href="#修改网卡配置" class="headerlink" title="修改网卡配置"></a>修改网卡配置</h6><p>网卡配置:执行vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</p>
+<p>修改以下参数</p>
+<p>将内网IP设为固定ip:</p>
+<p>BOOTPROTO=static     静态分配 </p>
+<p>ONBOOT=yes</p>
+<p>NETMASK=255.255.255.0    掩码</p>
+<p>#下面两条需要根据实际情况修改</p>
+<p>IPADDR=172.17.191.140</p>
+<p>GATEWAY=172.17.191.254     网关</p>
+<h6 id="重启network服务（网络服务）"><a href="#重启network服务（网络服务）" class="headerlink" title="重启network服务（网络服务）"></a>重启network服务（网络服务）</h6><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment">#centos 8 的版本</span><br><span class="hljs-attribute">nmcli</span> c reload<br><span class="hljs-attribute">nmcli</span> c up enp<span class="hljs-number">0</span>s<span class="hljs-number">3</span>		#enp<span class="hljs-number">0</span>s<span class="hljs-number">3</span>是网卡标识符<br><br><span class="hljs-comment">#centos 7 的版本</span><br><span class="hljs-attribute">service</span> network restart<br></code></pre></td></tr></table></figure>
 
 
-<h4 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h4><h6 id="数据库备份使用mysqldump命令："><a href="#数据库备份使用mysqldump命令：" class="headerlink" title="数据库备份使用mysqldump命令："></a>数据库备份使用mysqldump命令：</h6><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment">#备份database库的tablename表</span><br><span class="hljs-attribute">shell</span>&gt;&gt;&gt;mysqldump -u accout -p database tablename<span class="hljs-number">1</span> tablename<span class="hljs-number">2</span> &gt;mycms.sql<br></code></pre></td></tr></table></figure>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta">#示例：</span><br><span class="hljs-meta">#1.备份mycms库的users表到mycms.sql文件中</span><br>	shell&gt;&gt;&gt;mysqldump -u root -p mycms users &gt; mycms.sql<br>	<br><span class="hljs-meta">#2.备份database库中的所有表</span><br>	shell &gt;&gt;&gt;mysqldump -u root -p mycms &gt; mycms.sql<br></code></pre></td></tr></table></figure>
-<h6 id="备份多个数据库"><a href="#备份多个数据库" class="headerlink" title="备份多个数据库"></a>备份多个数据库</h6><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment">#备份database库的tablename表</span><br><span class="hljs-built_in">shell</span>&gt;&gt;&gt;mysqldump -u accout -p <span class="hljs-comment">--databases tablename1 tablename2 &gt;mycms.sql</span><br><br><span class="hljs-comment">#示例</span><br><span class="hljs-comment">#备份mycms，test数据库</span><br><span class="hljs-built_in">shell</span>&gt;&gt;&gt;mysqldump -u root -p <span class="hljs-comment">--databases mycms test &gt; my.sql</span><br><br><span class="hljs-comment">#备份database库中所有库</span><br><span class="hljs-built_in">shell</span>&gt;&gt;&gt;mysqldump -u root -p <span class="hljs-comment">--all-databases &gt; mycms.sql</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="备份注意："><a href="#备份注意：" class="headerlink" title="备份注意："></a>备份注意：</h6><p>备份期间，数据不应该发生变化，以保证数据的一致性</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell">mysqldump <span class="hljs-literal">-u</span> <span class="hljs-literal">-p</span> <span class="hljs-literal">-l</span> <span class="hljs-operator">-f</span><br><br>在参数上加上 <span class="hljs-literal">-l</span> ,备份期间只能读不能写<br>在参数上加上 <span class="hljs-operator">-f</span> ,生成新的日志，这样在恢复数据时，可以已恢复备份后的数据<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="完全恢复备份"><a href="#完全恢复备份" class="headerlink" title="完全恢复备份"></a>完全恢复备份</h6><ol>
-<li><p>将备份文件中的数据导入数据库(dbname:数据库名字，backupfile:备份的文件名，-u account -p :账户名)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">mysql dbname &lt; backupfile -u account -<span class="hljs-selector-tag">p</span><br></code></pre></td></tr></table></figure></li>
-<li><p>恢复备份之后到当前数据（二进制日志）</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">mysqlbinlog binlog文件 <span class="hljs-string">| mysql dbname -u root -p</span><br></code></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<p>日志时间点恢复</p>
+<h4 id="ssh命令"><a href="#ssh命令" class="headerlink" title="ssh命令"></a>ssh命令</h4><p>1.SSH为Secure Shell的缩写<br>2.SSH是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议3.几乎所有的linux都支持SSH，SSH由客户端与服务器组成<br>4.通过SSH可以安全的进行远程登录，远程拷贝，远程上传，默认端口是22</p>
+<p>mac与linux自带ssh客户端<br>windows下如果你不能使用该命令可以安装putty</p>
+<p>基本使用方式：</p>
+<p>#ssh -l 用户名 主机名</p>
+<p>举例:<br>以root身份远程登陆到192.168.1.100主机# ssh -l root 192.168.1.100<br>第一次登陆，会有一个询问窗口，</p>
+<p>回复yes即可,密码 为root密码</p>
+<p>安装httpd时出现以下错误（yum安装错误）</p>
+<p>已加载插件：fastestmirror<br>Determining fastest mirrors<br>Could not retrieve mirrorlist <a target="_blank" rel="noopener" href="http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=os&amp;infra=stock">http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=os&amp;infra=stock</a> error was<br>14: curl#6 - “Could not resolve host: mirrorlist.centos.org; 未知的错误”</p>
+<p>需要在在网卡配置里添加DNS=114.114.114.114</p>
+<p>错误：远程主机标识已更改，</p>
+<p>执行下面语句，然后重新连接</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">ssh-keygen -R host		<span class="hljs-meta">#host为主机名</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -284,7 +291,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
                     
                   </div>
                 
@@ -297,9 +304,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/15/Linux-ssh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/">
+                      <a href="/2021/04/15/Linux-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux-ssh远程登录</span>
+                        <span class="hidden-mobile">Linux-虚拟机安装</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -307,8 +314,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/04/11/mysql-%E7%B4%A2%E5%BC%95/">
-                        <span class="hidden-mobile">mysql-索引与联合查询</span>
+                      <a href="/2021/04/14/mysql-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/">
+                        <span class="hidden-mobile">mysql-数据库管理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
