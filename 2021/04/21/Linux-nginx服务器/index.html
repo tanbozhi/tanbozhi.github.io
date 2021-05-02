@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      523 字
+      515 字
     </span>
   
 
@@ -234,17 +234,14 @@
 <li><p>配置yum源</p>
 <p>配置文件位置:/etc/yum.repos.d/nginx.repo</p>
 <p>配置文件内容:</p>
-<p>[nginx-stable]</p>
-<p>name=nginx stable repo</p>
-<p>baseurl=<a target="_blank" rel="noopener" href="http://nginx.org/packages/centos/$releasever/$basearch/">http://nginx.org/packages/centos/$releasever/$basearch/</a></p>
-<p>gpgcheck=1</p>
-<p>enabled=1</p>
-<p>gpgkey=<a target="_blank" rel="noopener" href="https://nginx.org/keys/nginx_signing.key">https://nginx.org/keys/nginx_signing.key</a></p>
-<p>module_hotfixes=true</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[nginx-stable]</span><br><br><span class="hljs-attr">name</span>=nginx stable repo<br><br><span class="hljs-attr">baseurl</span>=http://nginx.org/packages/centos/<span class="hljs-variable">$releasever</span>/<span class="hljs-variable">$basearch</span>/<br><br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">1</span><br><br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br><br><span class="hljs-attr">gpgkey</span>=https://nginx.org/keys/nginx_signing.key<br><br><span class="hljs-attr">module_hotfixes</span>=<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
 </li>
 <li><p>yum安装</p>
-<p>yum install yum-utils</p>
-<p>yum install nginx</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> yum-utils<br>   yum <span class="hljs-keyword">install</span> nginx<br></code></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <p>安装完成后，打开配置文件vim /etc/nginx/nginx.conf</p>
@@ -266,16 +263,7 @@
 <p>主要修改server文件</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs gradle">复制上方   <span class="hljs-keyword">include</span>后边路径下的    <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span>*.conf  目录下的defoult.conf文件<br><br>例：复制文件     cp <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span><span class="hljs-regexp">/default.conf /</span>etc<span class="hljs-regexp">/nginx/</span>conf.d/myweb.conf<br><br>打开刚刚复制的文件，按下面修改<br>server &#123;<br>    listen       <span class="hljs-number">80</span>;<br>    server_name  localhost;		#将此处的localhost修改为自己的域名<br><br>    #access_log  <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/nginx/</span>host.access.log  main;<br><br>    location / &#123;<br>        root   <span class="hljs-regexp">/usr/</span>share<span class="hljs-regexp">/nginx/</span>html;	#此处为自己网页的根目录<br>        index  index.html index.htm;<br>    &#125;<br>    <br> 修改后示例<br> server &#123;<br>    listen       <span class="hljs-number">80</span>;<br>    server_name  xiaobo.com;<br><br>    #access_log  <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/nginx/</span>host.access.log  main;<br><br>    location / &#123;<br>        root   <span class="hljs-regexp">/wwwroot/my</span>web;<br>        index  index.html index.htm;<br>    &#125;<br></code></pre></td></tr></table></figure>
 <p>修改完成后，重启nginx，就可以访问域名了</p>
-<h4 id="nginx主进程控制"><a href="#nginx主进程控制" class="headerlink" title="nginx主进程控制"></a>nginx主进程控制</h4><p>nginx修改配置后需要重启后才能生效.</p>
-<p>1.启动nginx</p>
-<p>nginx</p>
-<p>⒉快速停止nginx运行</p>
-<p>nginx -s stop</p>
-<p>3.重启加载</p>
-<p>nginx -s reload</p>
-<p>4.正常关闭nginxnginx -s quit</p>
-<p>5.重新打开日志</p>
-<p>nginx -s reopen</p>
+<h4 id="nginx主进程控制"><a href="#nginx主进程控制" class="headerlink" title="nginx主进程控制"></a>nginx主进程控制</h4><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">nginx修改配置后需要重启后才能生效.<br><br>1.启动nginx<br>nginx<br><br>⒉快速停止nginx运行<br>nginx -s stop<br><br>3.重启加载<br>nginx -s <span class="hljs-keyword">reload</span><br><br>4.正常关闭<br>nginxnginx -s <span class="hljs-keyword">quit</span><br><br>5.重新打开日志<br>nginx -s reopen<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>

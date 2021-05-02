@@ -1325,17 +1325,11 @@
 </ul>
 <h5 id="网络层与传输层"><a href="#网络层与传输层" class="headerlink" title="网络层与传输层"></a>网络层与传输层</h5><p>网络层负责将数据根据传输协议打包成数据包进行传输(主机到主机)传输层负责将数据在不同主机的应用进程之间进行传输。<br>有两个协议: tcp与udp协议<br>tcp协议称为可靠协议udp协议为非可靠协议</p>
 <h5 id="应用层与端口"><a href="#应用层与端口" class="headerlink" title="应用层与端口"></a>应用层与端口</h5><p>主机接受到网络传来的数据，还需要对应的应用程序来将数据包重新还原为原来的数据格式。<br>ip只能定位主机，数据包到达主机后，交给哪个应用处理，需要依靠端口来分辨常用的一些网络协议端口</p>
-<h4 id="ip命令"><a href="#ip命令" class="headerlink" title="ip命令"></a>ip命令</h4><h6 id="ip-addr命令"><a href="#ip-addr命令" class="headerlink" title="ip addr命令"></a>ip addr命令</h6><p>ip命令可以查看本机网络ip配置</p>
+<h4 id="ip命令"><a href="#ip命令" class="headerlink" title="ip命令"></a>ip命令</h4><h6 id="ip-addr命令"><a href="#ip-addr命令" class="headerlink" title="#ip addr命令"></a>#ip addr命令</h6><p>ip命令可以查看本机网络ip配置</p>
 <p>命令格式： # ip addr</p>
-<h6 id="修改网卡配置"><a href="#修改网卡配置" class="headerlink" title="修改网卡配置"></a>修改网卡配置</h6><p>网卡配置:执行vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</p>
-<p>修改以下参数</p>
-<p>将内网IP设为固定ip:</p>
-<p>BOOTPROTO=static     静态分配 </p>
-<p>ONBOOT=yes</p>
-<p>NETMASK=255.255.255.0    掩码</p>
-<p>#下面两条需要根据实际情况修改</p>
-<p>IPADDR=172.17.191.140</p>
-<p>GATEWAY=172.17.191.254     网关</p>
+<h6 id="修改网卡配置"><a href="#修改网卡配置" class="headerlink" title="修改网卡配置"></a>修改网卡配置</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">网卡配置:执行vi /etc/sysconfig/network-scripts/ifcfg-enp0s3<br><br>修改以下参数<br><br>将内网IP设为固定ip:<br><br><span class="hljs-attribute">BOOTPROTO</span>=static     静态分配 <br><br><span class="hljs-attribute">ONBOOT</span>=<span class="hljs-literal">yes</span><br><br><span class="hljs-attribute">NETMASK</span>=255.255.255.0    掩码<br><br><span class="hljs-comment">#下面两条需要根据实际情况修改</span><br><br><span class="hljs-attribute">IPADDR</span>=172.17.191.140<br><br><span class="hljs-attribute">GATEWAY</span>=172.17.191.254     网关<br><br><br></code></pre></td></tr></table></figure>
+
+
 <h6 id="重启network服务（网络服务）"><a href="#重启network服务（网络服务）" class="headerlink" title="重启network服务（网络服务）"></a>重启network服务（网络服务）</h6><figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment">#centos 8 的版本</span><br><span class="hljs-attribute">nmcli</span> c reload<br><span class="hljs-attribute">nmcli</span> c up enp<span class="hljs-number">0</span>s<span class="hljs-number">3</span>		#enp<span class="hljs-number">0</span>s<span class="hljs-number">3</span>是网卡标识符<br><br><span class="hljs-comment">#centos 7 的版本</span><br><span class="hljs-attribute">service</span> network restart<br></code></pre></td></tr></table></figure>
 
 
@@ -1343,7 +1337,7 @@
 <p>mac与linux自带ssh客户端<br>windows下如果你不能使用该命令可以安装putty</p>
 <p>基本使用方式：</p>
 <p>#ssh -l 用户名 主机名</p>
-<p>举例:<br>以root身份远程登陆到192.168.1.100主机# ssh -l root 192.168.1.100<br>第一次登陆，会有一个询问窗口，</p>
+<p>举例:<br>以root身份远程登陆到192.168.1.100主机#ssh -l root 192.168.1.100<br>第一次登陆，会有一个询问窗口，</p>
 <p>回复yes即可,密码 为root密码</p>
 <p>安装httpd时出现以下错误（yum安装错误）</p>
 <p>已加载插件：fastestmirror<br>Determining fastest mirrors<br>Could not retrieve mirrorlist <a href="http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=os&amp;infra=stock">http://mirrorlist.centos.org/?release=7&amp;arch=x86_64&amp;repo=os&amp;infra=stock</a> error was<br>14: curl#6 - “Could not resolve host: mirrorlist.centos.org; 未知的错误”</p>
@@ -1369,17 +1363,14 @@
 <li><p>配置yum源</p>
 <p>配置文件位置:/etc/yum.repos.d/nginx.repo</p>
 <p>配置文件内容:</p>
-<p>[nginx-stable]</p>
-<p>name=nginx stable repo</p>
-<p>baseurl=<a href="http://nginx.org/packages/centos/$releasever/$basearch/">http://nginx.org/packages/centos/$releasever/$basearch/</a></p>
-<p>gpgcheck=1</p>
-<p>enabled=1</p>
-<p>gpgkey=<a href="https://nginx.org/keys/nginx_signing.key">https://nginx.org/keys/nginx_signing.key</a></p>
-<p>module_hotfixes=true</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[nginx-stable]</span><br><br><span class="hljs-attr">name</span>=nginx stable repo<br><br><span class="hljs-attr">baseurl</span>=http://nginx.org/packages/centos/<span class="hljs-variable">$releasever</span>/<span class="hljs-variable">$basearch</span>/<br><br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">1</span><br><br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br><br><span class="hljs-attr">gpgkey</span>=https://nginx.org/keys/nginx_signing.key<br><br><span class="hljs-attr">module_hotfixes</span>=<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
 </li>
 <li><p>yum安装</p>
-<p>yum install yum-utils</p>
-<p>yum install nginx</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> yum-utils<br>   yum <span class="hljs-keyword">install</span> nginx<br></code></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <p>安装完成后，打开配置文件vim /etc/nginx/nginx.conf</p>
@@ -1401,16 +1392,7 @@
 <p>主要修改server文件</p>
 <figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">复制上方   <span class="hljs-keyword">include</span>后边路径下的    <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span>*.conf  目录下的defoult.conf文件<br><br>例：复制文件     cp <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span><span class="hljs-regexp">/default.conf /</span>etc<span class="hljs-regexp">/nginx/</span>conf.d/myweb.conf<br><br>打开刚刚复制的文件，按下面修改<br>server &#123;<br>    listen       <span class="hljs-number">80</span>;<br>    server_name  localhost;		#将此处的localhost修改为自己的域名<br><br>    #access_log  <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/nginx/</span>host.access.log  main;<br><br>    location / &#123;<br>        root   <span class="hljs-regexp">/usr/</span>share<span class="hljs-regexp">/nginx/</span>html;	#此处为自己网页的根目录<br>        index  index.html index.htm;<br>    &#125;<br>    <br> 修改后示例<br> server &#123;<br>    listen       <span class="hljs-number">80</span>;<br>    server_name  xiaobo.com;<br><br>    #access_log  <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/nginx/</span>host.access.log  main;<br><br>    location / &#123;<br>        root   <span class="hljs-regexp">/wwwroot/my</span>web;<br>        index  index.html index.htm;<br>    &#125;<br></code></pre></td></tr></table></figure>
 <p>修改完成后，重启nginx，就可以访问域名了</p>
-<h4 id="nginx主进程控制"><a href="#nginx主进程控制" class="headerlink" title="nginx主进程控制"></a>nginx主进程控制</h4><p>nginx修改配置后需要重启后才能生效.</p>
-<p>1.启动nginx</p>
-<p>nginx</p>
-<p>⒉快速停止nginx运行</p>
-<p>nginx -s stop</p>
-<p>3.重启加载</p>
-<p>nginx -s reload</p>
-<p>4.正常关闭nginxnginx -s quit</p>
-<p>5.重新打开日志</p>
-<p>nginx -s reopen</p>
+<h4 id="nginx主进程控制"><a href="#nginx主进程控制" class="headerlink" title="nginx主进程控制"></a>nginx主进程控制</h4><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><code class="hljs jboss-cli">nginx修改配置后需要重启后才能生效.<br><br>1.启动nginx<br>nginx<br><br>⒉快速停止nginx运行<br>nginx -s stop<br><br>3.重启加载<br>nginx -s <span class="hljs-keyword">reload</span><br><br>4.正常关闭<br>nginxnginx -s <span class="hljs-keyword">quit</span><br><br>5.重新打开日志<br>nginx -s reopen<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>服务器运维</category>
