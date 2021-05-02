@@ -1404,7 +1404,9 @@
   <entry>
     <title>Linux-mysql主从复制</title>
     <url>/2021/05/02/Linux-mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>主从复制</p>
+<p>主从复制就是一台主Mysql服务器，能够接受数据的写入与读取，另外可能还有多台从节点Mysql服务器，他们不能被直接写入数据，只能通过主节点的二进制日志复制数据，为外部程序提供数据读取服务，是Mysql集群部署最简单的一种</p>
+]]></content>
       <categories>
         <category>服务器运维</category>
       </categories>
