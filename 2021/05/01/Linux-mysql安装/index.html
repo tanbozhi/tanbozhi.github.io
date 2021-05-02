@@ -17,9 +17,25 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>标签 - Linux - tanbozhi-blog</title>
+  <title>Linux-mysql安装 - tanbozhi-blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -146,17 +162,50 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签 - Linux">
+            <span class="h2" id="subtitle" title="Linux-mysql安装">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-01 20:06" pubdate>
+        2021年5月1日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      290 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -165,76 +214,118 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 7 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/05/02/Linux-mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux-mysql主从复制</span>
-      <time style="float: right;">05-02</time>
-    </a>
-  
-    
-    <a href="/2021/05/01/Linux-mysql%E5%AE%89%E8%A3%85/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux-mysql安装</span>
-      <time style="float: right;">05-01</time>
-    </a>
-  
-    
-    <a href="/2021/05/01/Linux-nginx%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux-nginx代理配置</span>
-      <time style="float: right;">05-01</time>
-    </a>
-  
-    
-    <a href="/2021/04/21/Linux-nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux-nginx服务器</span>
-      <time style="float: right;">04-21</time>
-    </a>
-  
-    
-    <a href="/2021/04/18/Linux-apache%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux-apache服务器</span>
-      <time style="float: right;">04-18</time>
-    </a>
-  
-    
-    <a href="/2021/04/15/Linux-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux-虚拟机安装</span>
-      <time style="float: right;">04-15</time>
-    </a>
-  
-    
-    <a href="/2021/04/15/Linux-ssh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Linux-ssh远程登录</span>
-      <time style="float: right;">04-15</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux-mysql安装</h1>
+            
+            <div class="markdown-body">
+              <h3 id="在Linux系统中安装mysql"><a href="#在Linux系统中安装mysql" class="headerlink" title="在Linux系统中安装mysql"></a>在Linux系统中安装mysql</h3><p>下载历史版本5.7.28的版本<br>找到下载地址后右键下载，复制下载链接</p>
+<h6 id="安装wget"><a href="#安装wget" class="headerlink" title="安装wget"></a>安装wget</h6><p>#yum install wget</p>
+<h6 id="用命令下载mysql安装包"><a href="#用命令下载mysql安装包" class="headerlink" title="用命令下载mysql安装包"></a>用命令下载mysql安装包</h6><p>-c 后边是mysql下载链接地址<br>wget -c <a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz">https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</a></p>
+<p>#经过上面的操作，就得到了一个mysql二进制安装包</p>
+<h6 id="安装二进制包"><a href="#安装二进制包" class="headerlink" title="安装二进制包"></a>安装二进制包</h6><p>Step1-解压缩二进制包:</p>
+<p>#tar zxvf mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</p>
+<p>Step2-拷贝到/usr/local/下:</p>
+<p>#cp mysql-5.7.28-linux-glibc2.12-x86_64/usr/local/mysql</p>
+<p>Step3-编辑配置文件:</p>
+<p>#vim /etc/my.cnf</p>
+<p>Step4-创建data目录:</p>
+<p>#mkdir /usr/local/mysql/data</p>
+<p>Step5-创建mysql运行用户组</p>
+<p>#groupadd mysql</p>
+<p>Step6-创建mysql运行用户</p>
+<p>#useradd -g mysql -d /usr/local/mysql -s /sbin/nologin -M mysql</p>
+<p>Step7 -  运行初始化(首先要进入mysql目录)(初始化后记得拷贝下密码)</p>
+<p>#./bin/mysqld –initialize</p>
+<p>Step8-更改/usr/local/mysql属主与属组</p>
+<p>#chown -R mysql:mysql /usr/local/mysql</p>
+<p>Step9-运行服务器:</p>
+<p>#support-files/mysql.server start</p>
+<p>Step10 -加入系统服务:</p>
+<p>#cp support-files/mysql.server /etc/init.d/mysqld</p>
+<p>Step11-开机启动:</p>
+<p>#chkconfig –add mysqld</p>
+<p>登录mysql</p>
+<p>./bin/mysql -u root -h localhost -p</p>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E7%BB%B4/">服务器运维</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/02/Linux-mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux-mysql主从复制</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/01/Linux-nginx%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/">
+                        <span class="hidden-mobile">Linux-nginx代理配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -314,9 +405,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 

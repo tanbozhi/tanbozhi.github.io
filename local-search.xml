@@ -4,6 +4,81 @@
   
   
   <entry>
+    <title>Linux-mysql主从复制</title>
+    <link href="/2021/05/02/Linux-mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/"/>
+    <url>/2021/05/02/Linux-mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>服务器运维</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux-mysql安装</title>
+    <link href="/2021/05/01/Linux-mysql%E5%AE%89%E8%A3%85/"/>
+    <url>/2021/05/01/Linux-mysql%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h3 id="在Linux系统中安装mysql"><a href="#在Linux系统中安装mysql" class="headerlink" title="在Linux系统中安装mysql"></a>在Linux系统中安装mysql</h3><p>下载历史版本5.7.28的版本<br>找到下载地址后右键下载，复制下载链接</p><h6 id="安装wget"><a href="#安装wget" class="headerlink" title="安装wget"></a>安装wget</h6><p>#yum install wget</p><h6 id="用命令下载mysql安装包"><a href="#用命令下载mysql安装包" class="headerlink" title="用命令下载mysql安装包"></a>用命令下载mysql安装包</h6><p>-c 后边是mysql下载链接地址<br>wget -c <a href="https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz">https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</a></p><p>#经过上面的操作，就得到了一个mysql二进制安装包</p><h6 id="安装二进制包"><a href="#安装二进制包" class="headerlink" title="安装二进制包"></a>安装二进制包</h6><p>Step1-解压缩二进制包:</p><p>#tar zxvf mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</p><p>Step2-拷贝到/usr/local/下:</p><p>#cp mysql-5.7.28-linux-glibc2.12-x86_64/usr/local/mysql</p><p>Step3-编辑配置文件:</p><p>#vim /etc/my.cnf</p><p>Step4-创建data目录:</p><p>#mkdir /usr/local/mysql/data</p><p>Step5-创建mysql运行用户组</p><p>#groupadd mysql</p><p>Step6-创建mysql运行用户</p><p>#useradd -g mysql -d /usr/local/mysql -s /sbin/nologin -M mysql</p><p>Step7 -  运行初始化(首先要进入mysql目录)(初始化后记得拷贝下密码)</p><p>#./bin/mysqld –initialize</p><p>Step8-更改/usr/local/mysql属主与属组</p><p>#chown -R mysql:mysql /usr/local/mysql</p><p>Step9-运行服务器:</p><p>#support-files/mysql.server start</p><p>Step10 -加入系统服务:</p><p>#cp support-files/mysql.server /etc/init.d/mysqld</p><p>Step11-开机启动:</p><p>#chkconfig –add mysqld</p><p>登录mysql</p><p>./bin/mysql -u root -h localhost -p</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>服务器运维</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux-nginx代理配置</title>
+    <link href="/2021/05/01/Linux-nginx%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/"/>
+    <url>/2021/05/01/Linux-nginx%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<p>Nginx代理模式</p><p>正向代理</p><p>比如我们使用的vpn，就是一种代理，通过vpn我们就可以一种特别的通道上网vpn的代理模式是正向代理，代理层是透明的，上网时感觉不到这一层代理</p><p>反向代理</p><p>在反向代理中，客户端只知道代理节点，将请求发给代理节点，由代理节点决定将请求发给哪个服务器节点，代理节点就是访问目标服务器</p><p>nginx作为web服务器使用时，可以看作是一个文件分发服务器</p><p>在反向代理模式下，用户将请求发送到nginx服务器，nginx决定将用户请求转发到节点的某一台服务器节点组成对用户来讲是不透明的，用户只知道nginx服务器的存在</p><p>当nginx代理请求时，它将请求发送到指定的代理服务器，获取响应，并将其发送回客户端。可以使用指定的协议将请求代理到HTTP服务器或非HTTP服务器。<br>1.代理到HTTP服务器使用Proxy协议<br>2.代理到非HTTP服务器支持的协议包括FastCGl，uwsgi，SCGI和memcached。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>服务器运维</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Linux-nginx服务器</title>
     <link href="/2021/04/21/Linux-nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <url>/2021/04/21/Linux-nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
