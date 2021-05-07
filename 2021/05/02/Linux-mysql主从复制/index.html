@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      97 字
+      202 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      2
        分钟
     </span>
   
@@ -229,6 +229,10 @@
             <div class="markdown-body">
               <p>主从复制</p>
 <p>主从复制就是一台主Mysql服务器，能够接受数据的写入与读取，另外可能还有多台从节点Mysql服务器，他们不能被直接写入数据，只能通过主节点的二进制日志复制数据，为外部程序提供数据读取服务，是Mysql集群部署最简单的一种</p>
+<p>1.主从复制依赖于Mysql的二进制日志</p>
+<p>2.从服务器首先复制主服务器的二进制日志</p>
+<p>3.然后从该二进制日志中恢复数据到从库</p>
+<p>4.复制二进制日志过程默认是异步的，所以从数据库上的数据相对主数据库来讲，有一定的延迟。但是最终，两者的数据是一致的</p>
 
             </div>
             <hr>
@@ -258,6 +262,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/05/02/Linux-tcpip%E5%8D%8F%E8%AE%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux-tcpip协议</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
