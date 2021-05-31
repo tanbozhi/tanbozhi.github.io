@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      284 字
+      810 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      11
        分钟
     </span>
   
@@ -227,20 +227,36 @@
             <h1 style="display: none">Linux-socket编程</h1>
             
             <div class="markdown-body">
-              <p>socket</p>
-<p>在实际的TCP/IP应用程序开发中，并不需要去实现细节部分，通常会由系统提供socket接口，这个接口又被称为套接字，基于这个接口就可以轻松的开发网络通讯程序<br>python标准库提供的socket模块，可以实现服务端与客户端的编程</p>
-<p>服务端开发</p>
-<p>1.服务器端一直运行，直到关闭</p>
+              <h4 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h4><p>在实际的TCP/IP应用程序开发中，并不需要去实现细节部分，通常会由系统提供socket接口，这个接口又被称为套接字，基于这个接口就可以轻松的开发网络通讯程序<br>python标准库提供的socket模块，可以实现服务端与客户端的编程</p>
+<h4 id="服务端开发"><a href="#服务端开发" class="headerlink" title="服务端开发"></a>服务端开发</h4><p>1.服务器端一直运行，直到关闭</p>
 <p>2.服务器端端口是固定的</p>
 <p>3.服务器端拥有固定的ip或者主机名</p>
 <p>4.服务器端运行后，会等待客户端连接</p>
 <p>5.一旦连接成功，就可以相互发送消息</p>
-<p>1.s= socket(套接字类别, SOCK_STREAM)<br>套接字类别:AF_INET-IP寻址，AF_UNIX-文件类型套接字返回一个socket对象实例</p>
+<p>1.s= socket(套接字类别, SOCK_STREAM)<br>套接字类别:AF_INET-IP寻址，AF_UNIX-文件类型套接字</p>
+<p>返回一个socket对象实例</p>
 <p>2.s.bind((“127.0.0.1”,8000))<br>参数是元组类型，(ip地址，端口号)</p>
-<ol start="3">
-<li>s.listen(num)<br>启动监听，如果提供了num，表示允许的最多连接数，超过的将被拒绝</li>
-</ol>
+<p>3.s.listen(num)<br>启动监听，如果提供了num，表示允许的最多连接数，超过的将被拒绝</p>
 <p>4.socket, address = s.accept()<br>等待连接，如果有连接,返回由客户端socket对象与address信息组成的元组</p>
+<p>安装Wireshark抓包工具</p>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><h6 id="服务器设置（基本设置）"><a href="#服务器设置（基本设置）" class="headerlink" title="服务器设置（基本设置）"></a>服务器设置（基本设置）</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> socket import socket, AF_INET, SOCK_STREAM<br><br><span class="hljs-comment"># AF_INET  - IPV4 协议</span><br><span class="hljs-comment"># SOCK_STREAM - 套接字类型为面向连接的可靠字节流</span><br><br><span class="hljs-comment"># 创建socket对象实例</span><br>s_server = socket(AF_INET, SOCK_STREAM)<br><br><span class="hljs-comment"># 绑定IP与端口号</span><br>s_server.bind((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, 8000))<br><br><span class="hljs-comment"># 开始监听</span><br>s_server.listen()<br><br><span class="hljs-comment"># 显示等待链接接入中</span><br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;等待链接中~~~~~~&quot;</span>)<br>client_sock, client_addr = s_server.accept()<br><span class="hljs-builtin-name">print</span>(client_sock, client_addr)<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;-&quot;</span><span class="hljs-number">*50</span>)<br>client_sock.close()<br>s_server.close()<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;服务器已关闭&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h6><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-built_in">from</span> <span class="hljs-built_in">socket</span> import *<br><br><span class="hljs-comment"># 创建实例</span><br>c_client = <span class="hljs-built_in">socket</span>(AF_INET, SOCK_STREAM)<br><br><span class="hljs-comment"># 链接到服务器</span><br>c_client.connect((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br><br><span class="hljs-comment"># 关闭链接</span><br>c_client.<span class="hljs-built_in">close</span>()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h6><p>服务器设置（主要是加上了while循环）</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs perl">from <span class="hljs-keyword">socket</span> import <span class="hljs-keyword">socket</span>, AF_INET, SOCK_STREAM<br><br>s_server = <span class="hljs-keyword">socket</span>(AF_INET, SOCK_STREAM)<br>s_server.bind((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br>s_server.listen()<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;等待链接中~~~~~~&quot;</span>)<br>client_sock, client_addr = s_server.accept()<br><span class="hljs-keyword">print</span>(client_sock, client_addr)<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;-&quot;</span>*<span class="hljs-number">50</span>)<br><br><span class="hljs-keyword">while</span> True:<br>    message = client_sock.recv(<span class="hljs-number">1024</span>)       <span class="hljs-comment"># 读取socket的数据，如果没有读取到数据就会停留在这一句</span><br>    message = message.decode(<span class="hljs-string">&quot;utf-8&quot;</span>)      <span class="hljs-comment"># 将读取到的message字节解码</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> message:<br>        <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">if</span> message == <span class="hljs-string">&quot;exit&quot;</span>:<br>        client_sock.close()                 <span class="hljs-comment"># 发出关闭信号</span><br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;客户端消息》》&quot;</span>, message)<br>        client_sock.send(b<span class="hljs-string">&quot;continue...&quot;</span>)<br><br>s_server.close()<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;服务器已关闭&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<p>客户端设置</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-built_in">from</span> <span class="hljs-built_in">socket</span> import *<br><br>c_client = <span class="hljs-built_in">socket</span>(AF_INET, SOCK_STREAM)<br>c_client.connect((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br><br><span class="hljs-keyword">while</span> True:<br>    message = input(<span class="hljs-string">&quot;请输入发送的消息：&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> message:<br>        continue<br>    c_client.<span class="hljs-built_in">send</span>(<span class="hljs-keyword">bytes</span>(message, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>))<br><br>    <span class="hljs-keyword">if</span> message == <span class="hljs-string">&quot;exit&quot;</span>:<br>        break<br>    <span class="hljs-built_in">result</span> = c_client.recv(<span class="hljs-number">1024</span>)<br>    print(<span class="hljs-built_in">result</span>.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br><br><span class="hljs-comment"># 关闭链接</span><br>c_client.<span class="hljs-built_in">close</span>()<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="udp"><a href="#udp" class="headerlink" title="udp"></a>udp</h4><h6 id="服务器设置"><a href="#服务器设置" class="headerlink" title="服务器设置"></a>服务器设置</h6><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">from</span> socket <span class="hljs-keyword">import</span> *<br><br><span class="hljs-type">HOST</span> = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-type">PORT</span> = <span class="hljs-number">21111</span><br><span class="hljs-type">BUFSIZE</span> = <span class="hljs-number">1024</span><br><br><span class="hljs-meta"># 创建udp服务器</span><br><span class="hljs-title">udpSerSock</span> = socket(<span class="hljs-type">AF_INET</span>, <span class="hljs-type">SOCK_DGRAM</span>)<br><span class="hljs-title">udpSerSock</span>.bind((<span class="hljs-type">HOST</span>, <span class="hljs-type">PORT</span>))<br><span class="hljs-title">while</span> <span class="hljs-type">True</span>:<br>    # recvform返回数据<span class="hljs-class"><span class="hljs-keyword">data</span>，与发送消息端的(<span class="hljs-title">ip</span>, <span class="hljs-title">port</span>)</span><br>    <span class="hljs-class"><span class="hljs-keyword">data</span>, addr = udpSerSock.recvfrom(<span class="hljs-type">BUFSIZE</span>)</span><br>    print(addr, <span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-class"><span class="hljs-keyword">data</span>)</span><br>    udpSerSock.sendto(bytes(<span class="hljs-string">&quot;ok&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>), addr)<br>    <br><span class="hljs-title">udpSerSock</span>.close()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="客户端设置-1"><a href="#客户端设置-1" class="headerlink" title="客户端设置"></a>客户端设置</h6><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cmake">from socket import *<br><br>HOST = <span class="hljs-string">&quot;&quot;</span><br>PORT = <span class="hljs-number">21111</span><br>BUFSIZ = <span class="hljs-number">1024</span><br>ADDR = (HOST, PORT)<br><br><span class="hljs-comment"># 创建一个socket对象</span><br><span class="hljs-comment"># SOCK_DGRAM - 套接字类型为udp数据报</span><br>udpClient = socket(AF_INET, SOCK_DGRAM)<br><br><span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:<br>    <span class="hljs-keyword">message</span> = input(<span class="hljs-string">&quot;请输入:&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">message</span> ==<span class="hljs-string">&quot;quit&quot;</span>:<br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">message</span>:<br>        <span class="hljs-keyword">continue</span><br>    udpClient.sendto(bytes(<span class="hljs-keyword">message</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>), ADDR)<br>    <span class="hljs-keyword">message</span>, addr = udpClient.recvfrom(<span class="hljs-number">1024</span>)<br>    print(addr, <span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-keyword">message</span>.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br>    <br>udpClient.close()<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -270,6 +286,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/05/31/Linux-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linux-多线程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
