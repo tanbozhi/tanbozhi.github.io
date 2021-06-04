@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      765 字
+      795 字
     </span>
   
 
@@ -242,7 +242,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">from</span> threading <span class="hljs-keyword">import</span> Thread, Lock, current_thread<br><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep<br><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> randint<br><br>lock = Lock()<br>number = [<span class="hljs-number">0</span>]<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">loop</span>(<span class="hljs-params">i</span>):</span><br>    lock.acquire()<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">if</span> i &gt; number[-<span class="hljs-number">1</span>]:<br>            sleep(randint(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>))<br>            number.append(i)<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">finally</span>:<br>        print(<span class="hljs-string">&quot;thread %s ended.&quot;</span> % current_thread().name, number, <span class="hljs-string">&quot;\r\n&quot;</span>)<br>        lock.release()<br>        <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>        t = Thread(target=loop, args=(i,))<br>        t.start()<br>   <br><br></code></pre></td></tr></table></figure>
 
 
-<h6 id="如何多客户端链接socket"><a href="#如何多客户端链接socket" class="headerlink" title="如何多客户端链接socket"></a>如何多客户端链接socket</h6>
+<h6 id="如何多客户端链接socket"><a href="#如何多客户端链接socket" class="headerlink" title="如何多客户端链接socket"></a>如何多客户端链接socket</h6><p>中心思想：将客户链接语句加入到循环中，进来一个客户就创建一个线程</p>
+
             </div>
             <hr>
             <div>
