@@ -1589,8 +1589,21 @@
       </tags>
   </entry>
   <entry>
+    <title>http协议</title>
+    <url>/2021/06/04/Linux-http%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<h4 id="http请求头"><a href="#http请求头" class="headerlink" title="http请求头"></a>http请求头</h4><p>http协议是应用层协议-超文本传输协议。<br>http协议用于互联网之间的文件传输，如何请求文件，如何返回文件</p>
+<p>http协议是建立在tcp协议之上的协议<br>http协议是无状态协议，请求应答结束，连接即关闭，下一次的请求与应答重新进行tcp连接</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>wsgi协议</title>
-    <url>/2021/06/04/wsgi%E5%8D%8F%E8%AE%AE/</url>
+    <url>/2021/06/04/Linux-wsgi%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>服务器运维</category>
@@ -1600,14 +1613,23 @@
       </tags>
   </entry>
   <entry>
-    <title>http协议</title>
-    <url>/2021/06/04/http%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[]]></content>
+    <title>数据结构-数组</title>
+    <url>/2021/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h4 id="数组：array"><a href="#数组：array" class="headerlink" title="数组：array"></a>数组：array</h4><p>array创建实例：</p>
+<figure class="highlight smali"><table><tr><td class="code"><pre><code class="hljs smali">from<span class="hljs-built_in"> array </span>import array<br>myarray1 = array.array(<span class="hljs-string">&quot;i&quot;</span>,[1,2,3,4])			<span class="hljs-comment">#i是类型码</span><br>myarray2 = array.array(<span class="hljs-string">&quot;u&quot;</span>,[<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])<br></code></pre></td></tr></table></figure>
+
+
+<p>array.aray类型特点</p>
+<p>1.成员只能是字符、整数、浮点数类型</p>
+<p>2.所有的成员必须是统一的类型</p>
+<p>3.可以通过array.typecodes查看类型码</p>
+<p>array的使用</p>
+<figure class="highlight golo"><table><tr><td class="code"><pre><code class="hljs golo"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> <span class="hljs-keyword">array</span><br><br>myarray1 = <span class="hljs-keyword">array</span>.<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;i&quot;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>])<br>myarray2 = <span class="hljs-keyword">array</span>.<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;u&quot;</span>, &#123;<span class="hljs-string">&quot;a&quot;</span>:<span class="hljs-number">23</span>, <span class="hljs-string">&quot;b&quot;</span>:<span class="hljs-number">24</span>,<span class="hljs-string">&quot;3&quot;</span>:<span class="hljs-number">25</span>&#125;)<br>myarray3 = <span class="hljs-keyword">array</span>.<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;i&quot;</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>])<br>myarray4 = <span class="hljs-keyword">array</span>.<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;i&quot;</span>, [<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>])<br><br><span class="hljs-comment"># 以下依次是 统计、插入、弹出、删除、翻转、添加数组、获取最小index</span><br>myarray1.count(<span class="hljs-number">3</span>)   <span class="hljs-comment"># myarray中3出现了几次</span><br>myarray1.insert(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>)      <span class="hljs-comment"># 括号中0代表在第一个位置添加，10代表添加10</span><br>myarray1.pop(<span class="hljs-number">0</span>)             <span class="hljs-comment"># 弹出第一个数</span><br>myarray3.remove(<span class="hljs-number">2</span>)          <span class="hljs-comment"># 删除数组中第一个为2的数</span><br>myarray1.reverse()          <span class="hljs-comment"># 翻转顺序</span><br>myarray4.extend(myarray1)   <span class="hljs-comment"># 将数组1添加到数组4中</span><br>myarray3.index(<span class="hljs-number">3</span>)           <span class="hljs-comment"># 获取3的最小序列数</span><br><br><span class="hljs-keyword">print</span>(myarray1)<br><span class="hljs-keyword">print</span>(myarray3)<br><span class="hljs-keyword">print</span>(myarray4)<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;已完成&quot;</span>)<br><br><span class="hljs-keyword">print</span>(<br>    <span class="hljs-string">&quot;字节&quot;</span>, myarray1.itemsize, <span class="hljs-string">&quot;\n&quot;</span>      <span class="hljs-comment"># 查看数组1的每一项占几个字节</span><br>    <span class="hljs-string">&quot;类型码&quot;</span>, myarray1.typecode, <span class="hljs-string">&quot;\n&quot;</span>      <span class="hljs-comment"># 数组使用的类型码</span><br>    <span class="hljs-string">&quot;内存地址，成员数量&quot;</span>, myarray1.buffer_info()   <span class="hljs-comment"># 返回内存地址和成员数量</span><br><br>)<br><br><span class="hljs-comment"># 创建数组的3种方式</span><br><br><span class="hljs-comment"># 1.从字节创建</span><br>myarray5 = <span class="hljs-keyword">array</span>.<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;i&quot;</span>, [])<br>myarray5.frombytes(b<span class="hljs-string">&quot;tanbozhi&quot;</span>)     <span class="hljs-comment"># 在数组5中写入tanbozhi</span><br><span class="hljs-keyword">print</span>(myarray5.tobytes())           <span class="hljs-comment"># 将字节转换成文字</span><br><br><span class="hljs-comment"># 2.从文件创建</span><br><span class="hljs-comment"># 获取N个对象，取决于typecode</span><br>myarray6 = <span class="hljs-keyword">array</span>.<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;i&quot;</span>, [])<br>myarray6.fromfile(open(<span class="hljs-string">&quot;myarray_1.txt&quot;</span>, <span class="hljs-string">&quot;rb&quot;</span>), <span class="hljs-number">10</span>)      <span class="hljs-comment"># 从文件中读出数据，10：其中i代表4个字节，这儿读取10个i，也就是40个字节</span><br><span class="hljs-keyword">print</span>(myarray6.tobytes())                               <span class="hljs-comment"># 将字节转换成文字</span><br><span class="hljs-comment"># 写入文件</span><br>myarray6.tofile(open(<span class="hljs-string">&quot;myarray_2.txt&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>))<br><br><span class="hljs-comment"># 3.列表追加</span><br>myarray7 = <span class="hljs-keyword">array</span>.<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;i&quot;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br>myarray7.fromlist([<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>])<br><span class="hljs-keyword">print</span>(myarray7)<br><br><span class="hljs-comment"># 对数组的每一项进行字节对调，此方法只支持1,2,4,8字节的值</span><br>myarray7.byteswap()<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;字节交换：&quot;</span>, myarray7.tobytes())<br><br><span class="hljs-comment"># 转换为普通列表</span><br>myarray1.tolist()<br><span class="hljs-comment"># 转换为Unicode字符串,转换后可以切片什么的都可以</span><br>myarray1.tounicode()<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>服务器运维</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
+        <tag>数据结构与算法</tag>
       </tags>
   </entry>
 </search>
