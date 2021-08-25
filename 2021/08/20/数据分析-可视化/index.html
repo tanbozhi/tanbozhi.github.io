@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      1.7k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      25
        分钟
     </span>
   
@@ -227,7 +227,154 @@
             <h1 style="display: none">数据分析-可视化</h1>
             
             <div class="markdown-body">
-              
+              <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>了解数据可视化的基本概念</p>
+<p>了解Matplotlib的基本应用方法</p>
+<h4 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h4><p>①艺术可视化</p>
+<p>②数字性可视化</p>
+<p>​    –基于统计学</p>
+<p>​    –统计图表</p>
+<p>③众多第三方库</p>
+<p>​    –Matplotlib</p>
+<p>​    –Seaborn</p>
+<p>​    –plotly</p>
+<p>​    –Pyecharts</p>
+<p>④Matplotlib</p>
+<p><a target="_blank" rel="noopener" href="http://matplotlib.org/">http://matplotlib.org/</a></p>
+<p>​    –Matplotlib 3.0 is Python 3 only</p>
+<p>​    –安装: pip install matplotlib</p>
+<h4 id="Matplotlib概要"><a href="#Matplotlib概要" class="headerlink" title="Matplotlib概要"></a>Matplotlib概要</h4><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta">#sin函数图像</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-title">x</span> = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>*np.pi, <span class="hljs-number">100</span>)<br><span class="hljs-title">y1</span> = np.sin(x)<br><span class="hljs-title">plt</span>.plot(x,y1)<br><span class="hljs-title">plt</span>.show()<br></code></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs maxima">%matplotlib inline  #写了这一行，就不用写plt.<span class="hljs-built_in">show</span>()了<br>x = <span class="hljs-built_in">np</span>.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>*<span class="hljs-built_in">np</span>.pi, <span class="hljs-number">100</span>)<br>y1 = <span class="hljs-built_in">np</span>.<span class="hljs-built_in">sin</span>(x)<br>plt.plot(x,y1)<br>#plt.<span class="hljs-built_in">show</span>()		#这行写了第一行就不用写了<br></code></pre></td></tr></table></figure>
+<h6 id="绘图风格："><a href="#绘图风格：" class="headerlink" title="绘图风格："></a>绘图风格：</h6><p>1.MATLAB风格(上面是这个风格)</p>
+<p>2.面向对象风格(我们使用这个方法)</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment">#建立坐标系</span><br><span class="hljs-attribute">fig</span> = plt.figure()		#创建一个对象，后面直接调用这个对象<br><span class="hljs-attribute">ax</span> = fig.add_axes([<span class="hljs-number">0</span>.<span class="hljs-number">1</span>, <span class="hljs-number">0</span>.<span class="hljs-number">1</span>, <span class="hljs-number">0</span>.<span class="hljs-number">8</span>, <span class="hljs-number">0</span>.<span class="hljs-number">8</span>])<br><br><span class="hljs-attribute">x</span> = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>*np.pi, <span class="hljs-number">100</span>)<br><span class="hljs-attribute">ax</span>.plot(x,np.sin(x))<br><br><span class="hljs-comment">#保存图像</span><br><span class="hljs-attribute">fig</span>.savefig(<span class="hljs-string">&quot;./images/sine.png&quot;</span>)<br><br><span class="hljs-comment">#查看方法文档</span><br><span class="hljs-attribute">fig</span>.add_axes?<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">plt函数</th>
+<th align="center">方法ax对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">plt.plot()</td>
+<td align="center">ax.plot()</td>
+</tr>
+<tr>
+<td align="center">plt.legend()</td>
+<td align="center">ax.legend()</td>
+</tr>
+<tr>
+<td align="center">plt.xlabel()</td>
+<td align="center">ax.set_xlabel()</td>
+</tr>
+<tr>
+<td align="center">plt.ylabel()</td>
+<td align="center">ax.set_ylabel()</td>
+</tr>
+<tr>
+<td align="center">plt.xlim()</td>
+<td align="center">ax.set_xlim()</td>
+</tr>
+<tr>
+<td align="center">plt.ylim()</td>
+<td align="center">ax.set_ylim()</td>
+</tr>
+<tr>
+<td align="center">plt.title()</td>
+<td align="center">ax.set_title()</td>
+</tr>
+</tbody></table>
+<h5 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h5><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs clean">#坐标网络<br>%matplotlib <span class="hljs-keyword">inline</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br>x = np.arange(<span class="hljs-number">0.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">0.02</span>)<br>y = np.exp(-x)*np.cos(<span class="hljs-number">2</span>*np.pi*x)<br>plt.plot(x, y)<br><br>plt.grid(color=<span class="hljs-string">&#x27;gray&#x27;</span>)   #显示网格<br><br>#面向对象作图<br>#面向对象作图<br>fig = plt.figure()<br>ax = fig.add_axes([<span class="hljs-number">0.1</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.8</span>, <span class="hljs-number">0.8</span>])<br><br>ax.grid(color=<span class="hljs-string">&#x27;gray&#x27;</span>)<br>ax.plot(x, y)<br><br>#小于零的坐标显示负数<br><span class="hljs-keyword">import</span>.matplotlib<br>matplotlib.rcParams[<span class="hljs-string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+<h5 id="设置坐标轴"><a href="#设置坐标轴" class="headerlink" title="设置坐标轴"></a>设置坐标轴</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs stylus">#设置坐标轴<br>fig = plt<span class="hljs-selector-class">.figure</span>()<br>ax = fig<span class="hljs-selector-class">.add_axes</span>(<span class="hljs-selector-attr">[0.1, 0.1, 0.8, 0.8]</span>)<br>ax<span class="hljs-selector-class">.grid</span>(<span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;gray&#x27;</span>)<br>ax<span class="hljs-selector-class">.plot</span>(x, y)<br><br>ax<span class="hljs-selector-class">.set_xlabel</span>(<span class="hljs-string">&#x27;横坐标&#x27;</span>)    #为X，Y轴设置标题<br>ax<span class="hljs-selector-class">.set_ylabel</span>(<span class="hljs-string">&#x27;纵坐标&#x27;</span>)<br>ax<span class="hljs-selector-class">.set_xlim</span>((-<span class="hljs-number">2</span>,<span class="hljs-number">10</span>))      #为X，Y轴设置数值范围<br>ax<span class="hljs-selector-class">.set_ylim</span>((-<span class="hljs-number">1</span>,<span class="hljs-number">2</span>))<br><br>#坐标轴标题显示方框，不显示中文？<br>#解决方法<br>from pylab import mpl<br><br>mpl<span class="hljs-selector-class">.rcParams</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>]</span> = <span class="hljs-selector-attr">[<span class="hljs-string">&#x27;fangsong&#x27;</span>]</span>  #指定默认字体<br>mpl<span class="hljs-selector-class">.rcParams</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;axes.unicode_minus&#x27;</span>]</span> = False<br><br>#设置刻度<br>ax<span class="hljs-selector-class">.set_xlim</span>((<span class="hljs-number">0</span>, <span class="hljs-number">5</span>))		#x轴刻度范围设置为<span class="hljs-number">0</span>~<span class="hljs-number">5</span><br>ax<span class="hljs-selector-class">.set_xticks</span>(np<span class="hljs-selector-class">.linspace</span>(<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,<span class="hljs-number">11</span>))	#将<span class="hljs-number">0</span>到<span class="hljs-number">5</span>分成<span class="hljs-number">11</span>个数<br><br>#隐藏刻度上的数字<br>ax<span class="hljs-selector-class">.yaxis</span><span class="hljs-selector-class">.set_maior_locator</span>(plt<span class="hljs-selector-class">.Nulllocator</span>())	#隐藏y轴上的刻度与数字<br>ax<span class="hljs-selector-class">.xaxis</span><span class="hljs-selector-class">.set_maior_formatter</span>(plt<span class="hljs-selector-class">.Nullformatter</span>()) #只隐藏数字<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="多分区坐标系"><a href="#多分区坐标系" class="headerlink" title="多分区坐标系"></a>多分区坐标系</h5><p>比较：</p>
+<p>plt.subplot</p>
+<p>plt.subplots</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 创建3*3的坐标轴</span><br><span class="hljs-attribute">fig</span>, ax = plt.subplots(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, sharex=&#x27;col&#x27;, sharey=&#x27;row&#x27;)<br><br><span class="hljs-attribute">ax</span>.shape	#查看坐标轴的形状（个数）<br><br><span class="hljs-comment">#大小不一样的坐标系</span><br><span class="hljs-attribute">fig</span> = plt.figure()<br><span class="hljs-attribute">ax1</span> = fig.add_axes([<span class="hljs-number">0</span>.<span class="hljs-number">1</span>, <span class="hljs-number">0</span>.<span class="hljs-number">1</span>, <span class="hljs-number">0</span>.<span class="hljs-number">8</span>, <span class="hljs-number">0</span>.<span class="hljs-number">8</span>])	#数字依次代表左下宽高<br><span class="hljs-attribute">ax1</span> = fig.add_axes([<span class="hljs-number">0</span>.<span class="hljs-number">6</span>, <span class="hljs-number">0</span>.<span class="hljs-number">5</span>, <span class="hljs-number">0</span>.<span class="hljs-number">2</span>, <span class="hljs-number">0</span>.<span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="曲线和散点"><a href="#曲线和散点" class="headerlink" title="曲线和散点"></a>曲线和散点</h4><p>掌握曲线图，图例，散点图的绘制方法</p>
+<p>常用函数：plot</p>
+<p>常用参数：color（颜色），linestyle（线型）</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">solid</th>
+<th align="center">dashed</th>
+<th align="center">dashdot</th>
+<th align="center">dotted</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">符号</td>
+<td align="center">-</td>
+<td align="center">—</td>
+<td align="center">-.</td>
+<td align="center">:</td>
+</tr>
+<tr>
+<td align="center">样式</td>
+<td align="center"><strong><strong><strong>____</strong></strong></strong></td>
+<td align="center">————–</td>
+<td align="center">-.-.-.-.-.-.</td>
+<td align="center">……………….</td>
+</tr>
+</tbody></table>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs routeros">%matplotlib inline<br>import numpy as np<br>import pandas as pd<br>import matplotlib.pyplot as plt<br><br>x = np.linspace(0, 2*np.pi, 100)<br>plt.plot(x, np.sin(x), <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;blue&#x27;</span>)<br><span class="hljs-comment">#颜色(&#x27;blue&#x27;)(&#x27;r&#x27;)(&#x27;#A52A2A&#x27;),这三种方法都行</span><br><br><span class="hljs-comment">#线型写法</span><br>plt.plot(x, 2*x, <span class="hljs-attribute">linestyle</span>=<span class="hljs-string">&#x27;dashdot&#x27;</span>)<br>plt.plot(x, -2*x+2, <span class="hljs-attribute">linestyle</span>=<span class="hljs-string">&#x27;:&#x27;</span>)<br><br>plt.plot(range(10), <span class="hljs-attribute">linestyle</span>=<span class="hljs-string">&#x27;--&#x27;</span>, <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-attribute">marker</span>=<span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-attribute">markersize</span>=16, <span class="hljs-attribute">markerfacecolor</span>=<span class="hljs-string">&#x27;b&#x27;</span>)<br>					#  线型			颜色		 xy相交点的形状	相交点的大小		相交点形状填充颜色<br><br><span class="hljs-comment">#&#x27;-rD&#x27;是线型，颜色，形状的简写										只显示2,4,6这三个点</span><br>plt.plot(range(10), <span class="hljs-string">&#x27;-rD&#x27;</span>, <span class="hljs-attribute">markersize</span>=16, <span class="hljs-attribute">markerfacecolor</span>=<span class="hljs-string">&#x27;b&#x27;</span>, markevery=[2,4,6])<br><br>plt.grid(<span class="hljs-literal">True</span>)		#网格		<br><br><span class="hljs-comment">#图例</span><br>plt.plot(x, -2*x+2, <span class="hljs-string">&#x27;k--&#x27;</span>, <span class="hljs-attribute">lable</span>=<span class="hljs-string">&quot;图例名&quot;</span>)		#图例记得命名<br>plt.legend(<span class="hljs-attribute">loc</span>=<span class="hljs-string">&#x27;upper right&#x27;</span>)    #图例的位置（这个表示右上角显示图例）<br>plt.legend((line1,line2),<span class="hljs-attribute">loc</span>=0)		#图例只显示线1和线2<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h5><p>函数：scatter</p>
+<p>参数：</p>
+<p>– c:颜色</p>
+<p>– s:大小</p>
+<p>– alpha：透明度</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-attr">rng</span> = np.random.RandomState(<span class="hljs-number">0</span>)<br><br><span class="hljs-attr">x</span> = rng.randn(<span class="hljs-number">100</span>)<br><span class="hljs-attr">y</span> = rng.randn(<span class="hljs-number">100</span>)<br><br><span class="hljs-attr">colors</span> = rng.rand(<span class="hljs-number">100</span>)<br><span class="hljs-attr">sizes</span> = <span class="hljs-number">1000</span>*rng.rand(<span class="hljs-number">100</span>)<br><br>plt.scatter(x, y, <span class="hljs-attr">c=colors,</span> <span class="hljs-attr">s=sizes,</span> <span class="hljs-attr">alpha=0.3)</span><br>plt.colorbar()		<span class="hljs-comment">#颜色谱</span><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="其它统计图"><a href="#其它统计图" class="headerlink" title="其它统计图"></a>其它统计图</h4><h5 id="柱形图"><a href="#柱形图" class="headerlink" title="柱形图"></a>柱形图</h5><p>bar</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs haskell">%matplotlib inline<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br><span class="hljs-class"><span class="hljs-keyword">data</span> = [2, 10, 4, 8, 6]			#每个柱形图对应的高度</span><br><span class="hljs-title">position</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]		#相对应的位置<br><span class="hljs-title">plt</span>.bar(x=position, height=<span class="hljs-class"><span class="hljs-keyword">data</span>)	#还有许多参数，自行了解</span><br></code></pre></td></tr></table></figure>
+<h5 id="箱线图"><a href="#箱线图" class="headerlink" title="箱线图"></a>箱线图</h5><p>boxplot</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br></code></pre></td></tr></table></figure>
+<h5 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h5><p>pie</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs routeros">x =[2, 4, 6, 8]<br>fig, ax = plt.subplots()<br>labels = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>]<br>colors = [<span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;yellow&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>]<br>explode = (0, 0.1, 0, 0)	#偏离度(是否突起)<br><br><br><span class="hljs-comment"># 参数的意思分别是数据，偏离程度，标识，颜色，百分比格式，阴影，第一个扇形开始角度，半径大小</span><br>ax.pie(x, <span class="hljs-attribute">explode</span>=explode, <span class="hljs-attribute">labels</span>=labels, <span class="hljs-attribute">colors</span>=colors, <span class="hljs-attribute">autopct</span>=<span class="hljs-string">&#x27;%1.1f%%&#x27;</span>, <span class="hljs-attribute">shadow</span>=<span class="hljs-literal">True</span>, <span class="hljs-attribute">startangle</span>=90, radius1.2)<br><br>ax.<span class="hljs-builtin-name">set</span>(<span class="hljs-attribute">aspect</span>=<span class="hljs-string">&quot;equal&quot;</span>, <span class="hljs-attribute">title</span>=<span class="hljs-string">&quot;Pie&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h5 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h5><p>hist</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">datas</span> = np.random.randn(<span class="hljs-number">10000</span>)<br><span class="hljs-attr">hs</span> = plt.hist(datas)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="概述和分类统计"><a href="#概述和分类统计" class="headerlink" title="概述和分类统计"></a>概述和分类统计</h4><p>seaborn</p>
+<p>seaborn是基于Matplotlib发展而来的实现数据可视化的库</p>
+<p>他提供了一些更高级的工具，使得应用起来比matplotlib更简单</p>
+<p>安装方法</p>
+<p>pip install seaborn</p>
+<p>conda install seaborn</p>
+<p>官方网站：<a target="_blank" rel="noopener" href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs routeros">%matplotlib inline<br>import seaborn as sns<br>sns.<span class="hljs-builtin-name">set</span>()			#结果设置为默认风格<br>tips = sns.load_dataset(<span class="hljs-string">&quot;tips&quot;</span>)		#sns自带的数据集<br>sns.relplot(<span class="hljs-attribute">x</span>=<span class="hljs-string">&#x27;total_bill&#x27;</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">&#x27;tip&#x27;</span>, <span class="hljs-attribute">col</span>=<span class="hljs-string">&#x27;time&#x27;</span>, <span class="hljs-attribute">hue</span>=<span class="hljs-string">&#x27;smoker&#x27;</span>, <span class="hljs-attribute">style</span>=<span class="hljs-string">&#x27;smoker&#x27;</span>, <span class="hljs-attribute">size</span>=<span class="hljs-string">&#x27;size&#x27;</span>, <span class="hljs-attribute">data</span>=tips)<br><br>sns.barplot(记得写参数)	#柱状图<br><br></code></pre></td></tr></table></figure>
+
+
+<h5 id="分类特征的统计图"><a href="#分类特征的统计图" class="headerlink" title="分类特征的统计图"></a>分类特征的统计图</h5><p>函数：seaborn.catplot</p>
+<p>– 分类特征的散点图</p>
+<p>– 分类特征的分布图</p>
+<p>– 分类特征的估计图</p>
+<h5 id="更多统计图"><a href="#更多统计图" class="headerlink" title="更多统计图"></a>更多统计图</h5><p>关系统计图</p>
+<p>函数：seaborn.relplot</p>
+<p>回归统计图</p>
+<p>函数：seaborn.lmplot</p>
+<p>数据分布统计图</p>
+<p>函数：sns.distplot</p>
+<p>​            sns.jointplot</p>
+<p>​            sns.pairplot</p>
+<p>热图</p>
+<p>函数：sns.heatmap</p>
+<p>​            sns.clustermap</p>
+<h4 id="plotly应用"><a href="#plotly应用" class="headerlink" title="plotly应用"></a>plotly应用</h4><p>掌握plotly的开发环境</p>
+<p>掌握基本使用方法</p>
+<p>掌握高级接口的绘图函数</p>
+<h4 id="pyecharts"><a href="#pyecharts" class="headerlink" title="pyecharts"></a>pyecharts</h4><p>!pip install pyecharts -U        #-u是升级的意思</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment">#生成本地HTML文件</span><br>from pyecharts.charts import <span class="hljs-keyword">Bar</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword">bar </span>= <span class="hljs-keyword">Bar()</span><br><span class="hljs-keyword">bar.add_xaxis([&quot;羊&quot;, </span><span class="hljs-string">&quot;猪&quot;</span>, <span class="hljs-string">&quot;狗&quot;</span>])<br><span class="hljs-keyword">bar.add_yaxis(&quot;小博&quot;, </span>[<span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>])<br><span class="hljs-keyword">bar.render()</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword"># </span>HTML文件，会默认生成在当前目录且名字叫render.html<br><span class="hljs-comment"># 也可以传入路径参数，如 bar.render(&quot;myecharts.html&quot;)</span><br><br><br><span class="hljs-comment">#链式调用（跟上面原理一样）</span><br>from pyecharts.charts import <span class="hljs-keyword">Bar</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword">bar </span>= (<br>		<span class="hljs-keyword">Bar()</span><br><span class="hljs-keyword">	</span>	.<span class="hljs-keyword">add_xaxis([&quot;羊&quot;, </span><span class="hljs-string">&quot;猪&quot;</span>, <span class="hljs-string">&quot;狗&quot;</span>])<br>		.<span class="hljs-keyword">add_yaxis(&quot;小博&quot;, </span>[<span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>])<br>		)<br><span class="hljs-keyword">bar.render_notebook()	</span><span class="hljs-comment">#将图像渲染到当前的jupyter环境中来	</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">from pyecharts.charts import Bar<br>from pyecharts import options <span class="hljs-keyword">as</span> opts	#对图像进行配置<br><br>bar = <span class="hljs-constructor">Bar()</span><br>bar.add<span class="hljs-constructor">_xaxis([<span class="hljs-string">&quot;羊&quot;</span>, <span class="hljs-string">&quot;猪&quot;</span>, <span class="hljs-string">&quot;狗&quot;</span>])</span><br>bar.add<span class="hljs-constructor">_yaxis(<span class="hljs-string">&quot;小博&quot;</span>, [3, 7, 8])</span><br><br>bar.set<span class="hljs-constructor">_global_opts(<span class="hljs-params">title_opts</span>=<span class="hljs-params">opts</span>.TitleOpts(<span class="hljs-params">title</span>=<span class="hljs-string">&quot;小博旗舰店&quot;</span>, <span class="hljs-params">subtitle</span>=<span class="hljs-string">&quot;双十一促销&quot;</span>)</span>)<br>bar.render(<span class="hljs-string">&quot;render1.html&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">from pyecharts.charts import Bar<br>from pyecharts import options <span class="hljs-keyword">as</span> opts	#对图像进行配置<br>from pyecharts.globals import ThemeType   #配置主题 <span class="hljs-keyword">new</span><br><br>bar = <span class="hljs-constructor">Bar(<span class="hljs-params">init_opts</span>=<span class="hljs-params">opts</span>.InitOpts(<span class="hljs-params">theme</span>=ThemeType.LIGHT)</span>)  #换主题 <span class="hljs-keyword">new</span><br>bar.add<span class="hljs-constructor">_xaxis([<span class="hljs-string">&quot;羊&quot;</span>, <span class="hljs-string">&quot;猪&quot;</span>, <span class="hljs-string">&quot;狗&quot;</span>])</span><br>bar.add<span class="hljs-constructor">_yaxis(<span class="hljs-string">&quot;小博&quot;</span>, [3, 7, 8])</span><br><br>bar.set<span class="hljs-constructor">_global_opts(<span class="hljs-params">title_opts</span>=<span class="hljs-params">opts</span>.TitleOpts(<span class="hljs-params">title</span>=<span class="hljs-string">&quot;小博旗舰店&quot;</span>, <span class="hljs-params">subtitle</span>=<span class="hljs-string">&quot;双十一促销&quot;</span>)</span>)<br>bar.render(<span class="hljs-string">&quot;render2.html&quot;</span>)<br></code></pre></td></tr></table></figure>
+
             </div>
             <hr>
             <div>
