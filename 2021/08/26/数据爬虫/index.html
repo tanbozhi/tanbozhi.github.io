@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>数据爬虫 - tanbozhi-blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Tanbozhi-博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数据爬虫">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-26 10:20" pubdate>
+        2021年8月26日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据爬虫</h1>
+            
+            <div class="markdown-body">
+              <h4 id="断点调试与日志"><a href="#断点调试与日志" class="headerlink" title="断点调试与日志"></a>断点调试与日志</h4><p>pycharm断点调试</p>
+<p>Spyder断点调试</p>
+<p>运行日志记录</p>
+<h6 id="pycharm断点调试"><a href="#pycharm断点调试" class="headerlink" title="pycharm断点调试"></a>pycharm断点调试</h6><p>设置：setting—&gt;Build,Execution,Deployment—&gt;console(点击他)—-&gt;右侧勾选（use IPython if available, show console variables by default）</p>
+<p>设置程序结束后进入python控制台环境</p>
+<p>编辑配置—–&gt;使用python控制台运行</p>
+<p>安装ipython–&gt;pip install ipython   (比原来的交互方便)</p>
+<h4 id="爬虫流程"><a href="#爬虫流程" class="headerlink" title="爬虫流程"></a>爬虫流程</h4><p>① 获取start_url</p>
+<p>②抓取URL</p>
+<p>③提取链接—&gt;提取信息—–&gt;保存信息</p>
+<p>④存储链接</p>
+<p>⑤从链接集合中读取一条（在返回到抓取URL）</p>
+<h4 id="requests模块"><a href="#requests模块" class="headerlink" title="requests模块"></a>requests模块</h4><p>安装：pip install requests</p>
+<p>get方式请求：requests.get</p>
+<p>post方式请求：requests.post</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta">#get方式抓取远程URL</span><br><span class="hljs-meta">#params参数可以是一个字典，也可以是一个原则组成的列表，构成query_string</span><br>page = requests.<span class="hljs-keyword">get</span>(url, params, **kw)<br><br><span class="hljs-meta">#post方式抓取远程URL</span><br><span class="hljs-meta">#data可以是字典或者元组组成的列表， json:以josn格式提交的post数据</span><br>page = requests.post(url, data, json, **kw)<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h6><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">response对象：<br>content - 返回的内容字节对象，需要decode解码<br><span class="hljs-type">text</span> <span class="hljs-comment">----解析后的文本内容</span><br><span class="hljs-type">json</span> <span class="hljs-comment">----json类型响应内容</span><br><span class="hljs-keyword">encoding</span>-网页源文件编码格式<br>status_code  <span class="hljs-comment">----状态码</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="请求头处理（headers）"><a href="#请求头处理（headers）" class="headerlink" title="请求头处理（headers）"></a>请求头处理（headers）</h6><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vbscript">请求头处理：<br>发送请求时，可以构造一个请求头<br>请求头格式是字典，使用headers关键字传参<br><br>响应头：<br><span class="hljs-built_in">response</span>.headers可以得到字典类型的响应头<br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">headers = &#123;<br>这里面放需要的参数<br>&#125;<br>page = requests.<span class="hljs-builtin-name">get</span>(url, params, headers)<br><span class="hljs-builtin-name">print</span>(page.headers)<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="cookies"><a href="#cookies" class="headerlink" title="cookies"></a>cookies</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros">获取服务器返回的cookies：<br>通过response.cookies[<span class="hljs-string">&#x27;cookie_name&#x27;</span>]可以读取响应的cookie值<br><br>向服务器发送cookies：<br>cookies = &#123;<span class="hljs-string">&quot;cookie_name&quot;</span>:cookie_value&#125;<br>request.<span class="hljs-builtin-name">get</span>(<span class="hljs-built_in">..</span>., <span class="hljs-attribute">cookies</span>=cookies)<br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">cooies = &#123;<span class="hljs-string">&quot;username&quot;</span>:<span class="hljs-string">&quot;xiaobo&quot;</span>&#125;<br>page = requests.<span class="hljs-builtin-name">get</span>(<span class="hljs-attribute">url</span>=url, <span class="hljs-attribute">params</span>=params, <span class="hljs-attribute">headers</span>=headers, <span class="hljs-attribute">cookies</span>=cookies)<br><span class="hljs-builtin-name">print</span>(page.cookies[<span class="hljs-string">&#x27;username&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="IP代理"><a href="#IP代理" class="headerlink" title="IP代理"></a>IP代理</h6><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-built_in">ip</span>代理：<br>有的时候，我们需要通过代理才能访问网站<br><span class="hljs-number">1.</span><span class="hljs-built_in">ip</span>被封<br><span class="hljs-number">2</span>.国外翻墙网站<br><span class="hljs-number">3</span>.隐藏自己的真实<span class="hljs-built_in">ip</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">proxy_servers = &#123;<br>		<span class="hljs-string">&#x27;http&#x27;</span> : <span class="hljs-string">&#x27;http://127.0.0.1:49567&#x27;</span><br>		<span class="hljs-string">&#x27;https&#x27;</span> : <span class="hljs-string">&#x27;http://127.0.0.1:49567&#x27;</span><br>&#125;<br><br>url = <span class="hljs-string">&quot;http://www.google.com&quot;</span><br>data = requests.<span class="hljs-builtin-name">get</span>(url, <span class="hljs-attribute">proxies</span>=proxy_servers)<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="抓取网页"><a href="#抓取网页" class="headerlink" title="抓取网页"></a>抓取网页</h6><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-built_in">import</span> requests<br><br><span class="hljs-comment"># html页面抓取</span><br><span class="hljs-attr">url</span> = <span class="hljs-string">&quot;http://www.baidu.com&quot;</span><br><span class="hljs-attr">page</span> = requests.get(url)<br><br><span class="hljs-comment"># 获得响应头</span><br><span class="hljs-attr">headers</span> = page.headers<br><span class="hljs-comment"># 获得cookies</span><br><span class="hljs-attr">cookies</span> = page.cookies<br><span class="hljs-attr">cookies_dict</span> = cookies.get_dict()<br><span class="hljs-comment"># 网页内容</span><br><span class="hljs-attr">page_text</span> = page.text<br><br><span class="hljs-comment">#解码</span><br>page.content.decode(<span class="hljs-string">&quot;utf-8&quot;</span>)	<span class="hljs-comment">#不填时默认utf-8</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+<h6 id="抓取图片"><a href="#抓取图片" class="headerlink" title="抓取图片"></a>抓取图片</h6><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs perl">import requests<br><br><span class="hljs-comment"># 媒体文件抓取</span><br>url = <span class="hljs-string">&quot;https://pic.sogou.com/d?query=%E5%9B%BE%E7%89%87&amp;forbidqc=&amp;entityid=&amp;preQuery=&amp;rawQuery=%E5%9B%BE%E7%89%87&amp;queryList=&amp;st=255&amp;mode=1&amp;did=54&quot;</span><br>data = requests.get(url)<br><br><span class="hljs-comment"># 图片、视频都是二进制字节数据，以字节形式保存</span><br>f = <span class="hljs-keyword">open</span>(<span class="hljs-string">&quot;my.jpg&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>)<br>f.write(data.content)<br>f.close()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta"># cookie</span><br><span class="hljs-meta"># 使用post登陆</span><br><span class="hljs-meta"># 需要发送username, password, csrf_token, cookie</span><br><span class="hljs-meta"># url = &quot;http://test.python-xp.com/login&quot;</span><br><span class="hljs-meta"># 打开登陆页面</span><br><span class="hljs-meta"># login_page = requests.get(url)</span><br><span class="hljs-meta"># 获得session</span><br><span class="hljs-meta"># session = login_page.cookies[&#x27;session&#x27;]</span><br><span class="hljs-meta"># token = re.findall(&quot;&lt;input id=\&quot;csrf_token\&quot;.*?value=\&quot;(.*?)\&quot;&gt;&quot;, login_page.text)[0]</span><br><span class="hljs-meta"># data = &#123;&quot;username&quot;:&quot;luxp&quot;, &quot;password&quot;:&quot;123456&quot;, &quot;csrf_token&quot;:token &#125;</span><br><span class="hljs-meta"># cookies = &#123;&#125;</span><br><span class="hljs-meta"># cookies = &#123;&quot;session&quot;:session&#125;</span><br><span class="hljs-meta"># res = requests.post(url, data=data, cookies=cookies)</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta"># 代理</span><br><span class="hljs-meta"># proxy_servers = &#123;</span><br><span class="hljs-meta">#     &#x27;http&#x27;: &#x27;127.0.0.1:49567&#x27;,</span><br><span class="hljs-meta">#     &#x27;https&#x27;: &#x27;127.0.0.1:49567&#x27;</span><br><span class="hljs-meta"># &#125;</span><br><span class="hljs-meta">#</span><br><span class="hljs-meta"># url = &quot;http://www.google.com&quot;</span><br><span class="hljs-meta"># data = requests.get(url, proxies=proxy_servers)</span><br><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h4><p><strong>ajax</strong>对象请求默认是不能跨域访问，所谓跨域，就是一个站点的ajax对象是不能请求另一个站点的数据，称为<strong>同源安全策略</strong>，只要<strong>proto(协议)，host(主机名), port(端口)中有一个不同</strong>，就认为违反了同源策略（被请求一方可以设置:Access-Control-Allow-Origin,允许跨域访问)</p>
+<p><strong>http 与https之间不能访问</strong></p>
+<p><strong>host1 与host2之间不能访问</strong></p>
+<p><strong>port1 与port2之间不能访问</strong></p>
+<p><strong>jsonp</strong>，是一种可以跨域的请求方式，利用<strong>script</strong>标签的<strong>src</strong>，加载一段js代码。<br>在请求中包含一个回调函数名，服务器受到请求后，会用这个函数名包裹json数据返回，在前端页面，src加载后就可以执行这个函数</p>
+<p>jsonp返回的数据是由函数名包裹着json数据的字符串，如果ajax请求，就会在页面中执行这个函数，在pvthon程序中，可以剥离函数名之后转化为字典对象</p>
+<h4 id="lxml-xpath"><a href="#lxml-xpath" class="headerlink" title="lxml + xpath"></a>lxml + xpath</h4><h6 id="xpath语法"><a href="#xpath语法" class="headerlink" title="xpath语法"></a>xpath语法</h6><table>
+<thead>
+<tr>
+<th align="center">路径表达式</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">/</td>
+<td align="center">从根节点选取（/html）</td>
+</tr>
+<tr>
+<td align="center">//</td>
+<td align="center">从当前选择的节点开始（//div[@class=”el”]）</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">选择当前节点</td>
+</tr>
+<tr>
+<td align="center">..</td>
+<td align="center">选择当前节点父节点</td>
+</tr>
+<tr>
+<td align="center">@</td>
+<td align="center">选择属性</td>
+</tr>
+<tr>
+<td align="center">//div/p[1]</td>
+<td align="center">表示div下面的第一个P（选择特定的元素），末尾是last()，某个位置：position()&gt;|=|&lt;10，比如前10个匹配元素 position()&lt;10</td>
+</tr>
+<tr>
+<td align="center">//div/p|//div/a</td>
+<td align="center">div元素中的p元素与a元素</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">通配符，任何元素节点</td>
+</tr>
+<tr>
+<td align="center">@*</td>
+<td align="center">任何属性节点</td>
+</tr>
+<tr>
+<td align="center">node()</td>
+<td align="center">任何类型节点，文本节点使用text()</td>
+</tr>
+</tbody></table>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs awk">&lt;div class=<span class="hljs-string">&quot;el&quot;</span>&gt;<br>	&lt;p class=<span class="hljs-string">&quot;t1&quot;</span>&gt;<br>		&lt;span&gt;<br>			&lt;a href=<span class="hljs-string">&quot;www.baidu.com&quot;</span> title=<span class="hljs-string">&quot;百度官网&quot;</span>&gt;<br>		&lt;/span&gt;<br>		&lt;span&gt;<br>		<br>		&lt;/span&gt;<br>	&lt;/p&gt;<br>&lt;/div&gt;<br><br><span class="hljs-regexp">//</span>div[@class=<span class="hljs-string">&quot;el&quot;</span>]<span class="hljs-regexp">/p/</span>span[<span class="hljs-number">1</span>]		<span class="hljs-comment">#查找第一个span的路径	</span><br><span class="hljs-regexp">//</span>div[@class=<span class="hljs-string">&quot;el&quot;</span>]<span class="hljs-regexp">/p/</span>span/a			<span class="hljs-comment">#查找a标签</span><br><span class="hljs-regexp">//</span>div[@class=<span class="hljs-string">&quot;el&quot;</span>]<span class="hljs-regexp">/p/</span>span<span class="hljs-regexp">/a/</span>@href	<span class="hljs-comment">#查找href标签</span><br><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="lxml"><a href="#lxml" class="headerlink" title="lxml"></a>lxml</h6><p>要使用xpath路径，需要将抓取的页面字符串数据转化为节点对象,可以通过lxml实现安装: pip install lxml</p>
+<p>将抓取的页面字符串转换为dom节点对象，才可以使用xpath语法提取节点</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nix">from lxml <span class="hljs-built_in">import</span> html<br><span class="hljs-attr">dom</span> = html.document_fromstring(page)<br><span class="hljs-attr">links_xpath</span> = <span class="hljs-string">&quot;//div[@class=\&quot;</span>el\<span class="hljs-string">&quot;]/p/span/a/@href&quot;</span><br><span class="hljs-attr">links</span> = dom.xpath(links_xpath)<br></code></pre></td></tr></table></figure>
+
+
+<p>例</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-built_in">import</span> requests<br>from lxml <span class="hljs-built_in">import</span>  html<br><br><span class="hljs-comment"># 页面抓取成功</span><br><span class="hljs-attr">url</span> = <span class="hljs-string">&quot;https://search.51job.com/list/070300,000000,0000,00,9,99,python,2,1.html?lang=c&amp;postchannel=0000&amp;workyear=99&amp;cotype=99&amp;degreefrom=99&amp;jobterm=99&amp;companysize=99&amp;ord_field=0&amp;dibiaoid=0&amp;line=&amp;welfare=&quot;</span><br><br><span class="hljs-attr">headers</span> = &#123;<br>    <span class="hljs-string">&quot;Host&quot;</span>: <span class="hljs-string">&quot;search.51job.com&quot;</span>,<br>    <span class="hljs-string">&quot;Upgrade-Insecure-Requests&quot;</span> :<span class="hljs-string">&quot;1&quot;</span>,<br>    <span class="hljs-string">&quot;User-Agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36&quot;</span><br>&#125;<br><br>try:<br>    <span class="hljs-attr">data</span> = requests.get(url, <span class="hljs-attr">headers=headers)</span><br>except Exception as e:<br>    print(e)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-comment"># page = data.content.decode(data.apparent_encoding)</span><br>    <span class="hljs-attr">page</span> = data.content.decode(<span class="hljs-string">&quot;gbk&quot;</span>)<br><br><span class="hljs-comment"># 岗位链接提取</span><br><span class="hljs-attr">xpath_href</span> = <span class="hljs-string">&quot;//div[@class=&#x27;el&#x27;]/p/span/a/@href&quot;</span><br><span class="hljs-attr">xpath_link_text</span> = <span class="hljs-string">&quot;//div[@class=&#x27;el&#x27;]/p/span/a/text()&quot;</span><br><br><span class="hljs-attr">dom</span> = html.document_fromstring(page)<br><span class="hljs-attr">links</span> = dom.xpath(xpath_href)<br><span class="hljs-attr">texts</span> = dom.xpath(xpath_link_text)<br><br><span class="hljs-comment"># 抓取详细页面</span><br><span class="hljs-attr">res</span> = requests.get(links[<span class="hljs-number">0</span>], <span class="hljs-attr">headers=headers)</span><br><span class="hljs-attr">job_page_content</span> = res.content<br><span class="hljs-attr">job_page</span> = job_page_content.decode(<span class="hljs-string">&quot;gbk&quot;</span>)<br><br><span class="hljs-comment"># 根据xpath提取岗位信息</span><br><span class="hljs-attr">xpath</span> = <span class="hljs-string">&quot;//p[@class=\&quot;</span>msg ltype\<span class="hljs-string">&quot;]/@title&quot;</span><br><span class="hljs-attr">dom</span> = html.document_fromstring(job_page)<br><span class="hljs-attr">info</span> = dom.xpath(xpath)[<span class="hljs-number">0</span>]<br><br><span class="hljs-comment"># lxml 还支持其他的元素选择方式</span><br><span class="hljs-comment"># ele为dom或者匹配的元素</span><br><span class="hljs-comment"># ele.text - dom转换为字符串,不包含子元素</span><br><span class="hljs-comment"># ele.text_content - dom的所有元素text（不包含子元素tag名）转换为string</span><br><span class="hljs-comment"># ele.items - 属性列表</span><br><span class="hljs-comment"># ele.find_class - 根据样式名查找元素</span><br><span class="hljs-comment"># ele.get_element_by_id - 根据id查找元素</span><br><span class="hljs-comment"># ele.getchildren - 查找子元素1</span><br><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="beautifulsoup4"><a href="#beautifulsoup4" class="headerlink" title="beautifulsoup4"></a>beautifulsoup4</h4><p>另一个在爬虫网页解析中常用到的模块是beautifulsoup,他支持多种html解析器，推荐使<br>用lxml解析器<br>安装:pip intall beautifulsoup4</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> bs4 import BeautifulSoup<br><br>html_data = BeautifulSoup(page, <span class="hljs-string">&quot;lxml&quot;</span>)<br>ul =html_data.<span class="hljs-builtin-name">find</span>(<span class="hljs-attribute">id</span>=<span class="hljs-string">&quot;kwdTypeSelUl&quot;</span>)<br>divs = html_data.find_all ( <span class="hljs-string">&quot;div&quot;</span> )<br>el_elements = html_data.find_all(<span class="hljs-attribute">class_</span>=<span class="hljs-string">&quot;el&quot;</span>)<br>el_divs = html_data.find_all( <span class="hljs-string">&quot;div&quot;</span> , <span class="hljs-attribute">class_</span>=<span class="hljs-string">&quot;el&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/">爬虫基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/20/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                        <span class="hidden-mobile">数据分析-可视化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
