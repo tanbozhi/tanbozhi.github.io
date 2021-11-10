@@ -2758,4 +2758,53 @@
         <tag>Bootstrap</tag>
       </tags>
   </entry>
+  <entry>
+    <title>vue基础</title>
+    <url>/2021/06/04/Html-Vue/</url>
+    <content><![CDATA[<p>基本语法</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta">&lt;<span class="hljs-keyword">div</span> id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>   &#123;&#123; message &#125;&#125;<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br><span class="hljs-built_in">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;<br>   el: <span class="hljs-string">&#x27;#app&#x27;</span>,		<span class="hljs-meta">#选择元素id</span><br>   data: &#123;			<span class="hljs-meta">#变量数据</span><br>     message: <span class="hljs-string">&#x27;Hello Vue!&#x27;</span><br>  &#125;,<br>	methods:&#123;<br>		rserveseMessage:funcition()&#123;<br>			<span class="hljs-keyword">this</span>.message = <span class="hljs-keyword">this</span>.message.split(<span class="hljs-string">&#x27;&#x27;</span>).reserve().<span class="hljs-keyword">join</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br>		&#125;<br>	&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+<p>v-bind  : title=’message’绑定元素</p>
+<p>v-if = ‘seen’</p>
+<p>v-show = ‘seen’</p>
+<p>v-for = “ i in list “</p>
+<p>v-on  :click=”变量值”</p>
+<p>v- modle</p>
+<p>组件：</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><code class="hljs dts"><span class="hljs-params">&lt;body&gt;</span><br>	<span class="hljs-params">&lt;div id = &quot;app&quot;&gt;</span><br>		<span class="hljs-params">&lt;test&gt;</span><span class="hljs-params">&lt;/test&gt;</span><br>	<span class="hljs-params">&lt;/div&gt;</span><br><span class="hljs-params">&lt;body&gt;</span><br><br><span class="hljs-params">&lt;script&gt;</span><br>vue.component(<span class="hljs-string">&quot;test&quot;</span>,&#123;<br><span class="hljs-symbol">	props:</span><br><span class="hljs-symbol">	data:</span>function()&#123;	<span class="hljs-meta">#放数据</span><br>		return&#123;<br>		<br>		&#125;<br>	&#125;<br><span class="hljs-symbol">	computed:</span><br><span class="hljs-symbol">	watch:</span><br><span class="hljs-symbol">	methods:</span>		<span class="hljs-meta">#写方法</span><br><span class="hljs-symbol">	template:</span>		<span class="hljs-meta">#放模板</span><br>&#125;)<br><br><span class="hljs-meta">#创建实例</span><br>var vm= new vue(&#123;<br>	el=<span class="hljs-string">&quot;#app&quot;</span><br><span class="hljs-symbol">	data:</span>&#123;<br>	&#125;<br>&#125;)<br><span class="hljs-params">&lt;/script&gt;</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>html基础</title>
+    <url>/2021/10/06/html/</url>
+    <content><![CDATA[<p>背景图片大小样式</p>
+<p>background-size</p>
+<p>background-size:auto  10px; 如果值设定一个值，另外一个值等比例缩放</p>
+<p>background-size: cover; 等比例缩放铺满</p>
+<p>背景图片定位</p>
+<p>background-position: 30px 30px ;</p>
+<p>background-position: top bottom left right center; 定位二选一</p>
+<p>background缩写</p>
+<figure class="highlight coq"><table><tr><td class="code"><pre><code class="hljs coq">background: <span class="hljs-built_in">right</span> <span class="hljs-built_in">bottom</span>/<span class="hljs-number">110</span>px <span class="hljs-number">120</span>px  no-<span class="hljs-built_in">repeat</span> blue url(<span class="hljs-number">1.</span>png)<br>			  位置和大小（位置必须在前）    不重复    蓝色  图片链接<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p>透明度</p>
+<p>opacity: 0.5;   参数为0到1，透明度</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+      </tags>
+  </entry>
 </search>
