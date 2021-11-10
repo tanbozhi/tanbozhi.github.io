@@ -1982,7 +1982,7 @@
       </tags>
   </entry>
   <entry>
-    <title>数据爬虫</title>
+    <title>数据爬虫-爬虫与反爬</title>
     <url>/2021/08/26/%E6%95%B0%E6%8D%AE%E7%88%AC%E8%99%AB/</url>
     <content><![CDATA[<h4 id="断点调试与日志"><a href="#断点调试与日志" class="headerlink" title="断点调试与日志"></a>断点调试与日志</h4><p>pycharm断点调试</p>
 <p>Spyder断点调试</p>
@@ -2099,6 +2099,32 @@
 
 <h4 id="beautifulsoup4"><a href="#beautifulsoup4" class="headerlink" title="beautifulsoup4"></a>beautifulsoup4</h4><p>另一个在爬虫网页解析中常用到的模块是beautifulsoup,他支持多种html解析器，推荐使<br>用lxml解析器<br>安装:pip intall beautifulsoup4</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> bs4 import BeautifulSoup<br><br>html_data = BeautifulSoup(page, <span class="hljs-string">&quot;lxml&quot;</span>)<br>ul =html_data.<span class="hljs-builtin-name">find</span>(<span class="hljs-attribute">id</span>=<span class="hljs-string">&quot;kwdTypeSelUl&quot;</span>)<br>divs = html_data.find_all ( <span class="hljs-string">&quot;div&quot;</span> )<br>el_elements = html_data.find_all(<span class="hljs-attribute">class_</span>=<span class="hljs-string">&quot;el&quot;</span>)<br>el_divs = html_data.find_all( <span class="hljs-string">&quot;div&quot;</span> , <span class="hljs-attribute">class_</span>=<span class="hljs-string">&quot;el&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="多线程爬虫"><a href="#多线程爬虫" class="headerlink" title="多线程爬虫"></a>多线程爬虫</h4><p>流程：（以51job为例）</p>
+<p>①以start_url开始，爬取列表第一个页面</p>
+<p>②以第一个列表页面提取岗位页面链接及下一个列表页面链接</p>
+<p>③抓取岗位页面</p>
+<p>④提取岗位信息</p>
+<p>⑤提取下一页列表页面</p>
+<p>⑥保存信息</p>
+<p>⑦循环以上步骤</p>
+<h6 id="单线程爬虫设计"><a href="#单线程爬虫设计" class="headerlink" title="单线程爬虫设计"></a>单线程爬虫设计</h6><p>单线程爬虫，需要等待每一步完成才能完成下一步</p>
+<p>1.页面抓取函数</p>
+<p>2.页面链接提取函数</p>
+<p>3.页面信息提取函数</p>
+<p>4.信息保存函数</p>
+<h4 id="scrapy框架"><a href="#scrapy框架" class="headerlink" title="scrapy框架"></a>scrapy框架</h4><p>官网：docs.scrapy.org</p>
+<p>安装：pip install scrapy</p>
+<p>scrapy命令</p>
+<p>以下命令无需创建工程</p>
+<p>version-版本查看</p>
+<p>runspider-运行一个爬虫文件</p>
+<p>shell -启动爬取测试环境</p>
+<p>fetch -下载目标网页（以蜘蛛的视角)</p>
+<p>view -在浏览器中浏览目标网页(以蜘蛛的视角)</p>
+<p>startproject -创建一个爬虫工程，一个工程可以包含多个爬虫</p>
+<p>genspider -根据爬虫代码模版创建一个爬虫基础代码</p>
 ]]></content>
       <categories>
         <category>数据分析</category>
@@ -2643,6 +2669,69 @@
       </categories>
       <tags>
         <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大数据开发-spark</title>
+    <url>/2021/09/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91-spark/</url>
+    <content><![CDATA[<h3 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h3><p>spark简介</p>
+<p>spark安装</p>
+<p>spark shell环境</p>
+<h6 id="spark简介"><a href="#spark简介" class="headerlink" title="spark简介"></a>spark简介</h6><p>大数据应用场景</p>
+<p>1.精准营销(广告投放、电商推荐)</p>
+<p>2.工业生产(供应链管理、生产流程控制、产品质量控制)</p>
+<p>3.智能城市(规划、交通、监控)</p>
+<p>4.医疗健康(疾病预防、医疗诊断)</p>
+<p>大数据概念</p>
+<p>1.数据量特别大，大到一台服务器无法提供服务，必须通过集群方式实现分布式存储与分布式计算</p>
+<p>⒉数据类型多样化:数据可能是非结构化的也可能是结构化的</p>
+<p>3.对数据分析有时效性要求，必须能在短时间内或者实时的得出分析结果</p>
+<p>4.数据来源丰富</p>
+<p>spark</p>
+<p>1.spark是一个分布式计算框架</p>
+<p>2.spark具有比hadoop更高的mapreduce效率</p>
+<p>3.spark由scala语言编写，提供了Python API用来编写mapreduce程序4.spark可以运行在Hadoop集群上</p>
+<p>4.spark提供了诸如RDD SQL、MLLIB等丰富的核心组件</p>
+<p>spark运行机制</p>
+<p>spark通过将数据加载到内存中，进行分区计算，因此可以在大型数据下任然能提供较快的计算性能</p>
+<p>一个计算任务称为一个job</p>
+<p>每个job需要分成几个步骤stage</p>
+<p>每个步骤需要完成多个任务task</p>
+<p>将一个任务分成若干个小块完成计算 -map</p>
+<p>将若干个小块的计算结果合并 -reduce</p>
+<h6 id="spark框架安装"><a href="#spark框架安装" class="headerlink" title="spark框架安装"></a>spark框架安装</h6><p>一：</p>
+<ol>
+<li>官网：spark.apache.org</li>
+<li>下载：spark-2.4.5-bin-hadoop2.7.tgz</li>
+<li>解压缩到/usr/local/spark-2.4.5</li>
+</ol>
+<p>二：</p>
+<ol>
+<li>Java环境: spark开发过程需要一些java库</li>
+<li>下载: <a href="https://www.oracle.com/java/technologies/javase-downloads.html">https://www.oracle.com/java/technologies/javase-downloads.html</a></li>
+</ol>
+<p>三：</p>
+<ol>
+<li>pyspark模块: python是spark支持的三大语言之一</li>
+<li>安装: pip install pyspark</li>
+</ol>
+<p>四：配置spark运行环境(在cmd中输入以下命令)</p>
+<ol>
+<li>export SPARK_HOME=解压缩后文件的路径</li>
+<li>export PATH=$PATH:$SPARK_HOME/bin</li>
+</ol>
+<h4 id="spark-RDD"><a href="#spark-RDD" class="headerlink" title="spark  RDD"></a>spark  RDD</h4><p>RDD常用操作</p>
+<p>键值对操作</p>
+<p>RDD数据读取与保存</p>
+<h6 id="RDD常用操作"><a href="#RDD常用操作" class="headerlink" title="RDD常用操作"></a>RDD常用操作</h6><p>RDD(Resilient Distributed Dataset)-弹性分布式元素集合Spark会自动将RDD数据分发到集群上，对数据进行并行操作</p>
+<p>1.转换操作-将一个RDD转换为另一个RDD</p>
+<p>2.行动操作-对RDD进行运算，比如求平均值，得到一个结果</p>
+]]></content>
+      <categories>
+        <category>大数据开发</category>
+      </categories>
+      <tags>
+        <tag>Numpy</tag>
       </tags>
   </entry>
 </search>

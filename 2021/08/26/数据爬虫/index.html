@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>数据爬虫 - tanbozhi-blog</title>
+  <title>数据爬虫-爬虫与反爬 - tanbozhi-blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="数据爬虫">
+            <span class="h2" id="subtitle" title="数据爬虫-爬虫与反爬">
               
             </span>
 
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      2k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25
+      28
        分钟
     </span>
   
@@ -224,7 +224,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">数据爬虫</h1>
+            <h1 style="display: none">数据爬虫-爬虫与反爬</h1>
             
             <div class="markdown-body">
               <h4 id="断点调试与日志"><a href="#断点调试与日志" class="headerlink" title="断点调试与日志"></a>断点调试与日志</h4><p>pycharm断点调试</p>
@@ -343,6 +343,32 @@
 <h4 id="beautifulsoup4"><a href="#beautifulsoup4" class="headerlink" title="beautifulsoup4"></a>beautifulsoup4</h4><p>另一个在爬虫网页解析中常用到的模块是beautifulsoup,他支持多种html解析器，推荐使<br>用lxml解析器<br>安装:pip intall beautifulsoup4</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> bs4 import BeautifulSoup<br><br>html_data = BeautifulSoup(page, <span class="hljs-string">&quot;lxml&quot;</span>)<br>ul =html_data.<span class="hljs-builtin-name">find</span>(<span class="hljs-attribute">id</span>=<span class="hljs-string">&quot;kwdTypeSelUl&quot;</span>)<br>divs = html_data.find_all ( <span class="hljs-string">&quot;div&quot;</span> )<br>el_elements = html_data.find_all(<span class="hljs-attribute">class_</span>=<span class="hljs-string">&quot;el&quot;</span>)<br>el_divs = html_data.find_all( <span class="hljs-string">&quot;div&quot;</span> , <span class="hljs-attribute">class_</span>=<span class="hljs-string">&quot;el&quot;</span>)<br><br></code></pre></td></tr></table></figure>
 
+
+<h4 id="多线程爬虫"><a href="#多线程爬虫" class="headerlink" title="多线程爬虫"></a>多线程爬虫</h4><p>流程：（以51job为例）</p>
+<p>①以start_url开始，爬取列表第一个页面</p>
+<p>②以第一个列表页面提取岗位页面链接及下一个列表页面链接</p>
+<p>③抓取岗位页面</p>
+<p>④提取岗位信息</p>
+<p>⑤提取下一页列表页面</p>
+<p>⑥保存信息</p>
+<p>⑦循环以上步骤</p>
+<h6 id="单线程爬虫设计"><a href="#单线程爬虫设计" class="headerlink" title="单线程爬虫设计"></a>单线程爬虫设计</h6><p>单线程爬虫，需要等待每一步完成才能完成下一步</p>
+<p>1.页面抓取函数</p>
+<p>2.页面链接提取函数</p>
+<p>3.页面信息提取函数</p>
+<p>4.信息保存函数</p>
+<h4 id="scrapy框架"><a href="#scrapy框架" class="headerlink" title="scrapy框架"></a>scrapy框架</h4><p>官网：docs.scrapy.org</p>
+<p>安装：pip install scrapy</p>
+<p>scrapy命令</p>
+<p>以下命令无需创建工程</p>
+<p>version-版本查看</p>
+<p>runspider-运行一个爬虫文件</p>
+<p>shell -启动爬取测试环境</p>
+<p>fetch -下载目标网页（以蜘蛛的视角)</p>
+<p>view -在浏览器中浏览目标网页(以蜘蛛的视角)</p>
+<p>startproject -创建一个爬虫工程，一个工程可以包含多个爬虫</p>
+<p>genspider -根据爬虫代码模版创建一个爬虫基础代码</p>
+
             </div>
             <hr>
             <div>
@@ -371,6 +397,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/09/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91-spark/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">大数据开发-spark</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
