@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>js - tanbozhi-blog</title>
+  <title>Bootstrap - tanbozhi-blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="js">
+            <span class="h2" id="subtitle" title="Bootstrap">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-06 20:14" pubdate>
-        2021年11月6日 晚上
+      <time datetime="2021-11-10 19:57" pubdate>
+        2021年11月10日 晚上
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      748 字
+      416 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      6
        分钟
     </span>
   
@@ -224,81 +224,21 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">js</h1>
+            <h1 style="display: none">Bootstrap</h1>
             
             <div class="markdown-body">
-              <p>javascript</p>
-<p>alert(“弹出框”);</p>
-<p>var tan=”变量”;</p>
-<p>数据类型    number   string    object    boolean    null    undefined</p>
-<p>查看类型    typrof(“tan”)</p>
-<p>报错类型    异常错误    语法错误</p>
-<p>注释    / *这是注释 */</p>
-<p>js函数（两种写法）</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">var</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objName</span><span class="hljs-params">()</span></span>&#123;<br>	alert(<span class="hljs-string">&quot;我是一个函数&quot;</span>);<br>&#125;;<br>	<br><span class="hljs-keyword">var</span> objName = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;<br>	alert(<span class="hljs-string">&quot;我也是一个函数&quot;</span>);<br>&#125;;<br></code></pre></td></tr></table></figure>
+              <h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><h6 id="布局容器（container）"><a href="#布局容器（container）" class="headerlink" title="布局容器（container）"></a>布局容器（container）</h6><p>container    container-sm    container-md</p>
+<p>container-lg    container-xl    container-fluid</p>
+<h6 id="栅格系统（不同的终端上显示不一样）"><a href="#栅格系统（不同的终端上显示不一样）" class="headerlink" title="栅格系统（不同的终端上显示不一样）"></a>栅格系统（不同的终端上显示不一样）</h6><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs gradle">&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>tips:<br>row 可用col分成<span class="hljs-number">12</span>块 也就是一行可以平均分成<span class="hljs-number">12</span>个<span class="hljs-keyword">div</span><br>col-<span class="hljs-number">1</span> 占位一块	col-<span class="hljs-number">2</span> 占位<span class="hljs-number">2</span>块 col-<span class="hljs-number">9</span> 占位<span class="hljs-number">9</span>块<br><br>例：<br>&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-2&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-5&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-5&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
 
 
-<p>预解析</p>
-<p>js会解析两边，第一遍比较粗略，叫预解析。用于检查有无语法错误。</p>
-<p>变量提升</p>
-<p>会提升var和function函数变量,将变量提到最上面</p>
-<p>js变量有作用域，只在自己作用域才能调用</p>
-<p>window对象</p>
-<p>最大的全局环境，所有操作都在这个window环境中操作</p>
-<p>如果在函数作用域中使用window设置变量，那么这个变量会变成全局变量</p>
-<p>延时定时器(setTimeout)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">延时<br><span class="hljs-keyword">var</span> timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	alert(<span class="hljs-string">&quot;我是延时5秒出现的哦&quot;</span>);<br>	&#125;,<span class="hljs-number">5000</span>);<br><br>清除延时<br><span class="hljs-built_in">clearTimeout</span>(timer);<br></code></pre></td></tr></table></figure>
-
-
-<p>轮询定时器（setInterval）</p>
-<p>打开关闭浏览器(open(“网址”),close())</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">var</span> <span class="hljs-keyword">timer</span> = setInterval(function()&#123;<br>	<span class="hljs-keyword">open</span>(<span class="hljs-string">&quot;https://www.baidu.com&quot;</span>);<br>	&#125;),0;<br>	<br>clearInterval(<span class="hljs-keyword">timer</span>);<br><br>如何打开别人的网址后并关闭？<br><span class="hljs-keyword">var</span> <span class="hljs-keyword">timer</span> = setInterval(function()&#123;<br>	<span class="hljs-keyword">open</span>(<span class="hljs-string">&quot;https://www.baidu.com&quot;</span>);<br>	&#125;),0;<br><br><span class="hljs-keyword">timer</span>.<span class="hljs-keyword">close</span>()  #在<span class="hljs-keyword">close</span>前加上变量名就可以<br></code></pre></td></tr></table></figure>
-<p>js控制台</p>
-<p>输出</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">console</span>.log()	<span class="hljs-comment">#打印日志</span><br><span class="hljs-built_in">console</span>.error() <span class="hljs-comment">#以错误的的方式打印</span><br><span class="hljs-built_in">console</span>.warn() <span class="hljs-comment">#以警告的的方式打印</span><br></code></pre></td></tr></table></figure>
-<p>弹出框</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">alert</span><span class="hljs-params">(<span class="hljs-string">&#x27;常用对话框&#x27;</span>)</span></span><br><span class="hljs-function"><span class="hljs-title">prompt</span><span class="hljs-params">(<span class="hljs-string">&quot;输入对话框&quot;</span>)</span></span><br><span class="hljs-function"><span class="hljs-title">confirm</span><span class="hljs-params">(<span class="hljs-string">&quot;选择对话框&quot;</span>)</span></span><br></code></pre></td></tr></table></figure>
-<p>window常用属性</p>
-<p>window.innerHeight    浏览器可视高度（可以省略window）</p>
-<p>window.innerWidth    浏览器可视宽度</p>
-<p>window.screenLeft（screenTop）    浏览器离屏幕左边的距离（上边）</p>
-<p>window.screen.width(height)    屏幕宽度(高度)</p>
-<p>window其他属性（关键字不能被声明）</p>
-<p>window    this（本环境）    self(本环境的自己)    top(最外层环境)</p>
-<p>number类型的基本运算</p>
-<p>加减乘除 括号（正常运算）</p>
-<p>!=    =    ==    &gt;    &lt;    &gt;=    &lt;=    %    /    *</p>
-<p>20/0  → infinity</p>
-<p>小数点16位之后系统就不看了</p>
-<p>例：1.1111111111111111234==1.111111111111111164（返回true）</p>
-<p>快捷计算</p>
-<p>a+=5    (a=a+5)(其他运算符也可以这样写)</p>
-<p>1+=5是错的(a只能是变量不能直接是数字)</p>
-<p>科学计数法</p>
-<p>1e4 = 10000        2e5 = 200000</p>
-<p>number对象与nan</p>
-<p>number(“3223”) → 3223    当括号内是有数字组成的字符串时</p>
-<p>number(“21ja”)  → NaN    当转换不了时，输出NaN</p>
-<p>递增与递减</p>
-<p>a++  →  a = number(a) +1</p>
-<p>++a    a–    –a</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">注意<br><span class="hljs-selector-tag">var</span> a=<span class="hljs-number">1</span><br><span class="hljs-function"><span class="hljs-title">console</span><span class="hljs-params">(a++,a)</span></span>  <span class="hljs-comment">//1 , 2</span><br></code></pre></td></tr></table></figure>
-
-
-<p>字符串对象与字符串拼接</p>
-<p>string()    将括号内所有内容转换成字符串</p>
-<p>拼接： 3+’px’ → 3px        4+7+’px’→ 11px</p>
-<p>隐式转换：’4’ - ‘7’ →  -3</p>
-<p>​                    1 + ‘4’ * 6    → 25</p>
-<p>​                    “3” + 8*1    → 38</p>
-<p>‘786’&gt;’323’    →  true        ‘397’&gt;’2987’ → true (字符串比大小先看第一位，再看第二位)</p>
-<p>js计算BUG</p>
-<p>当有小数点的时候，会出现精度问题</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">例：<span class="hljs-number">0.1</span>+<span class="hljs-number">0</span>,<span class="hljs-number">2</span> = <span class="hljs-number">0.30000000000000004</span>(js中计算)<br>解决方法：(<span class="hljs-number">0.1</span>*<span class="hljs-number">10</span>  + <span class="hljs-number">0.2</span>*<span class="hljs-number">10</span>)/<span class="hljs-number">10</span> = <span class="hljs-number">0.3</span><br></code></pre></td></tr></table></figure>
-
-
-<p>字符串下标和长度</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus">a= =<span class="hljs-string">&#x27;good&#x27;</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.length</span>	&gt;&gt;&gt;<span class="hljs-number">4</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[0]</span>		&gt;&gt;&gt;g<br><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[3]</span>		&gt;&gt;&gt;d<br></code></pre></td></tr></table></figure>
+<h6 id="栅格布局-响应式"><a href="#栅格布局-响应式" class="headerlink" title="栅格布局-响应式"></a>栅格布局-响应式</h6><p>auto    576    768    992    1200</p>
+<p>col        sm      md      lg        xl</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gradle">&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-1  col-sm-2  col-md-4 col-lg-4 col-xl-9&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-11 col-sm-10 col-md-8 col-lg-8 col-lg-3&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>当屏幕分辨率发生改变时，对应的布局也会响应改变<br></code></pre></td></tr></table></figure>
+<h6 id="格栅布局-偏移值"><a href="#格栅布局-偏移值" class="headerlink" title="格栅布局-偏移值"></a>格栅布局-偏移值</h6><p>offset</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;container&#x27;&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;row&#x27;&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;col<span class="hljs-number">-1</span>  col-sm<span class="hljs-number">-2</span> <span class="hljs-built_in">offset</span><span class="hljs-number">-2</span> <span class="hljs-built_in">offset</span>-sm<span class="hljs-number">-3</span>&#x27;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>tip：偏移后不能超过<span class="hljs-number">12</span>，也就是col和<span class="hljs-built_in">offset</span>加起来不超过<span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+<p>快速给与背景样式（bg-success等）（种类少）</p>
+<h6 id="栅格布局-横向布局"><a href="#栅格布局-横向布局" class="headerlink" title="栅格布局-横向布局"></a>栅格布局-横向布局</h6><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs maxima">justify-<span class="hljs-built_in">content</span>-start	左边排序<br>justify-<span class="hljs-built_in">content</span>-end		右边排序<br>justfy-<span class="hljs-built_in">content</span>-<span class="hljs-built_in">center</span>	中间排序<br>justify-<span class="hljs-built_in">content</span>-around	环绕排序<br>justify-<span class="hljs-built_in">content</span>-between	两边排序<br><br>响应式：justify-<span class="hljs-built_in">content</span>-sm-start	其他类似<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -316,7 +256,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/js/">js</a>
+                      <a class="hover-with-bg" href="/tags/Bootstrap/">Bootstrap</a>
                     
                   </div>
                 
@@ -329,9 +269,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/10/wy-Bootstrap/">
+                      <a href="/2021/11/10/%E7%BD%91%E6%98%93-Vue/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Bootstrap</span>
+                        <span class="hidden-mobile">网易-Vue</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -339,8 +279,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/21/wy-html/">
-                        <span class="hidden-mobile">html</span>
+                      <a href="/2021/11/06/%E7%BD%91%E6%98%93-js/">
+                        <span class="hidden-mobile">js</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
