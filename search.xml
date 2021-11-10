@@ -1,57 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Django-MVC模式</title>
-    <url>/2021/02/20/Django-MVC%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><p>动态的程序设计,使后续对程序的修改和扩展简化,并使程序某一部分的重复利用成为可能</p>
-<p>M: Model,代表数据存取层</p>
-<p>V: View,系统中显示什么,怎么显示</p>
-<p>C: Controller,根据用户输入和需要访问的类型</p>
-<h3 id="MTV模式"><a href="#MTV模式" class="headerlink" title="MTV模式"></a>MTV模式</h3><p>MTV模式是以Django为框架的网站模式</p>
-<p>M: Model,数据存取层</p>
-<p>T : Template,表现层</p>
-<p>V: View,业务逻辑层</p>
-<p>请求响应流程</p>
-<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210220092928.png"></p>
-<p>自定义模板位置</p>
-<p>目的:模板目录位置不在应用内部</p>
-<p>​        便于统一维护模板</p>
-<p>编辑: 设置settings.py文件中的templates的值</p>
-<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">TEMPLATES = [</span><br><span class="xml">    &#123;</span><br><span class="xml">        &#x27;BACKEND&#x27;: &#x27;django.template.backends.django.DjangoTemplates&#x27;,</span><br><span class="xml">        &#x27;DIRS&#x27;: [os.path.join(BASE_DIR,&#x27;templates&#x27;)],   #将模板目录指定为根目录里的templates</span><br><span class="xml">        &#x27;APP_DIRS&#x27;: False,  #每个项目里面不在配置模板目录</span><br><span class="xml">        &#x27;OPTIONS&#x27;: &#123;</span><br><span class="xml">            &#x27;context_processors&#x27;: [</span><br><span class="xml">                &#x27;django.template.context_processors.debug&#x27;,</span><br><span class="xml">                &#x27;django.template.context_processors.request&#x27;,</span><br><span class="xml">                &#x27;django.contrib.auth.context_processors.auth&#x27;,</span><br><span class="xml">                &#x27;django.contrib.messages.context_processors.messages&#x27;,</span><br><span class="xml">            ],</span><br><span class="xml">        &#125;,</span><br><span class="xml">    &#125;,</span><br><span class="xml">]</span><br></code></pre></td></tr></table></figure>
-<p>静态文件</p>
-<p>下载botstrap解压后将里面的fonts,js,css文件夹放入static文件夹里</p>
-<p>点击跳转跳转配置</p>
-<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">#<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">url</span></span> &#x27;blog:blog_title&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>小博丨博客<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><br><span class="xml">#修改mysite下的urls.py文件</span><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;admin/&#x27;, admin.site.urls),</span><br><span class="xml">    path(&#x27;blog/&#x27;,include(&#x27;blog.urls&#x27;,namespace=&#x27;blog&#x27;)),     #在这儿加上namespace=&#x27;blog&#x27;</span><br><span class="xml">]</span><br><br><span class="xml">#修改blog下的urls.py文件</span><br><span class="xml">app_name = &#x27;blog&#x27;	#增加这一行</span><br><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;&#x27;, views.blog_title,name=&#x27;blog_title&#x27;),   #这儿加上name=&#x27;blog_title&#x27;</span><br><span class="xml">    path(&#x27;<span class="hljs-tag">&lt;<span class="hljs-name">int:article_id</span>&gt;</span>&#x27;, views.blog_article,name=&#x27;blog_article&#x27;)	#这儿加上name=&#x27;blog_article&#x27;</span><br><span class="xml">]</span><br></code></pre></td></tr></table></figure>
-<p>点击 小博丨博客  会跳转到 blog_title页面</p>
-<p>引入html文件</p>
-<p>base.html 如何引入刚刚写好的header与footer</p>
-<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">include</span></span> &#x27;header.html&#x27; %&#125;</span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">include</span></span> &#x27;footer.html&#x27; %&#125;</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Django-ajax</title>
-    <url>/2021/03/01/Django-ajax/</url>
-    <content><![CDATA[<p>AJAX: Asynchronous JavaScript and XML,异步JavaScript和XML.</p>
-<p>​    用JavaScript向服务器发送必要数据</p>
-<p>​        XML</p>
-<p>​        JSON</p>
-<p>​    接受服务器的反馈</p>
-<p>​    优点:不更新整个页面的前提下维护数据</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Django-ORM语法</title>
     <url>/2021/02/16/Django-ORM%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1 id="Django-ORM基本语法"><a href="#Django-ORM基本语法" class="headerlink" title="Django-ORM基本语法"></a>Django-ORM基本语法</h1><p>在cmd中进入根目录(myproject),进入交互交互模式</p>
@@ -74,9 +23,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Django-个人信息</title>
-    <url>/2021/02/28/Django-%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[]]></content>
+    <title>Django-ajax</title>
+    <url>/2021/03/01/Django-ajax/</url>
+    <content><![CDATA[<p>AJAX: Asynchronous JavaScript and XML,异步JavaScript和XML.</p>
+<p>​    用JavaScript向服务器发送必要数据</p>
+<p>​        XML</p>
+<p>​        JSON</p>
+<p>​    接受服务器的反馈</p>
+<p>​    优点:不更新整个页面的前提下维护数据</p>
+]]></content>
       <categories>
         <category>web前端</category>
       </categories>
@@ -112,6 +67,51 @@
 <p>强制登录后转到blog页面</p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">#settings.py末尾添加下面代码</span><br><br><span class="hljs-attr">LOGIN_REDIRECT_URL</span> = <span class="hljs-string">&#x27;/blog/&#x27;</span><br></code></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django-MVC模式</title>
+    <url>/2021/02/20/Django-MVC%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><p>动态的程序设计,使后续对程序的修改和扩展简化,并使程序某一部分的重复利用成为可能</p>
+<p>M: Model,代表数据存取层</p>
+<p>V: View,系统中显示什么,怎么显示</p>
+<p>C: Controller,根据用户输入和需要访问的类型</p>
+<h3 id="MTV模式"><a href="#MTV模式" class="headerlink" title="MTV模式"></a>MTV模式</h3><p>MTV模式是以Django为框架的网站模式</p>
+<p>M: Model,数据存取层</p>
+<p>T : Template,表现层</p>
+<p>V: View,业务逻辑层</p>
+<p>请求响应流程</p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210220092928.png"></p>
+<p>自定义模板位置</p>
+<p>目的:模板目录位置不在应用内部</p>
+<p>​        便于统一维护模板</p>
+<p>编辑: 设置settings.py文件中的templates的值</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">TEMPLATES = [</span><br><span class="xml">    &#123;</span><br><span class="xml">        &#x27;BACKEND&#x27;: &#x27;django.template.backends.django.DjangoTemplates&#x27;,</span><br><span class="xml">        &#x27;DIRS&#x27;: [os.path.join(BASE_DIR,&#x27;templates&#x27;)],   #将模板目录指定为根目录里的templates</span><br><span class="xml">        &#x27;APP_DIRS&#x27;: False,  #每个项目里面不在配置模板目录</span><br><span class="xml">        &#x27;OPTIONS&#x27;: &#123;</span><br><span class="xml">            &#x27;context_processors&#x27;: [</span><br><span class="xml">                &#x27;django.template.context_processors.debug&#x27;,</span><br><span class="xml">                &#x27;django.template.context_processors.request&#x27;,</span><br><span class="xml">                &#x27;django.contrib.auth.context_processors.auth&#x27;,</span><br><span class="xml">                &#x27;django.contrib.messages.context_processors.messages&#x27;,</span><br><span class="xml">            ],</span><br><span class="xml">        &#125;,</span><br><span class="xml">    &#125;,</span><br><span class="xml">]</span><br></code></pre></td></tr></table></figure>
+<p>静态文件</p>
+<p>下载botstrap解压后将里面的fonts,js,css文件夹放入static文件夹里</p>
+<p>点击跳转跳转配置</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">#<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">url</span></span> &#x27;blog:blog_title&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>小博丨博客<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><br><span class="xml">#修改mysite下的urls.py文件</span><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;admin/&#x27;, admin.site.urls),</span><br><span class="xml">    path(&#x27;blog/&#x27;,include(&#x27;blog.urls&#x27;,namespace=&#x27;blog&#x27;)),     #在这儿加上namespace=&#x27;blog&#x27;</span><br><span class="xml">]</span><br><br><span class="xml">#修改blog下的urls.py文件</span><br><span class="xml">app_name = &#x27;blog&#x27;	#增加这一行</span><br><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;&#x27;, views.blog_title,name=&#x27;blog_title&#x27;),   #这儿加上name=&#x27;blog_title&#x27;</span><br><span class="xml">    path(&#x27;<span class="hljs-tag">&lt;<span class="hljs-name">int:article_id</span>&gt;</span>&#x27;, views.blog_article,name=&#x27;blog_article&#x27;)	#这儿加上name=&#x27;blog_article&#x27;</span><br><span class="xml">]</span><br></code></pre></td></tr></table></figure>
+<p>点击 小博丨博客  会跳转到 blog_title页面</p>
+<p>引入html文件</p>
+<p>base.html 如何引入刚刚写好的header与footer</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">include</span></span> &#x27;header.html&#x27; %&#125;</span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">include</span></span> &#x27;footer.html&#x27; %&#125;</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django-个人信息</title>
+    <url>/2021/02/28/Django-%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>web前端</category>
       </categories>
@@ -168,17 +168,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Django-密码</title>
-    <url>/2021/02/26/Django-%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Django-应用与路由</title>
     <url>/2021/02/15/Django-%E5%BA%94%E7%94%A8%E4%B8%8E%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<h3 id="1-项目与应用"><a href="#1-项目与应用" class="headerlink" title="1.项目与应用"></a>1.项目与应用</h3><h5 id="1-1创建应用"><a href="#1-1创建应用" class="headerlink" title="1.1创建应用"></a>1.1创建应用</h5><p>​     django-admin 可以查看Django命令</p>
@@ -212,6 +201,17 @@
 <p>需要在网址后面加上 blog    <a href="http://127.0.0.1:8000/blog">http://127.0.0.1:8000/blog</a>   </p>
 <p>这样就成功的创建了一个项目</p>
 ]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django-密码</title>
+    <url>/2021/02/26/Django-%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>web前端</category>
       </categories>
@@ -363,6 +363,36 @@
       </tags>
   </entry>
   <entry>
+    <title>Django-视图函数和模板</title>
+    <url>/2021/02/17/Django-%E8%A7%86%E5%9B%BE%E5%87%BD%E6%95%B0%E5%92%8C%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<h3 id="本章目标"><a href="#本章目标" class="headerlink" title="本章目标"></a>本章目标</h3><p>​    1.编写视图函数 </p>
+<p>​    2.编写前端模板 </p>
+<p>​    3.设置应用内的路由</p>
+<h3 id="1-视图函数"><a href="#1-视图函数" class="headerlink" title="1.视图函数"></a>1.视图函数</h3><p>​        概念:当用户向服务器发起一个请求时,接收用户请求的应用程序,并根据请求响应,返回一些信息.</p>
+<p>​        分类:—基于函数的视图 —基于类的视图</p>
+<p>​        放置位置: views.py</p>
+<p>编写基于函数的视图</p>
+<p>在views.py文件下写入以下代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render<br><span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> BlogArticles<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_title</span>(<span class="hljs-params">request</span>):</span>	<span class="hljs-comment"># request 是 用户请求所有信息的对象</span><br>    blogs = BlogArticles.objects.<span class="hljs-built_in">all</span>()   <span class="hljs-comment">#读出BlogArticles模型类中的所有信息</span><br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/titles.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;blogs&#x27;</span>:blogs&#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210218111255.png"></p>
+<p><img src="/img/render-20210218112456.png"></p>
+<h3 id="2-模板"><a href="#2-模板" class="headerlink" title="2.模板"></a>2.模板</h3><p>模板规定:使用默认规定</p>
+<p>默认规定位置:setting.py文件中,55行左右的TEMPLATES里</p>
+<p>在blog文件夹下创建一个templates文件夹,在templates文件夹下创建blog文件夹并放入titles.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-cn&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>blog titles<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            &#123;% for blog in blogs %&#125;    #在网页中循环出blog标题<br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123;blog.title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   <br>            &#123;% endfor %&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>在blog应用下的urls中写入路由</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path<br><span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, views.blog_title),<br>]<br></code></pre></td></tr></table></figure>
+<p>启动应用  python manage.py runserver</p>
+<p>打开返回的网址,在网址后面加上blog就行了(127.0.0.1:8000/blog/) </p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Django-表单</title>
     <url>/2021/02/21/Django-%E8%A1%A8%E5%8D%95/</url>
     <content><![CDATA[<p>表单:用于收集不同类型的用户输入</p>
@@ -413,6 +443,56 @@
       </categories>
       <tags>
         <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flask-一对多关系</title>
+    <url>/2021/03/24/Flask-%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/</url>
+    <content><![CDATA[<h4 id="分类管理"><a href="#分类管理" class="headerlink" title="分类管理"></a>分类管理</h4><ol>
+<li>创建分类模型（M）</li>
+<li>创建分类模板（V）</li>
+<li>创建分类视图（C）</li>
+</ol>
+<h6 id="分类模型"><a href="#分类模型" class="headerlink" title="分类模型"></a>分类模型</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span>(<span class="hljs-params">db.Model</span>):</span><br>    cate_id = db.Column(db.Integer, primary_key=<span class="hljs-literal">True</span>)<br>    cate_name = db.Column(db.String, unique=<span class="hljs-literal">True</span>)             <span class="hljs-comment">#unique=True 表示此字段不能重复</span><br>    cate_order = db.Column(db.Integer, default=<span class="hljs-number">0</span>)             <span class="hljs-comment">#排序</span><br></code></pre></td></tr></table></figure>
+<h6 id="分类模板"><a href="#分类模板" class="headerlink" title="分类模板"></a>分类模板</h6><p>添加增删改查的模板</p>
+<h6 id="分类视图"><a href="#分类视图" class="headerlink" title="分类视图"></a>分类视图</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 分类视图部分</span><br><span class="hljs-comment"># 添加分类</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/add_cate&quot;</span>, methods=[<span class="hljs-string">&#x27;get&#x27;</span>,<span class="hljs-string">&#x27;post&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">addCate</span>():</span><br>    message = <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&quot;POST&quot;</span>:<br>        cate_name = request.form[<span class="hljs-string">&#x27;name&#x27;</span>]<br>        cate_order    = request.form[<span class="hljs-string">&#x27;order&#x27;</span>]<br>        category = Category(<br>                    cate_name=cate_name,<br>                    cate_order=cate_order,<br>         )<br>        <span class="hljs-keyword">try</span>:<br>            db.session.add(category)<br>            db.session.commit()<br>            message = cate_name+<span class="hljs-string">&quot;添加成功&quot;</span><br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            message = <span class="hljs-string">&quot;发生了错误:&quot;</span> + <span class="hljs-built_in">str</span>(e)<br>            <span class="hljs-comment"># 如果插入失败，进行回滚操作,就是撤销刚刚对数据库的操作</span><br>            db.session.rollback()<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/add.html&quot;</span>, message=message)<br><br><br><span class="hljs-comment"># 获得分类列表</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_list&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cateList</span>():</span><br>    cates = Category.query.order_by(Category.cate_order.desc()).<span class="hljs-built_in">all</span>()<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/list.html&quot;</span>, cates=cates )<br><br><br><span class="hljs-comment"># 删除分类</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_delete/&lt;int:cate_id&gt;&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleteCate</span>(<span class="hljs-params">cate_id</span>):</span><br>    cate = Category.query.get(cate_id)<br>    db.session.delete(cate)<br>    db.session.commit()<br>    <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&quot;.cateList&quot;</span>))<br><br><br><span class="hljs-comment"># 分类修改</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_edit/&lt;int:cate_id&gt;&quot;</span>, methods=[<span class="hljs-string">&#x27;get&#x27;</span>, <span class="hljs-string">&#x27;post&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">editCate</span>(<span class="hljs-params">cate_id</span>):</span><br>    category = Category.query.get(cate_id)<br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&quot;POST&quot;</span>:<br>        category.cate_name = request.form[<span class="hljs-string">&#x27;name&#x27;</span>]<br>        category.cate_order = request.form[<span class="hljs-string">&#x27;order&#x27;</span>]<br>        db.session.commit()<br>        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&quot;.cateList&quot;</span>))<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/edit.html&quot;</span>, category=category)<br><br></code></pre></td></tr></table></figure>
+
+
+<p>用上下文管理器使每个页面都执行下面这个函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.context_processor</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getCatelist</span>():</span><br>    cates = Category.query.<span class="hljs-built_in">all</span>()<br>    <span class="hljs-keyword">return</span>&#123;<span class="hljs-string">&quot;cates&quot;</span>: cates&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="数据表关系"><a href="#数据表关系" class="headerlink" title="数据表关系"></a>数据表关系</h4><h6 id="模型关系"><a href="#模型关系" class="headerlink" title="模型关系"></a>模型关系</h6><p>我们已经建立了多个模型：用户模型，文章模型，分类模型。</p>
+<p>我们该如何给他们建立起联系呢</p>
+<p>联系：每个文章都有一个作者，每个文章都属于一个分类</p>
+<h6 id="数据表的关系"><a href="#数据表的关系" class="headerlink" title="数据表的关系"></a>数据表的关系</h6><ul>
+<li><p>主表：自己的主键或者唯一键是另一个表的外键</p>
+</li>
+<li><p>从表：自己的某一个字段值是另一个表的主键或者唯一键</p>
+</li>
+<li><p>外键：必须对应关联表中的主键或者具有唯一值得字段</p>
+</li>
+<li><p>关联关系</p>
+<p>一对多关系：一个作者可以对应多条文章</p>
+<p>多对一关系：多个文章属于一个作者</p>
+</li>
+</ul>
+<h6 id="模型关系创建"><a href="#模型关系创建" class="headerlink" title="模型关系创建"></a>模型关系创建</h6><p>在从表定义外键： db.Foreignkey(“主表.主键名”)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#例</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span>(<span class="hljs-params">db.Model</span>):</span><br>    ......<br>    cate_id = db.Column(db.Integer,db.ForeignKey(<span class="hljs-string">&#x27;Category.cate_id&#x27;</span>))<br></code></pre></td></tr></table></figure>
+<p>在主表中定义关系：db.relationship(“从表模型名”)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#例</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span>(<span class="hljs-params">db.Model</span>):</span><br>    ......<br>    articles = db.relationship(<span class="hljs-string">&quot;Article&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>两个表关联后记得更新数据表</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel"><span class="hljs-number">1</span>. 创建迁移数据：flask <span class="hljs-built_in">db</span> migrate -m <span class="hljs-string">&quot;更新说明&quot;</span><br><span class="hljs-number">2</span>. 更新数据库：flask <span class="hljs-built_in">db</span> upgrade <br></code></pre></td></tr></table></figure>
+<p>由于创建关系是，修改了字段，sqlite修改字段支持不在友好，需要修改一下app.py中的migrate对象。</p>
+<p>在MySQL中就没有这个问题，不需要修改。</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">#修改migrate对象</span><br><span class="hljs-attr">migrate</span> = Migrate(app,db,render_as_batch=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<p>级联删除  还没有弄清楚</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
       </tags>
   </entry>
   <entry>
@@ -484,56 +564,6 @@
       </categories>
       <tags>
         <tag>Flask</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flask-一对多关系</title>
-    <url>/2021/03/24/Flask-%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/</url>
-    <content><![CDATA[<h4 id="分类管理"><a href="#分类管理" class="headerlink" title="分类管理"></a>分类管理</h4><ol>
-<li>创建分类模型（M）</li>
-<li>创建分类模板（V）</li>
-<li>创建分类视图（C）</li>
-</ol>
-<h6 id="分类模型"><a href="#分类模型" class="headerlink" title="分类模型"></a>分类模型</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span>(<span class="hljs-params">db.Model</span>):</span><br>    cate_id = db.Column(db.Integer, primary_key=<span class="hljs-literal">True</span>)<br>    cate_name = db.Column(db.String, unique=<span class="hljs-literal">True</span>)             <span class="hljs-comment">#unique=True 表示此字段不能重复</span><br>    cate_order = db.Column(db.Integer, default=<span class="hljs-number">0</span>)             <span class="hljs-comment">#排序</span><br></code></pre></td></tr></table></figure>
-<h6 id="分类模板"><a href="#分类模板" class="headerlink" title="分类模板"></a>分类模板</h6><p>添加增删改查的模板</p>
-<h6 id="分类视图"><a href="#分类视图" class="headerlink" title="分类视图"></a>分类视图</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 分类视图部分</span><br><span class="hljs-comment"># 添加分类</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/add_cate&quot;</span>, methods=[<span class="hljs-string">&#x27;get&#x27;</span>,<span class="hljs-string">&#x27;post&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">addCate</span>():</span><br>    message = <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&quot;POST&quot;</span>:<br>        cate_name = request.form[<span class="hljs-string">&#x27;name&#x27;</span>]<br>        cate_order    = request.form[<span class="hljs-string">&#x27;order&#x27;</span>]<br>        category = Category(<br>                    cate_name=cate_name,<br>                    cate_order=cate_order,<br>         )<br>        <span class="hljs-keyword">try</span>:<br>            db.session.add(category)<br>            db.session.commit()<br>            message = cate_name+<span class="hljs-string">&quot;添加成功&quot;</span><br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            message = <span class="hljs-string">&quot;发生了错误:&quot;</span> + <span class="hljs-built_in">str</span>(e)<br>            <span class="hljs-comment"># 如果插入失败，进行回滚操作,就是撤销刚刚对数据库的操作</span><br>            db.session.rollback()<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/add.html&quot;</span>, message=message)<br><br><br><span class="hljs-comment"># 获得分类列表</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_list&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cateList</span>():</span><br>    cates = Category.query.order_by(Category.cate_order.desc()).<span class="hljs-built_in">all</span>()<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/list.html&quot;</span>, cates=cates )<br><br><br><span class="hljs-comment"># 删除分类</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_delete/&lt;int:cate_id&gt;&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleteCate</span>(<span class="hljs-params">cate_id</span>):</span><br>    cate = Category.query.get(cate_id)<br>    db.session.delete(cate)<br>    db.session.commit()<br>    <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&quot;.cateList&quot;</span>))<br><br><br><span class="hljs-comment"># 分类修改</span><br><span class="hljs-meta">@article_app.route(<span class="hljs-params"><span class="hljs-string">&quot;/cate_edit/&lt;int:cate_id&gt;&quot;</span>, methods=[<span class="hljs-string">&#x27;get&#x27;</span>, <span class="hljs-string">&#x27;post&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">editCate</span>(<span class="hljs-params">cate_id</span>):</span><br>    category = Category.query.get(cate_id)<br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&quot;POST&quot;</span>:<br>        category.cate_name = request.form[<span class="hljs-string">&#x27;name&#x27;</span>]<br>        category.cate_order = request.form[<span class="hljs-string">&#x27;order&#x27;</span>]<br>        db.session.commit()<br>        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&quot;.cateList&quot;</span>))<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;category/edit.html&quot;</span>, category=category)<br><br></code></pre></td></tr></table></figure>
-
-
-<p>用上下文管理器使每个页面都执行下面这个函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.context_processor</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getCatelist</span>():</span><br>    cates = Category.query.<span class="hljs-built_in">all</span>()<br>    <span class="hljs-keyword">return</span>&#123;<span class="hljs-string">&quot;cates&quot;</span>: cates&#125;<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="数据表关系"><a href="#数据表关系" class="headerlink" title="数据表关系"></a>数据表关系</h4><h6 id="模型关系"><a href="#模型关系" class="headerlink" title="模型关系"></a>模型关系</h6><p>我们已经建立了多个模型：用户模型，文章模型，分类模型。</p>
-<p>我们该如何给他们建立起联系呢</p>
-<p>联系：每个文章都有一个作者，每个文章都属于一个分类</p>
-<h6 id="数据表的关系"><a href="#数据表的关系" class="headerlink" title="数据表的关系"></a>数据表的关系</h6><ul>
-<li><p>主表：自己的主键或者唯一键是另一个表的外键</p>
-</li>
-<li><p>从表：自己的某一个字段值是另一个表的主键或者唯一键</p>
-</li>
-<li><p>外键：必须对应关联表中的主键或者具有唯一值得字段</p>
-</li>
-<li><p>关联关系</p>
-<p>一对多关系：一个作者可以对应多条文章</p>
-<p>多对一关系：多个文章属于一个作者</p>
-</li>
-</ul>
-<h6 id="模型关系创建"><a href="#模型关系创建" class="headerlink" title="模型关系创建"></a>模型关系创建</h6><p>在从表定义外键： db.Foreignkey(“主表.主键名”)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#例</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span>(<span class="hljs-params">db.Model</span>):</span><br>    ......<br>    cate_id = db.Column(db.Integer,db.ForeignKey(<span class="hljs-string">&#x27;Category.cate_id&#x27;</span>))<br></code></pre></td></tr></table></figure>
-<p>在主表中定义关系：db.relationship(“从表模型名”)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#例</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span>(<span class="hljs-params">db.Model</span>):</span><br>    ......<br>    articles = db.relationship(<span class="hljs-string">&quot;Article&quot;</span>)<br></code></pre></td></tr></table></figure>
-<p>两个表关联后记得更新数据表</p>
-<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel"><span class="hljs-number">1</span>. 创建迁移数据：flask <span class="hljs-built_in">db</span> migrate -m <span class="hljs-string">&quot;更新说明&quot;</span><br><span class="hljs-number">2</span>. 更新数据库：flask <span class="hljs-built_in">db</span> upgrade <br></code></pre></td></tr></table></figure>
-<p>由于创建关系是，修改了字段，sqlite修改字段支持不在友好，需要修改一下app.py中的migrate对象。</p>
-<p>在MySQL中就没有这个问题，不需要修改。</p>
-<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">#修改migrate对象</span><br><span class="hljs-attr">migrate</span> = Migrate(app,db,render_as_batch=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
-<p>级联删除  还没有弄清楚</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
       </tags>
   </entry>
   <entry>
@@ -610,36 +640,6 @@
       </categories>
       <tags>
         <tag>Flask</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Django-视图函数和模板</title>
-    <url>/2021/02/17/Django-%E8%A7%86%E5%9B%BE%E5%87%BD%E6%95%B0%E5%92%8C%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<h3 id="本章目标"><a href="#本章目标" class="headerlink" title="本章目标"></a>本章目标</h3><p>​    1.编写视图函数 </p>
-<p>​    2.编写前端模板 </p>
-<p>​    3.设置应用内的路由</p>
-<h3 id="1-视图函数"><a href="#1-视图函数" class="headerlink" title="1.视图函数"></a>1.视图函数</h3><p>​        概念:当用户向服务器发起一个请求时,接收用户请求的应用程序,并根据请求响应,返回一些信息.</p>
-<p>​        分类:—基于函数的视图 —基于类的视图</p>
-<p>​        放置位置: views.py</p>
-<p>编写基于函数的视图</p>
-<p>在views.py文件下写入以下代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render<br><span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> BlogArticles<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_title</span>(<span class="hljs-params">request</span>):</span>	<span class="hljs-comment"># request 是 用户请求所有信息的对象</span><br>    blogs = BlogArticles.objects.<span class="hljs-built_in">all</span>()   <span class="hljs-comment">#读出BlogArticles模型类中的所有信息</span><br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/titles.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;blogs&#x27;</span>:blogs&#125;)<br></code></pre></td></tr></table></figure>
-<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210218111255.png"></p>
-<p><img src="/img/render-20210218112456.png"></p>
-<h3 id="2-模板"><a href="#2-模板" class="headerlink" title="2.模板"></a>2.模板</h3><p>模板规定:使用默认规定</p>
-<p>默认规定位置:setting.py文件中,55行左右的TEMPLATES里</p>
-<p>在blog文件夹下创建一个templates文件夹,在templates文件夹下创建blog文件夹并放入titles.html</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-cn&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>blog titles<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            &#123;% for blog in blogs %&#125;    #在网页中循环出blog标题<br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123;blog.title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   <br>            &#123;% endfor %&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>在blog应用下的urls中写入路由</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path<br><span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, views.blog_title),<br>]<br></code></pre></td></tr></table></figure>
-<p>启动应用  python manage.py runserver</p>
-<p>打开返回的网址,在网址后面加上blog就行了(127.0.0.1:8000/blog/) </p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
       </tags>
   </entry>
   <entry>
@@ -973,17 +973,6 @@
       </tags>
   </entry>
   <entry>
-    <title>wsgi协议</title>
-    <url>/2021/06/04/Linux-wsgi%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux-ssh远程登录</title>
     <url>/2021/04/15/Linux-ssh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/</url>
     <content><![CDATA[<h4 id="ip"><a href="#ip" class="headerlink" title="ip"></a>ip</h4><h5 id="内网ip地址"><a href="#内网ip地址" class="headerlink" title="内网ip地址"></a>内网ip地址</h5><p>lp代表了一台主机在网络中的位置<br>每一块网卡介入互联网的时候都会分配一个ip，在自己家里每台电脑通常分配一个内部ip，内网ip可以自己定</p>
@@ -1047,44 +1036,14 @@
       </tags>
   </entry>
   <entry>
-    <title>flask-起步</title>
-    <url>/2021/03/08/flask-%E8%B5%B7%E6%AD%A5/</url>
-    <content><![CDATA[<h4 id="创建flask工程目录"><a href="#创建flask工程目录" class="headerlink" title="创建flask工程目录"></a>创建flask工程目录</h4><ol>
-<li><h6 id="创建目录-进入目录"><a href="#创建目录-进入目录" class="headerlink" title="创建目录,进入目录"></a>创建目录,进入目录</h6><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">mkdir myflask 		<span class="hljs-comment">#创建文件夹</span><br><span class="hljs-built_in">cd</span> myflask			<span class="hljs-comment">#进入目录</span><br></code></pre></td></tr></table></figure></li>
-<li><h6 id="安装虚拟环境pipenv-配置pipenv-可以不用安装-这步可以省略"><a href="#安装虚拟环境pipenv-配置pipenv-可以不用安装-这步可以省略" class="headerlink" title="安装虚拟环境pipenv,配置pipenv(可以不用安装,这步可以省略)"></a>安装虚拟环境pipenv,配置pipenv(可以不用安装,这步可以省略)</h6><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> pipenv		<span class="hljs-comment">#安装pipenv</span><br><br><span class="hljs-comment">#在myflask目录下执行下面代码</span><br>pipenv <span class="hljs-keyword">install</span>		<span class="hljs-comment">#创建虚拟环境</span><br><br><span class="hljs-keyword">set</span> PIPENV_VENV_IN_PROJECT=<span class="hljs-number">1</span>	<span class="hljs-comment">#配置虚拟环境,linux系统将set 改为export,Windows系统项目不能在C盘</span><br><br>pipenv <span class="hljs-keyword">install</span>		<span class="hljs-comment">#在执行一遍</span><br><br></code></pre></td></tr></table></figure></li>
-<li><h6 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h6><figure class="highlight dockerfile"><table><tr><td class="code"><pre><code class="hljs dockerfile">pipenv <span class="hljs-keyword">shell</span><br></code></pre></td></tr></table></figure>
-<p>安装flask模块</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pipenv <span class="hljs-keyword">install</span> flask<br></code></pre></td></tr></table></figure>
-<p>退出虚拟环境</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure>
-<p>进入flask运行环境</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><code class="hljs dockerfile">flask <span class="hljs-keyword">shell</span><br></code></pre></td></tr></table></figure>
-<p>#启动内置服务器,host(IP)和port(端口)可以不写</p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">flask <span class="hljs-built_in">run</span>  <span class="hljs-comment">--host **** --port**   </span><br><br><span class="hljs-comment">#	Ctrl+c  中断服务器</span><br></code></pre></td></tr></table></figure>
-
-</li>
-<li><h6 id="创建app-py入口文件"><a href="#创建app-py入口文件" class="headerlink" title="创建app.py入口文件"></a>创建app.py入口文件</h6><p>​    1.myflask目录下创建一个名为app.py的文件名</p>
-<p>​    2.实例化flask对象</p>
-<p>​    3.创建视图函数</p>
-<p>​    4.创建路由</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><br><span class="hljs-comment">#实例化flask对象</span><br>app = Flask(__name__)<br><br><span class="hljs-comment">#路由</span><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
-<p>写好上面的代码后,执行flask run 运行</p>
-</li>
-<li><h6 id="进入开发模式"><a href="#进入开发模式" class="headerlink" title="进入开发模式"></a>进入开发模式</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#mac</span><br><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">FLASK_ENV</span>=development<br><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">FLASK_DEBUG</span>=<span class="hljs-literal">True</span><br><br><span class="hljs-comment">#windows</span><br><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">FLASK_ENV</span>=development<br><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">FLASK_DEBUG</span>=<span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
-
-
-
-
-
-
-</li>
-</ol>
-]]></content>
+    <title>wsgi协议</title>
+    <url>/2021/06/04/Linux-wsgi%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[]]></content>
       <categories>
-        <category>web前端</category>
+        <category>服务器运维</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1176,51 +1135,44 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/02/12/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <tags>
-        <tag>hello world</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mysql-update与delete语句</title>
-    <url>/2021/04/06/mysql-update%E4%B8%8Edelete%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h6 id="delete语句"><a href="#delete语句" class="headerlink" title="delete语句"></a>delete语句</h6><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">#将符合<span class="hljs-keyword">condition</span>的记录删除<br><br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><br>例：<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users limit <span class="hljs-number">10</span>  	#删除<span class="hljs-number">10</span>条会员记录<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id<span class="hljs-operator">&gt;</span><span class="hljs-number">10</span> <span class="hljs-keyword">and</span> id<span class="hljs-operator">&lt;</span><span class="hljs-number">15</span>		#删除id为<span class="hljs-number">10</span><span class="hljs-operator">~</span><span class="hljs-number">15</span>的记录<br></code></pre></td></tr></table></figure>
+    <title>flask-起步</title>
+    <url>/2021/03/08/flask-%E8%B5%B7%E6%AD%A5/</url>
+    <content><![CDATA[<h4 id="创建flask工程目录"><a href="#创建flask工程目录" class="headerlink" title="创建flask工程目录"></a>创建flask工程目录</h4><ol>
+<li><h6 id="创建目录-进入目录"><a href="#创建目录-进入目录" class="headerlink" title="创建目录,进入目录"></a>创建目录,进入目录</h6><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">mkdir myflask 		<span class="hljs-comment">#创建文件夹</span><br><span class="hljs-built_in">cd</span> myflask			<span class="hljs-comment">#进入目录</span><br></code></pre></td></tr></table></figure></li>
+<li><h6 id="安装虚拟环境pipenv-配置pipenv-可以不用安装-这步可以省略"><a href="#安装虚拟环境pipenv-配置pipenv-可以不用安装-这步可以省略" class="headerlink" title="安装虚拟环境pipenv,配置pipenv(可以不用安装,这步可以省略)"></a>安装虚拟环境pipenv,配置pipenv(可以不用安装,这步可以省略)</h6><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> pipenv		<span class="hljs-comment">#安装pipenv</span><br><br><span class="hljs-comment">#在myflask目录下执行下面代码</span><br>pipenv <span class="hljs-keyword">install</span>		<span class="hljs-comment">#创建虚拟环境</span><br><br><span class="hljs-keyword">set</span> PIPENV_VENV_IN_PROJECT=<span class="hljs-number">1</span>	<span class="hljs-comment">#配置虚拟环境,linux系统将set 改为export,Windows系统项目不能在C盘</span><br><br>pipenv <span class="hljs-keyword">install</span>		<span class="hljs-comment">#在执行一遍</span><br><br></code></pre></td></tr></table></figure></li>
+<li><h6 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h6><figure class="highlight dockerfile"><table><tr><td class="code"><pre><code class="hljs dockerfile">pipenv <span class="hljs-keyword">shell</span><br></code></pre></td></tr></table></figure>
+<p>安装flask模块</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pipenv <span class="hljs-keyword">install</span> flask<br></code></pre></td></tr></table></figure>
+<p>退出虚拟环境</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure>
+<p>进入flask运行环境</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><code class="hljs dockerfile">flask <span class="hljs-keyword">shell</span><br></code></pre></td></tr></table></figure>
+<p>#启动内置服务器,host(IP)和port(端口)可以不写</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">flask <span class="hljs-built_in">run</span>  <span class="hljs-comment">--host **** --port**   </span><br><br><span class="hljs-comment">#	Ctrl+c  中断服务器</span><br></code></pre></td></tr></table></figure>
+
+</li>
+<li><h6 id="创建app-py入口文件"><a href="#创建app-py入口文件" class="headerlink" title="创建app.py入口文件"></a>创建app.py入口文件</h6><p>​    1.myflask目录下创建一个名为app.py的文件名</p>
+<p>​    2.实例化flask对象</p>
+<p>​    3.创建视图函数</p>
+<p>​    4.创建路由</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><br><span class="hljs-comment">#实例化flask对象</span><br>app = Flask(__name__)<br><br><span class="hljs-comment">#路由</span><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello world&quot;</span><br></code></pre></td></tr></table></figure>
+<p>写好上面的代码后,执行flask run 运行</p>
+</li>
+<li><h6 id="进入开发模式"><a href="#进入开发模式" class="headerlink" title="进入开发模式"></a>进入开发模式</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#mac</span><br><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">FLASK_ENV</span>=development<br><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">FLASK_DEBUG</span>=<span class="hljs-literal">True</span><br><br><span class="hljs-comment">#windows</span><br><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">FLASK_ENV</span>=development<br><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">FLASK_DEBUG</span>=<span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
 
 
-<h6 id="update语句"><a href="#update语句" class="headerlink" title="update语句"></a>update语句</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#update用于更新数据表的记录</span><br><br>update table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=new_val1,field2=new_val2 where condition<br><br>例：将<span class="hljs-attribute">ID</span>=3的会员名改为笑哈哈，性别改为女。<br>update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">username</span>=<span class="hljs-string">&quot;笑哈哈&quot;</span>，sex=&quot;女&quot; where <span class="hljs-attribute">user_id</span>=3<br></code></pre></td></tr></table></figure>
 
 
-<h6 id="delete-–-mysql实例"><a href="#delete-–-mysql实例" class="headerlink" title="delete – mysql实例"></a>delete – mysql实例</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.<span class="hljs-keyword">connect</span>(<span class="hljs-keyword">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        <span class="hljs-keyword">password</span>=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        <span class="hljs-keyword">database</span>=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br><span class="hljs-keyword">cursor</span> = cnx.<span class="hljs-keyword">cursor</span>()<br><br><span class="hljs-keyword">sql</span> = &quot;delete from users where realname like &#x27;%啦%&#x27;&quot;<br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">execute</span>(<span class="hljs-keyword">sql</span>)<br>cnx.<span class="hljs-keyword">commit</span>()        #这句不能少<br>res = <span class="hljs-keyword">cursor</span>.rowcount<br>print(res)<br><br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">close</span>()<br>cnx.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure>
 
 
-<h6 id="delete-–-sqlalcheny实例"><a href="#delete-–-sqlalcheny实例" class="headerlink" title="delete – sqlalcheny实例"></a>delete – sqlalcheny实例</h6><figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># 需要安装SQLAlchemy，pymysql模块</span><br><br><span class="hljs-title">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine, Column, Integer, String, Enum<br><span class="hljs-title">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker<br><span class="hljs-title">from</span> sqlalchemy.ext.declarative <span class="hljs-keyword">import</span> declarative_base<br><br><span class="hljs-meta"># 创建数据库引擎</span><br><span class="hljs-title">engine</span> = create_engine(<span class="hljs-string">&quot;mysql+pymysql://root:tbz1548638666@localhost/mydb&quot;</span>)<br><br><span class="hljs-meta">#创建会话对象，根据不同数据库引擎创建对应的会话对象</span><br><span class="hljs-type">Session</span> = sessionmaker(bind=engine)<br><br><span class="hljs-meta">#创建会话对象实例</span><br><span class="hljs-title">session</span> = <span class="hljs-type">Session</span>()<br><br><span class="hljs-meta">#Base为映射基类</span><br><span class="hljs-type">Base</span> = declarative_base()<br><br><span class="hljs-meta">#数据表模型</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Users</span>(<span class="hljs-type">Base</span>):</span><br><span class="hljs-class">    __tablename__ = &quot;users&quot;</span><br><span class="hljs-class">    user_id = <span class="hljs-type">Column</span>(<span class="hljs-type">Integer</span>, <span class="hljs-title">primary_key</span>=<span class="hljs-type">True</span>)</span><br><span class="hljs-class">    username = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    realname = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    password = <span class="hljs-type">Column</span>(<span class="hljs-type">String(64)</span>)</span><br><span class="hljs-class"></span><br><span class="hljs-class"></span><br><span class="hljs-class">#以上都是准备</span><br><span class="hljs-class">#下面才是重点，删除的重点</span><br><span class="hljs-class"></span><br><span class="hljs-class">#获取用户</span><br><span class="hljs-class">def getUsers():</span><br><span class="hljs-class">	objs = session.query(<span class="hljs-type">Users</span>).filter(<span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &gt;= 2, <span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &lt;= 8).all()</span><br><span class="hljs-class">	return objs</span><br><span class="hljs-class"></span><br><span class="hljs-class">#删除得到的数据中的第一条</span><br><span class="hljs-class">session.delete(<span class="hljs-title">getUsers</span>()[0])</span><br><span class="hljs-class">session.commit()</span><br><span class="hljs-class"></span><br><span class="hljs-class">#修改数据</span><br><span class="hljs-class">#getUsers()[0].username=&quot;欢天喜地一家人&quot;	#修改第一条数据，getUsers()[0] 是一个对象，修改前先找到对象</span><br><span class="hljs-class">#session.commit()</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="update-mysql-实例"><a href="#update-mysql-实例" class="headerlink" title="update - mysql 实例"></a>update - mysql 实例</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br><span class="hljs-comment">#查询函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUser</span>(<span class="hljs-params">user_id</span>):</span><br>    <span class="hljs-comment"># user_id = user_id</span><br>    sql = (<span class="hljs-string">&quot;select * from users where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id))<br>    cursor.execute(sql)<br>    res = cursor.fetchone()<br>    print(res)<br><br><span class="hljs-comment">#修改函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">updateUser</span>(<span class="hljs-params">user_id</span>):</span><br>    sql1 = <span class="hljs-string">&quot;update users set sex=&#x27;女&#x27; where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id)<br>    <span class="hljs-keyword">try</span>:<br>        cursor.execute(sql1)<br>        cnx.commit()<br>        print(<span class="hljs-string">&quot;修改成功&quot;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        cnx.rollback()<br>        print(<span class="hljs-string">&quot;修改失败:&quot;</span>,e)<br><br><br>userid = <span class="hljs-number">2</span>			<span class="hljs-comment">#修改id为2的用户信息</span><br>getUser(userid) 	<span class="hljs-comment">#修改前</span><br>updateUser(userid)	<span class="hljs-comment">#修改</span><br>getUser(userid)		<span class="hljs-comment">#修改后</span><br><br><span class="hljs-comment">#关闭连接资源</span><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="update-sqlalchemy实例"><a href="#update-sqlalchemy实例" class="headerlink" title="update - sqlalchemy实例"></a>update - sqlalchemy实例</h6><p>在delete – sqlalcheny实例的最后</p>
-<h6 id="锁的概念（行锁）"><a href="#锁的概念（行锁）" class="headerlink" title="锁的概念（行锁）"></a>锁的概念（行锁）</h6><p>通常情况下，update的时候，innodb引擎会给这一行加锁，mysql会自动加锁</p>
-<p>例：当多人同时修改一个数据时，如何只保留第一个人修改的内容</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">age</span>=10 where <span class="hljs-attribute">user_id</span>=2 <span class="hljs-keyword">and</span> age is <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
-<p>当age为空时可以修改，当age不为空时，不可修改，这个方法可以用作抽奖。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>服务器运维</category>
+        <category>web前端</category>
       </categories>
       <tags>
-        <tag>MySQL</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
@@ -1284,12 +1236,45 @@
       </tags>
   </entry>
   <entry>
-    <title>mysql-三大范式</title>
-    <url>/2021/04/09/mysql-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/</url>
-    <content><![CDATA[<h6 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h6><p>在关系模型中，对数据列的一个规范要求，所有的列都应该是原子性的，即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组，记录等非原子数据项。即实体中的某个属性有多个值时，必须拆分为不同的属性。在符合第一范式(1NF）表中的每个域值只能是实体的一个属性或一个属性的一部分。</p>
-<p><strong>简而言之，第一范式就是无重复的列。</strong></p>
-<h6 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h6><p>满足第二范式(2NF）必须先满足第一范式(1NF)。第二范式(2NF）要求数据库表中的每个实例或记录必须可以被唯一的区分,即每一行代表一个不同的实体。</p>
-<h6 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h6><p>第三范式(3NF）是第二范式(2NF)的一个子集，即满足第三范式(3NF）必须满足第二范式(2NF)。简而言之，第三范式(3NF）要求一个关系中不包含已在其它关系已包含的非主关键字信息</p>
+    <title>Hello World</title>
+    <url>/2021/02/12/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <tags>
+        <tag>hello world</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql-update与delete语句</title>
+    <url>/2021/04/06/mysql-update%E4%B8%8Edelete%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h6 id="delete语句"><a href="#delete语句" class="headerlink" title="delete语句"></a>delete语句</h6><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">#将符合<span class="hljs-keyword">condition</span>的记录删除<br><br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><br>例：<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users limit <span class="hljs-number">10</span>  	#删除<span class="hljs-number">10</span>条会员记录<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id<span class="hljs-operator">&gt;</span><span class="hljs-number">10</span> <span class="hljs-keyword">and</span> id<span class="hljs-operator">&lt;</span><span class="hljs-number">15</span>		#删除id为<span class="hljs-number">10</span><span class="hljs-operator">~</span><span class="hljs-number">15</span>的记录<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update语句"><a href="#update语句" class="headerlink" title="update语句"></a>update语句</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#update用于更新数据表的记录</span><br><br>update table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=new_val1,field2=new_val2 where condition<br><br>例：将<span class="hljs-attribute">ID</span>=3的会员名改为笑哈哈，性别改为女。<br>update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">username</span>=<span class="hljs-string">&quot;笑哈哈&quot;</span>，sex=&quot;女&quot; where <span class="hljs-attribute">user_id</span>=3<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="delete-–-mysql实例"><a href="#delete-–-mysql实例" class="headerlink" title="delete – mysql实例"></a>delete – mysql实例</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.<span class="hljs-keyword">connect</span>(<span class="hljs-keyword">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        <span class="hljs-keyword">password</span>=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        <span class="hljs-keyword">database</span>=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br><span class="hljs-keyword">cursor</span> = cnx.<span class="hljs-keyword">cursor</span>()<br><br><span class="hljs-keyword">sql</span> = &quot;delete from users where realname like &#x27;%啦%&#x27;&quot;<br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">execute</span>(<span class="hljs-keyword">sql</span>)<br>cnx.<span class="hljs-keyword">commit</span>()        #这句不能少<br>res = <span class="hljs-keyword">cursor</span>.rowcount<br>print(res)<br><br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">close</span>()<br>cnx.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="delete-–-sqlalcheny实例"><a href="#delete-–-sqlalcheny实例" class="headerlink" title="delete – sqlalcheny实例"></a>delete – sqlalcheny实例</h6><figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># 需要安装SQLAlchemy，pymysql模块</span><br><br><span class="hljs-title">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine, Column, Integer, String, Enum<br><span class="hljs-title">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker<br><span class="hljs-title">from</span> sqlalchemy.ext.declarative <span class="hljs-keyword">import</span> declarative_base<br><br><span class="hljs-meta"># 创建数据库引擎</span><br><span class="hljs-title">engine</span> = create_engine(<span class="hljs-string">&quot;mysql+pymysql://root:tbz1548638666@localhost/mydb&quot;</span>)<br><br><span class="hljs-meta">#创建会话对象，根据不同数据库引擎创建对应的会话对象</span><br><span class="hljs-type">Session</span> = sessionmaker(bind=engine)<br><br><span class="hljs-meta">#创建会话对象实例</span><br><span class="hljs-title">session</span> = <span class="hljs-type">Session</span>()<br><br><span class="hljs-meta">#Base为映射基类</span><br><span class="hljs-type">Base</span> = declarative_base()<br><br><span class="hljs-meta">#数据表模型</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Users</span>(<span class="hljs-type">Base</span>):</span><br><span class="hljs-class">    __tablename__ = &quot;users&quot;</span><br><span class="hljs-class">    user_id = <span class="hljs-type">Column</span>(<span class="hljs-type">Integer</span>, <span class="hljs-title">primary_key</span>=<span class="hljs-type">True</span>)</span><br><span class="hljs-class">    username = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    realname = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    password = <span class="hljs-type">Column</span>(<span class="hljs-type">String(64)</span>)</span><br><span class="hljs-class"></span><br><span class="hljs-class"></span><br><span class="hljs-class">#以上都是准备</span><br><span class="hljs-class">#下面才是重点，删除的重点</span><br><span class="hljs-class"></span><br><span class="hljs-class">#获取用户</span><br><span class="hljs-class">def getUsers():</span><br><span class="hljs-class">	objs = session.query(<span class="hljs-type">Users</span>).filter(<span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &gt;= 2, <span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &lt;= 8).all()</span><br><span class="hljs-class">	return objs</span><br><span class="hljs-class"></span><br><span class="hljs-class">#删除得到的数据中的第一条</span><br><span class="hljs-class">session.delete(<span class="hljs-title">getUsers</span>()[0])</span><br><span class="hljs-class">session.commit()</span><br><span class="hljs-class"></span><br><span class="hljs-class">#修改数据</span><br><span class="hljs-class">#getUsers()[0].username=&quot;欢天喜地一家人&quot;	#修改第一条数据，getUsers()[0] 是一个对象，修改前先找到对象</span><br><span class="hljs-class">#session.commit()</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update-mysql-实例"><a href="#update-mysql-实例" class="headerlink" title="update - mysql 实例"></a>update - mysql 实例</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br><span class="hljs-comment">#查询函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUser</span>(<span class="hljs-params">user_id</span>):</span><br>    <span class="hljs-comment"># user_id = user_id</span><br>    sql = (<span class="hljs-string">&quot;select * from users where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id))<br>    cursor.execute(sql)<br>    res = cursor.fetchone()<br>    print(res)<br><br><span class="hljs-comment">#修改函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">updateUser</span>(<span class="hljs-params">user_id</span>):</span><br>    sql1 = <span class="hljs-string">&quot;update users set sex=&#x27;女&#x27; where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id)<br>    <span class="hljs-keyword">try</span>:<br>        cursor.execute(sql1)<br>        cnx.commit()<br>        print(<span class="hljs-string">&quot;修改成功&quot;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        cnx.rollback()<br>        print(<span class="hljs-string">&quot;修改失败:&quot;</span>,e)<br><br><br>userid = <span class="hljs-number">2</span>			<span class="hljs-comment">#修改id为2的用户信息</span><br>getUser(userid) 	<span class="hljs-comment">#修改前</span><br>updateUser(userid)	<span class="hljs-comment">#修改</span><br>getUser(userid)		<span class="hljs-comment">#修改后</span><br><br><span class="hljs-comment">#关闭连接资源</span><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update-sqlalchemy实例"><a href="#update-sqlalchemy实例" class="headerlink" title="update - sqlalchemy实例"></a>update - sqlalchemy实例</h6><p>在delete – sqlalcheny实例的最后</p>
+<h6 id="锁的概念（行锁）"><a href="#锁的概念（行锁）" class="headerlink" title="锁的概念（行锁）"></a>锁的概念（行锁）</h6><p>通常情况下，update的时候，innodb引擎会给这一行加锁，mysql会自动加锁</p>
+<p>例：当多人同时修改一个数据时，如何只保留第一个人修改的内容</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">age</span>=10 where <span class="hljs-attribute">user_id</span>=2 <span class="hljs-keyword">and</span> age is <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
+<p>当age为空时可以修改，当age不为空时，不可修改，这个方法可以用作抽奖。</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -1299,50 +1284,12 @@
       </tags>
   </entry>
   <entry>
-    <title>mysql-索引与联合查询</title>
-    <url>/2021/04/11/mysql-%E7%B4%A2%E5%BC%95/</url>
-    <content><![CDATA[<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><h6 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h6><p>MySQL中的索引是以B树（B-tree）结构为索引数据结构，各引擎使用的方式有所不同，innodb引擎以B+Tree结构构造索引</p>
-<p>除了B树索引还有HASH索引</p>
-<h6 id="索引策略"><a href="#索引策略" class="headerlink" title="索引策略"></a>索引策略</h6><p>分类：</p>
-<ul>
-<li>普通索引(INDEX)</li>
-<li>唯一索引(UNIQUE)</li>
-<li>独立列索引</li>
-<li>多列索引</li>
-<li>全文索引(FULL TEXT)</li>
-<li>空间索引(SPATIAL)</li>
-</ul>
-<h6 id="创建与删除索引"><a href="#创建与删除索引" class="headerlink" title="创建与删除索引"></a>创建与删除索引</h6><figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql">#创建时指定索引：<br><span class="hljs-keyword">create</span> table <span class="hljs-symbol">`table_name`</span>(<br>	id int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	field1 int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	field2 char(<span class="hljs-number">25</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	<span class="hljs-keyword">primary</span> <span class="hljs-keyword">key</span>(<span class="hljs-symbol">`id`</span>),<br>	<span class="hljs-keyword">key</span> <span class="hljs-symbol">`index_name`</span>(<span class="hljs-symbol">`field1`</span>)<br>	);<br>	<br>#为已经存在的表添加索引 ：<br>#方法一：<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span><br>	<span class="hljs-keyword">index</span> name<br><span class="hljs-keyword">on</span> table(field)<br><br>#方法二：<br><span class="hljs-keyword">alter</span> table<span class="hljs-symbol">`table`</span><br>add <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span> (<span class="hljs-symbol">`field`</span>);<br><br>#删除索引<br>alter table `table`<br><span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span>;<br><br><br><br></code></pre></td></tr></table></figure>
-<p>也可以用MySQLworkbench可视化创建于删除索引</p>
-<h6 id="索引的设计原则"><a href="#索引的设计原则" class="headerlink" title="索引的设计原则"></a>索引的设计原则</h6><ol>
-<li>使用在where条件中出现的列，而不是select中出现的列</li>
-<li>索引列的数据分布。如果你有100万条件记录，然后根据性别索引，每个索引依然要扫描50万，没有太大意义，但是根据省份，城市这种多样化的字段做索引就比较有意义</li>
-<li>索引列长度尽量短。如果一个列的前缀索引就可以完成索引，比如真实姓名的姓部分，就可以只用姓部分做索引，而不要姓名整列做索引</li>
-<li>索引不是越多越好,索引影响插入性能</li>
-</ol>
-<h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><h6 id="内连接查询"><a href="#内连接查询" class="headerlink" title="内连接查询"></a>内连接查询</h6><p>关联表之间必须有相互匹配的记录</p>
-<p>隐式语法：</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#user_id=1的用户的所有文章</span><br>select * <span class="hljs-keyword">from</span> users,articles<br>	where users.<span class="hljs-attribute">user_id</span>=articles.author <span class="hljs-keyword">and</span> <span class="hljs-attribute">user_id</span>=1;<br></code></pre></td></tr></table></figure>
-<p>显式语法：</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-meta">#user_id=1的用户的所有文章</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users<br>	<span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> articles <span class="hljs-keyword">on</span> users.user_id=articles.article_author <span class="hljs-keyword">where</span> user_id=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="外连接查询"><a href="#外连接查询" class="headerlink" title="外连接查询"></a>外连接查询</h6><p>关联表之间不需要相互匹配，分左连接，右连接</p>
-<p>左连接，就是包含左边的这张表的查询记录，不管右边的表有没有对应的记录</p>
-<p>查询语法：</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#以用户表为基准，查询该用户的文章</span><br>select * <span class="hljs-keyword">from</span><span class="hljs-built_in"> users </span>left join articles<br>	on users.<span class="hljs-attribute">user_id</span>=articles.article_author where <span class="hljs-attribute">user_id</span>=2<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h6><p>一条查询语句的结果作为另一条查询的条件</p>
-<p>查询语法：</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span>)<br></code></pre></td></tr></table></figure>
-<p>子查询除了可以用in之外，还可以not in , != , = , exits(结果存在) , not exits(结果不存在)</p>
-<h6 id="记录联合"><a href="#记录联合" class="headerlink" title="记录联合"></a>记录联合</h6><p>union all（多个查询结果拼接，必须字段数量一致）</p>
-<p>查询语法：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br></code></pre></td></tr></table></figure>
-
-
-<p>union （与union all 不同的是去重复）</p>
+    <title>mysql-三大范式</title>
+    <url>/2021/04/09/mysql-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/</url>
+    <content><![CDATA[<h6 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h6><p>在关系模型中，对数据列的一个规范要求，所有的列都应该是原子性的，即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组，记录等非原子数据项。即实体中的某个属性有多个值时，必须拆分为不同的属性。在符合第一范式(1NF）表中的每个域值只能是实体的一个属性或一个属性的一部分。</p>
+<p><strong>简而言之，第一范式就是无重复的列。</strong></p>
+<h6 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h6><p>满足第二范式(2NF）必须先满足第一范式(1NF)。第二范式(2NF）要求数据库表中的每个实例或记录必须可以被唯一的区分,即每一行代表一个不同的实体。</p>
+<h6 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h6><p>第三范式(3NF）是第二范式(2NF)的一个子集，即满足第三范式(3NF）必须满足第二范式(2NF)。简而言之，第三范式(3NF）要求一个关系中不包含已在其它关系已包含的非主关键字信息</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -1479,6 +1426,88 @@
       </tags>
   </entry>
   <entry>
+    <title>mysql-索引与联合查询</title>
+    <url>/2021/04/11/mysql-%E7%B4%A2%E5%BC%95/</url>
+    <content><![CDATA[<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><h6 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h6><p>MySQL中的索引是以B树（B-tree）结构为索引数据结构，各引擎使用的方式有所不同，innodb引擎以B+Tree结构构造索引</p>
+<p>除了B树索引还有HASH索引</p>
+<h6 id="索引策略"><a href="#索引策略" class="headerlink" title="索引策略"></a>索引策略</h6><p>分类：</p>
+<ul>
+<li>普通索引(INDEX)</li>
+<li>唯一索引(UNIQUE)</li>
+<li>独立列索引</li>
+<li>多列索引</li>
+<li>全文索引(FULL TEXT)</li>
+<li>空间索引(SPATIAL)</li>
+</ul>
+<h6 id="创建与删除索引"><a href="#创建与删除索引" class="headerlink" title="创建与删除索引"></a>创建与删除索引</h6><figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql">#创建时指定索引：<br><span class="hljs-keyword">create</span> table <span class="hljs-symbol">`table_name`</span>(<br>	id int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	field1 int <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	field2 char(<span class="hljs-number">25</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,<br>	<span class="hljs-keyword">primary</span> <span class="hljs-keyword">key</span>(<span class="hljs-symbol">`id`</span>),<br>	<span class="hljs-keyword">key</span> <span class="hljs-symbol">`index_name`</span>(<span class="hljs-symbol">`field1`</span>)<br>	);<br>	<br>#为已经存在的表添加索引 ：<br>#方法一：<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span><br>	<span class="hljs-keyword">index</span> name<br><span class="hljs-keyword">on</span> table(field)<br><br>#方法二：<br><span class="hljs-keyword">alter</span> table<span class="hljs-symbol">`table`</span><br>add <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span> (<span class="hljs-symbol">`field`</span>);<br><br>#删除索引<br>alter table `table`<br><span class="hljs-keyword">drop</span> <span class="hljs-keyword">index</span> <span class="hljs-symbol">`index_name`</span>;<br><br><br><br></code></pre></td></tr></table></figure>
+<p>也可以用MySQLworkbench可视化创建于删除索引</p>
+<h6 id="索引的设计原则"><a href="#索引的设计原则" class="headerlink" title="索引的设计原则"></a>索引的设计原则</h6><ol>
+<li>使用在where条件中出现的列，而不是select中出现的列</li>
+<li>索引列的数据分布。如果你有100万条件记录，然后根据性别索引，每个索引依然要扫描50万，没有太大意义，但是根据省份，城市这种多样化的字段做索引就比较有意义</li>
+<li>索引列长度尽量短。如果一个列的前缀索引就可以完成索引，比如真实姓名的姓部分，就可以只用姓部分做索引，而不要姓名整列做索引</li>
+<li>索引不是越多越好,索引影响插入性能</li>
+</ol>
+<h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><h6 id="内连接查询"><a href="#内连接查询" class="headerlink" title="内连接查询"></a>内连接查询</h6><p>关联表之间必须有相互匹配的记录</p>
+<p>隐式语法：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#user_id=1的用户的所有文章</span><br>select * <span class="hljs-keyword">from</span> users,articles<br>	where users.<span class="hljs-attribute">user_id</span>=articles.author <span class="hljs-keyword">and</span> <span class="hljs-attribute">user_id</span>=1;<br></code></pre></td></tr></table></figure>
+<p>显式语法：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-meta">#user_id=1的用户的所有文章</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users<br>	<span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> articles <span class="hljs-keyword">on</span> users.user_id=articles.article_author <span class="hljs-keyword">where</span> user_id=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="外连接查询"><a href="#外连接查询" class="headerlink" title="外连接查询"></a>外连接查询</h6><p>关联表之间不需要相互匹配，分左连接，右连接</p>
+<p>左连接，就是包含左边的这张表的查询记录，不管右边的表有没有对应的记录</p>
+<p>查询语法：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#以用户表为基准，查询该用户的文章</span><br>select * <span class="hljs-keyword">from</span><span class="hljs-built_in"> users </span>left join articles<br>	on users.<span class="hljs-attribute">user_id</span>=articles.article_author where <span class="hljs-attribute">user_id</span>=2<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h6><p>一条查询语句的结果作为另一条查询的条件</p>
+<p>查询语法：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span>)<br></code></pre></td></tr></table></figure>
+<p>子查询除了可以用in之外，还可以not in , != , = , exits(结果存在) , not exits(结果不存在)</p>
+<h6 id="记录联合"><a href="#记录联合" class="headerlink" title="记录联合"></a>记录联合</h6><p>union all（多个查询结果拼接，必须字段数量一致）</p>
+<p>查询语法：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br></code></pre></td></tr></table></figure>
+
+
+<p>union （与union all 不同的是去重复）</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql创建数据表</title>
+    <url>/2021/04/01/mysql%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8/</url>
+    <content><![CDATA[<h6 id="存储引擎（mysql）"><a href="#存储引擎（mysql）" class="headerlink" title="存储引擎（mysql）"></a>存储引擎（mysql）</h6><ul>
+<li><strong>innodb引擎</strong>：mysql默认的引擎，支持事务，行锁（大多数情况下）</li>
+<li><strong>myisam引擎</strong>：早期默认的引擎，查询速度快，不支持事务，只能锁表（经常读，写入少）</li>
+<li><strong>memory引擎</strong>：内存引擎，用于需要快速访问的临时数据（临时性数据，需要快速读取写入，不常用）</li>
+</ul>
+<h6 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h6><p>不同的编码方式占用不同的字节，utf-8中文占用3个字节。</p>
+<p>如果程序与数据库的编码不一致，可能导致乱码</p>
+<p><strong>大多数情况下，网页，程序，数据库都选用utf-8，以保持一致</strong></p>
+<h6 id="DDL建表语句"><a href="#DDL建表语句" class="headerlink" title="DDL建表语句"></a>DDL建表语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">#建表格式<br>create table tablename(<br>	fieldname1 filedtype constrains,<br>    fieldname1 filedtype constrains,<br> #   字段名      字段类型    约束，<br>    ............,<br>    primary key ( &#96;key_field&#96;)<br>);<br><br><br>#修改数据表<br>增加字段：<br>alter table &#96;table名&#96;<br>add column &#96;filedname&#96; fieldtype constrains;<br><br>add column &#96;filedname&#96; fieldtype constrains after &#96;username&#96;;	#将此字段增加到username之后<br><br>删除字段：<br>alter table &#96;table名&#96;<br>drop column &#96;filed&#96;;<br></code></pre></td></tr></table></figure>
+<p>字段类型：<a href="https://blog.csdn.net/weixin_31534091/article/details/113608053?utm_source=app&amp;app_version=4.5.5%EF%BC%88%E6%9D%A5%E8%87%AACSDN%E7%94%A8%E6%88%B7%EF%BC%89">https://blog.csdn.net/weixin_31534091/article/details/113608053?utm_source=app&amp;app_version=4.5.5（来自CSDN用户）</a></p>
+<p>创建一个用户数据表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">create table users(<br>	&#96;user_id&#96; int not null,<br>    &#96;username&#96; char(25) not null,<br>    &#96;realname&#96; char(25) not null,<br>    &#96;password&#96; char(64) not null,<br>    &#96;register_date&#96; datetime not null,<br>    primary key(&#96;user_id&#96;)<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="图形化管理工具（mysql-workbench）"><a href="#图形化管理工具（mysql-workbench）" class="headerlink" title="图形化管理工具（mysql workbench）"></a>图形化管理工具（mysql workbench）</h6><p>建表的可视化，可视化建表</p>
+<p>下载mysql workbench并安装（在mysql下载页面可以找到它）</p>
+<p>安装与使用教程：<a href="https://blog.csdn.net/zs1342084776/article/details/88701261?utm_source=app&amp;app_version=4.5.5%EF%BC%88%E8%BD%AC%E8%87%AACSDN%E7%94%A8%E6%88%B7%EF%BC%89">https://blog.csdn.net/zs1342084776/article/details/88701261?utm_source=app&amp;app_version=4.5.5（转自CSDN用户）</a></p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">pk</span><span class="hljs-params">(主键)</span></span><br><span class="hljs-function"><span class="hljs-title">nn</span><span class="hljs-params">(不能为NULL)</span></span><br><span class="hljs-function"><span class="hljs-title">UQ</span><span class="hljs-params">(不能重复)</span></span><br>B或BIN()<br>UN<br>ZF<br><span class="hljs-function"><span class="hljs-title">AI</span><span class="hljs-params">(自增长，每插入一个数据，ID会增加)</span></span><br>G<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql-统计与排序</title>
     <url>/2021/04/07/mysql-%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<h6 id="limit限制"><a href="#limit限制" class="headerlink" title="limit限制"></a>limit限制</h6><p>当数据很多的时候，往往需要添加限制，取出想要的结果</p>
@@ -1516,35 +1545,6 @@
 <li>使用limit获得相应的记录：limit start,pagesize</li>
 </ol>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># -*- coding=utf-8 -*-</span><br><br><span class="hljs-keyword">from</span> select_sqlalchemy import session, Users<br><span class="hljs-keyword">from</span> math import ceil<br><br><span class="hljs-comment"># 每页显示条数</span><br>PAGE_SIZE = 10<br><br><span class="hljs-comment"># 查询获得总条数</span><br>total = session.query(Users).count()<br><span class="hljs-builtin-name">print</span>(total)<br><br><span class="hljs-comment"># 根据总条数计算总页数</span><br>total_page = ceil(total/PAGE_SIZE)<br><span class="hljs-builtin-name">print</span>(total_page)<br><br><span class="hljs-comment"># 根据当前页计算start位置</span><br><span class="hljs-comment"># 第一页</span><br><span class="hljs-attribute">CURRENT_PAGE</span>=10<br><span class="hljs-comment"># limit start, offset</span><br><span class="hljs-comment"># 第一页是limit 0,10</span><br><span class="hljs-comment"># 因此计算方法为：</span><br>start = (CURRENT_PAGE-1)*PAGE_SIZE<br><br>res = session.query(Users).offset(start).limit(PAGE_SIZE).all()<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> res:<br>    <span class="hljs-builtin-name">print</span>(item.user_id, item.username)<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mysql创建数据表</title>
-    <url>/2021/04/01/mysql%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8/</url>
-    <content><![CDATA[<h6 id="存储引擎（mysql）"><a href="#存储引擎（mysql）" class="headerlink" title="存储引擎（mysql）"></a>存储引擎（mysql）</h6><ul>
-<li><strong>innodb引擎</strong>：mysql默认的引擎，支持事务，行锁（大多数情况下）</li>
-<li><strong>myisam引擎</strong>：早期默认的引擎，查询速度快，不支持事务，只能锁表（经常读，写入少）</li>
-<li><strong>memory引擎</strong>：内存引擎，用于需要快速访问的临时数据（临时性数据，需要快速读取写入，不常用）</li>
-</ul>
-<h6 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h6><p>不同的编码方式占用不同的字节，utf-8中文占用3个字节。</p>
-<p>如果程序与数据库的编码不一致，可能导致乱码</p>
-<p><strong>大多数情况下，网页，程序，数据库都选用utf-8，以保持一致</strong></p>
-<h6 id="DDL建表语句"><a href="#DDL建表语句" class="headerlink" title="DDL建表语句"></a>DDL建表语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">#建表格式<br>create table tablename(<br>	fieldname1 filedtype constrains,<br>    fieldname1 filedtype constrains,<br> #   字段名      字段类型    约束，<br>    ............,<br>    primary key ( &#96;key_field&#96;)<br>);<br><br><br>#修改数据表<br>增加字段：<br>alter table &#96;table名&#96;<br>add column &#96;filedname&#96; fieldtype constrains;<br><br>add column &#96;filedname&#96; fieldtype constrains after &#96;username&#96;;	#将此字段增加到username之后<br><br>删除字段：<br>alter table &#96;table名&#96;<br>drop column &#96;filed&#96;;<br></code></pre></td></tr></table></figure>
-<p>字段类型：<a href="https://blog.csdn.net/weixin_31534091/article/details/113608053?utm_source=app&amp;app_version=4.5.5%EF%BC%88%E6%9D%A5%E8%87%AACSDN%E7%94%A8%E6%88%B7%EF%BC%89">https://blog.csdn.net/weixin_31534091/article/details/113608053?utm_source=app&amp;app_version=4.5.5（来自CSDN用户）</a></p>
-<p>创建一个用户数据表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">create table users(<br>	&#96;user_id&#96; int not null,<br>    &#96;username&#96; char(25) not null,<br>    &#96;realname&#96; char(25) not null,<br>    &#96;password&#96; char(64) not null,<br>    &#96;register_date&#96; datetime not null,<br>    primary key(&#96;user_id&#96;)<br>);<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="图形化管理工具（mysql-workbench）"><a href="#图形化管理工具（mysql-workbench）" class="headerlink" title="图形化管理工具（mysql workbench）"></a>图形化管理工具（mysql workbench）</h6><p>建表的可视化，可视化建表</p>
-<p>下载mysql workbench并安装（在mysql下载页面可以找到它）</p>
-<p>安装与使用教程：<a href="https://blog.csdn.net/zs1342084776/article/details/88701261?utm_source=app&amp;app_version=4.5.5%EF%BC%88%E8%BD%AC%E8%87%AACSDN%E7%94%A8%E6%88%B7%EF%BC%89">https://blog.csdn.net/zs1342084776/article/details/88701261?utm_source=app&amp;app_version=4.5.5（转自CSDN用户）</a></p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">pk</span><span class="hljs-params">(主键)</span></span><br><span class="hljs-function"><span class="hljs-title">nn</span><span class="hljs-params">(不能为NULL)</span></span><br><span class="hljs-function"><span class="hljs-title">UQ</span><span class="hljs-params">(不能重复)</span></span><br>B或BIN()<br>UN<br>ZF<br><span class="hljs-function"><span class="hljs-title">AI</span><span class="hljs-params">(自增长，每插入一个数据，ID会增加)</span></span><br>G<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -1602,30 +1602,6 @@
       </tags>
   </entry>
   <entry>
-    <title>web性能优化-mongodb</title>
-    <url>/2021/06/23/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-mongodb/</url>
-    <content><![CDATA[<h4 id="mongodb特点"><a href="#mongodb特点" class="headerlink" title="mongodb特点"></a>mongodb特点</h4><p>mongodb是文档型数据库:<br>在mysql关系型数据库中，数据由若干行组成，每一行都具有相同的字段结构，数据类型在mongodb中，每一条数据记录之间是没有关系的<br>每一条记录称为文档，一个文档就是一条json字符串<br>在mongodb中，没有表的概念，只有集合(collection)，也就是这些文档集合在一起<br>mongodb在json数据格式的基础上增加了一些数据类型(对象id，内嵌文档，二进制数据，js代码)</p>
-<p>mongodb支持索引，提供唯一索引、复合索引、地理空间索引，以及全文索引mongodb支持聚合查询(统计与分组)<br>mongodb不支持join查询与事务(不适合关系型数据管理)</p>
-<h4 id="mongodb安装"><a href="#mongodb安装" class="headerlink" title="mongodb安装"></a>mongodb安装</h4><p>下载:<br>mongo官方网站:mongodb.org<br>mogon下载页:<a href="https://www.mongodb.org/download%E4%B8%8B%E8%BD%BD%E7%9B%B8%E5%BA%94%E7%9A%84%E7%89%88%E6%9C%AC">https://www.mongodb.org/download下载相应的版本</a></p>
-<p>图形化管理工具</p>
-<p>安装说明:<br>下载地址:<a href="https://www.mongodb.com/download-center/compasswindows%E7%9A%84%E5%AE%89%E8%A3%85%E7%89%88%E6%9C%AC%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E4%BA%86%E8%AF%A5%E5%B7%A5%E5%85%B7">https://www.mongodb.com/download-center/compasswindows的安装版本已经安装了该工具</a></p>
-<h4 id="python代码"><a href="#python代码" class="headerlink" title="python代码"></a>python代码</h4><h4 id="pymongo安装"><a href="#pymongo安装" class="headerlink" title="pymongo安装"></a>pymongo安装</h4><p>pymongo是mongodb的python驱动</p>
-<p>安装:pip install pymongo</p>
-<h5 id="CURD操作"><a href="#CURD操作" class="headerlink" title="CURD操作"></a>CURD操作</h5><p>创建客户端:<br>client = pymongo.MongoClient(“localhost”, 27017)</p>
-<p>#数据库名为blog<br>db= client.blog</p>
-<p>CURD:<br>db.users代表users文档集合</p>
-<p>db.users.insert</p>
-<p>db.users.updatedb.users.find</p>
-<p>db.users.delete_one</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>web性能优化-memcached</title>
     <url>/2021/06/23/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-memcached/</url>
     <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>为什么需要缓存</p>
@@ -1669,6 +1645,30 @@
       </tags>
   </entry>
   <entry>
+    <title>web性能优化-mongodb</title>
+    <url>/2021/06/23/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-mongodb/</url>
+    <content><![CDATA[<h4 id="mongodb特点"><a href="#mongodb特点" class="headerlink" title="mongodb特点"></a>mongodb特点</h4><p>mongodb是文档型数据库:<br>在mysql关系型数据库中，数据由若干行组成，每一行都具有相同的字段结构，数据类型在mongodb中，每一条数据记录之间是没有关系的<br>每一条记录称为文档，一个文档就是一条json字符串<br>在mongodb中，没有表的概念，只有集合(collection)，也就是这些文档集合在一起<br>mongodb在json数据格式的基础上增加了一些数据类型(对象id，内嵌文档，二进制数据，js代码)</p>
+<p>mongodb支持索引，提供唯一索引、复合索引、地理空间索引，以及全文索引mongodb支持聚合查询(统计与分组)<br>mongodb不支持join查询与事务(不适合关系型数据管理)</p>
+<h4 id="mongodb安装"><a href="#mongodb安装" class="headerlink" title="mongodb安装"></a>mongodb安装</h4><p>下载:<br>mongo官方网站:mongodb.org<br>mogon下载页:<a href="https://www.mongodb.org/download%E4%B8%8B%E8%BD%BD%E7%9B%B8%E5%BA%94%E7%9A%84%E7%89%88%E6%9C%AC">https://www.mongodb.org/download下载相应的版本</a></p>
+<p>图形化管理工具</p>
+<p>安装说明:<br>下载地址:<a href="https://www.mongodb.com/download-center/compasswindows%E7%9A%84%E5%AE%89%E8%A3%85%E7%89%88%E6%9C%AC%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E4%BA%86%E8%AF%A5%E5%B7%A5%E5%85%B7">https://www.mongodb.com/download-center/compasswindows的安装版本已经安装了该工具</a></p>
+<h4 id="python代码"><a href="#python代码" class="headerlink" title="python代码"></a>python代码</h4><h4 id="pymongo安装"><a href="#pymongo安装" class="headerlink" title="pymongo安装"></a>pymongo安装</h4><p>pymongo是mongodb的python驱动</p>
+<p>安装:pip install pymongo</p>
+<h5 id="CURD操作"><a href="#CURD操作" class="headerlink" title="CURD操作"></a>CURD操作</h5><p>创建客户端:<br>client = pymongo.MongoClient(“localhost”, 27017)</p>
+<p>#数据库名为blog<br>db= client.blog</p>
+<p>CURD:<br>db.users代表users文档集合</p>
+<p>db.users.insert</p>
+<p>db.users.updatedb.users.find</p>
+<p>db.users.delete_one</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>web性能优化-redis</title>
     <url>/2021/06/23/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-redis/</url>
     <content><![CDATA[<h4 id="redis特点"><a href="#redis特点" class="headerlink" title="redis特点"></a>redis特点</h4><p>redis是一款应用非常广泛的NoSQL数据库，redis的值可以支持多种数据类型，而且可以将内存中的数据保存到硬盘，另外redis以单线程方式运行，可以避免多线程带来的问题。redis除了基本的数据存取之外，还提供发布-订阅模式、GEO等功能。<br>redis应用场景(频繁读取写入):<br>1.缓存</p>
@@ -1698,69 +1698,6 @@
       </categories>
       <tags>
         <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大数据开发-spark</title>
-    <url>/2021/09/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91-spark/</url>
-    <content><![CDATA[<h3 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h3><p>spark简介</p>
-<p>spark安装</p>
-<p>spark shell环境</p>
-<h6 id="spark简介"><a href="#spark简介" class="headerlink" title="spark简介"></a>spark简介</h6><p>大数据应用场景</p>
-<p>1.精准营销(广告投放、电商推荐)</p>
-<p>2.工业生产(供应链管理、生产流程控制、产品质量控制)</p>
-<p>3.智能城市(规划、交通、监控)</p>
-<p>4.医疗健康(疾病预防、医疗诊断)</p>
-<p>大数据概念</p>
-<p>1.数据量特别大，大到一台服务器无法提供服务，必须通过集群方式实现分布式存储与分布式计算</p>
-<p>⒉数据类型多样化:数据可能是非结构化的也可能是结构化的</p>
-<p>3.对数据分析有时效性要求，必须能在短时间内或者实时的得出分析结果</p>
-<p>4.数据来源丰富</p>
-<p>spark</p>
-<p>1.spark是一个分布式计算框架</p>
-<p>2.spark具有比hadoop更高的mapreduce效率</p>
-<p>3.spark由scala语言编写，提供了Python API用来编写mapreduce程序4.spark可以运行在Hadoop集群上</p>
-<p>4.spark提供了诸如RDD SQL、MLLIB等丰富的核心组件</p>
-<p>spark运行机制</p>
-<p>spark通过将数据加载到内存中，进行分区计算，因此可以在大型数据下任然能提供较快的计算性能</p>
-<p>一个计算任务称为一个job</p>
-<p>每个job需要分成几个步骤stage</p>
-<p>每个步骤需要完成多个任务task</p>
-<p>将一个任务分成若干个小块完成计算 -map</p>
-<p>将若干个小块的计算结果合并 -reduce</p>
-<h6 id="spark框架安装"><a href="#spark框架安装" class="headerlink" title="spark框架安装"></a>spark框架安装</h6><p>一：</p>
-<ol>
-<li>官网：spark.apache.org</li>
-<li>下载：spark-2.4.5-bin-hadoop2.7.tgz</li>
-<li>解压缩到/usr/local/spark-2.4.5</li>
-</ol>
-<p>二：</p>
-<ol>
-<li>Java环境: spark开发过程需要一些java库</li>
-<li>下载: <a href="https://www.oracle.com/java/technologies/javase-downloads.html">https://www.oracle.com/java/technologies/javase-downloads.html</a></li>
-</ol>
-<p>三：</p>
-<ol>
-<li>pyspark模块: python是spark支持的三大语言之一</li>
-<li>安装: pip install pyspark</li>
-</ol>
-<p>四：配置spark运行环境(在cmd中输入以下命令)</p>
-<ol>
-<li>export SPARK_HOME=解压缩后文件的路径</li>
-<li>export PATH=$PATH:$SPARK_HOME/bin</li>
-</ol>
-<h4 id="spark-RDD"><a href="#spark-RDD" class="headerlink" title="spark  RDD"></a>spark  RDD</h4><p>RDD常用操作</p>
-<p>键值对操作</p>
-<p>RDD数据读取与保存</p>
-<h6 id="RDD常用操作"><a href="#RDD常用操作" class="headerlink" title="RDD常用操作"></a>RDD常用操作</h6><p>RDD(Resilient Distributed Dataset)-弹性分布式元素集合Spark会自动将RDD数据分发到集群上，对数据进行并行操作</p>
-<p>1.转换操作-将一个RDD转换为另一个RDD</p>
-<p>2.行动操作-对RDD进行运算，比如求平均值，得到一个结果</p>
-]]></content>
-      <categories>
-        <category>大数据开发</category>
-      </categories>
-      <tags>
-        <tag>Numpy</tag>
       </tags>
   </entry>
   <entry>
@@ -1824,6 +1761,69 @@
 ]]></content>
       <categories>
         <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大数据开发-spark</title>
+    <url>/2021/09/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91-spark/</url>
+    <content><![CDATA[<h3 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h3><p>spark简介</p>
+<p>spark安装</p>
+<p>spark shell环境</p>
+<h6 id="spark简介"><a href="#spark简介" class="headerlink" title="spark简介"></a>spark简介</h6><p>大数据应用场景</p>
+<p>1.精准营销(广告投放、电商推荐)</p>
+<p>2.工业生产(供应链管理、生产流程控制、产品质量控制)</p>
+<p>3.智能城市(规划、交通、监控)</p>
+<p>4.医疗健康(疾病预防、医疗诊断)</p>
+<p>大数据概念</p>
+<p>1.数据量特别大，大到一台服务器无法提供服务，必须通过集群方式实现分布式存储与分布式计算</p>
+<p>⒉数据类型多样化:数据可能是非结构化的也可能是结构化的</p>
+<p>3.对数据分析有时效性要求，必须能在短时间内或者实时的得出分析结果</p>
+<p>4.数据来源丰富</p>
+<p>spark</p>
+<p>1.spark是一个分布式计算框架</p>
+<p>2.spark具有比hadoop更高的mapreduce效率</p>
+<p>3.spark由scala语言编写，提供了Python API用来编写mapreduce程序4.spark可以运行在Hadoop集群上</p>
+<p>4.spark提供了诸如RDD SQL、MLLIB等丰富的核心组件</p>
+<p>spark运行机制</p>
+<p>spark通过将数据加载到内存中，进行分区计算，因此可以在大型数据下任然能提供较快的计算性能</p>
+<p>一个计算任务称为一个job</p>
+<p>每个job需要分成几个步骤stage</p>
+<p>每个步骤需要完成多个任务task</p>
+<p>将一个任务分成若干个小块完成计算 -map</p>
+<p>将若干个小块的计算结果合并 -reduce</p>
+<h6 id="spark框架安装"><a href="#spark框架安装" class="headerlink" title="spark框架安装"></a>spark框架安装</h6><p>一：</p>
+<ol>
+<li>官网：spark.apache.org</li>
+<li>下载：spark-2.4.5-bin-hadoop2.7.tgz</li>
+<li>解压缩到/usr/local/spark-2.4.5</li>
+</ol>
+<p>二：</p>
+<ol>
+<li>Java环境: spark开发过程需要一些java库</li>
+<li>下载: <a href="https://www.oracle.com/java/technologies/javase-downloads.html">https://www.oracle.com/java/technologies/javase-downloads.html</a></li>
+</ol>
+<p>三：</p>
+<ol>
+<li>pyspark模块: python是spark支持的三大语言之一</li>
+<li>安装: pip install pyspark</li>
+</ol>
+<p>四：配置spark运行环境(在cmd中输入以下命令)</p>
+<ol>
+<li>export SPARK_HOME=解压缩后文件的路径</li>
+<li>export PATH=$PATH:$SPARK_HOME/bin</li>
+</ol>
+<h4 id="spark-RDD"><a href="#spark-RDD" class="headerlink" title="spark  RDD"></a>spark  RDD</h4><p>RDD常用操作</p>
+<p>键值对操作</p>
+<p>RDD数据读取与保存</p>
+<h6 id="RDD常用操作"><a href="#RDD常用操作" class="headerlink" title="RDD常用操作"></a>RDD常用操作</h6><p>RDD(Resilient Distributed Dataset)-弹性分布式元素集合Spark会自动将RDD数据分发到集群上，对数据进行并行操作</p>
+<p>1.转换操作-将一个RDD转换为另一个RDD</p>
+<p>2.行动操作-对RDD进行运算，比如求平均值，得到一个结果</p>
+]]></content>
+      <categories>
+        <category>大数据开发</category>
       </categories>
       <tags>
         <tag>Numpy</tag>
@@ -2197,30 +2197,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构-链表（单、双）</title>
-    <url>/2021/06/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8%EF%BC%88%E5%8D%95%E3%80%81%E5%8F%8C%EF%BC%89/</url>
-    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>链表数据的结构</p>
-<p>链表结构的python实现</p>
-<p>链表的操作时间复杂度</p>
-<h4 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h4><p>链表就好像链条一样，一节就是一个数据节点。</p>
-<p>单列表：尾连着下一个数据</p>
-<p>双列表：尾连着下一个数据，头连着上一个数据</p>
-<p>循环列表：头尾相连，从而循环</p>
-<p>链表特点<br>1.每一个数据节点包括数据本身以及前后节点位置（单链表只包含下一节点位置)</p>
-<p>2.链表不需要连续内存空间</p>
-<p>3.插入快，查询慢</p>
-<h6 id="单链表节点类"><a href="#单链表节点类" class="headerlink" title="单链表节点类"></a>单链表节点类</h6><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>,data,<span class="hljs-keyword">next</span>=None)</span></span><span class="hljs-symbol">:</span><br>		<span class="hljs-keyword">self</span>.data = data<br>		<span class="hljs-keyword">self</span>.<span class="hljs-keyword">next</span> = <span class="hljs-keyword">next</span><br></code></pre></td></tr></table></figure>
-<p>单链表的优势<br>1.内存空间利用率高(不需要连续内存空间)，空间复杂度低</p>
-<p>2.适合开始处插入，开始处读取的场景</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构-数组</title>
     <url>/2021/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h4 id="数组：array"><a href="#数组：array" class="headerlink" title="数组：array"></a>数组：array</h4><h6 id="array创建实例："><a href="#array创建实例：" class="headerlink" title="array创建实例："></a>array创建实例：</h6><figure class="highlight smali"><table><tr><td class="code"><pre><code class="hljs smali">from<span class="hljs-built_in"> array </span>import array<br>myarray1 = array.array(<span class="hljs-string">&quot;i&quot;</span>,[1,2,3,4])			<span class="hljs-comment">#i是类型码</span><br>myarray2 = array.array(<span class="hljs-string">&quot;u&quot;</span>,[<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])<br></code></pre></td></tr></table></figure>
@@ -2330,6 +2306,30 @@
 </tr>
 </tbody></table>
 <p>列表实现<br>1.使用列表实现栈，可以从列表末尾压入与弹出<br>2.由于列表是一个动态数组，当栈的变化引起列表内存占用变大时，会引起性能的损耗</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-链表（单、双）</title>
+    <url>/2021/06/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8%EF%BC%88%E5%8D%95%E3%80%81%E5%8F%8C%EF%BC%89/</url>
+    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>链表数据的结构</p>
+<p>链表结构的python实现</p>
+<p>链表的操作时间复杂度</p>
+<h4 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h4><p>链表就好像链条一样，一节就是一个数据节点。</p>
+<p>单列表：尾连着下一个数据</p>
+<p>双列表：尾连着下一个数据，头连着上一个数据</p>
+<p>循环列表：头尾相连，从而循环</p>
+<p>链表特点<br>1.每一个数据节点包括数据本身以及前后节点位置（单链表只包含下一节点位置)</p>
+<p>2.链表不需要连续内存空间</p>
+<p>3.插入快，查询慢</p>
+<h6 id="单链表节点类"><a href="#单链表节点类" class="headerlink" title="单链表节点类"></a>单链表节点类</h6><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>,data,<span class="hljs-keyword">next</span>=None)</span></span><span class="hljs-symbol">:</span><br>		<span class="hljs-keyword">self</span>.data = data<br>		<span class="hljs-keyword">self</span>.<span class="hljs-keyword">next</span> = <span class="hljs-keyword">next</span><br></code></pre></td></tr></table></figure>
+<p>单链表的优势<br>1.内存空间利用率高(不需要连续内存空间)，空间复杂度低</p>
+<p>2.适合开始处插入，开始处读取的场景</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -2470,7 +2470,7 @@
 <p>3.收到任务后，首先询问有没有相关技术文档，代码库，沟通需求</p>
 <h4 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h4><p>1.主管会通过文档或者邮件给你发送一些相关的信息，比如版本地址、服务器IP与权限、环境要求，辅助工具<br>2.获取开发版本，在本地运行开发环境</p>
 <p>首先好创建远程仓库</p>
-<p>step1:基础版本获取<br>1.克隆: <a href="mailto:&#x67;&#105;&#116;&#64;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#x6d;">&#x67;&#105;&#116;&#64;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#x6d;</a>:luxp4588/flask-mall-base.git2.从该版本库导出无版本控制源程序（克隆前创建好文件夹）</p>
+<p>step1:基础版本获取<br>1.克隆: <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:luxp4588/flask-mall-base.git2.从该版本库导出无版本控制源程序（克隆前创建好文件夹）</p>
 <p>2.删除 .git 文件夹（隐藏文件）</p>
 <p>3.git init        初始化</p>
 <p>4.git add .     将文件添加到暂存区</p>
@@ -2481,6 +2481,79 @@
 <p>版本库创建完成</p>
 <p>step2:创建项目<br>1.在自己的版本库上创建项目<br>2.根据Pipfile文件，创建开发虚拟环境</p>
 <figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pipenv <span class="hljs-keyword">install</span> 	<span class="hljs-comment">#创建虚拟环境</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法-背包问题</title>
+    <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>什么是背包问题</p>
+<p>贪心算法</p>
+<p>动态规划 </p>
+<h4 id="什么是背包问题"><a href="#什么是背包问题" class="headerlink" title="什么是背包问题"></a>什么是背包问题</h4><p><strong><em>限定条件下获得最大价值</em></strong></p>
+<p>比如:你现在有一个背包，只能背1kg的物品,可以背的物品包括:</p>
+<p>1.笔记本电脑,重0.9kg，价值8000元</p>
+<p>2.蓝牙音箱，重0.7kg，价值3000元3.虚拟设备，重0.3kg，价值1500元</p>
+<p>怎么装，可以让背包里的物品总价值最大</p>
+<h4 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h4><p>使用贪心算法求解</p>
+<p>1.贪心算法就是不管全局，只管眼前</p>
+<p>2.找出当前的最优解就好</p>
+<p>3.贪心算法找到的结果不一定是最好的解</p>
+<h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><p>什么是动态规划？</p>
+<p>1.动态规划算法用于求解具有最优性质的问题</p>
+<p>2.这类问题通常具有多阶段决策过程，每一阶段的解决方案都是最优化的</p>
+<p>3.后一阶段的最优解在上一阶段的基础上确定</p>
+<p>二维数据表示</p>
+<p>1.用i表示阶段，j表示某一阶段可负重能力，V表示该阶段最大价值，wi表示这个阶段新出现的物品重量<br>2.那么该最大价值可以表示为V[i][j],比如第一阶段，负重为100g时，可以表示为V[1][100],负重为200g时为V[1][200]</p>
+<p>伪代码（计算出不同背包所能获得的最大价值）</p>
+<figure class="highlight inform7"><table><tr><td class="code"><pre><code class="hljs inform7">for i in items:<br>	v<span class="hljs-comment">[i]</span><span class="hljs-comment">[0]</span> = 0<br>	solution<span class="hljs-comment">[i]</span> = <span class="hljs-comment">[]</span><br>	for j in 背包可选择负重列表：<br>		背包物品选择<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = <span class="hljs-comment">[]</span><br>		if w<span class="hljs-comment">[i]</span> &gt; j:<br>			v<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = 背包物品选择<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j]</span><br>		else:<br>			v<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = max(v<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j]</span>,vi + v<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j-w<span class="hljs-comment">[1]</span>]</span>)<br>			背包物品选择<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = 背包物品选择<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j-w<span class="hljs-comment">[i]</span>]</span> +当前物品<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -2624,79 +2697,6 @@
 <p>5.将[2,1]重复1～3步骤[+[1]+[2]</p>
 <p>6.通过递归将他们合并起来[+[1]+[2]+[3]+[+[4]+[5]</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"># -*- coding: utf-<span class="hljs-number">8</span> -*-<br>def <span class="hljs-built_in">merg_sort</span>(lists):<br>    if <span class="hljs-built_in">len</span>(lists) &lt;= <span class="hljs-number">1</span>:<br>        return lists<br>    middle = <span class="hljs-built_in">len</span>(lists)//<span class="hljs-number">2</span><br>    left_list = []<br>    right_list = []<br>    for i in lists[:middle]:<br>        if i &lt;= lists[middle]:<br>            left_list.<span class="hljs-built_in">append</span>(i)<br>        else:<br>            right_list.<span class="hljs-built_in">append</span>(i)<br>    for i in lists[middle+<span class="hljs-number">1</span>:]:<br>        if i &lt;= lists[middle]:<br>            left_list.<span class="hljs-built_in">append</span>(i)<br>        else:<br>            right_list.<span class="hljs-built_in">append</span>(i)<br>    <span class="hljs-built_in">print</span>(left_list, right_list)<br>    return <span class="hljs-built_in">merg_sort</span>(left_list) + [lists[middle]] + <span class="hljs-built_in">merg_sort</span>(right_list)<br><br>lists = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>))<br>from random import shuffle<br><br><span class="hljs-built_in">shuffle</span>(lists)<br><span class="hljs-built_in">print</span>(lists)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;end=&gt;&quot;</span>, <span class="hljs-built_in">merg_sort</span>(lists))<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-背包问题</title>
-    <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>什么是背包问题</p>
-<p>贪心算法</p>
-<p>动态规划 </p>
-<h4 id="什么是背包问题"><a href="#什么是背包问题" class="headerlink" title="什么是背包问题"></a>什么是背包问题</h4><p><strong><em>限定条件下获得最大价值</em></strong></p>
-<p>比如:你现在有一个背包，只能背1kg的物品,可以背的物品包括:</p>
-<p>1.笔记本电脑,重0.9kg，价值8000元</p>
-<p>2.蓝牙音箱，重0.7kg，价值3000元3.虚拟设备，重0.3kg，价值1500元</p>
-<p>怎么装，可以让背包里的物品总价值最大</p>
-<h4 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h4><p>使用贪心算法求解</p>
-<p>1.贪心算法就是不管全局，只管眼前</p>
-<p>2.找出当前的最优解就好</p>
-<p>3.贪心算法找到的结果不一定是最好的解</p>
-<h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><p>什么是动态规划？</p>
-<p>1.动态规划算法用于求解具有最优性质的问题</p>
-<p>2.这类问题通常具有多阶段决策过程，每一阶段的解决方案都是最优化的</p>
-<p>3.后一阶段的最优解在上一阶段的基础上确定</p>
-<p>二维数据表示</p>
-<p>1.用i表示阶段，j表示某一阶段可负重能力，V表示该阶段最大价值，wi表示这个阶段新出现的物品重量<br>2.那么该最大价值可以表示为V[i][j],比如第一阶段，负重为100g时，可以表示为V[1][100],负重为200g时为V[1][200]</p>
-<p>伪代码（计算出不同背包所能获得的最大价值）</p>
-<figure class="highlight inform7"><table><tr><td class="code"><pre><code class="hljs inform7">for i in items:<br>	v<span class="hljs-comment">[i]</span><span class="hljs-comment">[0]</span> = 0<br>	solution<span class="hljs-comment">[i]</span> = <span class="hljs-comment">[]</span><br>	for j in 背包可选择负重列表：<br>		背包物品选择<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = <span class="hljs-comment">[]</span><br>		if w<span class="hljs-comment">[i]</span> &gt; j:<br>			v<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = 背包物品选择<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j]</span><br>		else:<br>			v<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = max(v<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j]</span>,vi + v<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j-w<span class="hljs-comment">[1]</span>]</span>)<br>			背包物品选择<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = 背包物品选择<span class="hljs-comment">[i-1]</span><span class="hljs-comment">[j-w<span class="hljs-comment">[i]</span>]</span> +当前物品<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ]]></content>
       <categories>
         <category>服务器运维</category>
