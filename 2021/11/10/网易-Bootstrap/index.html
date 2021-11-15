@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      416 字
+      533 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      8
        分钟
     </span>
   
@@ -238,7 +238,11 @@
 <h6 id="格栅布局-偏移值"><a href="#格栅布局-偏移值" class="headerlink" title="格栅布局-偏移值"></a>格栅布局-偏移值</h6><p>offset</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;container&#x27;&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;row&#x27;&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;col<span class="hljs-number">-1</span>  col-sm<span class="hljs-number">-2</span> <span class="hljs-built_in">offset</span><span class="hljs-number">-2</span> <span class="hljs-built_in">offset</span>-sm<span class="hljs-number">-3</span>&#x27;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>tip：偏移后不能超过<span class="hljs-number">12</span>，也就是col和<span class="hljs-built_in">offset</span>加起来不超过<span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
 <p>快速给与背景样式（bg-success等）（种类少）</p>
-<h6 id="栅格布局-横向布局"><a href="#栅格布局-横向布局" class="headerlink" title="栅格布局-横向布局"></a>栅格布局-横向布局</h6><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs maxima">justify-<span class="hljs-built_in">content</span>-start	左边排序<br>justify-<span class="hljs-built_in">content</span>-end		右边排序<br>justfy-<span class="hljs-built_in">content</span>-<span class="hljs-built_in">center</span>	中间排序<br>justify-<span class="hljs-built_in">content</span>-around	环绕排序<br>justify-<span class="hljs-built_in">content</span>-between	两边排序<br><br>响应式：justify-<span class="hljs-built_in">content</span>-sm-start	其他类似<br></code></pre></td></tr></table></figure>
+<h6 id="栅格布局-行横向布局"><a href="#栅格布局-行横向布局" class="headerlink" title="栅格布局-行横向布局"></a>栅格布局-行横向布局</h6><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs maxima">justify-<span class="hljs-built_in">content</span>-start	左边排序<br>justify-<span class="hljs-built_in">content</span>-end		右边排序<br>justfy-<span class="hljs-built_in">content</span>-<span class="hljs-built_in">center</span>	中间排序<br>justify-<span class="hljs-built_in">content</span>-around	环绕排序<br>justify-<span class="hljs-built_in">content</span>-between	两边排序<br><br>响应式：justify-<span class="hljs-built_in">content</span>-sm-start	其他类似<br></code></pre></td></tr></table></figure>
+<h6 id="栅格布局-行纵向布局"><a href="#栅格布局-行纵向布局" class="headerlink" title="栅格布局-行纵向布局"></a>栅格布局-行纵向布局</h6><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">align-<span class="hljs-keyword">items</span>-strt	让行在row的上面 元素高度往下涨	默认<br>align-<span class="hljs-keyword">items</span>-center	让行在row的中心 元素高度往上下涨<br>align-itmes-<span class="hljs-function"><span class="hljs-keyword">end</span>		让行在最下面 元素的高度高度往上涨</span><br><br>响应式：align-<span class="hljs-keyword">items</span>-sm-<span class="hljs-built_in">start</span>	其他类似<br></code></pre></td></tr></table></figure>
+<p>栅格布局-块纵向布局</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs crystal">align-<span class="hljs-keyword">self</span>-start<br>align-<span class="hljs-keyword">self</span>-center<br>align-<span class="hljs-keyword">self</span>-<span class="hljs-keyword">end</span><br><br>响应式：align-<span class="hljs-keyword">self</span>-sm-<span class="hljs-keyword">end</span>	其他类似<br></code></pre></td></tr></table></figure>
+<p>之前都是bootstrap4,后面会的升级到bootstarp5</p>
 
             </div>
             <hr>
