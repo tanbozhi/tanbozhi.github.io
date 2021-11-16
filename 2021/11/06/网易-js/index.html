@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.5k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      21
        分钟
     </span>
   
@@ -321,7 +321,18 @@
 <p>修改id：leoNode.id = ‘abc’</p>
 <h6 id="逗号和中括号的使用"><a href="#逗号和中括号的使用" class="headerlink" title="逗号和中括号的使用"></a>逗号和中括号的使用</h6><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs qml"><span class="hljs-comment">//逗号 </span><br><span class="hljs-keyword">var</span> a=<span class="hljs-number">6</span>,b=<span class="hljs-number">7</span>,k=<span class="hljs-number">9</span><br><br><span class="hljs-comment">//中括号 可以代替点</span><br><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;leo&#x27;</span>).onclick = leoNode;<br>也可以写成<br><span class="hljs-built_in">document</span>[<span class="hljs-string">&#x27;getElementById(&#x27;</span>leo<span class="hljs-string">&#x27;)&#x27;</span>][<span class="hljs-string">&#x27;onclick&#x27;</span>] = lenNode;<br><br><span class="hljs-attribute">tips</span>:这样可以更灵活，可以用参数传递值<br>例：<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">leo</span>(<span class="hljs-params">s,bg,color</span>)</span>&#123;<br>	<span class="hljs-built_in">document</span>.getElmentById[s][bg] = <span class="hljs-built_in">color</span><br>&#125;<br>leo(height,background,green)<br></code></pre></td></tr></table></figure>
 <h6 id="获取元素节点（nodeName）"><a href="#获取元素节点（nodeName）" class="headerlink" title="获取元素节点（nodeName）"></a>获取元素节点（nodeName）</h6><p>nodeName可以获得当前标签的大写名称，自定义标签也可以获得，自定义标签只能是英文，自定义标签是行内元素</p>
-<h6 id="使用js操作input内容"><a href="#使用js操作input内容" class="headerlink" title="使用js操作input内容"></a>使用js操作input内容</h6>
+<h6 id="使用js操作input内容"><a href="#使用js操作input内容" class="headerlink" title="使用js操作input内容"></a>使用js操作input内容</h6><p>text.id    text.value(得到的值是字符串)</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs lua">text1 = document.getElementById(<span class="hljs-string">&#x27;text1&#x27;</span>)<br>btn = document.getElementById(<span class="hljs-string">&#x27;btn&#x27;</span>)<br><br>btn.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;<br>	text1.value = <span class="hljs-number">77</span>;	//点击后输入框的值变为<span class="hljs-number">77</span><br>&#125;;<br><br><br>&lt;<span class="hljs-built_in">input</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&#x27;text &#x27;</span>id=<span class="hljs-string">&#x27;text1&#x27;</span> value=<span class="hljs-string">&#x27;99&#x27;</span>&gt;<br>&lt;<span class="hljs-built_in">input</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&#x27;button&#x27;</span> id=<span class="hljs-string">&#x27;btn&#x27;</span> value=<span class="hljs-string">&#x27;点击&#x27;</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>input属性</p>
+<p>maxlength = ‘4’        最大长度为4（适用于text）</p>
+<p>type=’number’        只能输入数字</p>
+<p>type= ‘range’        范围 进度条（默认0~100，修改范围min=20，max=1000 适用于range和number）</p>
+<p>type= ‘color’          颜色选取</p>
+<p>input内容改变事件</p>
+<p>onchange    输入结束后触发事件</p>
+<p>oninput        输入时值一旦发生变化就触发事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.getElmentById(<span class="hljs-string">&#x27;元素id名&#x27;</span>).onchange=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	cosole.log(<span class="hljs-string">&#x27;内容以改变&#x27;</span>);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
             </div>
             <hr>
             <div>
