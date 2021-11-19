@@ -3017,10 +3017,29 @@
 <p>type=’number’        只能输入数字</p>
 <p>type= ‘range’        范围 进度条（默认0~100，修改范围min=20，max=1000 适用于range和number）</p>
 <p>type= ‘color’          颜色选取</p>
-<p>input内容改变事件</p>
-<p>onchange    输入结束后触发事件</p>
+<h6 id="input内容改变事件"><a href="#input内容改变事件" class="headerlink" title="input内容改变事件"></a>input内容改变事件</h6><p>onchange    输入结束后触发事件</p>
 <p>oninput        输入时值一旦发生变化就触发事件</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.getElmentById(<span class="hljs-string">&#x27;元素id名&#x27;</span>).onchange=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	cosole.log(<span class="hljs-string">&#x27;内容以改变&#x27;</span>);<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h6 id="js查找标签元素"><a href="#js查找标签元素" class="headerlink" title="js查找标签元素"></a>js查找标签元素</h6><p>getElementsTagByName(‘标签名’)</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&#x27;div&#x27;</span>)[<span class="hljs-number">2</span>].style.width = <span class="hljs-string">&#x27;100px&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<p>查找顺序:从上到下，从左到右</p>
+<h6 id="js查找class元素"><a href="#js查找class元素" class="headerlink" title="js查找class元素"></a>js查找class元素</h6><p>getElementsByClassName(‘元素class名’)</p>
+<p>可以通过length查看总和</p>
+<h6 id="js中的if-else语句"><a href="#js中的if-else语句" class="headerlink" title="js中的if else语句"></a>js中的if else语句</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">var <span class="hljs-attribute">a</span>=1;<br><span class="hljs-keyword">if</span>(<span class="hljs-attribute">a</span>==3)&#123;<br>	alert(<span class="hljs-string">&#x27;6&#x27;</span>);<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>	alert(<span class="hljs-string">&#x27;不等于3哦&#x27;</span>&#125;;<br>	<br><br><span class="hljs-keyword">if</span>()&#123;<br><br>&#125;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>()&#123;<br><br>&#125;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>()&#123;<br><br>&#125;<br><span class="hljs-keyword">else</span>&#123;&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="js和-或的用法"><a href="#js和-或的用法" class="headerlink" title="js和/或的用法"></a>js和/或的用法</h6><p>&amp;&amp;    和 （所有条件都满足）</p>
+<p>||     或 （有一个条件满足）</p>
+<h6 id="js操作元素内容"><a href="#js操作元素内容" class="headerlink" title="js操作元素内容"></a>js操作元素内容</h6><p>innerHTML（元素内容）</p>
+<p>js 可以通过DOM使用innerHTML属性获取会赋值DOM内容</p>
+<p>如果赋值标签内容的话，会在HTML中显示标签</p>
+<p>innerHTML替换元素，原元素的事件会消失</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;leo&#x27;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>console.log(leo.innerHTML);	输出<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>leo.innerHTML = &#x27;&#x27;;	清空leo中的内容<br>leo.innerHTML = &#x27;<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>添加这个span<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#x27;;	添加span这个元素到leo中<br></code></pre></td></tr></table></figure>
+<p>outerHTML(元素内容)</p>
+<p>与inner的区别就是，outerHTML获取的信息包含自己</p>
+<p>innerText(元素文本)</p>
+<p>用法同上</p>
+<p>js可通过DOM使用innerText获取或赋值文本内容</p>
+<p>innerText只会获取文本不会获取标签信息</p>
+<p>赋值时内容不会变成标签，都会以文本显示</p>
 ]]></content>
       <categories>
         <category>前端(网易学习)</category>
