@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      2k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25
+      27
        分钟
     </span>
   
@@ -351,6 +351,20 @@
 <p>js可通过DOM使用innerText获取或赋值文本内容</p>
 <p>innerText只会获取文本不会获取标签信息</p>
 <p>赋值时内容不会变成标签，都会以文本显示</p>
+<h6 id="css绑定元素样式值（cssText）"><a href="#css绑定元素样式值（cssText）" class="headerlink" title="css绑定元素样式值（cssText）"></a>css绑定元素样式值（cssText）</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;leo&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">	leo.style.cssText = <span class="hljs-string">&#x27;width:10px;height:10px; background:red;&#x27;</span></span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h6 id="js获取非行间样式，行间属性"><a href="#js获取非行间样式，行间属性" class="headerlink" title="js获取非行间样式，行间属性"></a>js获取非行间样式，行间属性</h6><p>获取元素样式的高度</p>
+<p> window.getComputedStyle(leo).height（不支持低级ie）</p>
+<p>leo.currentStyle.height(ie支持,谷歌不支持)</p>
+<p>解决兼容</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs scss">function getstyle(obj,style)&#123;<br>	if(obj.currentStyle)&#123;<br>		alert(obj.currentStyle[style]);<br>	&#125;<br>	else&#123;<br>		alert(obj.getComptedStyle(obj)<span class="hljs-selector-attr">[style]</span>);<br>	&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>获取行间属性（getAttribute()）</p>
+<p>leo.getAttrbute(‘id’)</p>
+<p>设置行间属性（setAttribute(‘属性’，’属性值’)）</p>
+<p>leo.setAttribute(‘id’,’haha’)</p>
+<p>删除行间属性（removeAttribute）</p>
+<p>leo.removeAttribute(‘id’)</p>
+<p>判断该元素是否有值</p>
+<p>hasAttribute(‘id’)</p>
 
             </div>
             <hr>
