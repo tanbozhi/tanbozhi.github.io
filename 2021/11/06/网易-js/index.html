@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      2.2k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      30
        分钟
     </span>
   
@@ -358,13 +358,29 @@
 <p>解决兼容</p>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs scss">function getstyle(obj,style)&#123;<br>	if(obj.currentStyle)&#123;<br>		alert(obj.currentStyle[style]);<br>	&#125;<br>	else&#123;<br>		alert(obj.getComptedStyle(obj)<span class="hljs-selector-attr">[style]</span>);<br>	&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 <p>获取行间属性（getAttribute()）</p>
-<p>leo.getAttrbute(‘id’)</p>
+<p>leo.getAttribute(‘id’)</p>
 <p>设置行间属性（setAttribute(‘属性’，’属性值’)）</p>
 <p>leo.setAttribute(‘id’,’haha’)</p>
 <p>删除行间属性（removeAttribute）</p>
 <p>leo.removeAttribute(‘id’)</p>
 <p>判断该元素是否有值</p>
 <p>hasAttribute(‘id’)</p>
+<h6 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h6><p>for(初始化条件;结束条件;条件变化){执行条件}</p>
+<p>例</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(var i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">7</span>;i++)</span></span>&#123;<br>	alert(i)<br>&#125;<br>&gt;&gt;&gt; <span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<p>循环终止（break）</p>
+<p>循环跳过(continue)</p>
+<h6 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h6><p>特点 穿透</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">var</span> a=<span class="hljs-number">10</span>;<br><br><span class="hljs-keyword">switch</span>(a)&#123;<br>	<span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<br>        alert(<span class="hljs-string">&#x27;不执行&#x27;</span>);<br>        <span class="hljs-keyword">break</span>;<br>	<span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:<br>        alert(<span class="hljs-string">&#x27;执行&#x27;</span>);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>    	alert(<span class="hljs-string">&#x27;上面条件都不满足，就执行我&#x27;</span>)<br>&#125;<br><br>如果不写<span class="hljs-keyword">break</span>，就会出现穿透效果<br></code></pre></td></tr></table></figure>
+<p>获取元素（父级元素、子级元素、子级节点）</p>
+<p>父级元素（parentNode）</p>
+<p>子级元素（children）</p>
+<p>子级节点（childNodes） 修改节点里的内容（childNodes[0].data = ‘123’）</p>
+<p>创建元素（document.creatElement(‘div’)）创建后并不能显示在HTML中，还需要放入</p>
+<p>放入元素（leo.appendChild(‘放入元素变量’)）该方法只能插入后排到最后面</p>
+<p>插入元素（leo.insertBefore(插入元素变量，插入元素后面的变量）</p>
+<p>删除子级元素（document.body.removeChild(目标元素)）可以</p>
+<p>删除目标元素（ leo.remove() ）</p>
 
             </div>
             <hr>
