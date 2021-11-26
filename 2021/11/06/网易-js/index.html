@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      2.4k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      30
+      32
        分钟
     </span>
   
@@ -372,8 +372,7 @@
 <p>循环跳过(continue)</p>
 <h6 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h6><p>特点 穿透</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">var</span> a=<span class="hljs-number">10</span>;<br><br><span class="hljs-keyword">switch</span>(a)&#123;<br>	<span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<br>        alert(<span class="hljs-string">&#x27;不执行&#x27;</span>);<br>        <span class="hljs-keyword">break</span>;<br>	<span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:<br>        alert(<span class="hljs-string">&#x27;执行&#x27;</span>);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>    	alert(<span class="hljs-string">&#x27;上面条件都不满足，就执行我&#x27;</span>)<br>&#125;<br><br>如果不写<span class="hljs-keyword">break</span>，就会出现穿透效果<br></code></pre></td></tr></table></figure>
-<p>获取元素（父级元素、子级元素、子级节点）</p>
-<p>父级元素（parentNode）</p>
+<h6 id="获取元素（父级元素、子级元素、子级节点）"><a href="#获取元素（父级元素、子级元素、子级节点）" class="headerlink" title="获取元素（父级元素、子级元素、子级节点）"></a>获取元素（父级元素、子级元素、子级节点）</h6><p>父级元素（parentNode）</p>
 <p>子级元素（children）</p>
 <p>子级节点（childNodes） 修改节点里的内容（childNodes[0].data = ‘123’）</p>
 <p>创建元素（document.creatElement(‘div’)）创建后并不能显示在HTML中，还需要放入</p>
@@ -381,6 +380,19 @@
 <p>插入元素（leo.insertBefore(插入元素变量，插入元素后面的变量）</p>
 <p>删除子级元素（document.body.removeChild(目标元素)）可以</p>
 <p>删除目标元素（ leo.remove() ）</p>
+<p>替换元素（replaceChild）</p>
+<p>父元素.replaceChild(替换元素，被替换元素)</p>
+<p>克隆元素leo.cloneNode() 默认括号内为false时只会复制元素，不会复制内容与子孙节点，为ture时leo里的内容也会复制</p>
+<p>首尾元素（firstElementChild,lastElementchild）(兼容问题)</p>
+<p>leo.firstElementChild == leo.children[0]</p>
+<p>leo.lastElementChild == leo.children[leo.children.length-1]</p>
+<p>兄弟元素（nextElementSibling,previousElementSibling）</p>
+<p>leo.previousElementSibling.style.color = ‘red’;leo的上一个元素</p>
+<p>leo.nextElementSibling.style.color = ‘red’;leo的下一个元素</p>
+<h6 id="双击事件（ondblclick）"><a href="#双击事件（ondblclick）" class="headerlink" title="双击事件（ondblclick）"></a>双击事件（ondblclick）</h6><p>与onclick用法一样</p>
+<h6 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h6><p>移入(onmouseover)：当鼠标移到元素上面时触发</p>
+<p>移出(onmouseout)：当鼠标移出到元素外面后触发</p>
+<p>移动(onmousemove)：当鼠标移动就会触发</p>
 
             </div>
             <hr>
