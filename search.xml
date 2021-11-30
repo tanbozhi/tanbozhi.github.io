@@ -3082,6 +3082,28 @@
 <h6 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h6><p>移入(onmouseover)：当鼠标移到元素上面时触发</p>
 <p>移出(onmouseout)：当鼠标移出到元素外面后触发</p>
 <p>移动(onmousemove)：当鼠标移动就会触发</p>
+<p>鼠标按下(onmousedown)：按下鼠标左键</p>
+<p>鼠标抬起(onmouseup)：抬起鼠标左键</p>
+<p>鼠标右键(oncontextmenu)：鼠标右键菜单</p>
+<p>鼠标事件对象（event）</p>
+<p>event.clientX(x轴坐标)，event.clientY(y轴坐标)，event.targrt(事件元素的对象)，</p>
+<figure class="highlight fortran"><table><tr><td class="code"><pre><code class="hljs fortran">#使用事件对象的两种方法<br>leo.onmousemove = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;<br>	console.<span class="hljs-built_in">log</span>(event)<br>&#125;<br><br>第二种，早期ie不支持<br>leo.onmousemove = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(a)</span></span>&#123;<br>	console.<span class="hljs-built_in">log</span>(a)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="事件捕获与事件冒泡"><a href="#事件捕获与事件冒泡" class="headerlink" title="事件捕获与事件冒泡"></a>事件捕获与事件冒泡</h6><p>事件捕获：子元素获取到事件后会往父元素上找，直到找到事件本体</p>
+<p>事件冒泡：事件本体会将事件给子元素（像冒泡一样往上冒）</p>
+<p>事件捕获优先级高于事件冒泡</p>
+<p>阻止事件冒泡（两种方法）</p>
+<p>event.cancelBubble = true;(都支持)</p>
+<p>event.stopPropagation();（老版本ie不支持）</p>
+<h6 id="表单获取、失去焦点事件"><a href="#表单获取、失去焦点事件" class="headerlink" title="表单获取、失去焦点事件"></a>表单获取、失去焦点事件</h6><p>使用在可以输入文本内容的标签上（input,textarea）</p>
+<p>获取焦点（onfocus）</p>
+<p>自动获取焦点: 在标签上添加  autofocus</p>
+<p>点击事件元素后主动获取焦点  ipt.focus();</p>
+<p>失去焦点（onblur）</p>
+<p>点击事件元素后主动获取焦点  ipt.onblur();</p>
+<h6 id="元素可见高度与宽度"><a href="#元素可见高度与宽度" class="headerlink" title="元素可见高度与宽度"></a>元素可见高度与宽度</h6><p>offsetWidth、offsetHeight(height+padding+border三个总和)</p>
+<p>clientWidth、clientHeight(height+padding这两个之和)</p>
 ]]></content>
       <categories>
         <category>前端(网易学习)</category>
