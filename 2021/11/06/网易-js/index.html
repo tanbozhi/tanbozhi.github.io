@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      3.6k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      44
+      48
        分钟
     </span>
   
@@ -436,6 +436,30 @@
 <p>字符串下标方法</p>
 <p>str.charAt(2) == str[2]</p>
 <p>charAt找不到内容会返回空，放入不规则内容返回第0位下标</p>
+<p>字符串拼接</p>
+<p>1.使用加号拼接</p>
+<p>2.str.concat(str1,’true’,1) 括号内放需要拼接的字符串</p>
+<p>字符串大写小写（作用在英文字母上）</p>
+<p>大写：str.toUpperCase()</p>
+<p>小写：str.toLowerCase()</p>
+<p>查找索引方法</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-built_in">str</span> = <span class="hljs-string">&#x27;abcdefghabc&#x27;</span>;<br><span class="hljs-built_in">str</span>.indexOf(<span class="hljs-string">&#x27;c&#x27;</span>);  &gt;&gt;&gt; <span class="hljs-number">2</span>	返回第一个c的索引<br><span class="hljs-built_in">str</span>.indexOf(<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-number">4</span>);&gt;&gt;&gt;<span class="hljs-number">10</span>	从第四位开始找c,找到后返回<br><br><span class="hljs-built_in">str</span>.lastIndexOf(<span class="hljs-string">&#x27;b&#x27;</span>);&gt;&gt;&gt;<span class="hljs-number">9</span>  从后往前找，找到第一个e;<br><span class="hljs-built_in">str</span>.lastIndexOf(<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-number">5</span>); &gt;&gt;&gt;<span class="hljs-number">2</span> 先截取字符串前五位，从这五位从后往前<br></code></pre></td></tr></table></figure>
+
+
+<p>替换</p>
+<p>str=’abcdef’;</p>
+<p>str.replace(‘abc’,f)&gt;&gt;&gt;fdef    把abc替换成a，字符串中有多个abc只能替换第一个abc</p>
+<p>str.replaceall(‘abc’,f) 替换所有的abc</p>
+<p>str.replace(‘c’,function(text,index,lastStr){}) 括号内分别是找到的内容，索引，原始字符串</p>
+<p>去掉空格</p>
+<p>str.trim() 去掉前后空格</p>
+<p>str.trimLeft()或者str.trimStart()  去掉左边空格</p>
+<p>str.trimRight()或者str.trimEnd()    去掉右边空格</p>
+<p>split方法把字符串转换成数组</p>
+<p>str = ‘abcdefg’;</p>
+<p>str.split(‘’);  &gt;&gt;&gt;[‘a’,’b’,’c’,’d’,’e’,’f’,’g’]   </p>
+<p>str.split(‘c’);&gt;&gt;&gt;[‘ab’,’defg’]        以c为分隔符分隔</p>
+<p>str.split(‘’,4);&gt;&gt;&gt;[‘a’,’b’,’c’,’d’]   4代表留下4个数</p>
 
             </div>
             <hr>
