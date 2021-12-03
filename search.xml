@@ -3143,7 +3143,7 @@
 <p>arrthree = new Array(34,567,’dsf’,false)</p>
 <p>使用：arrone[3], arrone.length</p>
 <h6 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h6><p>截取字符串</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">str = <span class="hljs-string">&#x27;abcdefgh&#x27;</span>;<br>str.substring(<span class="hljs-keyword">start</span>,<span class="hljs-keyword">end</span>);（从第几位开始截取，截取到第几位）<br> <br># str.substring(<span class="hljs-number">3</span>); &gt;&gt;&gt; defgh 截取第<span class="hljs-number">3</span>位及以后的<br># str.substring(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>); &gt;&gt;&gt;cdefg 相当于 str.substring(<span class="hljs-number">2</span>,<span class="hljs-number">7</span>);<br># str.substring(<span class="hljs-number">4</span>,<span class="hljs-number">0</span>); &gt;&gt;&gt;cdefg  相当于 str.substring(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>);当<span class="hljs-number">0</span>是负数时也是<span class="hljs-number">0</span><span class="hljs-number">-4</span><br><br>str.substr(<span class="hljs-keyword">start</span>,<span class="hljs-keyword">end</span>);（从第几位开始截取，截取几位）<br># str.substr(<span class="hljs-number">3</span>); &gt;&gt;&gt; defgh 截取第<span class="hljs-number">3</span>位及以后的<br># str.substr(<span class="hljs-number">4</span>,<span class="hljs-number">0</span>); &gt;&gt;&gt;空	  当第二位为<span class="hljs-number">0</span>或者为负 返回空字符串<br># str.substr(<span class="hljs-number">-4</span>,<span class="hljs-number">2</span>); &gt;&gt;&gt;ef	第一位为负数时，从尾巴往前看<br><br>str.<span class="hljs-keyword">slice</span>(strat,<span class="hljs-keyword">end</span>)(第几位开始，第几位结束)<br><span class="hljs-meta">#str.slice(3，-2) &gt;&gt;&gt;def 截取index 3 与 -2 之间的内容</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">str = <span class="hljs-string">&#x27;abcdefgh&#x27;</span>;<br>str.substring(<span class="hljs-keyword">start</span>,<span class="hljs-keyword">end</span>);（从第几位开始截取，截取到第几位）<br> <br># str.substring(<span class="hljs-number">3</span>); &gt;&gt;&gt; defgh 截取第<span class="hljs-number">3</span>位及以后的<br># str.substring(<span class="hljs-number">7</span>,<span class="hljs-number">2</span>); &gt;&gt;&gt;cdefg 相当于 str.substring(<span class="hljs-number">2</span>,<span class="hljs-number">7</span>);<br># str.substring(<span class="hljs-number">4</span>,<span class="hljs-number">0</span>); &gt;&gt;&gt;cdefg  相当于 str.substring(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>);当<span class="hljs-number">0</span>是负数时也是<span class="hljs-number">0</span><span class="hljs-number">-4</span><br><br>str.substr(<span class="hljs-keyword">start</span>,<span class="hljs-keyword">end</span>);（从第几位开始截取，截取几位）<br># str.substr(<span class="hljs-number">3</span>); &gt;&gt;&gt; defgh 截取第<span class="hljs-number">3</span>位及以后的<br># str.substr(<span class="hljs-number">4</span>,<span class="hljs-number">0</span>); &gt;&gt;&gt;空	  当第二位为<span class="hljs-number">0</span>或者为负 返回空字符串<br># str.substr(<span class="hljs-number">-4</span>,<span class="hljs-number">2</span>); &gt;&gt;&gt;ef	第一位为负数时，从尾巴往前看<br><br>str.<span class="hljs-keyword">slice</span>(<span class="hljs-keyword">start</span>,<span class="hljs-keyword">end</span>)(第几位开始，第几位结束)<br><span class="hljs-meta">#str.slice(3，-2) &gt;&gt;&gt;def 截取index 3 与 -2 之间的内容</span><br></code></pre></td></tr></table></figure>
 <p>字符串下标方法</p>
 <p>str.charAt(2) == str[2]</p>
 <p>charAt找不到内容会返回空，放入不规则内容返回第0位下标</p>
@@ -3153,7 +3153,7 @@
 <p>字符串大写小写（作用在英文字母上）</p>
 <p>大写：str.toUpperCase()</p>
 <p>小写：str.toLowerCase()</p>
-<p>查找索引方法</p>
+<p>查找索引方法（字符串，数组都适用）</p>
 <figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-built_in">str</span> = <span class="hljs-string">&#x27;abcdefghabc&#x27;</span>;<br><span class="hljs-built_in">str</span>.indexOf(<span class="hljs-string">&#x27;c&#x27;</span>);  &gt;&gt;&gt; <span class="hljs-number">2</span>	返回第一个c的索引<br><span class="hljs-built_in">str</span>.indexOf(<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-number">4</span>);&gt;&gt;&gt;<span class="hljs-number">10</span>	从第四位开始找c,找到后返回<br><br><span class="hljs-built_in">str</span>.lastIndexOf(<span class="hljs-string">&#x27;b&#x27;</span>);&gt;&gt;&gt;<span class="hljs-number">9</span>  从后往前找，找到第一个e;<br><span class="hljs-built_in">str</span>.lastIndexOf(<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-number">5</span>); &gt;&gt;&gt;<span class="hljs-number">2</span> 先截取字符串前五位，从这五位从后往前<br></code></pre></td></tr></table></figure>
 
 
@@ -3182,6 +3182,40 @@
 <p>arr = [1,2,3]</p>
 <p>arr1 = [4,5,6]</p>
 <p>arr.concat(arr1); &gt;&gt;&gt;[1,2,3,4,5,6]   返回新数组</p>
+<p>倒序方法（reverse）</p>
+<p>不会改变原数组，返回一个新数组</p>
+<figure class="highlight accesslog"><table><tr><td class="code"><pre><code class="hljs accesslog">arr1 = <span class="hljs-string">[1,2,3,4,5]</span><br>arr2 = arr1.reverse();<br>console.log(arr2)<br><br>&gt;&gt;&gt;<span class="hljs-string">[5,4,3,2,1]</span><br></code></pre></td></tr></table></figure>
+
+
+<p>数组转字符串（join）</p>
+<p>括号里的参数替换数组中的逗号，并将数组转换成字符串</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">arr1</span> =<span class="hljs-meta"> [1,2,3,4,5]</span><br><br><span class="hljs-attribute">arr1</span>.join()   #&#x27;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#x27;<br><span class="hljs-attribute">arr1</span>.join(&#x27;&#x27;) #&#x27;<span class="hljs-number">12345</span>&#x27;<br><span class="hljs-attribute">arr1</span>.join(&#x27;c&#x27;)#&#x27;<span class="hljs-number">1</span>c<span class="hljs-number">2</span>c<span class="hljs-number">3</span>c<span class="hljs-number">4</span>c<span class="hljs-number">5</span>&#x27;<br></code></pre></td></tr></table></figure>
+
+
+<p>数组截取（slice）</p>
+<p>与字符串截取一样</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">arr</span> =<span class="hljs-meta"> [1,2,3,4,5,6]</span><br><span class="hljs-attribute">arr</span>.slice(<span class="hljs-number">2</span>,-<span class="hljs-number">1</span>)   #<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span><br><span class="hljs-attribute">arr</span>.slice(<span class="hljs-number">2</span>,<span class="hljs-number">5</span>)   #<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+
+
+<p>数组万能方法（splice）</p>
+<p>删除    arr.splice(从第几位开始，删几位)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">arr</span> =<span class="hljs-meta"> [1,2,3,4,5]</span><br><span class="hljs-attribute">arr</span>.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)	#从第一位开始，删除两位&gt;&gt;&gt;[<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br></code></pre></td></tr></table></figure>
+<p>增加 arr.splice(从第几位开始，删除几位，添加内容(可以无限添加))</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">arr</span> =<span class="hljs-meta"> [1,2,3,4,5]</span><br><span class="hljs-attribute">arr</span>.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,&#x27;tan&#x27;)	#从第一位开始，删除两位并在第一位后面添加tan &gt;&gt;&gt;[<span class="hljs-number">1</span>,tan,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br></code></pre></td></tr></table></figure>
+<p>修改</p>
+<p>当第二位是1的时候，就是修改了</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">arr</span> =<span class="hljs-meta"> [1,2,3,4,5]</span><br><span class="hljs-attribute">arr</span>.splice(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,&#x27;tan&#x27;)	#[<span class="hljs-number">1</span>,tan,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br></code></pre></td></tr></table></figure>
+
+
+<p>排序整理(sort)(返回新数组)</p>
+<p>通过对比字符编码来排序</p>
+<p>查看字符编码：xxx.charCodeAt()</p>
+<p>字符串看第一位，第一位相同看第二位</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><code class="hljs matlab">由于是查看第一位来排序，所以有缺陷<br><br>解决方法：<br>arr.<span class="hljs-built_in">sort</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(a,b)</span>&#123;<span class="hljs-title">return</span> <span class="hljs-title">b</span>.<span class="hljs-title">charCodeAt</span><span class="hljs-params">()</span>-<span class="hljs-title">a</span>.<span class="hljs-title">charCodeAt</span><span class="hljs-params">()</span>;&#125;;)</span><br></code></pre></td></tr></table></figure>
+
+
+<p>数组循环(forEach)</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br><br><span class="hljs-meta">#function里可以放入3个参数，分别代表数组的每一个内容，索引，原数组</span><br>#不能使用break，可以使用<span class="hljs-keyword">return</span>来代替<span class="hljs-keyword">continue</span><br>#返回undefined<br>arr.<span class="hljs-keyword">forEach</span>(<span class="hljs-keyword">function</span>(content,<span class="hljs-keyword">index</span>,arr)&#123;<br>	console.log(content,<span class="hljs-keyword">index</span>,arr);<br>&#125;)<br><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>前端(网易学习)</category>
