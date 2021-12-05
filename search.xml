@@ -3216,6 +3216,25 @@
 
 <p>数组循环(forEach)</p>
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br><br><span class="hljs-meta">#function里可以放入3个参数，分别代表数组的每一个内容，索引，原数组</span><br>#不能使用break，可以使用<span class="hljs-keyword">return</span>来代替<span class="hljs-keyword">continue</span><br>#返回undefined<br>arr.<span class="hljs-keyword">forEach</span>(<span class="hljs-keyword">function</span>(content,<span class="hljs-keyword">index</span>,arr)&#123;<br>	console.log(content,<span class="hljs-keyword">index</span>,arr);<br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+
+<p>json数据对象{}</p>
+<p>存取数据  json是没有长度(length)的</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta">json = &#123;<br>	<span class="hljs-string">&quot;tan&quot;</span>:<span class="hljs-string">&#x27;v&#x27;</span>,<br>	<span class="hljs-string">&quot;leo&quot;</span>:<span class="hljs-string">&#x27;true&#x27;</span>,<br>	<span class="hljs-string">&quot;le&quot;</span>:<span class="hljs-literal">true</span>,<br>	<span class="hljs-string">&quot;vf&quot;</span>:<span class="hljs-number">4</span>,<br>	<span class="hljs-string">&quot;vfv&quot;</span>:[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">45</span>]<br>&#125;<br><span class="hljs-meta">#标准格式 key名是双引号</span><br><br><span class="hljs-meta">#获取数据（两种方法）</span><br><span class="hljs-built_in">str</span>.leo<br><span class="hljs-built_in">str</span>[<span class="hljs-string">&#x27;leo&#x27;</span>]	<span class="hljs-meta">#当键名为数字时，用这个方法</span><br></code></pre></td></tr></table></figure>
+
+
+<p>json转字符串,字符串转json</p>
+<p>JSON.stringify(json名)</p>
+<p>JSON.parse(字符串名)</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-built_in">str</span> = &#123;<span class="hljs-string">&#x27;tan&#x27;</span>:<span class="hljs-string">&#x27;v&#x27;</span>,<br>	<span class="hljs-string">&#x27;leo&#x27;</span>:<span class="hljs-string">&#x27;true&#x27;</span>,<br>	<span class="hljs-string">&#x27;le&#x27;</span>:<span class="hljs-literal">true</span>,&#125;<br><br><span class="hljs-meta">#转字符串</span><br>JSON.stringify(<span class="hljs-built_in">str</span>)<br><span class="hljs-meta">#转JSON</span><br>JSON.parse(<span class="hljs-built_in">str</span>)<br></code></pre></td></tr></table></figure>
+
+
+<p>for in 循环</p>
+<p>用来循环对象的属性(一般循环JSON对象)</p>
+<p>可以使用break，continue</p>
+<figure class="highlight processing"><table><tr><td class="code"><pre><code class="hljs processing">json = &#123;<span class="hljs-string">&quot;sky&quot;</span>:<span class="hljs-number">20</span>,<span class="hljs-string">&quot;blue&quot;</span>:<span class="hljs-number">40</span>,<span class="hljs-string">&quot;red&quot;</span>:<span class="hljs-number">45</span>,<span class="hljs-string">&quot;green&quot;</span>:<span class="hljs-number">98</span>&#125;<br><br><span class="hljs-keyword">for</span>(var i in json)&#123;<br>	console.<span class="hljs-built_in">log</span>(i);<br>&#125;<br>&gt;&gt;&gt; sky,<span class="hljs-built_in">blue</span>,<span class="hljs-built_in">red</span>,<span class="hljs-built_in">green</span><br></code></pre></td></tr></table></figure>
+
+
 ]]></content>
       <categories>
         <category>前端(网易学习)</category>
