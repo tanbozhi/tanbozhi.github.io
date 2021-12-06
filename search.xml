@@ -3235,6 +3235,37 @@
 <figure class="highlight processing"><table><tr><td class="code"><pre><code class="hljs processing">json = &#123;<span class="hljs-string">&quot;sky&quot;</span>:<span class="hljs-number">20</span>,<span class="hljs-string">&quot;blue&quot;</span>:<span class="hljs-number">40</span>,<span class="hljs-string">&quot;red&quot;</span>:<span class="hljs-number">45</span>,<span class="hljs-string">&quot;green&quot;</span>:<span class="hljs-number">98</span>&#125;<br><br><span class="hljs-keyword">for</span>(var i in json)&#123;<br>	console.<span class="hljs-built_in">log</span>(i);<br>&#125;<br>&gt;&gt;&gt; sky,<span class="hljs-built_in">blue</span>,<span class="hljs-built_in">red</span>,<span class="hljs-built_in">green</span><br></code></pre></td></tr></table></figure>
 
 
+<p>in关键字</p>
+<p>检测属性是否在对象中（一般在JSON上使用）</p>
+<p>字符串没有这个方法（要有属性才行）</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-type">JSON</span>对象<br><span class="hljs-type">json</span> = &#123;&quot;sky&quot;:<span class="hljs-number">20</span>,&quot;blue&quot;:<span class="hljs-number">40</span>,&quot;red&quot;:<span class="hljs-number">45</span>,&quot;green&quot;:<span class="hljs-number">98</span>&#125;<br><span class="hljs-string">&#x27;sky&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-type">json</span> 		#<span class="hljs-keyword">true</span><br><br>数组<br>arr = [<span class="hljs-string">&#x27;scr&#x27;</span>,<span class="hljs-string">&#x27;width&#x27;</span>,<span class="hljs-string">&#x27;height&#x27;</span>]<br><span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-keyword">in</span> arr   	#<span class="hljs-keyword">true</span> 这个的属性是索引，判断索引是否有<span class="hljs-number">2</span> <br></code></pre></td></tr></table></figure>
+
+
+<p>JSON删除属性(delete)</p>
+<p>只能删除JSON数据下的属性，var声明的对象不能删除，length也不能删除</p>
+<p>删除成功返回true，失败返回false</p>
+<p>delete删除数组内容会留下占位内容，不会影响数组的长度</p>
+<h6 id="事件监听（addEventListener）"><a href="#事件监听（addEventListener）" class="headerlink" title="事件监听（addEventListener）"></a>事件监听（addEventListener）</h6><p>监听元素的事件</p>
+<p>第一个参数是 事件名称，第二个参数是监听到后执行方法(该方法可以通过函数名传入) </p>
+<p>js事件监听可以叠加，普通事件会被覆盖</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><code class="hljs actionscript">div.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;<br>	alert(<span class="hljs-string">&#x27;1&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+
+<p>addEventListener中还有第三个参数可以放入布尔值，默认是false</p>
+<p>如果放入第三个参数，事件则在捕获时执行</p>
+<p>解除事件监听（removeEventListener）</p>
+<p>也有三个参数，意义和添加监听一样</p>
+<p>解决ie兼容问题</p>
+<p>低级ie需要用到attachEvent和detachEvent来监听</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">tan</span>.attachEvent(<span class="hljs-string">&#x27;onclick&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;alert(<span class="hljs-string">&#x27;1&#x27;</span>)&#125;)<br><span class="hljs-built_in">tan</span>.detachEvent(<span class="hljs-string">&#x27;onclick&#x27;</span>,fnName)<br><br>解决兼容<br>var a = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123; alert(<span class="hljs-string">&#x27;2&#x27;</span>); &#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">tan</span>.addEventListener)&#123;<br>	<span class="hljs-built_in">tan</span>.addEventListener(<span class="hljs-string">&#x27;onclick&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;alert(<span class="hljs-string">&#x27;1&#x27;</span>)&#125;)<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>	<span class="hljs-built_in">tan</span>.attachEvent(<span class="hljs-string">&#x27;onclick&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;alert(<span class="hljs-string">&#x27;1&#x27;</span>)&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h6><p>在js中可以使用事件委托/代理方式给予元素事件</p>
+<p>这种给予可以控制 未来元素</p>
+<p>原理是 通过事件对象的元素目标属性来操作元素</p>
+<p>这种方式 安全 不会报错</p>
+<p>例</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">if</span>(event.target.nodeName == <span class="hljs-string">&#x27;DIV&#x27;</span>&#123;<br>		event.target.style.color = <span class="hljs-string">&#x27;red&#x27;</span>;<br>	&#125;<br>&#125;;<br><span class="hljs-keyword">var</span> oDiv = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;div&#x27;</span>);<br>oDiv.id = <span class="hljs-string">&#x27;div&#x27;</span>;<br>oDiv.innerHTML = <span class="hljs-string">&#x27;124324wedfds&#x27;</span>;<br><span class="hljs-built_in">document</span>.appendChild(oDiv);<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>前端(网易学习)</category>
