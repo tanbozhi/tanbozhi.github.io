@@ -3266,6 +3266,18 @@
 <p>这种方式 安全 不会报错</p>
 <p>例</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">if</span>(event.target.nodeName == <span class="hljs-string">&#x27;DIV&#x27;</span>&#123;<br>		event.target.style.color = <span class="hljs-string">&#x27;red&#x27;</span>;<br>	&#125;<br>&#125;;<br><span class="hljs-keyword">var</span> oDiv = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;div&#x27;</span>);<br>oDiv.id = <span class="hljs-string">&#x27;div&#x27;</span>;<br>oDiv.innerHTML = <span class="hljs-string">&#x27;124324wedfds&#x27;</span>;<br><span class="hljs-built_in">document</span>.appendChild(oDiv);<br></code></pre></td></tr></table></figure>
+
+
+<p>事件委托兼容</p>
+<p>部分ie浏览器不支持event.target属性</p>
+<p>在ie浏览器中用event.srcElement属性来获得事件委托触发事件元素</p>
+<p>documentElement就是html,在IE浏览器中能用得到</p>
+<p>窗口重置事件(onresize)</p>
+<p>只有window和body可以触发这个事件</p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><code class="hljs livescript"><span class="hljs-built_in">window</span>.onresize = <span class="hljs-keyword">function</span>()&#123;alert(<span class="hljs-string">&#x27;1&#x27;</span>)&#125;<br><br><span class="hljs-comment">#自定义</span><br><span class="hljs-keyword">var</span> doResize = <span class="hljs-keyword">function</span>()&#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>&#125;<br><br>&lt;body onresize=<span class="hljs-string">&quot;doResize()&quot;</span>&gt;<br>		<br>&lt;/body&gt;<br></code></pre></td></tr></table></figure>
+
+
+<p>js滚动事件(onscroll)</p>
 ]]></content>
       <categories>
         <category>前端(网易学习)</category>
