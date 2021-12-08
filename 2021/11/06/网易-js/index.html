@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.9k 字
+      5.6k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      67
+      77
        分钟
     </span>
   
@@ -567,6 +567,61 @@
 
 
 <p>js滚动事件(onscroll)</p>
+<p>scrollTop、scrollLeft</p>
+<p>浏览器的滚动距离：document.documentElement.scrollTop</p>
+<p>键盘事件</p>
+<p>onkeydown(键盘按下)</p>
+<p>onkeypress(输入框出现新字符才会触发)</p>
+<p>onkeyup(键盘抬起)</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mel"><span class="hljs-keyword">window</span>.onkeydwon = function()&#123;<br>	console.<span class="hljs-keyword">log</span>(<span class="hljs-keyword">event</span>.keyCode);<br>	console.<span class="hljs-keyword">log</span>(<span class="hljs-keyword">event</span>.key);<br>	console.<span class="hljs-keyword">log</span>(<span class="hljs-keyword">event</span>.code);<br>	console.<span class="hljs-keyword">log</span>(<span class="hljs-keyword">event</span>.shich);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>键盘事件对象<br>可以通过keyCode/key/code/which来获得当前按下的键</p>
+<p>ie兼容 </p>
+<p>ie低版本（keyCode/key/code/which）这四个中只支持keyCode</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">document</span>.onkeydwon = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; #ie要使用<span class="hljs-built_in">document</span><br>	<span class="hljs-built_in">console</span>.log(event.keyCode)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>键盘禁止输入内容</p>
+<p>使用onkeydown然后函数中return false,就阻止输入了</p>
+<p>禁止某些按键输入，可以判断keyCode码来单独return false</p>
+<p>例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment">#禁止全部建</span><br>ipt.onkeydown = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-comment">#禁止一个键</span><br>ipt.onkeydown = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">if</span>(event.keyCode == <span class="hljs-number">48</span>)&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	&#125;<br>&#125;<br><span class="hljs-comment">#禁止多个键</span><br>ipt.onkeydown = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">if</span>(event.keyCode == <span class="hljs-number">48</span> || event.keyCode == <span class="hljs-number">49</span>)<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	&#125;<br>&#125;<br><span class="hljs-comment">#禁止很多键</span><br>ipt.onkeydown = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">if</span>(event.keyCode &gt;=<span class="hljs-number">48</span> &amp;&amp; event.keyCode&lt;=<span class="hljs-number">65</span>)<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>键盘特殊按键使用</p>
+<p>ctrlKey、altKey、shiftKey、metaKey</p>
+<p>metakey在mac系统上是command键，在window上是win键</p>
+<p>组合键</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#使用特殊件配合</span><br>window.onkeydown = function()&#123;<br>    <span class="hljs-keyword">if</span>(event.ctrlKey &amp;&amp; event.keyCode == 65)&#123;<br>    	console.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">#如果不使用特殊键，用布尔值来代替</span><br><br>var a = <span class="hljs-literal">false</span>,<span class="hljs-attribute">b</span>=<span class="hljs-literal">false</span>;<br>window.onkeydown = function()&#123;<br>    <span class="hljs-keyword">if</span>(event.keyCode == 17)&#123;<br>   		<span class="hljs-attribute">a</span>=<span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(event.keyCode == 65)&#123;<br>   		<span class="hljs-attribute">b</span>=<span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(a &amp;&amp; b)&#123;<br>    	alert(<span class="hljs-string">&#x27;组合键ctrl+a&#x27;</span>)<br>    	a = <span class="hljs-literal">false</span>;<br>    	<span class="hljs-attribute">b</span>=<span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="全局方法"><a href="#全局方法" class="headerlink" title="全局方法"></a>全局方法</h6><p>eval</p>
+<p>eval 去掉字符串的引号</p>
+<p>在JS的全局对象window中可以使用eval方法来解析字符串</p>
+<p>使用eval方法处理除字符串的其他数据类型的话会原状返回</p>
+<p>使用eval方法处理字符串的话，让其执行字符串内的JavaScript代码</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">a</span> = <span class="hljs-string">&#x27;b = 13;&#x27;</span><br><br>eval(<span class="hljs-keyword">a</span>)		&gt;&gt;&gt; b=<span class="hljs-number">13</span>; 执行依次只能去掉一层引号，如果有多层引号，需要多次执行<br>console.<span class="hljs-built_in">log</span>(b)  &gt;&gt;&gt; <span class="hljs-number">13</span><br></code></pre></td></tr></table></figure>
+
+
+<p>parseInt</p>
+<p>解析字符串，并以整数的形式返回</p>
+<p>去掉空格，返回整数</p>
+<p>从非空格开始，如果第一位是非数字，返回NaN；如果是数字，返回非数字前的数字</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">parseInt</span><span class="hljs-params">(<span class="hljs-string">&#x27;  1332  &#x27;</span>)</span></span>	&gt;&gt;&gt;<span class="hljs-number">123</span><br><span class="hljs-function"><span class="hljs-title">parseInt</span><span class="hljs-params">(<span class="hljs-string">&#x27;  hyg13&#x27;</span>)</span></span>		&gt;&gt;&gt;NaN<br><span class="hljs-function"><span class="hljs-title">parseInt</span><span class="hljs-params">(<span class="hljs-string">&#x27; 232kjk&#x27;</span>)</span></span>		&gt;&gt;&gt;<span class="hljs-number">232</span><br></code></pre></td></tr></table></figure>
+<p>有两个参数时parseInt(数字,几进制)</p>
+<p>例：parseInt(1011,2)     &gt;&gt;&gt; 11   1011的二进制</p>
+<p>parseFloat</p>
+<p>基本与parseInt一样，唯一区别是会保留小数点以后的内容</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">parseFloat</span><span class="hljs-params">(<span class="hljs-string">&#x27;  3243.44&#x27;</span>)</span></span>	&gt;&gt;&gt;<span class="hljs-number">3243.44</span><br><span class="hljs-function"><span class="hljs-title">parseFloat</span><span class="hljs-params">(<span class="hljs-string">&#x27;  3243.44.3242sa&#x27;</span>)</span></span>	&gt;&gt;&gt;<span class="hljs-number">3243.44</span><br><span class="hljs-function"><span class="hljs-title">parseFloat</span><span class="hljs-params">(<span class="hljs-string">&#x27;  dsf3243.44&#x27;</span>)</span></span>	&gt;&gt;&gt;NaN<br></code></pre></td></tr></table></figure>
+
+
+<p>isNaN    </p>
+<p>在JS的全局对象window里面可以使用isNaN方法来判断内容是否为NaN</p>
+<p>isNaN方法里面如果放入NaN内容返回True，其余返回false</p>
+<p>其原理是先把参数放入number函数下面，如果返回是NaN。则，isNaN内容为true，其余情况则为false</p>
+<p>三目运算符(三元运算符)</p>
+<p>判断条件 ？成功执行 : 失败执行</p>
 
             </div>
             <hr>
