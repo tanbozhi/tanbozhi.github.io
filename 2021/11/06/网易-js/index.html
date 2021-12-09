@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.6k 字
+      6k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      77
+      81
        分钟
     </span>
   
@@ -620,8 +620,35 @@
 <p>在JS的全局对象window里面可以使用isNaN方法来判断内容是否为NaN</p>
 <p>isNaN方法里面如果放入NaN内容返回True，其余返回false</p>
 <p>其原理是先把参数放入number函数下面，如果返回是NaN。则，isNaN内容为true，其余情况则为false</p>
-<p>三目运算符(三元运算符)</p>
-<p>判断条件 ？成功执行 : 失败执行</p>
+<h6 id="三目运算符-三元运算符"><a href="#三目运算符-三元运算符" class="headerlink" title="三目运算符(三元运算符)"></a>三目运算符(三元运算符)</h6><p>判断条件 ？成功执行 : 失败执行</p>
+<p>如果要执行多条语句，要用逗号连接，并使用括号括起来</p>
+<p>判断条件 ？(成功语句一,成功语句二) : (失败语句1，失败语句二)</p>
+<h6 id="数学方法-随机数"><a href="#数学方法-随机数" class="headerlink" title="数学方法-随机数"></a>数学方法-随机数</h6><p>Math.random()    0~1的随机数</p>
+<p>理论上会出现0和1，但实际上不会出现0和1</p>
+<p>随机数0~10</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">parseInt</span>( Math.random() * <span class="hljs-number">10</span>+<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<p>封装随机数</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function">function <span class="hljs-title">randint</span><span class="hljs-params">(<span class="hljs-built_in">min</span>,<span class="hljs-built_in">max</span>)</span></span>&#123;<br>	<span class="hljs-keyword">return</span>(<span class="hljs-built_in">parseInt</span>(Math.<span class="hljs-built_in">random</span>() *(<span class="hljs-built_in">max</span>-<span class="hljs-built_in">min</span>+<span class="hljs-number">1</span>)+<span class="hljs-built_in">min</span>))<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="js对象理解"><a href="#js对象理解" class="headerlink" title="js对象理解"></a>js对象理解</h6><p>不等性</p>
+<p>不同的对象都不相等</p>
+<p>私有属性</p>
+<p>数组、JSON、函数都有私有属性</p>
+<p>只要是对象都可以挂私有属性，非对象就不能挂私有属性</p>
+<p>new</p>
+<p>在js中，函数除了普通方式调用之外，还能使用new调用</p>
+<p>使用new调用函数，会改变函数的一些特性会影响声明的数据类型状态</p>
+<p>通过new声明的数据类型都为对象，具备对象的所有属性</p>
+<p>引用机制(对象才有)</p>
+<p>两个变量的内容指向同一内容，改变其中一个内容，另一个也会随之改变</p>
+<p>只有改变原有对象内容的方法和改变属性会触发引用机制</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">var</span> a=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];<br><span class="hljs-attribute">var</span> b = a;<br><span class="hljs-attribute">b</span>.push(<span class="hljs-number">4</span>);	#进行增删改 才会触发引用机制<br><span class="hljs-attribute">console</span>.log(a);	<span class="hljs-meta">	[1,2,3,4]</span><br></code></pre></td></tr></table></figure>
+
+
+<p>类</p>
+<p>js中又很多类，如string、number、Boolean。array、function、object等</p>
+<p>new函数可以创建新的类</p>
 
             </div>
             <hr>
