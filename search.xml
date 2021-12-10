@@ -3357,9 +3357,30 @@
 <figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">var</span> a=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];<br><span class="hljs-attribute">var</span> b = a;<br><span class="hljs-attribute">b</span>.push(<span class="hljs-number">4</span>);	#进行增删改 才会触发引用机制<br><span class="hljs-attribute">console</span>.log(a);	<span class="hljs-meta">	[1,2,3,4]</span><br></code></pre></td></tr></table></figure>
 
 
-<p>类</p>
+<h6 id="面对对象"><a href="#面对对象" class="headerlink" title="面对对象"></a>面对对象</h6><p>类</p>
 <p>js中又很多类，如string、number、Boolean。array、function、object等</p>
 <p>new函数可以创建新的类</p>
+<p>原型(prototype)</p>
+<p>在js中原型的作用是连接类的方法</p>
+<p>通过原型可以对类的方法进行操作</p>
+<p>new创建的自定义类也可以进行添加方法</p>
+<p>Array.prototype 查看数组所有方法</p>
+<p>Number.prototype 查看Number所有方法</p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><code class="hljs livescript"><span class="hljs-comment">#删除方法</span><br><span class="hljs-built_in">Array</span>.prototype.indexOf = <span class="hljs-literal">null</span>;<br><br><span class="hljs-comment">#添加方法</span><br><span class="hljs-built_in">Array</span>.prototype.tan= <span class="hljs-keyword">function</span>()&#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>].tan())	&gt;&gt;&gt;[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><br><span class="hljs-comment">#自定义类并添加方法</span><br><span class="hljs-keyword">function</span> tan()&#123;<br>&#125;;<br>tan.prototype = &#123;<br>	<span class="hljs-string">&#x27;aaa&#x27;</span>:<span class="hljs-number">12</span>,<br>	<span class="hljs-string">&#x27;ccc&#x27;</span>:<span class="hljs-string">&#x27;sadasl&#x27;</span>,<br>	<span class="hljs-string">&#x27;leo&#x27;</span>:<span class="hljs-number">1212</span><br>&#125;<br>a = <span class="hljs-keyword">new</span> tan()<br>a.ccc	&gt;&gt;&gt;<span class="hljs-string">&#x27;sadasl&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>原型链</p>
+<p>在JS中，Object是最大的类，其余所有的类都默认原型链到Object上</p>
+<p>类可以使用原型链上面的类的原型方法</p>
+<p>在JS的默认归类中，如果Object类原型发生改变，那么所有的类都会可以使用改变的内容</p>
+<p>获取数据类的方法（constructor）</p>
+<figure class="highlight gml"><table><tr><td class="code"><pre><code class="hljs gml">&lt;<span class="hljs-keyword">div</span> <span class="hljs-symbol">id</span> = <span class="hljs-string">&#x27;tan&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br><br><span class="hljs-built_in">tan</span>.constructor  &gt;&gt;&gt; HTMLDivElement<br></code></pre></td></tr></table></figure>
+
+
+<p>对象中this的指向</p>
+<p>在js对象中，一般this指向为当前对象</p>
+<p>在自定义类中，this可以为当前自定义类挂方法</p>
+<p>在自定义类中，this属性和当前属性一致时，最后结果为this属性内容</p>
 ]]></content>
       <categories>
         <category>前端(网易学习)</category>
