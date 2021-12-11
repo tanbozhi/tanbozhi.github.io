@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6.3k 字
+      6.6k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      85
+      89
        分钟
     </span>
   
@@ -670,6 +670,30 @@
 <p>在js对象中，一般this指向为当前对象</p>
 <p>在自定义类中，this可以为当前自定义类挂方法</p>
 <p>在自定义类中，this属性和当前属性一致时，最后结果为this属性内容</p>
+<p>强制改变this-call</p>
+<p>第一个参数是改变this的指向</p>
+<p>后面的参数就是函数里正常需要的参数</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs delphi"><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">var</span> obj = <span class="hljs-comment">&#123;</span><br><span class="hljs-comment">	a:200</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tan</span><span class="hljs-params">(x)</span><span class="hljs-comment">&#123;</span></span><br><span class="hljs-function"><span class="hljs-comment">	console.log(this.a)</span></span><br><span class="hljs-function"><span class="hljs-comment">&#125;</span>;</span><br>tan();			&gt;&gt;&gt;<span class="hljs-number">2</span><br>tan.call(obj); 	&gt;&gt;&gt;<span class="hljs-number">200</span><br></code></pre></td></tr></table></figure>
+
+
+<p>强制改变this-apply</p>
+<p>传一个参数的时候与call一样</p>
+<p>第二个参数必须是一个数组，数组内容必须对应函数参数的个数</p>
+<p>原型继承</p>
+<p>自定义类继承原型方法，使用prototype然后赋值new一下要继承的类，这样就会触发原型链链接</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">tan</span> 继承 sky里的方法<br>sky.prototype = <span class="hljs-keyword">new</span> <span class="hljs-built_in">tan</span>();<br></code></pre></td></tr></table></figure>
+
+
+<p>属性继承</p>
+<p>如果当前自定义类想使用其他自定义类的属性，我们可以使用call或apply方法通过this传参的形式，去其他自定义类中“偷”到自定义属性</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">function <span class="hljs-title">tan</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">this</span>.a = <span class="hljs-number">10</span>;<br>	<span class="hljs-keyword">this</span>.b = <span class="hljs-number">20</span>;<br>&#125;<br><br><span class="hljs-function">function <span class="hljs-title">bo</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-built_in">tan</span>.call(<span class="hljs-keyword">this</span>);		将<span class="hljs-keyword">this</span>指到<span class="hljs-built_in">tan</span>()中<br>&#125;<br><br>console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">new</span> bo().a)		&gt;&gt;&gt;<span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h6><p>四点好处</p>
+<p>1.避免变量污染，命名冲突</p>
+<p>2.提高代码复用率</p>
+<p>3.提高了可维护性</p>
+<p>4.方便依赖关系管理</p>
 
             </div>
             <hr>
