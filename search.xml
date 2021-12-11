@@ -120,29 +120,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Django-图文编辑</title>
-    <url>/2021/03/02/Django-%E5%9B%BE%E6%96%87%E7%BC%96%E8%BE%91/</url>
-    <content><![CDATA[<p>目标</p>
-<p>​    注册用户发布博客</p>
-<p>​    使用Markdown编辑器实现图文编辑</p>
-<p>开发流程</p>
-<ol>
-<li>创建模型类BlogArtucles   (已有)</li>
-<li>创建blog应用的forms.py文件</li>
-<li>编写视图函数,处理用户提交的表单</li>
-<li>设置路由</li>
-<li>编写前端模板</li>
-<li>设置发布博客的入口链接</li>
-</ol>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安装-Django</title>
     <url>/2021/02/15/Django-%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<p>[TOC]</p>
@@ -159,6 +136,29 @@
 <p>​    执行成功后打开返回的网址</p>
 <p>​    一般是这个网址( <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> )</p>
 <p>​    打开后能看见一个绿色的小火箭就说明成功了</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django-图文编辑</title>
+    <url>/2021/03/02/Django-%E5%9B%BE%E6%96%87%E7%BC%96%E8%BE%91/</url>
+    <content><![CDATA[<p>目标</p>
+<p>​    注册用户发布博客</p>
+<p>​    使用Markdown编辑器实现图文编辑</p>
+<p>开发流程</p>
+<ol>
+<li>创建模型类BlogArtucles   (已有)</li>
+<li>创建blog应用的forms.py文件</li>
+<li>编写视图函数,处理用户提交的表单</li>
+<li>设置路由</li>
+<li>编写前端模板</li>
+<li>设置发布博客的入口链接</li>
+</ol>
 ]]></content>
       <categories>
         <category>web前端</category>
@@ -412,6 +412,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Flask-GET与POST</title>
+    <url>/2021/03/12/Flask-GET%E4%B8%8EPOST/</url>
+    <content><![CDATA[<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>get方式提交数据是通过URL地址传递数据</p>
+<p>例: http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
+<p>在服务器端通过request对象接收数据</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#获取username , password</span><br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;username&#x27;</span>)<br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;password&#x27;</span>)<br><br><span class="hljs-comment">#本次提交数据的方式</span><br>request.method<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="网址美化"><a href="#网址美化" class="headerlink" title="网址美化"></a>网址美化</h6><p>1.通过问号传递的网址最方便,但是不美观</p>
+<p>​    例  :    http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
+<p>2.传递参数像path路径一样的网址,更美观,爬虫更喜欢</p>
+<p>​    http:127.0.0.1:5000/xiaobo/123456/</p>
+<p>​    方法 : 制定相关路由</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.rote(<span class="hljs-params"><span class="hljs-string">&quot;/&lt;username&gt;/&lt;password&gt;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>(<span class="hljs-params">username,password</span>):</span><br>    print(username,password)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="POST-安全"><a href="#POST-安全" class="headerlink" title="POST(安全)"></a>POST(安全)</h4><p>通过 form 表单提交数据</p>
+<p>form表单属性</p>
+<p>​    action:  数据提交到哪个网址</p>
+<p>​    method:  数据提交方式  (get和post)</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>post方式提交数据需要在路由配置中添加设置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/login&quot;</span>,methods=[<span class="hljs-string">&quot;get&quot;</span>,<span class="hljs-string">&quot;post&quot;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>():</span><br>	request.form[<span class="hljs-string">&#x27;username&#x27;</span>]<br>    request.values[<span class="hljs-string">&#x27;usename&#x27;</span>]    <span class="hljs-comment">#既可接受get也可接收post</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flask-一对多关系</title>
     <url>/2021/03/24/Flask-%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB/</url>
     <content><![CDATA[<h4 id="分类管理"><a href="#分类管理" class="headerlink" title="分类管理"></a>分类管理</h4><ol>
@@ -459,40 +493,6 @@
       </categories>
       <tags>
         <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flask-GET与POST</title>
-    <url>/2021/03/12/Flask-GET%E4%B8%8EPOST/</url>
-    <content><![CDATA[<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>get方式提交数据是通过URL地址传递数据</p>
-<p>例: http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
-<p>在服务器端通过request对象接收数据</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#获取username , password</span><br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;username&#x27;</span>)<br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;password&#x27;</span>)<br><br><span class="hljs-comment">#本次提交数据的方式</span><br>request.method<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="网址美化"><a href="#网址美化" class="headerlink" title="网址美化"></a>网址美化</h6><p>1.通过问号传递的网址最方便,但是不美观</p>
-<p>​    例  :    http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
-<p>2.传递参数像path路径一样的网址,更美观,爬虫更喜欢</p>
-<p>​    http:127.0.0.1:5000/xiaobo/123456/</p>
-<p>​    方法 : 制定相关路由</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.rote(<span class="hljs-params"><span class="hljs-string">&quot;/&lt;username&gt;/&lt;password&gt;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>(<span class="hljs-params">username,password</span>):</span><br>    print(username,password)<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="POST-安全"><a href="#POST-安全" class="headerlink" title="POST(安全)"></a>POST(安全)</h4><p>通过 form 表单提交数据</p>
-<p>form表单属性</p>
-<p>​    action:  数据提交到哪个网址</p>
-<p>​    method:  数据提交方式  (get和post)</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-
-<p>post方式提交数据需要在路由配置中添加设置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/login&quot;</span>,methods=[<span class="hljs-string">&quot;get&quot;</span>,<span class="hljs-string">&quot;post&quot;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>():</span><br>	request.form[<span class="hljs-string">&#x27;username&#x27;</span>]<br>    request.values[<span class="hljs-string">&#x27;usename&#x27;</span>]    <span class="hljs-comment">#既可接受get也可接收post</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
@@ -722,19 +722,6 @@
       </tags>
   </entry>
   <entry>
-    <title>http协议</title>
-    <url>/2021/06/04/Linux-http%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<h4 id="http请求头"><a href="#http请求头" class="headerlink" title="http请求头"></a>http请求头</h4><p>http协议是应用层协议-超文本传输协议。<br>http协议用于互联网之间的文件传输，如何请求文件，如何返回文件</p>
-<p>http协议是建立在tcp协议之上的协议<br>http协议是无状态协议，请求应答结束，连接即关闭，下一次的请求与应答重新进行tcp连接</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux-apache服务器</title>
     <url>/2021/04/18/Linux-apache%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
     <content><![CDATA[<h4 id="apache-httpd简介"><a href="#apache-httpd简介" class="headerlink" title="apache httpd简介"></a>apache httpd简介</h4><p>httpd web服务器是apache基金会下的一个开源服务器项目。</p>
@@ -826,55 +813,10 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux-mysql安装</title>
-    <url>/2021/05/01/Linux-mysql%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h3 id="在Linux系统中安装mysql"><a href="#在Linux系统中安装mysql" class="headerlink" title="在Linux系统中安装mysql"></a>在Linux系统中安装mysql</h3><p>下载历史版本5.7.28的版本<br>找到下载地址后右键下载，复制下载链接</p>
-<h6 id="安装wget"><a href="#安装wget" class="headerlink" title="安装wget"></a>安装wget</h6><p>#yum install wget</p>
-<h6 id="用命令下载mysql安装包"><a href="#用命令下载mysql安装包" class="headerlink" title="用命令下载mysql安装包"></a>用命令下载mysql安装包</h6><p>-c 后边是mysql下载链接地址<br>wget -c <a href="https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz">https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</a></p>
-<p>#经过上面的操作，就得到了一个mysql二进制安装包</p>
-<h6 id="安装二进制包"><a href="#安装二进制包" class="headerlink" title="安装二进制包"></a>安装二进制包</h6><p>Step1-解压缩二进制包:</p>
-<p>#tar zxvf mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</p>
-<p>Step2-拷贝到/usr/local/下:</p>
-<p>#cp mysql-5.7.28-linux-glibc2.12-x86_64/usr/local/mysql</p>
-<p>Step3-编辑配置文件:</p>
-<p>#vim /etc/my.cnf</p>
-<p>Step4-创建data目录:</p>
-<p>#mkdir /usr/local/mysql/data</p>
-<p>Step5-创建mysql运行用户组</p>
-<p>#groupadd mysql</p>
-<p>Step6-创建mysql运行用户</p>
-<p>#useradd -g mysql -d /usr/local/mysql -s /sbin/nologin -M mysql</p>
-<p>Step7 -  运行初始化(首先要进入mysql目录)(初始化后记得拷贝下密码)</p>
-<p>#./bin/mysqld –initialize</p>
-<p>Step8-更改/usr/local/mysql属主与属组</p>
-<p>#chown -R mysql:mysql /usr/local/mysql</p>
-<p>Step9-运行服务器:</p>
-<p>#support-files/mysql.server start</p>
-<p>Step10 -加入系统服务:</p>
-<p>#cp support-files/mysql.server /etc/init.d/mysqld</p>
-<p>Step11-开机启动:</p>
-<p>#chkconfig –add mysqld</p>
-<p>登录mysql</p>
-<p>./bin/mysql -u root -h localhost -p</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux-nginx代理配置</title>
-    <url>/2021/05/01/Linux-nginx%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>Nginx代理模式</p>
-<p>正向代理</p>
-<p>比如我们使用的vpn，就是一种代理，通过vpn我们就可以一种特别的通道上网vpn的代理模式是正向代理，代理层是透明的，上网时感觉不到这一层代理</p>
-<p>反向代理</p>
-<p>在反向代理中，客户端只知道代理节点，将请求发给代理节点，由代理节点决定将请求发给哪个服务器节点，代理节点就是访问目标服务器</p>
-<p>nginx作为web服务器使用时，可以看作是一个文件分发服务器</p>
-<p>在反向代理模式下，用户将请求发送到nginx服务器，nginx决定将用户请求转发到节点的某一台服务器节点组成对用户来讲是不透明的，用户只知道nginx服务器的存在</p>
-<p>当nginx代理请求时，它将请求发送到指定的代理服务器，获取响应，并将其发送回客户端。可以使用指定的协议将请求代理到HTTP服务器或非HTTP服务器。<br>1.代理到HTTP服务器使用Proxy协议<br>2.代理到非HTTP服务器支持的协议包括FastCGl，uwsgi，SCGI和memcached。</p>
+    <title>http协议</title>
+    <url>/2021/06/04/Linux-http%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<h4 id="http请求头"><a href="#http请求头" class="headerlink" title="http请求头"></a>http请求头</h4><p>http协议是应用层协议-超文本传输协议。<br>http协议用于互联网之间的文件传输，如何请求文件，如何返回文件</p>
+<p>http协议是建立在tcp协议之上的协议<br>http协议是无状态协议，请求应答结束，连接即关闭，下一次的请求与应答重新进行tcp连接</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -932,6 +874,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux-nginx代理配置</title>
+    <url>/2021/05/01/Linux-nginx%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>Nginx代理模式</p>
+<p>正向代理</p>
+<p>比如我们使用的vpn，就是一种代理，通过vpn我们就可以一种特别的通道上网vpn的代理模式是正向代理，代理层是透明的，上网时感觉不到这一层代理</p>
+<p>反向代理</p>
+<p>在反向代理中，客户端只知道代理节点，将请求发给代理节点，由代理节点决定将请求发给哪个服务器节点，代理节点就是访问目标服务器</p>
+<p>nginx作为web服务器使用时，可以看作是一个文件分发服务器</p>
+<p>在反向代理模式下，用户将请求发送到nginx服务器，nginx决定将用户请求转发到节点的某一台服务器节点组成对用户来讲是不透明的，用户只知道nginx服务器的存在</p>
+<p>当nginx代理请求时，它将请求发送到指定的代理服务器，获取响应，并将其发送回客户端。可以使用指定的协议将请求代理到HTTP服务器或非HTTP服务器。<br>1.代理到HTTP服务器使用Proxy协议<br>2.代理到非HTTP服务器支持的协议包括FastCGl，uwsgi，SCGI和memcached。</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux-socket编程</title>
     <url>/2021/05/02/Linux-socket%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<h4 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h4><p>在实际的TCP/IP应用程序开发中，并不需要去实现细节部分，通常会由系统提供socket接口，这个接口又被称为套接字，基于这个接口就可以轻松的开发网络通讯程序<br>python标准库提供的socket模块，可以实现服务端与客户端的编程</p>
@@ -965,6 +926,56 @@
 
 <h6 id="客户端设置-1"><a href="#客户端设置-1" class="headerlink" title="客户端设置"></a>客户端设置</h6><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">from socket import *<br><br>HOST = <span class="hljs-string">&quot;&quot;</span><br>PORT = <span class="hljs-number">21111</span><br>BUFSIZ = <span class="hljs-number">1024</span><br>ADDR = (HOST, PORT)<br><br><span class="hljs-comment"># 创建一个socket对象</span><br><span class="hljs-comment"># SOCK_DGRAM - 套接字类型为udp数据报</span><br>udpClient = socket(AF_INET, SOCK_DGRAM)<br><br><span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:<br>    <span class="hljs-keyword">message</span> = input(<span class="hljs-string">&quot;请输入:&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">message</span> ==<span class="hljs-string">&quot;quit&quot;</span>:<br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">message</span>:<br>        <span class="hljs-keyword">continue</span><br>    udpClient.sendto(bytes(<span class="hljs-keyword">message</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>), ADDR)<br>    <span class="hljs-keyword">message</span>, addr = udpClient.recvfrom(<span class="hljs-number">1024</span>)<br>    print(addr, <span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-keyword">message</span>.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br>    <br>udpClient.close()<br></code></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux-mysql安装</title>
+    <url>/2021/05/01/Linux-mysql%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h3 id="在Linux系统中安装mysql"><a href="#在Linux系统中安装mysql" class="headerlink" title="在Linux系统中安装mysql"></a>在Linux系统中安装mysql</h3><p>下载历史版本5.7.28的版本<br>找到下载地址后右键下载，复制下载链接</p>
+<h6 id="安装wget"><a href="#安装wget" class="headerlink" title="安装wget"></a>安装wget</h6><p>#yum install wget</p>
+<h6 id="用命令下载mysql安装包"><a href="#用命令下载mysql安装包" class="headerlink" title="用命令下载mysql安装包"></a>用命令下载mysql安装包</h6><p>-c 后边是mysql下载链接地址<br>wget -c <a href="https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz">https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</a></p>
+<p>#经过上面的操作，就得到了一个mysql二进制安装包</p>
+<h6 id="安装二进制包"><a href="#安装二进制包" class="headerlink" title="安装二进制包"></a>安装二进制包</h6><p>Step1-解压缩二进制包:</p>
+<p>#tar zxvf mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz</p>
+<p>Step2-拷贝到/usr/local/下:</p>
+<p>#cp mysql-5.7.28-linux-glibc2.12-x86_64/usr/local/mysql</p>
+<p>Step3-编辑配置文件:</p>
+<p>#vim /etc/my.cnf</p>
+<p>Step4-创建data目录:</p>
+<p>#mkdir /usr/local/mysql/data</p>
+<p>Step5-创建mysql运行用户组</p>
+<p>#groupadd mysql</p>
+<p>Step6-创建mysql运行用户</p>
+<p>#useradd -g mysql -d /usr/local/mysql -s /sbin/nologin -M mysql</p>
+<p>Step7 -  运行初始化(首先要进入mysql目录)(初始化后记得拷贝下密码)</p>
+<p>#./bin/mysqld –initialize</p>
+<p>Step8-更改/usr/local/mysql属主与属组</p>
+<p>#chown -R mysql:mysql /usr/local/mysql</p>
+<p>Step9-运行服务器:</p>
+<p>#support-files/mysql.server start</p>
+<p>Step10 -加入系统服务:</p>
+<p>#cp support-files/mysql.server /etc/init.d/mysqld</p>
+<p>Step11-开机启动:</p>
+<p>#chkconfig –add mysqld</p>
+<p>登录mysql</p>
+<p>./bin/mysql -u root -h localhost -p</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux-tcpip协议</title>
+    <url>/2021/05/02/Linux-tcpip%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>服务器运维</category>
       </categories>
@@ -1025,28 +1036,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux-tcpip协议</title>
-    <url>/2021/05/02/Linux-tcpip%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wsgi协议</title>
-    <url>/2021/06/04/Linux-wsgi%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux-多线程</title>
     <url>/2021/05/31/Linux-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<h4 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程?"></a>什么是进程?</h4><p>我们每运行一个程序，就是创建一个进程。每个进程运行的时候会向系统申请资源:内存空间，cpu时间，进程之间的资源相互独立</p>
@@ -1066,6 +1055,17 @@
 
 <h6 id="如何多客户端链接socket"><a href="#如何多客户端链接socket" class="headerlink" title="如何多客户端链接socket"></a>如何多客户端链接socket</h6><p>中心思想：将客户链接语句加入到循环中，进来一个客户就创建一个线程</p>
 ]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wsgi协议</title>
+    <url>/2021/06/04/Linux-wsgi%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>服务器运维</category>
       </categories>
@@ -1176,6 +1176,37 @@
       </tags>
   </entry>
   <entry>
+    <title>mysql-update与delete语句</title>
+    <url>/2021/04/06/mysql-update%E4%B8%8Edelete%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h6 id="delete语句"><a href="#delete语句" class="headerlink" title="delete语句"></a>delete语句</h6><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">#将符合<span class="hljs-keyword">condition</span>的记录删除<br><br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><br>例：<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users limit <span class="hljs-number">10</span>  	#删除<span class="hljs-number">10</span>条会员记录<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id<span class="hljs-operator">&gt;</span><span class="hljs-number">10</span> <span class="hljs-keyword">and</span> id<span class="hljs-operator">&lt;</span><span class="hljs-number">15</span>		#删除id为<span class="hljs-number">10</span><span class="hljs-operator">~</span><span class="hljs-number">15</span>的记录<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update语句"><a href="#update语句" class="headerlink" title="update语句"></a>update语句</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#update用于更新数据表的记录</span><br><br>update table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=new_val1,field2=new_val2 where condition<br><br>例：将<span class="hljs-attribute">ID</span>=3的会员名改为笑哈哈，性别改为女。<br>update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">username</span>=<span class="hljs-string">&quot;笑哈哈&quot;</span>，sex=&quot;女&quot; where <span class="hljs-attribute">user_id</span>=3<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="delete-–-mysql实例"><a href="#delete-–-mysql实例" class="headerlink" title="delete – mysql实例"></a>delete – mysql实例</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.<span class="hljs-keyword">connect</span>(<span class="hljs-keyword">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        <span class="hljs-keyword">password</span>=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        <span class="hljs-keyword">database</span>=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br><span class="hljs-keyword">cursor</span> = cnx.<span class="hljs-keyword">cursor</span>()<br><br><span class="hljs-keyword">sql</span> = &quot;delete from users where realname like &#x27;%啦%&#x27;&quot;<br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">execute</span>(<span class="hljs-keyword">sql</span>)<br>cnx.<span class="hljs-keyword">commit</span>()        #这句不能少<br>res = <span class="hljs-keyword">cursor</span>.rowcount<br>print(res)<br><br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">close</span>()<br>cnx.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="delete-–-sqlalcheny实例"><a href="#delete-–-sqlalcheny实例" class="headerlink" title="delete – sqlalcheny实例"></a>delete – sqlalcheny实例</h6><figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># 需要安装SQLAlchemy，pymysql模块</span><br><br><span class="hljs-title">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine, Column, Integer, String, Enum<br><span class="hljs-title">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker<br><span class="hljs-title">from</span> sqlalchemy.ext.declarative <span class="hljs-keyword">import</span> declarative_base<br><br><span class="hljs-meta"># 创建数据库引擎</span><br><span class="hljs-title">engine</span> = create_engine(<span class="hljs-string">&quot;mysql+pymysql://root:tbz1548638666@localhost/mydb&quot;</span>)<br><br><span class="hljs-meta">#创建会话对象，根据不同数据库引擎创建对应的会话对象</span><br><span class="hljs-type">Session</span> = sessionmaker(bind=engine)<br><br><span class="hljs-meta">#创建会话对象实例</span><br><span class="hljs-title">session</span> = <span class="hljs-type">Session</span>()<br><br><span class="hljs-meta">#Base为映射基类</span><br><span class="hljs-type">Base</span> = declarative_base()<br><br><span class="hljs-meta">#数据表模型</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Users</span>(<span class="hljs-type">Base</span>):</span><br><span class="hljs-class">    __tablename__ = &quot;users&quot;</span><br><span class="hljs-class">    user_id = <span class="hljs-type">Column</span>(<span class="hljs-type">Integer</span>, <span class="hljs-title">primary_key</span>=<span class="hljs-type">True</span>)</span><br><span class="hljs-class">    username = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    realname = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    password = <span class="hljs-type">Column</span>(<span class="hljs-type">String(64)</span>)</span><br><span class="hljs-class"></span><br><span class="hljs-class"></span><br><span class="hljs-class">#以上都是准备</span><br><span class="hljs-class">#下面才是重点，删除的重点</span><br><span class="hljs-class"></span><br><span class="hljs-class">#获取用户</span><br><span class="hljs-class">def getUsers():</span><br><span class="hljs-class">	objs = session.query(<span class="hljs-type">Users</span>).filter(<span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &gt;= 2, <span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &lt;= 8).all()</span><br><span class="hljs-class">	return objs</span><br><span class="hljs-class"></span><br><span class="hljs-class">#删除得到的数据中的第一条</span><br><span class="hljs-class">session.delete(<span class="hljs-title">getUsers</span>()[0])</span><br><span class="hljs-class">session.commit()</span><br><span class="hljs-class"></span><br><span class="hljs-class">#修改数据</span><br><span class="hljs-class">#getUsers()[0].username=&quot;欢天喜地一家人&quot;	#修改第一条数据，getUsers()[0] 是一个对象，修改前先找到对象</span><br><span class="hljs-class">#session.commit()</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update-mysql-实例"><a href="#update-mysql-实例" class="headerlink" title="update - mysql 实例"></a>update - mysql 实例</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br><span class="hljs-comment">#查询函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUser</span>(<span class="hljs-params">user_id</span>):</span><br>    <span class="hljs-comment"># user_id = user_id</span><br>    sql = (<span class="hljs-string">&quot;select * from users where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id))<br>    cursor.execute(sql)<br>    res = cursor.fetchone()<br>    print(res)<br><br><span class="hljs-comment">#修改函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">updateUser</span>(<span class="hljs-params">user_id</span>):</span><br>    sql1 = <span class="hljs-string">&quot;update users set sex=&#x27;女&#x27; where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id)<br>    <span class="hljs-keyword">try</span>:<br>        cursor.execute(sql1)<br>        cnx.commit()<br>        print(<span class="hljs-string">&quot;修改成功&quot;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        cnx.rollback()<br>        print(<span class="hljs-string">&quot;修改失败:&quot;</span>,e)<br><br><br>userid = <span class="hljs-number">2</span>			<span class="hljs-comment">#修改id为2的用户信息</span><br>getUser(userid) 	<span class="hljs-comment">#修改前</span><br>updateUser(userid)	<span class="hljs-comment">#修改</span><br>getUser(userid)		<span class="hljs-comment">#修改后</span><br><br><span class="hljs-comment">#关闭连接资源</span><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update-sqlalchemy实例"><a href="#update-sqlalchemy实例" class="headerlink" title="update - sqlalchemy实例"></a>update - sqlalchemy实例</h6><p>在delete – sqlalcheny实例的最后</p>
+<h6 id="锁的概念（行锁）"><a href="#锁的概念（行锁）" class="headerlink" title="锁的概念（行锁）"></a>锁的概念（行锁）</h6><p>通常情况下，update的时候，innodb引擎会给这一行加锁，mysql会自动加锁</p>
+<p>例：当多人同时修改一个数据时，如何只保留第一个人修改的内容</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">age</span>=10 where <span class="hljs-attribute">user_id</span>=2 <span class="hljs-keyword">and</span> age is <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
+<p>当age为空时可以修改，当age不为空时，不可修改，这个方法可以用作抽奖。</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/02/12/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -1190,6 +1221,61 @@
 ]]></content>
       <tags>
         <tag>hello world</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql-插入语句insert与SQLAlchemy原理</title>
+    <url>/2021/04/04/mysql-%E6%8F%92%E5%85%A5%E8%AF%AD%E5%8F%A5insert%E4%B8%8ESQLAlchemy%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h6 id="插入语句（DML）"><a href="#插入语句（DML）" class="headerlink" title="插入语句（DML）"></a>插入语句（DML）</h6><ol>
+<li><p>第一种写法</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> (field1,field2,field3 ......)<br><span class="hljs-keyword">values</span>(val1,val2,val3 .....)<br><br>注：<span class="hljs-keyword">table</span>是表名，field是字段名，<span class="hljs-keyword">values</span>是值，插入值的时候字符串要加引号<br>不用列出所有字段，只需要列出需要赋值的字段，赋上相应的值就行，没有列出的字段使用默认值<br></code></pre></td></tr></table></figure></li>
+<li><p>第二种写法</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span><br><span class="hljs-keyword">values</span> (val1,val2,val3 ......)<br><br>注：值与字段数量必须匹配，且一一对应。<br></code></pre></td></tr></table></figure></li>
+<li><p>第三种写法</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">insert into table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=val1 , <span class="hljs-attribute">field2</span>=val2 <span class="hljs-built_in">..</span>.<br><br>注：字段名与值一一对应写出来，不容易写错，明了。<br></code></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h6 id="mysql连接服务器"><a href="#mysql连接服务器" class="headerlink" title="mysql连接服务器"></a>mysql连接服务器</h6><p>安装连接器</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> mysql-connector-python<br></code></pre></td></tr></table></figure>
+<p>通过mysql驱动连接数据库</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector		<span class="hljs-comment">#导入模块</span><br><br><span class="hljs-comment">#连接数据库,其中user，passWord，host，database分别代表的是数据库的用户名，密码，IP，数据库名。</span><br>cnx = mysql.connector.connector(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                               password=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>                               host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                               database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>创建游标对象cursor</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor = cnx.cursor()<br><br><span class="hljs-comment">#通过cursor对象执行SQL语句</span><br><span class="hljs-comment">#比如： </span><br>cursor.execute()		<span class="hljs-comment">#执行sql语句</span><br>cursor.fetchall()		<span class="hljs-comment">#执行查询</span><br><br>cnx.commit()			<span class="hljs-comment">#事务提交</span><br>cnx.rollback()			<span class="hljs-comment">#事务回滚</span><br><br>cursor.close()			<span class="hljs-comment">#关闭游标，重置所有结果</span><br><br>cnx.close()				<span class="hljs-comment">#释放连接资源</span><br></code></pre></td></tr></table></figure>
+<p>事务</p>
+<p>事务通常是需要执行一组sql语句</p>
+<p>innodb是一个事务型的存储引擎</p>
+<p>事务特性（ACID）</p>
+<p>A ：atomicity  – 原子性，操作不可分割</p>
+<p>C ：consistency   – 一致性，操作前后数据的完整性保持一致</p>
+<p>I：isolation  – 隔离性，不同事务之间不影响</p>
+<p>D：durability  – 持久性，事务执行后，对数据的更改是永久保存的</p>
+<h6 id="python创建数据表"><a href="#python创建数据表" class="headerlink" title="python创建数据表"></a>python创建数据表</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                                password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                                host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                                database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br>sql = <span class="hljs-string">&quot;create table books(&quot;</span>\<br>      <span class="hljs-string">&quot;`book_id` int not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_name` char(25) not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_autor` char(25) not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_pubdate` datetime not null,&quot;</span>\<br>      <span class="hljs-string">&quot;primary key (`book_id`) )&quot;</span><br><span class="hljs-keyword">try</span>:<br>    cursor.execute(sql)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    print(sql)<br>    print(e)<br><span class="hljs-keyword">else</span>:<br>    print(<span class="hljs-string">&quot;数据表创建成功&quot;</span>)<br><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="执行插入"><a href="#执行插入" class="headerlink" title="执行插入"></a>执行插入</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.conmector <span class="hljs-keyword">as</span> connector<br>sql = <span class="hljs-string">&quot;INSERT INTO</span><br><span class="hljs-string">`mydb`.`users`&quot;</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql-三大范式</title>
+    <url>/2021/04/09/mysql-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/</url>
+    <content><![CDATA[<h6 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h6><p>在关系模型中，对数据列的一个规范要求，所有的列都应该是原子性的，即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组，记录等非原子数据项。即实体中的某个属性有多个值时，必须拆分为不同的属性。在符合第一范式(1NF）表中的每个域值只能是实体的一个属性或一个属性的一部分。</p>
+<p><strong>简而言之，第一范式就是无重复的列。</strong></p>
+<h6 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h6><p>满足第二范式(2NF）必须先满足第一范式(1NF)。第二范式(2NF）要求数据库表中的每个实例或记录必须可以被唯一的区分,即每一行代表一个不同的实体。</p>
+<h6 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h6><p>第三范式(3NF）是第二范式(2NF)的一个子集，即满足第三范式(3NF）必须满足第二范式(2NF)。简而言之，第三范式(3NF）要求一个关系中不包含已在其它关系已包含的非主关键字信息</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1250,92 +1336,6 @@
 ]]></content>
       <tags>
         <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mysql-update与delete语句</title>
-    <url>/2021/04/06/mysql-update%E4%B8%8Edelete%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h6 id="delete语句"><a href="#delete语句" class="headerlink" title="delete语句"></a>delete语句</h6><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">#将符合<span class="hljs-keyword">condition</span>的记录删除<br><br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><br>例：<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users limit <span class="hljs-number">10</span>  	#删除<span class="hljs-number">10</span>条会员记录<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id<span class="hljs-operator">&gt;</span><span class="hljs-number">10</span> <span class="hljs-keyword">and</span> id<span class="hljs-operator">&lt;</span><span class="hljs-number">15</span>		#删除id为<span class="hljs-number">10</span><span class="hljs-operator">~</span><span class="hljs-number">15</span>的记录<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="update语句"><a href="#update语句" class="headerlink" title="update语句"></a>update语句</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#update用于更新数据表的记录</span><br><br>update table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=new_val1,field2=new_val2 where condition<br><br>例：将<span class="hljs-attribute">ID</span>=3的会员名改为笑哈哈，性别改为女。<br>update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">username</span>=<span class="hljs-string">&quot;笑哈哈&quot;</span>，sex=&quot;女&quot; where <span class="hljs-attribute">user_id</span>=3<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="delete-–-mysql实例"><a href="#delete-–-mysql实例" class="headerlink" title="delete – mysql实例"></a>delete – mysql实例</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.<span class="hljs-keyword">connect</span>(<span class="hljs-keyword">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        <span class="hljs-keyword">password</span>=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        <span class="hljs-keyword">database</span>=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br><span class="hljs-keyword">cursor</span> = cnx.<span class="hljs-keyword">cursor</span>()<br><br><span class="hljs-keyword">sql</span> = &quot;delete from users where realname like &#x27;%啦%&#x27;&quot;<br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">execute</span>(<span class="hljs-keyword">sql</span>)<br>cnx.<span class="hljs-keyword">commit</span>()        #这句不能少<br>res = <span class="hljs-keyword">cursor</span>.rowcount<br>print(res)<br><br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">close</span>()<br>cnx.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="delete-–-sqlalcheny实例"><a href="#delete-–-sqlalcheny实例" class="headerlink" title="delete – sqlalcheny实例"></a>delete – sqlalcheny实例</h6><figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># 需要安装SQLAlchemy，pymysql模块</span><br><br><span class="hljs-title">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine, Column, Integer, String, Enum<br><span class="hljs-title">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker<br><span class="hljs-title">from</span> sqlalchemy.ext.declarative <span class="hljs-keyword">import</span> declarative_base<br><br><span class="hljs-meta"># 创建数据库引擎</span><br><span class="hljs-title">engine</span> = create_engine(<span class="hljs-string">&quot;mysql+pymysql://root:tbz1548638666@localhost/mydb&quot;</span>)<br><br><span class="hljs-meta">#创建会话对象，根据不同数据库引擎创建对应的会话对象</span><br><span class="hljs-type">Session</span> = sessionmaker(bind=engine)<br><br><span class="hljs-meta">#创建会话对象实例</span><br><span class="hljs-title">session</span> = <span class="hljs-type">Session</span>()<br><br><span class="hljs-meta">#Base为映射基类</span><br><span class="hljs-type">Base</span> = declarative_base()<br><br><span class="hljs-meta">#数据表模型</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Users</span>(<span class="hljs-type">Base</span>):</span><br><span class="hljs-class">    __tablename__ = &quot;users&quot;</span><br><span class="hljs-class">    user_id = <span class="hljs-type">Column</span>(<span class="hljs-type">Integer</span>, <span class="hljs-title">primary_key</span>=<span class="hljs-type">True</span>)</span><br><span class="hljs-class">    username = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    realname = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    password = <span class="hljs-type">Column</span>(<span class="hljs-type">String(64)</span>)</span><br><span class="hljs-class"></span><br><span class="hljs-class"></span><br><span class="hljs-class">#以上都是准备</span><br><span class="hljs-class">#下面才是重点，删除的重点</span><br><span class="hljs-class"></span><br><span class="hljs-class">#获取用户</span><br><span class="hljs-class">def getUsers():</span><br><span class="hljs-class">	objs = session.query(<span class="hljs-type">Users</span>).filter(<span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &gt;= 2, <span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &lt;= 8).all()</span><br><span class="hljs-class">	return objs</span><br><span class="hljs-class"></span><br><span class="hljs-class">#删除得到的数据中的第一条</span><br><span class="hljs-class">session.delete(<span class="hljs-title">getUsers</span>()[0])</span><br><span class="hljs-class">session.commit()</span><br><span class="hljs-class"></span><br><span class="hljs-class">#修改数据</span><br><span class="hljs-class">#getUsers()[0].username=&quot;欢天喜地一家人&quot;	#修改第一条数据，getUsers()[0] 是一个对象，修改前先找到对象</span><br><span class="hljs-class">#session.commit()</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="update-mysql-实例"><a href="#update-mysql-实例" class="headerlink" title="update - mysql 实例"></a>update - mysql 实例</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br><span class="hljs-comment">#查询函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUser</span>(<span class="hljs-params">user_id</span>):</span><br>    <span class="hljs-comment"># user_id = user_id</span><br>    sql = (<span class="hljs-string">&quot;select * from users where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id))<br>    cursor.execute(sql)<br>    res = cursor.fetchone()<br>    print(res)<br><br><span class="hljs-comment">#修改函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">updateUser</span>(<span class="hljs-params">user_id</span>):</span><br>    sql1 = <span class="hljs-string">&quot;update users set sex=&#x27;女&#x27; where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id)<br>    <span class="hljs-keyword">try</span>:<br>        cursor.execute(sql1)<br>        cnx.commit()<br>        print(<span class="hljs-string">&quot;修改成功&quot;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        cnx.rollback()<br>        print(<span class="hljs-string">&quot;修改失败:&quot;</span>,e)<br><br><br>userid = <span class="hljs-number">2</span>			<span class="hljs-comment">#修改id为2的用户信息</span><br>getUser(userid) 	<span class="hljs-comment">#修改前</span><br>updateUser(userid)	<span class="hljs-comment">#修改</span><br>getUser(userid)		<span class="hljs-comment">#修改后</span><br><br><span class="hljs-comment">#关闭连接资源</span><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="update-sqlalchemy实例"><a href="#update-sqlalchemy实例" class="headerlink" title="update - sqlalchemy实例"></a>update - sqlalchemy实例</h6><p>在delete – sqlalcheny实例的最后</p>
-<h6 id="锁的概念（行锁）"><a href="#锁的概念（行锁）" class="headerlink" title="锁的概念（行锁）"></a>锁的概念（行锁）</h6><p>通常情况下，update的时候，innodb引擎会给这一行加锁，mysql会自动加锁</p>
-<p>例：当多人同时修改一个数据时，如何只保留第一个人修改的内容</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">age</span>=10 where <span class="hljs-attribute">user_id</span>=2 <span class="hljs-keyword">and</span> age is <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
-<p>当age为空时可以修改，当age不为空时，不可修改，这个方法可以用作抽奖。</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mysql-三大范式</title>
-    <url>/2021/04/09/mysql-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/</url>
-    <content><![CDATA[<h6 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h6><p>在关系模型中，对数据列的一个规范要求，所有的列都应该是原子性的，即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组，记录等非原子数据项。即实体中的某个属性有多个值时，必须拆分为不同的属性。在符合第一范式(1NF）表中的每个域值只能是实体的一个属性或一个属性的一部分。</p>
-<p><strong>简而言之，第一范式就是无重复的列。</strong></p>
-<h6 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h6><p>满足第二范式(2NF）必须先满足第一范式(1NF)。第二范式(2NF）要求数据库表中的每个实例或记录必须可以被唯一的区分,即每一行代表一个不同的实体。</p>
-<h6 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h6><p>第三范式(3NF）是第二范式(2NF)的一个子集，即满足第三范式(3NF）必须满足第二范式(2NF)。简而言之，第三范式(3NF）要求一个关系中不包含已在其它关系已包含的非主关键字信息</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mysql-插入语句insert与SQLAlchemy原理</title>
-    <url>/2021/04/04/mysql-%E6%8F%92%E5%85%A5%E8%AF%AD%E5%8F%A5insert%E4%B8%8ESQLAlchemy%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h6 id="插入语句（DML）"><a href="#插入语句（DML）" class="headerlink" title="插入语句（DML）"></a>插入语句（DML）</h6><ol>
-<li><p>第一种写法</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> (field1,field2,field3 ......)<br><span class="hljs-keyword">values</span>(val1,val2,val3 .....)<br><br>注：<span class="hljs-keyword">table</span>是表名，field是字段名，<span class="hljs-keyword">values</span>是值，插入值的时候字符串要加引号<br>不用列出所有字段，只需要列出需要赋值的字段，赋上相应的值就行，没有列出的字段使用默认值<br></code></pre></td></tr></table></figure></li>
-<li><p>第二种写法</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span><br><span class="hljs-keyword">values</span> (val1,val2,val3 ......)<br><br>注：值与字段数量必须匹配，且一一对应。<br></code></pre></td></tr></table></figure></li>
-<li><p>第三种写法</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">insert into table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=val1 , <span class="hljs-attribute">field2</span>=val2 <span class="hljs-built_in">..</span>.<br><br>注：字段名与值一一对应写出来，不容易写错，明了。<br></code></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h6 id="mysql连接服务器"><a href="#mysql连接服务器" class="headerlink" title="mysql连接服务器"></a>mysql连接服务器</h6><p>安装连接器</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> mysql-connector-python<br></code></pre></td></tr></table></figure>
-<p>通过mysql驱动连接数据库</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector		<span class="hljs-comment">#导入模块</span><br><br><span class="hljs-comment">#连接数据库,其中user，passWord，host，database分别代表的是数据库的用户名，密码，IP，数据库名。</span><br>cnx = mysql.connector.connector(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                               password=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>                               host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                               database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br></code></pre></td></tr></table></figure>
-<p>创建游标对象cursor</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor = cnx.cursor()<br><br><span class="hljs-comment">#通过cursor对象执行SQL语句</span><br><span class="hljs-comment">#比如： </span><br>cursor.execute()		<span class="hljs-comment">#执行sql语句</span><br>cursor.fetchall()		<span class="hljs-comment">#执行查询</span><br><br>cnx.commit()			<span class="hljs-comment">#事务提交</span><br>cnx.rollback()			<span class="hljs-comment">#事务回滚</span><br><br>cursor.close()			<span class="hljs-comment">#关闭游标，重置所有结果</span><br><br>cnx.close()				<span class="hljs-comment">#释放连接资源</span><br></code></pre></td></tr></table></figure>
-<p>事务</p>
-<p>事务通常是需要执行一组sql语句</p>
-<p>innodb是一个事务型的存储引擎</p>
-<p>事务特性（ACID）</p>
-<p>A ：atomicity  – 原子性，操作不可分割</p>
-<p>C ：consistency   – 一致性，操作前后数据的完整性保持一致</p>
-<p>I：isolation  – 隔离性，不同事务之间不影响</p>
-<p>D：durability  – 持久性，事务执行后，对数据的更改是永久保存的</p>
-<h6 id="python创建数据表"><a href="#python创建数据表" class="headerlink" title="python创建数据表"></a>python创建数据表</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                                password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                                host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                                database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br>sql = <span class="hljs-string">&quot;create table books(&quot;</span>\<br>      <span class="hljs-string">&quot;`book_id` int not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_name` char(25) not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_autor` char(25) not null,&quot;</span>\<br>      <span class="hljs-string">&quot;`book_pubdate` datetime not null,&quot;</span>\<br>      <span class="hljs-string">&quot;primary key (`book_id`) )&quot;</span><br><span class="hljs-keyword">try</span>:<br>    cursor.execute(sql)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    print(sql)<br>    print(e)<br><span class="hljs-keyword">else</span>:<br>    print(<span class="hljs-string">&quot;数据表创建成功&quot;</span>)<br><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="执行插入"><a href="#执行插入" class="headerlink" title="执行插入"></a>执行插入</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.conmector <span class="hljs-keyword">as</span> connector<br>sql = <span class="hljs-string">&quot;INSERT INTO</span><br><span class="hljs-string">`mydb`.`users`&quot;</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1525,54 +1525,6 @@
       </tags>
   </entry>
   <entry>
-    <title>mysql安装与入门</title>
-    <url>/2021/03/31/mysql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<p>MySQL与MariaDB可以互相替代，有一些兼容性问题</p>
-<h3 id="MySQL下载与安装（windows）"><a href="#MySQL下载与安装（windows）" class="headerlink" title="MySQL下载与安装（windows）"></a>MySQL下载与安装（windows）</h3><ol>
-<li>打开<a href="http://www.mysql.com网页,进行下载相关版本,选择zip/">www.mysql.com网页，进行下载相关版本,选择ZIP</a> Archive下载</li>
-<li>将下载好的文件解压缩</li>
-<li>打开文件夹bin目录，其中MySQL.exe 是 运行MySQL客户端，mysqld.exe是 运行mysql服务器</li>
-</ol>
-<p>运行mysql</p>
-<ol>
-<li><p>初始化数据库date目录</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">打开cmd进入到bin目录执行以下命令<br>initialize是初始化，<span class="hljs-built_in">console</span>是显示输出，用于查看初始密码（这两个不能少）<br><br>mysqld.exe --initialize --<span class="hljs-built_in">console</span><br><br>得到root@localhost:后面跟的密码（记住这个密码）<br></code></pre></td></tr></table></figure></li>
-<li><p>运行服务器</p>
-<figure class="highlight ada"><table><tr><td class="code"><pre><code class="hljs ada">mysqld.exe <span class="hljs-comment">--console</span><br></code></pre></td></tr></table></figure></li>
-<li><p>连接mysql服务器</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">mysql<span class="hljs-selector-class">.exe</span> -u root -<span class="hljs-selector-tag">p</span><br></code></pre></td></tr></table></figure>
-<p>然后输入上面的密码，显示mysql &gt;就连接成功了</p>
-<p>修改密码：在mysql&gt;后边输入：alter user user() identified by ‘123456’;  #123456就是密码</p>
-</li>
-<li><p>将mysql安装成服务（在bin目录下执行以下命令）（必须在管理员身份运行cmd）</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">mysqld.exe <span class="hljs-keyword">install</span>			<span class="hljs-comment">#安装服务</span><br><br>mysqld.exe --<span class="hljs-keyword">remove</span> mysql	<span class="hljs-comment">#卸载服务（需要卸载时运行它）</span><br></code></pre></td></tr></table></figure>
-
-
-<p>   在windows开始处搜索 服务 ，打开服务，找到mysql点击以下，选择启动服务。</p>
-</li>
-<li><p>配置文件</p>
-<p>在mysql安装目录下创建my.ini文件，内容如下</p>
-<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[client]</span><br><span class="hljs-attr">port</span>=<span class="hljs-number">3306</span><br><span class="hljs-attr">default-character-set</span>=utf8<br><br><span class="hljs-section">[mysqld]</span><br><br><span class="hljs-comment">#设置自己mysql的安装目录</span><br><span class="hljs-comment">#basedir=D:\mysql-5.7.28-winx64</span><br><span class="hljs-attr">basedir</span>=C:\Users\<span class="hljs-number">15486</span>\c-exe\mysql\mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">28</span>-winx64<br><br><span class="hljs-comment">#设置为mysql的数据目录（date就是数据目录）</span><br><span class="hljs-comment">#datadir=D:\mysql-5.7.28-winx64\data</span><br><span class="hljs-attr">datadir</span>=C:\Users\<span class="hljs-number">15486</span>\c-exe\mysql\mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">28</span>-winx64\data<br><br><span class="hljs-attr">port</span>=<span class="hljs-number">3306</span><br><span class="hljs-attr">character_set_server</span>=utf8<br><br><span class="hljs-comment">#服务器接收的数据包大小限制</span><br><span class="hljs-attr">max_allowed_packet</span>=<span class="hljs-number">8</span>M<br></code></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h3 id="sql语句入门"><a href="#sql语句入门" class="headerlink" title="sql语句入门"></a>sql语句入门</h3><h6 id="SQL组成–DDL"><a href="#SQL组成–DDL" class="headerlink" title="SQL组成–DDL"></a>SQL组成–DDL</h6><p>​    数据定义语言，通过这些语句来创建数据库，数据表，字段，主键，索引等等，包含：create、drop、alter等</p>
-<figure class="highlight gauss"><table><tr><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">create</span> database dbname；		<span class="hljs-meta">#创建数据库，dbname为数据库名</span><br><span class="hljs-keyword">show</span> databases；				<span class="hljs-meta">#查看有哪些数据库</span><br><span class="hljs-keyword">use</span> dbname；					<span class="hljs-meta">#选择数据库</span><br><span class="hljs-keyword">show</span> tables；				<span class="hljs-meta">#查看数据表</span><br><span class="hljs-keyword">show</span> fields from users;		<span class="hljs-meta">#查看数据表明细（users是数据表名）</span><br><span class="hljs-built_in">drop</span> database dbname；		<span class="hljs-meta">#删除数据库</span><br><br><br><br>tips：每个语句后面记得加封号（；），不然会报错<br></code></pre></td></tr></table></figure>
-
-<h6 id="SQL组成–DML"><a href="#SQL组成–DML" class="headerlink" title="SQL组成–DML"></a>SQL组成–DML</h6><p>​    数据库操作语言，通过这些语句来插入，更新，删除数据，包含： insert、update、delete等</p>
-<h6 id="SQL组成–DQL"><a href="#SQL组成–DQL" class="headerlink" title="SQL组成–DQL"></a>SQL组成–DQL</h6><p>​    数据库查询语言，通过这些语句检索数据，包含： select、order by、group by等</p>
-<h6 id="SQL组成–DCL"><a href="#SQL组成–DCL" class="headerlink" title="SQL组成–DCL"></a>SQL组成–DCL</h6><p>​    数据库控制语言，通过这些语句控制数据访问权限，包含：grant等</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mysql创建数据表</title>
     <url>/2021/04/01/mysql%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8/</url>
     <content><![CDATA[<h6 id="存储引擎（mysql）"><a href="#存储引擎（mysql）" class="headerlink" title="存储引擎（mysql）"></a>存储引擎（mysql）</h6><ul>
@@ -1669,35 +1621,51 @@
       </tags>
   </entry>
   <entry>
-    <title>web性能优化-redis</title>
-    <url>/2021/06/23/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-redis/</url>
-    <content><![CDATA[<h4 id="redis特点"><a href="#redis特点" class="headerlink" title="redis特点"></a>redis特点</h4><p>redis是一款应用非常广泛的NoSQL数据库，redis的值可以支持多种数据类型，而且可以将内存中的数据保存到硬盘，另外redis以单线程方式运行，可以避免多线程带来的问题。redis除了基本的数据存取之外，还提供发布-订阅模式、GEO等功能。<br>redis应用场景(频繁读取写入):<br>1.缓存</p>
-<p>2.排行榜</p>
-<p>3.计数器</p>
-<p>4.session</p>
-<p>5.购物车</p>
-<p>6.消息队列</p>
-<h4 id="linux安装Redis"><a href="#linux安装Redis" class="headerlink" title="linux安装Redis"></a>linux安装Redis</h4><p>下载:<br>redis官方网站:redis.io<br>redis下载页:<a href="https://redis.io/download%E4%B8%8B%E8%BD%BD%E7%9B%B8%E5%BA%94%E7%9A%84%E7%89%88%E6%9C%AC">https://redis.io/download下载相应的版本</a><br>安装:<br>1.解压缩安装包，并进入该目录</p>
-<p>2.执行make编译指令</p>
-<p>3.执行make install 安装指令</p>
-<p>4.在/usr/local/bin/目录下会生成redis-benchmark、redis-check-aof、redis-check-rdb、redis-cli、redis-sentinel、redis-server几个程序文件</p>
-<p>将redis.conf拷贝到/etc/redis/conf/redis.conf配置内容:<br>1.bind -ip，如果绑定为127.0.0.1，只能被本机访问，改成0.0.0.0可以被其他机器访问</p>
-<p>2.port-端口，默认6379</p>
-<p>3.daemonize -是否以后台守护进程方式运行，默认no</p>
-<p>4.pidfile - pid文件</p>
-<p>5.logfile -日志文件</p>
-<p>6.save 900 1-每隔900秒，如果发生一次更新，就保存到磁盘</p>
-<p>7.dir -工作目录</p>
-<p>通过配置文件启动<br>redis-server /etc/redis/conf/redis.conf</p>
-<p>运行redis-cli进入redis客户端:</p>
-<h4 id="python中使用redis模块"><a href="#python中使用redis模块" class="headerlink" title="python中使用redis模块"></a>python中使用redis模块</h4><p>pipenv install redis<br>from redis import StrictRedis<br>redis = StrictRedis(host=”192.168.3.111”)</p>
-<p>redis对象的方法名与redis_cli命令名是一样的</p>
+    <title>mysql安装与入门</title>
+    <url>/2021/03/31/mysql%E5%AE%89%E8%A3%85%E4%B8%8E%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<p>MySQL与MariaDB可以互相替代，有一些兼容性问题</p>
+<h3 id="MySQL下载与安装（windows）"><a href="#MySQL下载与安装（windows）" class="headerlink" title="MySQL下载与安装（windows）"></a>MySQL下载与安装（windows）</h3><ol>
+<li>打开<a href="http://www.mysql.com网页,进行下载相关版本,选择zip/">www.mysql.com网页，进行下载相关版本,选择ZIP</a> Archive下载</li>
+<li>将下载好的文件解压缩</li>
+<li>打开文件夹bin目录，其中MySQL.exe 是 运行MySQL客户端，mysqld.exe是 运行mysql服务器</li>
+</ol>
+<p>运行mysql</p>
+<ol>
+<li><p>初始化数据库date目录</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">打开cmd进入到bin目录执行以下命令<br>initialize是初始化，<span class="hljs-built_in">console</span>是显示输出，用于查看初始密码（这两个不能少）<br><br>mysqld.exe --initialize --<span class="hljs-built_in">console</span><br><br>得到root@localhost:后面跟的密码（记住这个密码）<br></code></pre></td></tr></table></figure></li>
+<li><p>运行服务器</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><code class="hljs ada">mysqld.exe <span class="hljs-comment">--console</span><br></code></pre></td></tr></table></figure></li>
+<li><p>连接mysql服务器</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">mysql<span class="hljs-selector-class">.exe</span> -u root -<span class="hljs-selector-tag">p</span><br></code></pre></td></tr></table></figure>
+<p>然后输入上面的密码，显示mysql &gt;就连接成功了</p>
+<p>修改密码：在mysql&gt;后边输入：alter user user() identified by ‘123456’;  #123456就是密码</p>
+</li>
+<li><p>将mysql安装成服务（在bin目录下执行以下命令）（必须在管理员身份运行cmd）</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">mysqld.exe <span class="hljs-keyword">install</span>			<span class="hljs-comment">#安装服务</span><br><br>mysqld.exe --<span class="hljs-keyword">remove</span> mysql	<span class="hljs-comment">#卸载服务（需要卸载时运行它）</span><br></code></pre></td></tr></table></figure>
+
+
+<p>   在windows开始处搜索 服务 ，打开服务，找到mysql点击以下，选择启动服务。</p>
+</li>
+<li><p>配置文件</p>
+<p>在mysql安装目录下创建my.ini文件，内容如下</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[client]</span><br><span class="hljs-attr">port</span>=<span class="hljs-number">3306</span><br><span class="hljs-attr">default-character-set</span>=utf8<br><br><span class="hljs-section">[mysqld]</span><br><br><span class="hljs-comment">#设置自己mysql的安装目录</span><br><span class="hljs-comment">#basedir=D:\mysql-5.7.28-winx64</span><br><span class="hljs-attr">basedir</span>=C:\Users\<span class="hljs-number">15486</span>\c-exe\mysql\mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">28</span>-winx64<br><br><span class="hljs-comment">#设置为mysql的数据目录（date就是数据目录）</span><br><span class="hljs-comment">#datadir=D:\mysql-5.7.28-winx64\data</span><br><span class="hljs-attr">datadir</span>=C:\Users\<span class="hljs-number">15486</span>\c-exe\mysql\mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">28</span>-winx64\data<br><br><span class="hljs-attr">port</span>=<span class="hljs-number">3306</span><br><span class="hljs-attr">character_set_server</span>=utf8<br><br><span class="hljs-comment">#服务器接收的数据包大小限制</span><br><span class="hljs-attr">max_allowed_packet</span>=<span class="hljs-number">8</span>M<br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="sql语句入门"><a href="#sql语句入门" class="headerlink" title="sql语句入门"></a>sql语句入门</h3><h6 id="SQL组成–DDL"><a href="#SQL组成–DDL" class="headerlink" title="SQL组成–DDL"></a>SQL组成–DDL</h6><p>​    数据定义语言，通过这些语句来创建数据库，数据表，字段，主键，索引等等，包含：create、drop、alter等</p>
+<figure class="highlight gauss"><table><tr><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">create</span> database dbname；		<span class="hljs-meta">#创建数据库，dbname为数据库名</span><br><span class="hljs-keyword">show</span> databases；				<span class="hljs-meta">#查看有哪些数据库</span><br><span class="hljs-keyword">use</span> dbname；					<span class="hljs-meta">#选择数据库</span><br><span class="hljs-keyword">show</span> tables；				<span class="hljs-meta">#查看数据表</span><br><span class="hljs-keyword">show</span> fields from users;		<span class="hljs-meta">#查看数据表明细（users是数据表名）</span><br><span class="hljs-built_in">drop</span> database dbname；		<span class="hljs-meta">#删除数据库</span><br><br><br><br>tips：每个语句后面记得加封号（；），不然会报错<br></code></pre></td></tr></table></figure>
+
+<h6 id="SQL组成–DML"><a href="#SQL组成–DML" class="headerlink" title="SQL组成–DML"></a>SQL组成–DML</h6><p>​    数据库操作语言，通过这些语句来插入，更新，删除数据，包含： insert、update、delete等</p>
+<h6 id="SQL组成–DQL"><a href="#SQL组成–DQL" class="headerlink" title="SQL组成–DQL"></a>SQL组成–DQL</h6><p>​    数据库查询语言，通过这些语句检索数据，包含： select、order by、group by等</p>
+<h6 id="SQL组成–DCL"><a href="#SQL组成–DCL" class="headerlink" title="SQL组成–DCL"></a>SQL组成–DCL</h6><p>​    数据库控制语言，通过这些语句控制数据访问权限，包含：grant等</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
       </categories>
       <tags>
-        <tag>数据结构与算法</tag>
+        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1827,6 +1795,38 @@
       </categories>
       <tags>
         <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>web性能优化-redis</title>
+    <url>/2021/06/23/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-redis/</url>
+    <content><![CDATA[<h4 id="redis特点"><a href="#redis特点" class="headerlink" title="redis特点"></a>redis特点</h4><p>redis是一款应用非常广泛的NoSQL数据库，redis的值可以支持多种数据类型，而且可以将内存中的数据保存到硬盘，另外redis以单线程方式运行，可以避免多线程带来的问题。redis除了基本的数据存取之外，还提供发布-订阅模式、GEO等功能。<br>redis应用场景(频繁读取写入):<br>1.缓存</p>
+<p>2.排行榜</p>
+<p>3.计数器</p>
+<p>4.session</p>
+<p>5.购物车</p>
+<p>6.消息队列</p>
+<h4 id="linux安装Redis"><a href="#linux安装Redis" class="headerlink" title="linux安装Redis"></a>linux安装Redis</h4><p>下载:<br>redis官方网站:redis.io<br>redis下载页:<a href="https://redis.io/download%E4%B8%8B%E8%BD%BD%E7%9B%B8%E5%BA%94%E7%9A%84%E7%89%88%E6%9C%AC">https://redis.io/download下载相应的版本</a><br>安装:<br>1.解压缩安装包，并进入该目录</p>
+<p>2.执行make编译指令</p>
+<p>3.执行make install 安装指令</p>
+<p>4.在/usr/local/bin/目录下会生成redis-benchmark、redis-check-aof、redis-check-rdb、redis-cli、redis-sentinel、redis-server几个程序文件</p>
+<p>将redis.conf拷贝到/etc/redis/conf/redis.conf配置内容:<br>1.bind -ip，如果绑定为127.0.0.1，只能被本机访问，改成0.0.0.0可以被其他机器访问</p>
+<p>2.port-端口，默认6379</p>
+<p>3.daemonize -是否以后台守护进程方式运行，默认no</p>
+<p>4.pidfile - pid文件</p>
+<p>5.logfile -日志文件</p>
+<p>6.save 900 1-每隔900秒，如果发生一次更新，就保存到磁盘</p>
+<p>7.dir -工作目录</p>
+<p>通过配置文件启动<br>redis-server /etc/redis/conf/redis.conf</p>
+<p>运行redis-cli进入redis客户端:</p>
+<h4 id="python中使用redis模块"><a href="#python中使用redis模块" class="headerlink" title="python中使用redis模块"></a>python中使用redis模块</h4><p>pipenv install redis<br>from redis import StrictRedis<br>redis = StrictRedis(host=”192.168.3.111”)</p>
+<p>redis对象的方法名与redis_cli命令名是一样的</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
       </tags>
   </entry>
   <entry>
@@ -2197,6 +2197,53 @@
       </tags>
   </entry>
   <entry>
+    <title>数据结构-栈</title>
+    <url>/2021/06/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/</url>
+    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>什么是栈</p>
+<p>栈的python实现</p>
+<h4 id="什么是栈？"><a href="#什么是栈？" class="headerlink" title="什么是栈？"></a>什么是栈？</h4><p>栈是一种线性表（**<em>后进先出**</em>）</p>
+<p>1.栈中必须有第一个元素与最后一个元素</p>
+<p>2.对栈的操作只能从某一端操作，即栈顶(top)</p>
+<p>3.栈的数据访问遵从LIFO (last-in first-out)协议</p>
+<h4 id="栈的python实现"><a href="#栈的python实现" class="headerlink" title="栈的python实现"></a>栈的python实现</h4><p>主要方法列表</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">s.isEmpty()</td>
+<td align="center">栈是否为空</td>
+</tr>
+<tr>
+<td align="center">s._ _ len_  _ ()</td>
+<td align="center">栈中的项目数</td>
+</tr>
+<tr>
+<td align="center">s.push()</td>
+<td align="center">在栈顶压入一项</td>
+</tr>
+<tr>
+<td align="center">s.top()</td>
+<td align="center">如果s不为空返回顶部第一项，否则抛出EmptyError</td>
+</tr>
+<tr>
+<td align="center">s.pop()</td>
+<td align="center">如果s不为空，返回并删除第一项，否则抛出EmptyError</td>
+</tr>
+</tbody></table>
+<p>列表实现<br>1.使用列表实现栈，可以从列表末尾压入与弹出<br>2.由于列表是一个动态数组，当栈的变化引起列表内存占用变大时，会引起性能的损耗</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构-数组</title>
     <url>/2021/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h4 id="数组：array"><a href="#数组：array" class="headerlink" title="数组：array"></a>数组：array</h4><h6 id="array创建实例："><a href="#array创建实例：" class="headerlink" title="array创建实例："></a>array创建实例：</h6><figure class="highlight smali"><table><tr><td class="code"><pre><code class="hljs smali">from<span class="hljs-built_in"> array </span>import array<br>myarray1 = array.array(<span class="hljs-string">&quot;i&quot;</span>,[1,2,3,4])			<span class="hljs-comment">#i是类型码</span><br>myarray2 = array.array(<span class="hljs-string">&quot;u&quot;</span>,[<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])<br></code></pre></td></tr></table></figure>
@@ -2259,77 +2306,6 @@
 <td align="center">O(n)</td>
 </tr>
 </tbody></table>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-链表（单、双）</title>
-    <url>/2021/06/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8%EF%BC%88%E5%8D%95%E3%80%81%E5%8F%8C%EF%BC%89/</url>
-    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>链表数据的结构</p>
-<p>链表结构的python实现</p>
-<p>链表的操作时间复杂度</p>
-<h4 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h4><p>链表就好像链条一样，一节就是一个数据节点。</p>
-<p>单列表：尾连着下一个数据</p>
-<p>双列表：尾连着下一个数据，头连着上一个数据</p>
-<p>循环列表：头尾相连，从而循环</p>
-<p>链表特点<br>1.每一个数据节点包括数据本身以及前后节点位置（单链表只包含下一节点位置)</p>
-<p>2.链表不需要连续内存空间</p>
-<p>3.插入快，查询慢</p>
-<h6 id="单链表节点类"><a href="#单链表节点类" class="headerlink" title="单链表节点类"></a>单链表节点类</h6><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>,data,<span class="hljs-keyword">next</span>=None)</span></span><span class="hljs-symbol">:</span><br>		<span class="hljs-keyword">self</span>.data = data<br>		<span class="hljs-keyword">self</span>.<span class="hljs-keyword">next</span> = <span class="hljs-keyword">next</span><br></code></pre></td></tr></table></figure>
-<p>单链表的优势<br>1.内存空间利用率高(不需要连续内存空间)，空间复杂度低</p>
-<p>2.适合开始处插入，开始处读取的场景</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构-栈</title>
-    <url>/2021/06/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/</url>
-    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>什么是栈</p>
-<p>栈的python实现</p>
-<h4 id="什么是栈？"><a href="#什么是栈？" class="headerlink" title="什么是栈？"></a>什么是栈？</h4><p>栈是一种线性表（**<em>后进先出**</em>）</p>
-<p>1.栈中必须有第一个元素与最后一个元素</p>
-<p>2.对栈的操作只能从某一端操作，即栈顶(top)</p>
-<p>3.栈的数据访问遵从LIFO (last-in first-out)协议</p>
-<h4 id="栈的python实现"><a href="#栈的python实现" class="headerlink" title="栈的python实现"></a>栈的python实现</h4><p>主要方法列表</p>
-<table>
-<thead>
-<tr>
-<th align="center">方法</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">s.isEmpty()</td>
-<td align="center">栈是否为空</td>
-</tr>
-<tr>
-<td align="center">s._ _ len_  _ ()</td>
-<td align="center">栈中的项目数</td>
-</tr>
-<tr>
-<td align="center">s.push()</td>
-<td align="center">在栈顶压入一项</td>
-</tr>
-<tr>
-<td align="center">s.top()</td>
-<td align="center">如果s不为空返回顶部第一项，否则抛出EmptyError</td>
-</tr>
-<tr>
-<td align="center">s.pop()</td>
-<td align="center">如果s不为空，返回并删除第一项，否则抛出EmptyError</td>
-</tr>
-</tbody></table>
-<p>列表实现<br>1.使用列表实现栈，可以从列表末尾压入与弹出<br>2.由于列表是一个动态数组，当栈的变化引起列表内存占用变大时，会引起性能的损耗</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -2459,28 +2435,21 @@
       </tags>
   </entry>
   <entry>
-    <title>电商实战-电商二次开发</title>
-    <url>/2021/06/24/%E7%94%B5%E5%95%86%E5%AE%9E%E6%88%98-%E7%94%B5%E5%95%86%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h4 id="二次开发"><a href="#二次开发" class="headerlink" title="二次开发"></a>二次开发</h4><p>1.在项目实践中，我们通常并不是从0开始写起，而是在已经存在的项目上开始</p>
-<p>2.与从0开始相比，最大的困难就是要学会如何看别人的代码</p>
-<p>3.有的项目有文档，或者没有，或者有等于没有</p>
-<p>4.现有的项目可能是购买的第三方产品，也有可能是现有产品的迭代</p>
-<h4 id="进公司第一件事"><a href="#进公司第一件事" class="headerlink" title="进公司第一件事"></a>进公司第一件事</h4><p>1.并不是写代码，而是熟悉项目功能。</p>
-<p>2.然后等待分配开发需求，比如完善某个功能或者新增某个功能</p>
-<p>3.收到任务后，首先询问有没有相关技术文档，代码库，沟通需求</p>
-<h4 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h4><p>1.主管会通过文档或者邮件给你发送一些相关的信息，比如版本地址、服务器IP与权限、环境要求，辅助工具<br>2.获取开发版本，在本地运行开发环境</p>
-<p>首先好创建远程仓库</p>
-<p>step1:基础版本获取<br>1.克隆: <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a>:luxp4588/flask-mall-base.git2.从该版本库导出无版本控制源程序（克隆前创建好文件夹）</p>
-<p>2.删除 .git 文件夹（隐藏文件）</p>
-<p>3.git init        初始化</p>
-<p>4.git add .     将文件添加到暂存区</p>
-<p>5.git commit -m ”flask“     提交到本地仓库</p>
-<p>6.git remote add origin <a href="https://github.com/tanbozhi/flask-test.git">https://github.com/tanbozhi/flask-test.git</a>    添加远程仓库地址</p>
-<p>7.git branch -M main</p>
-<p>8.git push -u origin main</p>
-<p>版本库创建完成</p>
-<p>step2:创建项目<br>1.在自己的版本库上创建项目<br>2.根据Pipfile文件，创建开发虚拟环境</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pipenv <span class="hljs-keyword">install</span> 	<span class="hljs-comment">#创建虚拟环境</span><br></code></pre></td></tr></table></figure>
+    <title>数据结构-链表（单、双）</title>
+    <url>/2021/06/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8%EF%BC%88%E5%8D%95%E3%80%81%E5%8F%8C%EF%BC%89/</url>
+    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>链表数据的结构</p>
+<p>链表结构的python实现</p>
+<p>链表的操作时间复杂度</p>
+<h4 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h4><p>链表就好像链条一样，一节就是一个数据节点。</p>
+<p>单列表：尾连着下一个数据</p>
+<p>双列表：尾连着下一个数据，头连着上一个数据</p>
+<p>循环列表：头尾相连，从而循环</p>
+<p>链表特点<br>1.每一个数据节点包括数据本身以及前后节点位置（单链表只包含下一节点位置)</p>
+<p>2.链表不需要连续内存空间</p>
+<p>3.插入快，查询慢</p>
+<h6 id="单链表节点类"><a href="#单链表节点类" class="headerlink" title="单链表节点类"></a>单链表节点类</h6><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>,data,<span class="hljs-keyword">next</span>=None)</span></span><span class="hljs-symbol">:</span><br>		<span class="hljs-keyword">self</span>.data = data<br>		<span class="hljs-keyword">self</span>.<span class="hljs-keyword">next</span> = <span class="hljs-keyword">next</span><br></code></pre></td></tr></table></figure>
+<p>单链表的优势<br>1.内存空间利用率高(不需要连续内存空间)，空间复杂度低</p>
+<p>2.适合开始处插入，开始处读取的场景</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -2633,6 +2602,82 @@
       </tags>
   </entry>
   <entry>
+    <title>电商实战-电商二次开发</title>
+    <url>/2021/06/24/%E7%94%B5%E5%95%86%E5%AE%9E%E6%88%98-%E7%94%B5%E5%95%86%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h4 id="二次开发"><a href="#二次开发" class="headerlink" title="二次开发"></a>二次开发</h4><p>1.在项目实践中，我们通常并不是从0开始写起，而是在已经存在的项目上开始</p>
+<p>2.与从0开始相比，最大的困难就是要学会如何看别人的代码</p>
+<p>3.有的项目有文档，或者没有，或者有等于没有</p>
+<p>4.现有的项目可能是购买的第三方产品，也有可能是现有产品的迭代</p>
+<h4 id="进公司第一件事"><a href="#进公司第一件事" class="headerlink" title="进公司第一件事"></a>进公司第一件事</h4><p>1.并不是写代码，而是熟悉项目功能。</p>
+<p>2.然后等待分配开发需求，比如完善某个功能或者新增某个功能</p>
+<p>3.收到任务后，首先询问有没有相关技术文档，代码库，沟通需求</p>
+<h4 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h4><p>1.主管会通过文档或者邮件给你发送一些相关的信息，比如版本地址、服务器IP与权限、环境要求，辅助工具<br>2.获取开发版本，在本地运行开发环境</p>
+<p>首先好创建远程仓库</p>
+<p>step1:基础版本获取<br>1.克隆: <a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;">&#x67;&#105;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a>:luxp4588/flask-mall-base.git2.从该版本库导出无版本控制源程序（克隆前创建好文件夹）</p>
+<p>2.删除 .git 文件夹（隐藏文件）</p>
+<p>3.git init        初始化</p>
+<p>4.git add .     将文件添加到暂存区</p>
+<p>5.git commit -m ”flask“     提交到本地仓库</p>
+<p>6.git remote add origin <a href="https://github.com/tanbozhi/flask-test.git">https://github.com/tanbozhi/flask-test.git</a>    添加远程仓库地址</p>
+<p>7.git branch -M main</p>
+<p>8.git push -u origin main</p>
+<p>版本库创建完成</p>
+<p>step2:创建项目<br>1.在自己的版本库上创建项目<br>2.根据Pipfile文件，创建开发虚拟环境</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">pipenv <span class="hljs-keyword">install</span> 	<span class="hljs-comment">#创建虚拟环境</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法-递归与回溯</title>
+    <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E4%B8%8E%E5%9B%9E%E6%BA%AF/</url>
+    <content><![CDATA[<p>递归</p>
+<p>1.函数直接或间接调用自身</p>
+<p>2.必须具有递归结束条件</p>
+<p>3.每一次递归，问题规模缩小</p>
+<p>4.python限制了递归深度（sys.getrecursionlimit()）</p>
+<p>回溯</p>
+<p>回溯法是一个比较经典的算法<br>1.回溯法(探索与回溯法）是一种选优搜索法，又称为试探法<br>2.按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择<br>3.这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网易-Bootstarp</title>
+    <url>/2021/11/10/%E7%BD%91%E6%98%93-Bootstrap/</url>
+    <content><![CDATA[<h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><h6 id="布局容器（container）"><a href="#布局容器（container）" class="headerlink" title="布局容器（container）"></a>布局容器（container）</h6><p>container    container-sm    container-md</p>
+<p>container-lg    container-xl    container-fluid</p>
+<h6 id="栅格系统（不同的终端上显示不一样）"><a href="#栅格系统（不同的终端上显示不一样）" class="headerlink" title="栅格系统（不同的终端上显示不一样）"></a>栅格系统（不同的终端上显示不一样）</h6><figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>tips:<br>row 可用col分成<span class="hljs-number">12</span>块 也就是一行可以平均分成<span class="hljs-number">12</span>个<span class="hljs-keyword">div</span><br>col-<span class="hljs-number">1</span> 占位一块	col-<span class="hljs-number">2</span> 占位<span class="hljs-number">2</span>块 col-<span class="hljs-number">9</span> 占位<span class="hljs-number">9</span>块<br><br>例：<br>&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-2&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-5&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-5&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="栅格布局-响应式"><a href="#栅格布局-响应式" class="headerlink" title="栅格布局-响应式"></a>栅格布局-响应式</h6><p>auto    576    768    992    1200</p>
+<p>col        sm      md      lg        xl</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-1  col-sm-2  col-md-4 col-lg-4 col-xl-9&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-11 col-sm-10 col-md-8 col-lg-8 col-lg-3&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>当屏幕分辨率发生改变时，对应的布局也会响应改变<br></code></pre></td></tr></table></figure>
+<h6 id="格栅布局-偏移值"><a href="#格栅布局-偏移值" class="headerlink" title="格栅布局-偏移值"></a>格栅布局-偏移值</h6><p>offset</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;container&#x27;&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;row&#x27;&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;col<span class="hljs-number">-1</span>  col-sm<span class="hljs-number">-2</span> <span class="hljs-built_in">offset</span><span class="hljs-number">-2</span> <span class="hljs-built_in">offset</span>-sm<span class="hljs-number">-3</span>&#x27;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>tip：偏移后不能超过<span class="hljs-number">12</span>，也就是col和<span class="hljs-built_in">offset</span>加起来不超过<span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+<p>快速给与背景样式（bg-success等）（种类少）</p>
+<h6 id="栅格布局-行横向布局"><a href="#栅格布局-行横向布局" class="headerlink" title="栅格布局-行横向布局"></a>栅格布局-行横向布局</h6><figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">justify-<span class="hljs-built_in">content</span>-start	左边排序<br>justify-<span class="hljs-built_in">content</span>-end		右边排序<br>justfy-<span class="hljs-built_in">content</span>-<span class="hljs-built_in">center</span>	中间排序<br>justify-<span class="hljs-built_in">content</span>-around	环绕排序<br>justify-<span class="hljs-built_in">content</span>-between	两边排序<br><br>响应式：justify-<span class="hljs-built_in">content</span>-sm-start	其他类似<br></code></pre></td></tr></table></figure>
+<h6 id="栅格布局-行纵向布局"><a href="#栅格布局-行纵向布局" class="headerlink" title="栅格布局-行纵向布局"></a>栅格布局-行纵向布局</h6><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver">align-<span class="hljs-keyword">items</span>-strt	让行在row的上面 元素高度往下涨	默认<br>align-<span class="hljs-keyword">items</span>-center	让行在row的中心 元素高度往上下涨<br>align-itmes-<span class="hljs-function"><span class="hljs-keyword">end</span>		让行在最下面 元素的高度高度往上涨</span><br><br>响应式：align-<span class="hljs-keyword">items</span>-sm-<span class="hljs-built_in">start</span>	其他类似<br></code></pre></td></tr></table></figure>
+<p>栅格布局-块纵向布局</p>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><code class="hljs crystal">align-<span class="hljs-keyword">self</span>-start<br>align-<span class="hljs-keyword">self</span>-center<br>align-<span class="hljs-keyword">self</span>-<span class="hljs-keyword">end</span><br><br>响应式：align-<span class="hljs-keyword">self</span>-sm-<span class="hljs-keyword">end</span>	其他类似<br></code></pre></td></tr></table></figure>
+<p>之前都是bootstrap4,后面会的升级到bootstarp5</p>
+]]></content>
+      <categories>
+        <category>前端(网易学习)</category>
+      </categories>
+      <tags>
+        <tag>Bootstrap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法-背包问题</title>
     <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>什么是背包问题</p>
@@ -2703,51 +2748,6 @@
       </categories>
       <tags>
         <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-递归与回溯</title>
-    <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E4%B8%8E%E5%9B%9E%E6%BA%AF/</url>
-    <content><![CDATA[<p>递归</p>
-<p>1.函数直接或间接调用自身</p>
-<p>2.必须具有递归结束条件</p>
-<p>3.每一次递归，问题规模缩小</p>
-<p>4.python限制了递归深度（sys.getrecursionlimit()）</p>
-<p>回溯</p>
-<p>回溯法是一个比较经典的算法<br>1.回溯法(探索与回溯法）是一种选优搜索法，又称为试探法<br>2.按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择<br>3.这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网易-Bootstarp</title>
-    <url>/2021/11/10/%E7%BD%91%E6%98%93-Bootstrap/</url>
-    <content><![CDATA[<h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><h6 id="布局容器（container）"><a href="#布局容器（container）" class="headerlink" title="布局容器（container）"></a>布局容器（container）</h6><p>container    container-sm    container-md</p>
-<p>container-lg    container-xl    container-fluid</p>
-<h6 id="栅格系统（不同的终端上显示不一样）"><a href="#栅格系统（不同的终端上显示不一样）" class="headerlink" title="栅格系统（不同的终端上显示不一样）"></a>栅格系统（不同的终端上显示不一样）</h6><figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>tips:<br>row 可用col分成<span class="hljs-number">12</span>块 也就是一行可以平均分成<span class="hljs-number">12</span>个<span class="hljs-keyword">div</span><br>col-<span class="hljs-number">1</span> 占位一块	col-<span class="hljs-number">2</span> 占位<span class="hljs-number">2</span>块 col-<span class="hljs-number">9</span> 占位<span class="hljs-number">9</span>块<br><br>例：<br>&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-2&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-5&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-5&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="栅格布局-响应式"><a href="#栅格布局-响应式" class="headerlink" title="栅格布局-响应式"></a>栅格布局-响应式</h6><p>auto    576    768    992    1200</p>
-<p>col        sm      md      lg        xl</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;container&#x27;</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;row&#x27;</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-1  col-sm-2  col-md-4 col-lg-4 col-xl-9&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;col-11 col-sm-10 col-md-8 col-lg-8 col-lg-3&#x27;</span>&gt;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>当屏幕分辨率发生改变时，对应的布局也会响应改变<br></code></pre></td></tr></table></figure>
-<h6 id="格栅布局-偏移值"><a href="#格栅布局-偏移值" class="headerlink" title="格栅布局-偏移值"></a>格栅布局-偏移值</h6><p>offset</p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;container&#x27;&gt;<br>	&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;row&#x27;&gt;<br>		&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=&#x27;col<span class="hljs-number">-1</span>  col-sm<span class="hljs-number">-2</span> <span class="hljs-built_in">offset</span><span class="hljs-number">-2</span> <span class="hljs-built_in">offset</span>-sm<span class="hljs-number">-3</span>&#x27;&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;/<span class="hljs-keyword">div</span>&gt;	<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br><br>tip：偏移后不能超过<span class="hljs-number">12</span>，也就是col和<span class="hljs-built_in">offset</span>加起来不超过<span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
-<p>快速给与背景样式（bg-success等）（种类少）</p>
-<h6 id="栅格布局-行横向布局"><a href="#栅格布局-行横向布局" class="headerlink" title="栅格布局-行横向布局"></a>栅格布局-行横向布局</h6><figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">justify-<span class="hljs-built_in">content</span>-start	左边排序<br>justify-<span class="hljs-built_in">content</span>-end		右边排序<br>justfy-<span class="hljs-built_in">content</span>-<span class="hljs-built_in">center</span>	中间排序<br>justify-<span class="hljs-built_in">content</span>-around	环绕排序<br>justify-<span class="hljs-built_in">content</span>-between	两边排序<br><br>响应式：justify-<span class="hljs-built_in">content</span>-sm-start	其他类似<br></code></pre></td></tr></table></figure>
-<h6 id="栅格布局-行纵向布局"><a href="#栅格布局-行纵向布局" class="headerlink" title="栅格布局-行纵向布局"></a>栅格布局-行纵向布局</h6><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver">align-<span class="hljs-keyword">items</span>-strt	让行在row的上面 元素高度往下涨	默认<br>align-<span class="hljs-keyword">items</span>-center	让行在row的中心 元素高度往上下涨<br>align-itmes-<span class="hljs-function"><span class="hljs-keyword">end</span>		让行在最下面 元素的高度高度往上涨</span><br><br>响应式：align-<span class="hljs-keyword">items</span>-sm-<span class="hljs-built_in">start</span>	其他类似<br></code></pre></td></tr></table></figure>
-<p>栅格布局-块纵向布局</p>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><code class="hljs crystal">align-<span class="hljs-keyword">self</span>-start<br>align-<span class="hljs-keyword">self</span>-center<br>align-<span class="hljs-keyword">self</span>-<span class="hljs-keyword">end</span><br><br>响应式：align-<span class="hljs-keyword">self</span>-sm-<span class="hljs-keyword">end</span>	其他类似<br></code></pre></td></tr></table></figure>
-<p>之前都是bootstrap4,后面会的升级到bootstarp5</p>
-]]></content>
-      <categories>
-        <category>前端(网易学习)</category>
-      </categories>
-      <tags>
-        <tag>Bootstrap</tag>
       </tags>
   </entry>
   <entry>
