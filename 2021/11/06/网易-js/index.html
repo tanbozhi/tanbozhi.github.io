@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6.6k 字
+      6.7k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      89
+      91
        分钟
     </span>
   
@@ -694,6 +694,8 @@
 <p>2.提高代码复用率</p>
 <p>3.提高了可维护性</p>
 <p>4.方便依赖关系管理</p>
+<p>jQuery选择器封装</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jQuery</span>(<span class="hljs-params">ele</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.name = ele;<br>    <span class="hljs-built_in">this</span>.eleArr = [];<br>    <span class="hljs-keyword">switch</span>(<span class="hljs-built_in">this</span>.name[<span class="hljs-number">0</span>])&#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;#&#x27;</span>:<br>            <span class="hljs-built_in">this</span>.newele = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-built_in">this</span>.name.slice(<span class="hljs-number">1</span>));<br>            <span class="hljs-built_in">this</span>.eleArr.push(<span class="hljs-built_in">this</span>.newele);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;.&#x27;</span>:<br>            <span class="hljs-built_in">this</span>.newele = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-built_in">this</span>.name.slice(<span class="hljs-number">1</span>));<br>            <span class="hljs-built_in">this</span>.eleArr.push(<span class="hljs-built_in">this</span>.newele);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<br>            <span class="hljs-built_in">this</span>.newele = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-built_in">this</span>.name);<br>            <span class="hljs-built_in">this</span>.eleArr.push(<span class="hljs-built_in">this</span>.newele);<br><br>    &#125;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.eleArr)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">$</span>(<span class="hljs-params">ele</span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> jQuery(ele);<br>&#125;;<br>$(<span class="hljs-string">&#x27;div&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
