@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>网易-Vue - tanbozhi-blog</title>
+  <title>网易-html5+css3 - tanbozhi-blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="网易-Vue">
+            <span class="h2" id="subtitle" title="网易-html5+css3">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-10 22:28" pubdate>
-        2021年11月10日 晚上
+      <time datetime="2021-12-15 20:58" pubdate>
+        2021年12月15日 晚上
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      503 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      6
        分钟
     </span>
   
@@ -224,10 +224,52 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">网易-Vue</h1>
+            <h1 style="display: none">网易-html5+css3</h1>
             
             <div class="markdown-body">
-              
+              <h5 id="css3"><a href="#css3" class="headerlink" title="css3"></a>css3</h5><h6 id="圆角样式"><a href="#圆角样式" class="headerlink" title="圆角样式"></a>圆角样式</h6><p>border-radius：10px 10px 10px 10px;</p>
+<p>border-radius：50%;    圆 椭圆</p>
+<p>10px是每个圆角的半径</p>
+<p>1个值：四个角都是这个值</p>
+<p>两个值：第一个值(左上右下)，第二个值(右上左下)</p>
+<p>三个值：第一个值(左上)，第二个值(右上左下)，第二个值(右下)</p>
+<p>四个值：左上，右上，右下，左下</p>
+<p>单独写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">border-top-left-radius</span>:<span class="hljs-number">20px</span>;		左上<br><span class="hljs-attribute">border-top-right-radius</span>:<span class="hljs-number">20px</span>;		右上<br><span class="hljs-attribute">border-bottom-left-radius</span>:<span class="hljs-number">20px</span>;		左下<br><span class="hljs-attribute">border-bottom-right-radius</span>:<span class="hljs-number">20px</span>;	右下<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="阴影样式"><a href="#阴影样式" class="headerlink" title="阴影样式"></a>阴影样式</h6><p>box-shadow</p>
+<p>可以设定无限个内外阴影</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">box-shadow:10px </span><span class="hljs-number">10</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px    <span class="hljs-keyword">black,inset </span><span class="hljs-number">0</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px red<br>	 外阴影 x偏移,y偏移,模糊度,拓展大小,颜色  内阴影 后面参数与前面一样<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="过渡样式"><a href="#过渡样式" class="headerlink" title="过渡样式"></a>过渡样式</h6><p>transition</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">transition</span>:过渡名称，过渡时间，过渡类型，延时时间<br>transition-property: all; 过渡属性的名称（all,<span class="hljs-attribute">width</span>,<span class="hljs-attribute">height</span>）<br><span class="hljs-attribute">transition-duration</span>:<span class="hljs-number">2s</span>;	过渡时间(单位s或者ms)<br><span class="hljs-attribute">transition-timing-function</span>:		过渡类型（ease,linear,ease-in,ease-out,ease-in-out,cubic-bezier）<br>transition-delay:<span class="hljs-number">3s</span>;	定义过渡延时时间<br><br>ease,		linear,	ease-in,	ease-out,	ease-in-out，	  cubic-bezier<br>先加速后减速，匀速，	    加速，		 减速，	  先加速后减速（增强）， 贝塞尔曲线<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h6><p>缩放（transform）</p>
+<p>transform:scale(2);    宽度，高度都放大2倍</p>
+<p>transform:scale(0.5,2);    宽度0.5倍，高度2倍</p>
+<p>transform:scaleX(0.5);    宽度0.5倍</p>
+<p>transform:scaleX(0.5) scaleY(2);    宽度0.5倍，高度2倍</p>
+<p>平移（translate）</p>
+<p>transform:translateX(200px)        沿X轴平移200px</p>
+<p>transform:translateY(200px)        沿y轴平移200px</p>
+<p>transform:translate(200px,100px)        沿y轴,X轴平移200px</p>
+<p>transform:translate(200px)        给一个值只往右移，相当于translate(200px,0)</p>
+<p>transform:translate(50%,10%)        百分比是对应相应的宽度和高度（宽度,高度）</p>
+<p>旋转（rotate）</p>
+<p>transform:rotate(45deg);    放入负数就是逆时针旋转</p>
+<p>transform:rotateX(45deg);    沿X轴旋转（3D）</p>
+<p>transform:rotateY(45deg);    沿Y轴旋转（3D）</p>
+<p>倾斜扭曲（skew）</p>
+<p>transform:skew(45deg);</p>
+<p>中心点（transform-origin）</p>
+<p>以这个点为中心旋转(3中设置中心的方法)</p>
+<p>transform-origin: left top;    以左上点为中心旋转</p>
+<p>transform-origin: 10%  -10%;</p>
+<p>transform-origin: 10px 20px ;</p>
+
             </div>
             <hr>
             <div>
@@ -244,7 +286,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                      <a class="hover-with-bg" href="/tags/html5/">html5</a>
                     
                   </div>
                 
@@ -257,18 +299,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/12/15/%E7%BD%91%E6%98%93html5+css3/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">网易-html5+css3</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/10/%E7%BD%91%E6%98%93-Bootstrap/">
-                        <span class="hidden-mobile">网易-Bootstarp</span>
+                      <a href="/2021/11/10/%E7%BD%91%E6%98%93-Vue/">
+                        <span class="hidden-mobile">网易-Vue</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
