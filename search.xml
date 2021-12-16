@@ -3476,6 +3476,14 @@
 <p>transform-origin: left top;    以左上点为中心旋转</p>
 <p>transform-origin: 10%  -10%;</p>
 <p>transform-origin: 10px 20px ;</p>
+<p>景深（perspective）</p>
+<p>transform:perspective(800px);</p>
+<p>平移X轴(translateZ)</p>
+<p>拉进元素与视角的距离</p>
+<p>如果在元素内部第一层子元素使用translateZ那么该元素必须具备3D空间</p>
+<p>3D空间：transform-style:preserve-3d;</p>
+<p>变形样式顺序</p>
+<p>样式执行顺序是从左到右，不一样的顺序有不一样的效果，景深效果建议在过渡前加上</p>
 ]]></content>
       <categories>
         <category>Web前端(网易学习)</category>
