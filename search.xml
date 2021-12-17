@@ -3454,7 +3454,7 @@
 <figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">transition</span>:过渡名称，过渡时间，过渡类型，延时时间<br>transition-property: all; 过渡属性的名称（all,<span class="hljs-attribute">width</span>,<span class="hljs-attribute">height</span>）<br><span class="hljs-attribute">transition-duration</span>:<span class="hljs-number">2s</span>;	过渡时间(单位s或者ms)<br><span class="hljs-attribute">transition-timing-function</span>:		过渡类型（ease,linear,ease-in,ease-out,ease-in-out,cubic-bezier）<br>transition-delay:<span class="hljs-number">3s</span>;	定义过渡延时时间<br><br>ease,		linear,	ease-in,	ease-out,	ease-in-out，	  cubic-bezier<br>先加速后减速，匀速，	    加速，		 减速，	  先加速后减速（增强）， 贝塞尔曲线<br></code></pre></td></tr></table></figure>
 
 
-<h6 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h6><p>缩放（transform）</p>
+<h6 id="变形（transform）"><a href="#变形（transform）" class="headerlink" title="变形（transform）"></a>变形（transform）</h6><p>缩放（scale）</p>
 <p>transform:scale(2);    宽度，高度都放大2倍</p>
 <p>transform:scale(0.5,2);    宽度0.5倍，高度2倍</p>
 <p>transform:scaleX(0.5);    宽度0.5倍</p>
@@ -3484,6 +3484,49 @@
 <p>3D空间：transform-style:preserve-3d;</p>
 <p>变形样式顺序</p>
 <p>样式执行顺序是从左到右，不一样的顺序有不一样的效果，景深效果建议在过渡前加上</p>
+<h6 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h6><p>after（元素之后）</p>
+<p>before（元素之前）</p>
+<p>给予content样式才会显示</p>
+<p>默认为行内样式显示</p>
+<p>可以加position进行定位</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#tan</span>&#123;<span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">background-color</span>: red;&#125;<br><span class="hljs-selector-id">#tan</span>:after&#123;content: <span class="hljs-string">&#x27;456&#x27;</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#009B00</span>;&#125;<br><span class="hljs-selector-id">#tan</span>:before&#123;content: <span class="hljs-string">&#x27;456&#x27;</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffff7f</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h6><p>相邻选择器（+）</p>
+<p>找到指定元素同级别的下一个元素</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">.<span class="hljs-built_in">tan</span>+<span class="hljs-built_in">li</span>&#123;&#125;	<span class="hljs-built_in">tan</span>后面的<span class="hljs-built_in">li</span>元素<br></code></pre></td></tr></table></figure>
+
+
+<p>兄弟选择器（~）</p>
+<p>选择同级别后面的所有元素</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.class</span>~<span class="hljs-selector-tag">li</span>&#123;&#125;		#选择class后面所有的<span class="hljs-selector-tag">li</span>元素<br><span class="hljs-selector-class">.class</span>~*&#123;&#125;		#选择class后面的所有元素<br></code></pre></td></tr></table></figure>
+
+
+<p>指定选择器（nth-of-type()）</p>
+<p>nth-of-type()自上而下选择</p>
+<p>nth-last-of-type()自下而上选择</p>
+<p>参数（数字，odd，even，3n+1)</p>
+<figure class="highlight elm"><table><tr><td class="code"><pre><code class="hljs elm"><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(2)	#选择第二个元素（数字从1开始）<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(odd)	#选择奇数位的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(even)	#选择偶数位的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(3n)		#选择3的倍数的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(3n+1)	#自定义，选择3的倍数的元素+一位的元素，也可以使用-号<br></code></pre></td></tr></table></figure>
+
+
+<p>子元素指定选择器（nth-child()）</p>
+<p>用法跟nth-of-type差不多</p>
+<p>属性选择器</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-attr">[name]</span>&#123;&#125;	#选择 属性名字 为name的元素<br>选择器<span class="hljs-selector-attr">[属性名字]</span>	例：<span class="hljs-selector-tag">div</span><span class="hljs-selector-attr">[jjj]</span>&#123;&#125;<br>选择器<span class="hljs-selector-attr">[属性名字=<span class="hljs-string">&#x27;属性值&#x27;</span>]</span>&#123;&#125;	#属性值与里面的属性值相等<br>选择器<span class="hljs-selector-attr">[属性名字~=<span class="hljs-string">&#x27;属性值&#x27;</span>]</span>&#123;&#125;	#属性值里面包含这个属性值<br></code></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">[<span class="hljs-keyword">class</span> ^= <span class="hljs-string">&#x27;abc&#x27;</span>]&#123;&#125;	#选择首字母是abc的<span class="hljs-keyword">class</span><br>[<span class="hljs-keyword">class</span> $= <span class="hljs-string">&#x27;def&#x27;</span>]&#123;&#125;	#选择尾字母是def的<span class="hljs-keyword">class</span><br>[<span class="hljs-keyword">class</span> *= <span class="hljs-string">&#x27;ghi&#x27;</span>]&#123;&#125;	#选择包含ghi的<span class="hljs-keyword">class</span><br></code></pre></td></tr></table></figure>
+
+
+<p>非内容选择器（not()）</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:not</span>(.tan,.sky)&#123;<span class="hljs-attribute">color</span>:red;&#125;	#选择所有<span class="hljs-selector-tag">div</span>，然后去掉<span class="hljs-selector-tag">tan</span>和<span class="hljs-selector-tag">sky</span><br></code></pre></td></tr></table></figure>
+
+
+<p>启用禁用选择器</p>
+<p>有输入，点击效果的标签才能使用</p>
+<p>enabled/disabled    </p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">*:disabled&#123;border:<span class="hljs-number">1</span>px solid orange;&#125;<br><br>&lt;button <span class="hljs-keyword">type</span>=&quot;button&quot; disabled&gt;&lt;/button&gt;<br>&lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=&quot;text&quot; disabled <span class="hljs-type">name</span>=&quot;&quot; id=&quot;&quot; <span class="hljs-keyword">value</span>=&quot;&quot;/&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="高亮选择（-selection）"><a href="#高亮选择（-selection）" class="headerlink" title="高亮选择（::selection）"></a>高亮选择（::selection）</h6><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.tan</span><span class="hljs-selector-pseudo">::selection</span>&#123;<span class="hljs-attribute">color</span>:red; <span class="hljs-attribute">background</span>:green;&#125;<br><br>支持四个属性<span class="hljs-attribute">color</span>/<span class="hljs-attribute">background</span>/<span class="hljs-attribute">cursor</span>/<span class="hljs-attribute">outline</span><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Web前端(网易学习)</category>
