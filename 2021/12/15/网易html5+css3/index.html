@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      2.3k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      25
+      30
        分钟
     </span>
   
@@ -362,6 +362,40 @@
 <p>如果所有元素都不给宽度，那么第一个元素会稍短一点</p>
 <p>第一个元素给宽度，那么后面的元素就会平均分配多于的宽度</p>
 <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs 1c">.<span class="hljs-built_in">tan</span>&#123;<br>	flex-grow:<span class="hljs-number">2</span>;		<span class="hljs-meta">#这个元素占两份</span><br>&#125;<br>.<span class="hljs-built_in">tan</span>&#123;<br>	flex-grow:<span class="hljs-number">4</span>;		<span class="hljs-meta">#这个元素占4份</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>分层（flex-wrap）</p>
+<p>默认值是nowrap</p>
+<p>当值为wrap时，元素会被挤到下一层，flex-grow会以当层计算</p>
+<p>flex-wrap:wrap-reverse;反向分层排序</p>
+<p>轴线对齐</p>
+<p>横向</p>
+<p>justify-content</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs applescript">justify-content:flex-start;	<span class="hljs-comment">#轴线左对齐 默认值</span><br>justify-content:center;		<span class="hljs-comment">#轴线中心对齐</span><br>justify-content:flex-<span class="hljs-keyword">end</span>;	<span class="hljs-comment">#轴线右对齐</span><br>justify-content:<span class="hljs-literal">space</span>-<span class="hljs-keyword">between</span>;	<span class="hljs-comment">#轴线两端对齐 中间等距隔开</span><br>justify-content:<span class="hljs-literal">space</span>-<span class="hljs-keyword">around</span>;	<span class="hljs-comment">#环绕对齐	中间等距隔开，两端隔开为中间距离一半</span><br></code></pre></td></tr></table></figure>
+<p>纵向</p>
+<p>align-items</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">align-items</span>:flex-start;		#纵轴线 以上方对齐<br><span class="hljs-attribute">align-items</span>:center;			#以中间对齐<br><span class="hljs-attribute">align-items</span>:flex-end;		#以下方对齐<br><span class="hljs-attribute">align-items</span>:stretch;		#拉伸 如果只有一层横向轴，直接拉满纵向轴，只作用于没有高度的元素<br><span class="hljs-attribute">align-items</span>:baseline;		#以最高的<span class="hljs-attribute">line-height</span>为基准移动其他元素<br><br><span class="hljs-attribute">align-self</span>:<br></code></pre></td></tr></table></figure>
+
+
+<p>自定义对齐</p>
+<p>align-self:center;</p>
+<p>值为align-items里的方法</p>
+<p>多层排序</p>
+<p>align-content</p>
+<p>必须多层，单层没有意义</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs elixir">align-<span class="hljs-symbol">content:</span>inherit;		<span class="hljs-comment">#默认值 默认平均分配高度给每一层</span><br>			 <span class="hljs-symbol">:flex-start</span>;	<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以上边界开始</span><br>			 <span class="hljs-symbol">:flex-end</span>;		<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以下边界开始</span><br>			 <span class="hljs-symbol">:center</span>;		<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以中间开始</span><br>			 <span class="hljs-symbol">:space-beteen</span>; <span class="hljs-comment">#上下对齐，中间相等距离隔开</span><br>			 <span class="hljs-symbol">:space-around</span>;	<span class="hljs-comment">#上下环绕对齐</span><br></code></pre></td></tr></table></figure>
+
+
+<p>排序</p>
+<p>order:0;</p>
+<p>定义元素的先后顺序，默认值为0</p>
+<p>值越小，排序越靠前</p>
+<p>值可以是负数</p>
+<p>缩小比例</p>
+<p>flex-shrink:1;</p>
+<p>默认值为1，如果为0，则不进行缩放，负数无效</p>
+<p>值越大，被压缩的比例就越大</p>
+<p>如果项目控制在一层，flex-shrink为0，超出父元素宽度，会溢出</p>
 
             </div>
             <hr>
