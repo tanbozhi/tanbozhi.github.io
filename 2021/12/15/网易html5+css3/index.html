@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      2.4k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      30
+      32
        分钟
     </span>
   
@@ -396,6 +396,14 @@
 <p>默认值为1，如果为0，则不进行缩放，负数无效</p>
 <p>值越大，被压缩的比例就越大</p>
 <p>如果项目控制在一层，flex-shrink为0，超出父元素宽度，会溢出</p>
+<h6 id="相对单位（rem）"><a href="#相对单位（rem）" class="headerlink" title="相对单位（rem）"></a>相对单位（rem）</h6><p>rem是根据HTML标签中的font-size的大小改变的</p>
+<p>html标签的font-size默认是16px,谷歌最小显示12px</p>
+<p>1rem = font-size的值</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">html&#123;font-size:16px;&#125;<br><br><span class="hljs-attribute">1rem</span>=16px<br><span class="hljs-attribute">10rem</span>=160px<br></code></pre></td></tr></table></figure>
+
+
+<p>rem算法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml">//总宽度 = 基数 * 倍数		倍数最好大于12，因为有些低版本浏览器字体最小只能是12px<br>//320   = 16  *  20		基数一般使用16<br><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>	font-size:16px;<br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-built_in">document</span>.documentElement.style.fontSize = innerWidth/<span class="hljs-number">16</span>+<span class="hljs-string">&#x27;px&#x27;</span>;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -425,6 +433,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/12/23/%E7%BD%91%E6%98%93-javaScript%E4%BA%A4%E4%BA%92/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">javaScript交互</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
