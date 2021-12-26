@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>网易-Vue</title>
+    <link href="/2021/12/26/%E7%BD%91%E6%98%93-vue/"/>
+    <url>/2021/12/26/%E7%BD%91%E6%98%93-vue/</url>
+    
+    <content type="html"><![CDATA[<h5 id="mvc框架"><a href="#mvc框架" class="headerlink" title="mvc框架"></a>mvc框架</h5><p>Modal(数据模型)</p><p>View(视图界面)</p><p>Controller(控制器)控制所有事件</p><h5 id="mvvm框架"><a href="#mvvm框架" class="headerlink" title="mvvm框架"></a>mvvm框架</h5><p>Modal(数据模型)</p><p>View(视图界面)</p><p>ViewModal(视图模型)</p><h5 id="Vue3的引入与基本使用"><a href="#Vue3的引入与基本使用" class="headerlink" title="Vue3的引入与基本使用"></a>Vue3的引入与基本使用</h5><p>Vue的creatApp方法，可以放入数据池与事件池</p><p>输出数据与事件需要挂载器mount方法，挂载指定元素</p><h6 id="引入Vue3"><a href="#引入Vue3" class="headerlink" title="引入Vue3"></a>引入Vue3</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;Vue3.js&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure><h6 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;test&quot;</span>&gt;</span><br>        &#123;&#123;content&#125;&#125; <br>        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">&quot;a&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;点我&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">&quot;b&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;点我&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br>    Vue.createApp(&#123;<br><span class="javascript">        data:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-keyword">return</span> &#123;</span><br><span class="javascript">                content:<span class="hljs-string">&#x27;hello world&#x27;</span></span><br>            &#125;<br>        &#125;,<br>        methods:&#123;<br><span class="javascript">            a:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">                alert(<span class="hljs-string">&#x27;我是点击事件&#x27;</span>);</span><br>            &#125;,<br><span class="javascript">            b:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">                alert(<span class="hljs-string">&quot;又点我了&quot;</span>)</span><br>            &#125;<br>        &#125;<br><span class="javascript">    &#125;).mount(<span class="hljs-string">&#x27;#test&#x27;</span>);</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Web前端(网易学习)</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>javaScript交互</title>
     <link href="/2021/12/23/%E7%BD%91%E6%98%93-javaScript%E4%BA%A4%E4%BA%92/"/>
     <url>/2021/12/23/%E7%BD%91%E6%98%93-javaScript%E4%BA%A4%E4%BA%92/</url>
