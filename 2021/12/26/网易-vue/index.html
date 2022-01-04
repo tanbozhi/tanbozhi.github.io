@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      2k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      29
        分钟
     </span>
   
@@ -287,6 +287,53 @@
 
 <h6 id="v-for与v-if"><a href="#v-for与v-if" class="headerlink" title="v-for与v-if"></a>v-for与v-if</h6><p>这两个尽量不要一起使用，v-if会优先执行</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">因为v-if先执行，最终会导致v-for循环出来的五个元素都消失<br>&lt;div <span class="hljs-attribute">v-for</span>=<span class="hljs-string">&quot; i in 5&quot;</span> <span class="hljs-attribute">v-if</span>=<span class="hljs-string">&quot;i==2?true:false&quot;</span>&gt;&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="计算属性computed"><a href="#计算属性computed" class="headerlink" title="计算属性computed"></a>计算属性computed</h5><p>如果data与computed里有同一个属性，输出data里的属性</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html">computed:&#123;<br>	&quot;cpt&quot;:function()&#123;<br>		if(this.num==2)&#123;<br>			return &#x27;kkk&#x27;+num*3<br>		&#125;<br>		else&#123;<br>			return &#x27;kkk&#x27;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="计算属性里的setter和getter"><a href="#计算属性里的setter和getter" class="headerlink" title="计算属性里的setter和getter"></a>计算属性里的setter和getter</h6><p>get作为属性的输出需要配合return</p>
+<p>set可以进行传参进行操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">computed:&#123;<br>	<span class="hljs-string">&quot;cpt&quot;</span>:&#123;<br>		<span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span>&#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;10&#x27;</span><br>		&#125;,<br>		<span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">value</span>)</span>&#123;<br>			<span class="hljs-built_in">this</span>.str= value;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="监听器watch"><a href="#监听器watch" class="headerlink" title="监听器watch"></a>监听器watch</h6><p>watch代表监听器，可以放入函数，函数名称代表需要监听的数据</p>
+<p>监听某个参数，当这个参数改变时，可以触发函数</p>
+<p>监听器里可以放入两个参数，分别为新数据和老数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">watch:&#123;<br>    <span class="hljs-function"><span class="hljs-title">aa</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-title">bb</span>(<span class="hljs-params">newvalue,oldvalue</span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(newvalue,oldvalue);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="深度监听"><a href="#深度监听" class="headerlink" title="深度监听"></a>深度监听</h6><p>deep:true    开启深度监听，默认为false</p>
+<p>immediate     初始化时就执行一次，默认为false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&quot;watch&quot;</span>:&#123;<br>	aa:&#123;<br>		<span class="hljs-function"><span class="hljs-title">handler</span>(<span class="hljs-params"></span>)</span>&#123;<br>			alert(<span class="hljs-number">1</span>);<br>		&#125;,<br>		deep:<span class="hljs-literal">true</span>,<br>		immediate:<span class="hljs-literal">true</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h5><p>Vue3中事件里面可以用括号也可以不用括号，不用括号是单事件</p>
+<p>多事件必须用逗号隔开，并且事件带括号</p>
+<p>如果事件带括号可以进行传参参数可以是vue对象里的属性</p>
+<p>事件里可以传入$event,下方可以调用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;go(),test()&quot;</span> &gt;</span>点击<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h5 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h5><p>快速调用事件的某些状态</p>
+<p>修饰符放在事件后面用“.”连接，可以多事件修饰符一起使用</p>
+<p>可以存在修饰符不加事件调用函数</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pf">stop 阻止冒泡修饰符<br>prevent 阻止事件默认行为<br>capture 事件捕获触发<br><span class="hljs-literal">self</span> 精准事件触发<br><span class="hljs-keyword">once</span> 事件只触发一次<br>passive 优化移动端滚动事件不能和prevent一起使用<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="按键别名"><a href="#按键别名" class="headerlink" title="按键别名"></a>按键别名</h5><p>在按键事件中可以使用按键别名方式指定某一种按键有效</p>
+<p>与修饰符一样，在按键事件后面放入</p>
+<p>有9种，可以多个一起使用，用点连接</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> @<span class="hljs-attr">keydown.tab.enter.up</span>=<span class="hljs-string">&#x27;abc&#x27;</span>/&gt;</span><br>Vue.createApp(&#123;<br>	&quot;methods&quot;:&#123;<br>		abc()&#123;<br>			alert(1);<br>		&#125;<br>	&#125;<br>&#125;).mount(&#x27;.tan&#x27;)<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="系统修饰键"><a href="#系统修饰键" class="headerlink" title="系统修饰键"></a>系统修饰键</h5><p>四种：ctrl、shift、alt、meta</p>
+<p>可以和其他修饰键组合使用</p>
+<p>精准使用需要使用exact来修饰系统修饰键（只能按需要的系统修饰符）</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript">&lt;div <span class="hljs-meta">@keydown</span>.shift.ctrl=<span class="hljs-string">&#x27;abc&#x27;</span>&gt;按ctrl加shift&lt;/div&gt;<br><br>Vue.createApp(&#123;<br>	<span class="hljs-string">&quot;methods&quot;</span>:&#123;<br>		<span class="hljs-function"><span class="hljs-title">abc</span>(<span class="hljs-params"></span>)</span>&#123;<br>			alert(<span class="hljs-number">1</span>);<br>		&#125;<br>	&#125;<br>&#125;).mount(<span class="hljs-string">&#x27;.tan&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="鼠标修饰符"><a href="#鼠标修饰符" class="headerlink" title="鼠标修饰符"></a>鼠标修饰符</h5><p>用来修饰鼠标事件的</p>
+<p>鼠标事件后面只能放一个鼠标修饰符</p>
+<p>三个：left、right、middle 代表左右滚轮</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">&lt;<span class="hljs-keyword">div</span> @mousedown.<span class="hljs-keyword">middle</span>=<span class="hljs-string">&#x27;abc&#x27;</span>&gt;点击鼠标滚轮&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
