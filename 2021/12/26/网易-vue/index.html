@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      2.5k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      30
+      36
        分钟
     </span>
   
@@ -342,6 +342,27 @@
 <p>文本域：输出内容</p>
 <p>下拉框：代表option的内容</p>
 <p>v-modle的值会覆盖原生属性上面的值</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-modle</span>=<span class="hljs-string">&#x27;message&#x27;</span> &gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h5 id="双向绑定修饰符"><a href="#双向绑定修饰符" class="headerlink" title="双向绑定修饰符"></a>双向绑定修饰符</h5><p>lazy：从oninput的频率变成onchange的频率</p>
+<p>number：一开始就输入字符串，则输出字符串，如果最开始输入的是数字，则输出数字，遇到非数字则不在输出</p>
+<p>trim：去掉两端的空格</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">&lt;<span class="hljs-selector-tag">input</span> v-modle<span class="hljs-selector-class">.lazy</span>.number=<span class="hljs-string">&#x27;message&#x27;</span> &gt;<br><br>可以多个一起使用<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="class与style绑定"><a href="#class与style绑定" class="headerlink" title="class与style绑定"></a>class与style绑定</h5><h6 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h6><p>可以使用数据来控制style或class的属性</p>
+<p>class控制方式是传入<strong>JSON数据</strong>，对应class值为true和false</p>
+<p>可以传入任何数据，会自动转为布尔值</p>
+<p>style与class类似，可以样式key传值，也可以JSON传值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;div id=<span class="hljs-string">&quot;test&quot;</span> &gt;<br>    &lt;!-- 数组 --&gt;<br>    &lt;div :<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;[abc,def]&quot;</span> &gt;&lt;/div&gt;<br>	&lt;div :<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;arr&quot;</span> &gt;&lt;/div&gt;<br>	&lt;!-- 对象 --&gt;<br>    &lt;div :<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;&#123;first:active&#125;&quot;</span> &gt;&lt;/div&gt;<br>    &lt;div :<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;second&quot;</span> &gt;&lt;/div&gt;<br>    &lt;div :<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;third&quot;</span> &gt;&lt;/div&gt;<br>&lt;/div&gt;<br><br>Vue.createApp(&#123;<br>    <span class="hljs-function"><span class="hljs-title">data</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">return</span>&#123;<br>            <span class="hljs-string">&quot;abc&quot;</span>:<span class="hljs-string">&quot;abc&quot;</span>,<br>            <span class="hljs-string">&quot;def&quot;</span>:<span class="hljs-string">&quot;def&quot;</span>,<br>            <span class="hljs-string">&quot;arr&quot;</span>:[<span class="hljs-string">&#x27;abc&#x27;</span>,<span class="hljs-string">&#x27;defd&#x27;</span>],<br>            <span class="hljs-string">&quot;active&quot;</span>:<span class="hljs-literal">true</span>,<br>            <span class="hljs-string">&quot;second&quot;</span>:&#123;<br>                <span class="hljs-string">&quot;blue&quot;</span>:<span class="hljs-literal">true</span>,<br>                <span class="hljs-string">&quot;green&quot;</span>:<span class="hljs-literal">true</span><br>            &#125;<br>        &#125;<br>    &#125;,<br>    computed:&#123;<br>        <span class="hljs-function"><span class="hljs-title">third</span>(<span class="hljs-params"></span>)</span>&#123;<br>            <span class="hljs-keyword">return</span>&#123;<br>                aaa:<span class="hljs-literal">true</span>,<br>                bbb:<span class="hljs-literal">true</span><br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;).mount(<span class="hljs-string">&#x27;#test&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h6><p>也可以用数组的方式来控制style与class</p>
+<p>可以在数组中直接放入class，也可以放入运算符</p>
+<p>控制style，可以直接放入JSON格式的样式</p>
+<h5 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h5><h6 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h6><p>使用``可以随意折行，可以使用${}传入变量，也可以使用三目运算符</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml">var a=1,b=4;</span><br><span class="xml">var str =`<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">			<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span></span><br><span class="xml">				$</span><span class="hljs-template-variable">&#123;a+b&#125;</span><br><span class="xml">				$</span><span class="hljs-template-variable">&#123;a?a:b&#125;</span><br><span class="xml">			<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="xml">		  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>`</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
