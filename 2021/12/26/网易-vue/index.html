@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.1k 字
+      8.5k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      123
+      129
        分钟
     </span>
   
@@ -548,6 +548,28 @@
 <p>安装cnpm: 在cmd中输入  npm install -g cnpm –registry=<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a>    （检验：cmd中 cnpm）</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>安装cnpm<br>npm install -g cnpm --registry=https:<span class="hljs-regexp">//</span>registry.npm.taobao.org<br><br><span class="hljs-regexp">//</span>安装cli<br>cnpm install @vue/cli -g<br><span class="hljs-regexp">//</span>安装完成后检验：vue --versiton<br><br><span class="hljs-regexp">//</span>创建项目<br>vue create 项目名<br><br><span class="hljs-regexp">//</span>进入项目文件<br>cd 项目名<br><br><span class="hljs-regexp">//</span>运行项目<br>npm run serve<br><br><span class="hljs-regexp">//</span>复制给出的地址用浏览器打开<br></code></pre></td></tr></table></figure>
 <p>完整安装步骤：csdn博客(借用一下)  <a target="_blank" rel="noopener" href="https://blog.csdn.net/diwang_718/article/details/102912743">https://blog.csdn.net/diwang_718/article/details/102912743</a></p>
+<h6 id="vue-cli4文件关系"><a href="#vue-cli4文件关系" class="headerlink" title="vue-cli4文件关系"></a>vue-cli4文件关系</h6><p>package-lock.json    node_modules的依赖项</p>
+<p>package.json    当前项目开发状态信息</p>
+<p>public    存放index页面</p>
+<p>style上面 不 加上scoped属性，则是全局的，加上则是局部的</p>
+<h6 id="vue-cli4模块化开发"><a href="#vue-cli4模块化开发" class="headerlink" title="vue-cli4模块化开发"></a>vue-cli4模块化开发</h6><p>导出：export</p>
+<p>导入：import</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs routeros">导出(此数据在tan.vue文件中)<br><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">a</span>=4<br><span class="hljs-builtin-name">export</span> <span class="hljs-attribute">b</span>=5<br><span class="hljs-builtin-name">export</span> default&#123;<br>	c:6;<br>	d:7;<br>&#125;<br><br>导入（只有export时）<br>import &#123;a,b&#125; <span class="hljs-keyword">from</span> tan.vue<br><br>导入（只有<span class="hljs-builtin-name">export</span> default时）<br>import pop(名字随便起) <span class="hljs-keyword">from</span> tan.vue<br><br>导入（两者都有时）（default导入在前）<br>import pop,&#123;a,b&#125; <span class="hljs-keyword">from</span> tan.vue<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h5><h6 id="let声明"><a href="#let声明" class="headerlink" title="let声明"></a>let声明</h6><p>只允许声明一次，声明后可以修改</p>
+<p>支持块级作用域，不会变量提升</p>
+<p>例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tan&quot;</span>&gt;</span><br>		<br>	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="javascript">	allbtn = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&#x27;button&#x27;</span>);</span><br><span class="javascript">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;allbtn.length;i++)&#123;</span><br><span class="javascript">		allbtn[i].onclick=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br>			alert(i)<br>		&#125;<br>	&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="const"><a href="#const" class="headerlink" title="const"></a>const</h6><p>const必须有初始化的值，不能被修改覆盖</p>
+<p>支持块级作用域，不能变量提升</p>
+<p>如果const为对象时，其属性可以被修改，但本身不能被修改</p>
+<h6 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h6><p>内部没有默认的arguments</p>
+<p>没有变量提升，内部this指向当前作用域</p>
+<p>不可以被new</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs arcade">tbz = <span class="hljs-function"><span class="hljs-params">sky</span> =&gt;</span> <span class="hljs-number">10</span><br>相当于<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tbz</span>(<span class="hljs-params">sky</span>)</span>&#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">10</span><br>&#125;<br><br>（）内可以放入多个参数<br>tbz = <span class="hljs-function">(<span class="hljs-params">x,y,z</span>) =&gt;</span> x+y+z<br>相当于<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tbz</span>(<span class="hljs-params">x,y,z</span>)</span>&#123;<br>	<span class="hljs-keyword">return</span> x+y+z<br>&#125;<br><br>还可以这样写&#123;&#125;可以写入执行语句<br>tbz = <span class="hljs-function">(<span class="hljs-params">x,y,z</span>) =&gt;</span>&#123;alert(<span class="hljs-number">1</span>);<span class="hljs-keyword">return</span> x+y+z&#125;<br><br>匿名箭头函数<br>( <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;alert(<span class="hljs-number">1</span>)&#125; )()<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
