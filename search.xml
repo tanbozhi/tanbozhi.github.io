@@ -35,6 +35,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Django-ORM语法</title>
+    <url>/2021/02/16/Django-ORM%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="Django-ORM基本语法"><a href="#Django-ORM基本语法" class="headerlink" title="Django-ORM基本语法"></a>Django-ORM基本语法</h1><p>在cmd中进入根目录(myproject),进入交互交互模式</p>
+<h5 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h5><figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python</span> manage.<span class="hljs-keyword">py</span> <span class="hljs-keyword">shell</span>    #进入交互模式<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 引入模块</span><br><span class="hljs-keyword">from</span> django.contrib.auth.models <span class="hljs-keyword">import</span> User<br><span class="hljs-keyword">from</span> blog.models <span class="hljs-keyword">import</span> BlogArticles<br></code></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"># 获得User中的用户名为damin的对象<br>admin = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">User</span>.</span></span>objects.get(username=&#x27;admin&#x27;)   #username = &#x27;用户名&#x27; 这个用户名必须在数据库里存在<br><br>#创建一篇博客文章<br>bolg = <span class="hljs-constructor">BlogArticles(<span class="hljs-params">title</span>=&#x27;<span class="hljs-params">hello</span> <span class="hljs-params">world</span>&#x27;,<span class="hljs-params">author</span>=<span class="hljs-params">admin</span>,<span class="hljs-params">body</span>=&#x27;<span class="hljs-params">hello</span>,<span class="hljs-params">i</span> <span class="hljs-params">am</span> <span class="hljs-params">coming</span>&#x27;)</span><br><br>#保存,不要忘记,不能省略,保存后数据表中就有这篇文章了<br>blog.save<span class="hljs-literal">()</span><br></code></pre></td></tr></table></figure>
+
+
+<h5 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Blogs = BlogArticles.objects.<span class="hljs-built_in">all</span>()   <span class="hljs-comment">#查询所有文章</span><br>Blogs      <span class="hljs-comment">#执行这个就可以获得所有文章的title</span><br><br><span class="hljs-comment"># 循环出所有文章</span><br><span class="hljs-keyword">for</span> blog <span class="hljs-keyword">in</span> blogs:<br>    print(blog.<span class="hljs-built_in">id</span>,blog.publish,blog.title,blog.author)<br>    <br>    <br><span class="hljs-comment">#查询ID为1的文章</span><br>b = BlogArticles.objects.get(<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>)<br>b<br><br><span class="hljs-comment">#查询作者admin写的文章</span><br>BlogArticles.objects.<span class="hljs-built_in">filter</span>(author=admin)<br><br><span class="hljs-comment"># 反向查询,根据用户名查询用户发布的文章</span><br>admin.blog_posts.<span class="hljs-built_in">all</span>()<br></code></pre></td></tr></table></figure>
+<h5 id="修改保存操作"><a href="#修改保存操作" class="headerlink" title="修改保存操作"></a>修改保存操作</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 修改操作</span><br>b = BlogArticles.objects.get(<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>)<br>b<br>b.title=<span class="hljs-string">&#x27;新的文章名&#x27;</span><br>b.save()    <span class="hljs-comment">#保存</span><br><br><span class="hljs-comment">#删除操作</span><br>b.delete()<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="官方文档查询操作链接"><a href="#官方文档查询操作链接" class="headerlink" title="官方文档查询操作链接"></a>官方文档查询操作链接</h5><p><a href="https://docs.djangoproject.com/zh-hans/3.0/topics/db/queries/">https://docs.djangoproject.com/zh-hans/3.0/topics/db/queries/</a></p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Django-ajax</title>
     <url>/2021/03/01/Django-ajax/</url>
     <content><![CDATA[<p>AJAX: Asynchronous JavaScript and XML,异步JavaScript和XML.</p>
@@ -52,19 +74,20 @@
       </tags>
   </entry>
   <entry>
-    <title>Django-ORM语法</title>
-    <url>/2021/02/16/Django-ORM%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="Django-ORM基本语法"><a href="#Django-ORM基本语法" class="headerlink" title="Django-ORM基本语法"></a>Django-ORM基本语法</h1><p>在cmd中进入根目录(myproject),进入交互交互模式</p>
-<h5 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h5><figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python</span> manage.<span class="hljs-keyword">py</span> <span class="hljs-keyword">shell</span>    #进入交互模式<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 引入模块</span><br><span class="hljs-keyword">from</span> django.contrib.auth.models <span class="hljs-keyword">import</span> User<br><span class="hljs-keyword">from</span> blog.models <span class="hljs-keyword">import</span> BlogArticles<br></code></pre></td></tr></table></figure>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"># 获得User中的用户名为damin的对象<br>admin = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">User</span>.</span></span>objects.get(username=&#x27;admin&#x27;)   #username = &#x27;用户名&#x27; 这个用户名必须在数据库里存在<br><br>#创建一篇博客文章<br>bolg = <span class="hljs-constructor">BlogArticles(<span class="hljs-params">title</span>=&#x27;<span class="hljs-params">hello</span> <span class="hljs-params">world</span>&#x27;,<span class="hljs-params">author</span>=<span class="hljs-params">admin</span>,<span class="hljs-params">body</span>=&#x27;<span class="hljs-params">hello</span>,<span class="hljs-params">i</span> <span class="hljs-params">am</span> <span class="hljs-params">coming</span>&#x27;)</span><br><br>#保存,不要忘记,不能省略,保存后数据表中就有这篇文章了<br>blog.save<span class="hljs-literal">()</span><br></code></pre></td></tr></table></figure>
-
-
-<h5 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Blogs = BlogArticles.objects.<span class="hljs-built_in">all</span>()   <span class="hljs-comment">#查询所有文章</span><br>Blogs      <span class="hljs-comment">#执行这个就可以获得所有文章的title</span><br><br><span class="hljs-comment"># 循环出所有文章</span><br><span class="hljs-keyword">for</span> blog <span class="hljs-keyword">in</span> blogs:<br>    print(blog.<span class="hljs-built_in">id</span>,blog.publish,blog.title,blog.author)<br>    <br>    <br><span class="hljs-comment">#查询ID为1的文章</span><br>b = BlogArticles.objects.get(<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>)<br>b<br><br><span class="hljs-comment">#查询作者admin写的文章</span><br>BlogArticles.objects.<span class="hljs-built_in">filter</span>(author=admin)<br><br><span class="hljs-comment"># 反向查询,根据用户名查询用户发布的文章</span><br>admin.blog_posts.<span class="hljs-built_in">all</span>()<br></code></pre></td></tr></table></figure>
-<h5 id="修改保存操作"><a href="#修改保存操作" class="headerlink" title="修改保存操作"></a>修改保存操作</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 修改操作</span><br>b = BlogArticles.objects.get(<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>)<br>b<br>b.title=<span class="hljs-string">&#x27;新的文章名&#x27;</span><br>b.save()    <span class="hljs-comment">#保存</span><br><br><span class="hljs-comment">#删除操作</span><br>b.delete()<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="官方文档查询操作链接"><a href="#官方文档查询操作链接" class="headerlink" title="官方文档查询操作链接"></a>官方文档查询操作链接</h5><p><a href="https://docs.djangoproject.com/zh-hans/3.0/topics/db/queries/">https://docs.djangoproject.com/zh-hans/3.0/topics/db/queries/</a></p>
+    <title>Django-图文编辑</title>
+    <url>/2021/03/02/Django-%E5%9B%BE%E6%96%87%E7%BC%96%E8%BE%91/</url>
+    <content><![CDATA[<p>目标</p>
+<p>​    注册用户发布博客</p>
+<p>​    使用Markdown编辑器实现图文编辑</p>
+<p>开发流程</p>
+<ol>
+<li>创建模型类BlogArtucles   (已有)</li>
+<li>创建blog应用的forms.py文件</li>
+<li>编写视图函数,处理用户提交的表单</li>
+<li>设置路由</li>
+<li>编写前端模板</li>
+<li>设置发布博客的入口链接</li>
+</ol>
 ]]></content>
       <categories>
         <category>web前端</category>
@@ -100,29 +123,6 @@
 
 <p>强制登录后转到blog页面</p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">#settings.py末尾添加下面代码</span><br><br><span class="hljs-attr">LOGIN_REDIRECT_URL</span> = <span class="hljs-string">&#x27;/blog/&#x27;</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Django-图文编辑</title>
-    <url>/2021/03/02/Django-%E5%9B%BE%E6%96%87%E7%BC%96%E8%BE%91/</url>
-    <content><![CDATA[<p>目标</p>
-<p>​    注册用户发布博客</p>
-<p>​    使用Markdown编辑器实现图文编辑</p>
-<p>开发流程</p>
-<ol>
-<li>创建模型类BlogArtucles   (已有)</li>
-<li>创建blog应用的forms.py文件</li>
-<li>编写视图函数,处理用户提交的表单</li>
-<li>设置路由</li>
-<li>编写前端模板</li>
-<li>设置发布博客的入口链接</li>
-</ol>
 ]]></content>
       <categories>
         <category>web前端</category>
@@ -198,49 +198,6 @@
       </tags>
   </entry>
   <entry>
-    <title>模板语法</title>
-    <url>/2021/02/18/Django-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h3><figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">var_name</span>&#125;&#125;</span><span class="xml">       变量样式</span><br></code></pre></td></tr></table></figure>
-<p>当模板引擎遇到一个变量,他将从context中获取这个变量的值,然后用值替换他本身</p>
-<h3 id="2-标签"><a href="#2-标签" class="headerlink" title="2.标签"></a>2.标签</h3><figure class="highlight crmsh"><table><tr><td class="code"><pre><code class="hljs crmsh">&#123;% <span class="hljs-keyword">tag</span> <span class="hljs-title">%&#125;        标签样式</span><br></code></pre></td></tr></table></figure>
-
-
-<p>django自带了很多内置标签</p>
-<h5 id="for循环标签"><a href="#for循环标签" class="headerlink" title="for循环标签"></a>for循环标签</h5><figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><span class="xml">  </span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-<h5 id="条件标签"><a href="#条件标签" class="headerlink" title="条件标签"></a>条件标签</h5><figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">if</span></span> blog %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="xml">    </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">    </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">else</span></span> %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这儿什么都没有<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endif</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
-<h3 id="3-模板继承"><a href="#3-模板继承" class="headerlink" title="3.模板继承"></a>3.模板继承</h3><p>建立一个包含网站所有公共元素的基本骨架,在里面可以定义一些区块,模板的字模板可以重写这些区块.</p>
-<h6 id="base-html-创建基本骨架模板"><a href="#base-html-创建基本骨架模板" class="headerlink" title="base.html      创建基本骨架模板"></a>base.html      创建基本骨架模板</h6><figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-cn&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>blog titles<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>   &#123;% block content %&#125;<br>    <br>   &#123;% endblock %&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-
-<p>muban1.html</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">&#123;% extends &quot;base.html&quot; %&#125;<br>&#123;% block content %&#125;<br>	&#123;% for blog in blogs %&#125;<br>    	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123;blog.title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   <br>    &#123;% endfor %&#125;<br>&#123;% endblock %&#125;<br></code></pre></td></tr></table></figure>
-
-
-<p>这样base.html中的     地方就会被模板1取代.</p>
-<h6 id="优化blog应用"><a href="#优化blog应用" class="headerlink" title="优化blog应用"></a>优化blog应用</h6><p>在templates文件下创建base.html</p>
-<p>在settings.py末尾加入以下代码,并在myproject文件下创建static/images  ,该文件夹放入需要的图片</p>
-<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">STATICFILES_DIRS</span> = [<br>    os.path.join(BASE_DIR,<span class="hljs-string">&quot;static&quot;</span>)<br>]<br></code></pre></td></tr></table></figure>
-<p>引入图片</p>
-<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">load</span></span> static %&#125;</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">static</span></span> &#x27;./images/图片名.png&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-
-<p>响应详细内容</p>
-<p>​    添上超链接</p>
-<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; blog.id &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>	#这个地方加上a标签</span><br><span class="xml">        </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><span class="xml">  </span><br></code></pre></td></tr></table></figure>
-<p>​    响应内容请求的视图函数</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_article</span><span class="hljs-params">(request,article_id)</span></span><span class="hljs-symbol">:</span><br>    article = BlogArticles.objects.get(id=article_id)<br>    pub = article.publish<br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/content.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;article&#x27;</span><span class="hljs-symbol">:article</span>,<span class="hljs-string">&#x27;publish&#x27;</span><span class="hljs-symbol">:pub</span>&#125;)<br></code></pre></td></tr></table></figure>
-<p>​    编写前端模板页面</p>
-<p>​    对应的URL配置</p>
-<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">urlpatterns</span> = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, views.blog_title),<br>    path(<span class="hljs-string">&#x27;&lt;int:article_id&gt;&#x27;</span>, views.blog_article)     <span class="hljs-comment">#写上这一行</span><br>]<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Django-模型与超管</title>
     <url>/2021/02/16/Django-%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%B6%85%E7%AE%A1/</url>
     <content><![CDATA[<p>[TOC]</p>
@@ -298,6 +255,49 @@
       </tags>
   </entry>
   <entry>
+    <title>模板语法</title>
+    <url>/2021/02/18/Django-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h3><figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">var_name</span>&#125;&#125;</span><span class="xml">       变量样式</span><br></code></pre></td></tr></table></figure>
+<p>当模板引擎遇到一个变量,他将从context中获取这个变量的值,然后用值替换他本身</p>
+<h3 id="2-标签"><a href="#2-标签" class="headerlink" title="2.标签"></a>2.标签</h3><figure class="highlight crmsh"><table><tr><td class="code"><pre><code class="hljs crmsh">&#123;% <span class="hljs-keyword">tag</span> <span class="hljs-title">%&#125;        标签样式</span><br></code></pre></td></tr></table></figure>
+
+
+<p>django自带了很多内置标签</p>
+<h5 id="for循环标签"><a href="#for循环标签" class="headerlink" title="for循环标签"></a>for循环标签</h5><figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><span class="xml">  </span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h5 id="条件标签"><a href="#条件标签" class="headerlink" title="条件标签"></a>条件标签</h5><figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">if</span></span> blog %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="xml">    </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">    </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">else</span></span> %&#125;</span><br><span class="xml">	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这儿什么都没有<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endif</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-模板继承"><a href="#3-模板继承" class="headerlink" title="3.模板继承"></a>3.模板继承</h3><p>建立一个包含网站所有公共元素的基本骨架,在里面可以定义一些区块,模板的字模板可以重写这些区块.</p>
+<h6 id="base-html-创建基本骨架模板"><a href="#base-html-创建基本骨架模板" class="headerlink" title="base.html      创建基本骨架模板"></a>base.html      创建基本骨架模板</h6><figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-cn&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>blog titles<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>   &#123;% block content %&#125;<br>    <br>   &#123;% endblock %&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>muban1.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">&#123;% extends &quot;base.html&quot; %&#125;<br>&#123;% block content %&#125;<br>	&#123;% for blog in blogs %&#125;<br>    	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123;blog.title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   <br>    &#123;% endfor %&#125;<br>&#123;% endblock %&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>这样base.html中的     地方就会被模板1取代.</p>
+<h6 id="优化blog应用"><a href="#优化blog应用" class="headerlink" title="优化blog应用"></a>优化blog应用</h6><p>在templates文件下创建base.html</p>
+<p>在settings.py末尾加入以下代码,并在myproject文件下创建static/images  ,该文件夹放入需要的图片</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">STATICFILES_DIRS</span> = [<br>    os.path.join(BASE_DIR,<span class="hljs-string">&quot;static&quot;</span>)<br>]<br></code></pre></td></tr></table></figure>
+<p>引入图片</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">load</span></span> static %&#125;</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">static</span></span> &#x27;./images/图片名.png&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+
+<p>响应详细内容</p>
+<p>​    添上超链接</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> blog <span class="hljs-keyword">in</span> blogs %&#125;</span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; blog.id &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; blog.title &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>	#这个地方加上a标签</span><br><span class="xml">        </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><span class="xml">  </span><br></code></pre></td></tr></table></figure>
+<p>​    响应内容请求的视图函数</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_article</span><span class="hljs-params">(request,article_id)</span></span><span class="hljs-symbol">:</span><br>    article = BlogArticles.objects.get(id=article_id)<br>    pub = article.publish<br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/content.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;article&#x27;</span><span class="hljs-symbol">:article</span>,<span class="hljs-string">&#x27;publish&#x27;</span><span class="hljs-symbol">:pub</span>&#125;)<br></code></pre></td></tr></table></figure>
+<p>​    编写前端模板页面</p>
+<p>​    对应的URL配置</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">urlpatterns</span> = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, views.blog_title),<br>    path(<span class="hljs-string">&#x27;&lt;int:article_id&gt;&#x27;</span>, views.blog_article)     <span class="hljs-comment">#写上这一行</span><br>]<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Django-注册</title>
     <url>/2021/02/22/Django-%E6%B3%A8%E5%86%8C/</url>
     <content><![CDATA[<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210222115557.png"></p>
@@ -341,22 +341,37 @@
       </tags>
   </entry>
   <entry>
-    <title>Django-表单</title>
-    <url>/2021/02/21/Django-%E8%A1%A8%E5%8D%95/</url>
-    <content><![CDATA[<p>表单:用于收集不同类型的用户输入</p>
-<p>​    是一个包含表单元素的区域。<br>​    表单元素是允许用户在表单中输入内容，比如:文本域(textarea)、下拉列表、单选框(radio-buttons)、复选框(checkboxes)等等。<br>​    表单使用表单标签( <form>)来设置</p>
-<p>目标:实现登录</p>
-<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs Django"><span class="xml"># 配置setting.py</span><br><span class="xml">INSTALLED_APPS=[</span><br><span class="xml">	&#x27;account&#x27;,          #在括号里加上account, 其他不修改</span><br><span class="xml">]</span><br><br><span class="xml">#配置根目录下的urls.py</span><br><span class="xml">urlpatterns = [ </span><br><span class="xml">	path(&#x27;account/&#x27;,include(&#x27;account.urls&#x27;,namespace=&#x27;account&#x27;))	#添加这一行</span><br><span class="xml">]</span><br><br><span class="xml">#在account目录下创建urls.py文件并写入以下代码</span><br><br><span class="xml">from django.urls import path</span><br><span class="xml">from . import views</span><br><br><span class="xml">app_name = &#x27;account&#x27;</span><br><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;login/&#x27;, views.user_login,name=&#x27;user_login&#x27;),</span><br><span class="xml">]</span><br><br><span class="xml"># account目录下创建forms.py并写入以下代码</span><br><br><span class="xml">from django import forms</span><br><br><span class="xml">class LoginForm(forms.Form):</span><br><span class="xml">    username = forms.CharField()</span><br><span class="xml">    password = forms.CharField(widget=forms.PasswordInput)</span><br><br></code></pre></td></tr></table></figure>
+    <title>Flask-GET与POST</title>
+    <url>/2021/03/12/Flask-GET%E4%B8%8EPOST/</url>
+    <content><![CDATA[<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>get方式提交数据是通过URL地址传递数据</p>
+<p>例: http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
+<p>在服务器端通过request对象接收数据</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#获取username , password</span><br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;username&#x27;</span>)<br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;password&#x27;</span>)<br><br><span class="hljs-comment">#本次提交数据的方式</span><br>request.method<br></code></pre></td></tr></table></figure>
 
 
-<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">代码意思<br>login_form = LoginForm	#创建实例<br>login_form		#待填写的表单<br>login_form.as_p()		#以p标签包裹的表单<br>login_form.as_table()		#以表格形式的表单<br>login_form.is_bound			#返回<span class="hljs-literal">False</span>则表单为空,返回<span class="hljs-literal">True</span>则不为空<br><br>user1 =  &#123;<span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span> ,<span class="hljs-string">&#x27;password&#x27;</span>:<span class="hljs-string">&#x27;12456&#x27;</span>&#125;<br>user1_form = LoginForm(user1)<br>user1_form.is_bound		<br>user1_form.is_valid()		#提供的数据是否完整,完整返回<span class="hljs-literal">True</span><br>user1_form.cleaned_date		#获取表单的值<br><br>user.is_authenticated		#用户已登录返回true,没登录返回false<br><br><br>函数意思<br>authenticate		#检查用户是不是我们网站的用户,以及用户名是否正确<br><br></code></pre></td></tr></table></figure>
-<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">点击登录就会跳转到登录页面</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">url</span></span> &#x27;account:user_login&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h6 id="网址美化"><a href="#网址美化" class="headerlink" title="网址美化"></a>网址美化</h6><p>1.通过问号传递的网址最方便,但是不美观</p>
+<p>​    例  :    http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
+<p>2.传递参数像path路径一样的网址,更美观,爬虫更喜欢</p>
+<p>​    http:127.0.0.1:5000/xiaobo/123456/</p>
+<p>​    方法 : 制定相关路由</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.rote(<span class="hljs-params"><span class="hljs-string">&quot;/&lt;username&gt;/&lt;password&gt;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>(<span class="hljs-params">username,password</span>):</span><br>    print(username,password)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="POST-安全"><a href="#POST-安全" class="headerlink" title="POST(安全)"></a>POST(安全)</h4><p>通过 form 表单提交数据</p>
+<p>form表单属性</p>
+<p>​    action:  数据提交到哪个网址</p>
+<p>​    method:  数据提交方式  (get和post)</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>post方式提交数据需要在路由配置中添加设置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/login&quot;</span>,methods=[<span class="hljs-string">&quot;get&quot;</span>,<span class="hljs-string">&quot;post&quot;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>():</span><br>	request.form[<span class="hljs-string">&#x27;username&#x27;</span>]<br>    request.values[<span class="hljs-string">&#x27;usename&#x27;</span>]    <span class="hljs-comment">#既可接受get也可接收post</span><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>Django</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
@@ -410,113 +425,52 @@
       </tags>
   </entry>
   <entry>
-    <title>Flask-GET与POST</title>
-    <url>/2021/03/12/Flask-GET%E4%B8%8EPOST/</url>
-    <content><![CDATA[<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>get方式提交数据是通过URL地址传递数据</p>
-<p>例: http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
-<p>在服务器端通过request对象接收数据</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#获取username , password</span><br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;username&#x27;</span>)<br>request.args.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">&#x27;password&#x27;</span>)<br><br><span class="hljs-comment">#本次提交数据的方式</span><br>request.method<br></code></pre></td></tr></table></figure>
+    <title>Django-表单</title>
+    <url>/2021/02/21/Django-%E8%A1%A8%E5%8D%95/</url>
+    <content><![CDATA[<p>表单:用于收集不同类型的用户输入</p>
+<p>​    是一个包含表单元素的区域。<br>​    表单元素是允许用户在表单中输入内容，比如:文本域(textarea)、下拉列表、单选框(radio-buttons)、复选框(checkboxes)等等。<br>​    表单使用表单标签( <form>)来设置</p>
+<p>目标:实现登录</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs Django"><span class="xml"># 配置setting.py</span><br><span class="xml">INSTALLED_APPS=[</span><br><span class="xml">	&#x27;account&#x27;,          #在括号里加上account, 其他不修改</span><br><span class="xml">]</span><br><br><span class="xml">#配置根目录下的urls.py</span><br><span class="xml">urlpatterns = [ </span><br><span class="xml">	path(&#x27;account/&#x27;,include(&#x27;account.urls&#x27;,namespace=&#x27;account&#x27;))	#添加这一行</span><br><span class="xml">]</span><br><br><span class="xml">#在account目录下创建urls.py文件并写入以下代码</span><br><br><span class="xml">from django.urls import path</span><br><span class="xml">from . import views</span><br><br><span class="xml">app_name = &#x27;account&#x27;</span><br><br><span class="xml">urlpatterns = [</span><br><span class="xml">    path(&#x27;login/&#x27;, views.user_login,name=&#x27;user_login&#x27;),</span><br><span class="xml">]</span><br><br><span class="xml"># account目录下创建forms.py并写入以下代码</span><br><br><span class="xml">from django import forms</span><br><br><span class="xml">class LoginForm(forms.Form):</span><br><span class="xml">    username = forms.CharField()</span><br><span class="xml">    password = forms.CharField(widget=forms.PasswordInput)</span><br><br></code></pre></td></tr></table></figure>
 
 
-<h6 id="网址美化"><a href="#网址美化" class="headerlink" title="网址美化"></a>网址美化</h6><p>1.通过问号传递的网址最方便,但是不美观</p>
-<p>​    例  :    http:127.0.0.1:5000/?username=xiaobo&amp;password=123456</p>
-<p>2.传递参数像path路径一样的网址,更美观,爬虫更喜欢</p>
-<p>​    http:127.0.0.1:5000/xiaobo/123456/</p>
-<p>​    方法 : 制定相关路由</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.rote(<span class="hljs-params"><span class="hljs-string">&quot;/&lt;username&gt;/&lt;password&gt;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>(<span class="hljs-params">username,password</span>):</span><br>    print(username,password)<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="POST-安全"><a href="#POST-安全" class="headerlink" title="POST(安全)"></a>POST(安全)</h4><p>通过 form 表单提交数据</p>
-<p>form表单属性</p>
-<p>​    action:  数据提交到哪个网址</p>
-<p>​    method:  数据提交方式  (get和post)</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-
-<p>post方式提交数据需要在路由配置中添加设置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/login&quot;</span>,methods=[<span class="hljs-string">&quot;get&quot;</span>,<span class="hljs-string">&quot;post&quot;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>():</span><br>	request.form[<span class="hljs-string">&#x27;username&#x27;</span>]<br>    request.values[<span class="hljs-string">&#x27;usename&#x27;</span>]    <span class="hljs-comment">#既可接受get也可接收post</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">代码意思<br>login_form = LoginForm	#创建实例<br>login_form		#待填写的表单<br>login_form.as_p()		#以p标签包裹的表单<br>login_form.as_table()		#以表格形式的表单<br>login_form.is_bound			#返回<span class="hljs-literal">False</span>则表单为空,返回<span class="hljs-literal">True</span>则不为空<br><br>user1 =  &#123;<span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span> ,<span class="hljs-string">&#x27;password&#x27;</span>:<span class="hljs-string">&#x27;12456&#x27;</span>&#125;<br>user1_form = LoginForm(user1)<br>user1_form.is_bound		<br>user1_form.is_valid()		#提供的数据是否完整,完整返回<span class="hljs-literal">True</span><br>user1_form.cleaned_date		#获取表单的值<br><br>user.is_authenticated		#用户已登录返回true,没登录返回false<br><br><br>函数意思<br>authenticate		#检查用户是不是我们网站的用户,以及用户名是否正确<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">点击登录就会跳转到登录页面</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">url</span></span> &#x27;account:user_login&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
+        <tag>Django</tag>
       </tags>
   </entry>
   <entry>
-    <title>Flask-模板输出</title>
-    <url>/2021/03/08/Flask-%E6%A8%A1%E6%9D%BF%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<h4 id="目标-模板输出"><a href="#目标-模板输出" class="headerlink" title="目标:    模板输出"></a>目标:    模板输出</h4><ol>
-<li><h6 id="创建templates目录"><a href="#创建templates目录" class="headerlink" title="创建templates目录"></a>创建templates目录</h6><p>在myflask文件下创建templates文件夹</p>
-<p>templates文件夹用于存放HTML文件</p>
-</li>
-<li><h6 id="创建html文件模板"><a href="#创建html文件模板" class="headerlink" title="创建html文件模板"></a>创建html文件模板</h6><p>将写好的模板放到templates目录下</p>
-</li>
-<li><h6 id="网页上输出模板"><a href="#网页上输出模板" class="headerlink" title="网页上输出模板"></a>网页上输出模板</h6><p>编写app.py</p>
-<p>​    引入模块 render_templates</p>
-<p>​    编写路由</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask,render_template<br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;index.html&quot;</span>)  <span class="hljs-comment">#index.html需要自己写好</span><br></code></pre></td></tr></table></figure></li>
-<li><h6 id="加载静态文件"><a href="#加载静态文件" class="headerlink" title="加载静态文件"></a>加载静态文件</h6><p>创建static目录(flask目录下)</p>
-<p>static目录下放入js css  img fonts 等文件</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 通过static 可以引入css等</span><br>&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">&quot;static/css/bootstrap.css&quot;</span>/&gt;<br></code></pre></td></tr></table></figure>
-<p>url_for 可以根据视图函数生成URL</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">视图函数</span>,默认值) &#125;&#125;</span><br><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;static&quot;</span>,<span class="hljs-attr">filename</span>=<span class="hljs-string">&quot;资源路径&quot;</span>) &#125;&#125;</span><br><br><span class="xml">#例子</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;static&quot;</span>,<span class="hljs-attr">filename</span>=<span class="hljs-string">&quot;css/bootstrap.css&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span><br><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="xml">#例子</span><br><span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;login&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;register&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>注册<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
+    <title>Django-视图函数和模板</title>
+    <url>/2021/02/17/Django-%E8%A7%86%E5%9B%BE%E5%87%BD%E6%95%B0%E5%92%8C%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<h3 id="本章目标"><a href="#本章目标" class="headerlink" title="本章目标"></a>本章目标</h3><p>​    1.编写视图函数 </p>
+<p>​    2.编写前端模板 </p>
+<p>​    3.设置应用内的路由</p>
+<h3 id="1-视图函数"><a href="#1-视图函数" class="headerlink" title="1.视图函数"></a>1.视图函数</h3><p>​        概念:当用户向服务器发起一个请求时,接收用户请求的应用程序,并根据请求响应,返回一些信息.</p>
+<p>​        分类:—基于函数的视图 —基于类的视图</p>
+<p>​        放置位置: views.py</p>
+<p>编写基于函数的视图</p>
+<p>在views.py文件下写入以下代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render<br><span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> BlogArticles<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_title</span>(<span class="hljs-params">request</span>):</span>	<span class="hljs-comment"># request 是 用户请求所有信息的对象</span><br>    blogs = BlogArticles.objects.<span class="hljs-built_in">all</span>()   <span class="hljs-comment">#读出BlogArticles模型类中的所有信息</span><br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/titles.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;blogs&#x27;</span>:blogs&#125;)<br></code></pre></td></tr></table></figure>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210218111255.png"></p>
+<p><img src="/img/render-20210218112456.png"></p>
+<h3 id="2-模板"><a href="#2-模板" class="headerlink" title="2.模板"></a>2.模板</h3><p>模板规定:使用默认规定</p>
+<p>默认规定位置:setting.py文件中,55行左右的TEMPLATES里</p>
+<p>在blog文件夹下创建一个templates文件夹,在templates文件夹下创建blog文件夹并放入titles.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-cn&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>blog titles<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            &#123;% for blog in blogs %&#125;    #在网页中循环出blog标题<br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123;blog.title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   <br>            &#123;% endfor %&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>在blog应用下的urls中写入路由</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path<br><span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, views.blog_title),<br>]<br></code></pre></td></tr></table></figure>
+<p>启动应用  python manage.py runserver</p>
+<p>打开返回的网址,在网址后面加上blog就行了(127.0.0.1:8000/blog/) </p>
 ]]></content>
       <categories>
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>Flask</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flask-模板语法</title>
-    <url>/2021/03/09/Flask-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>MVC模式</p>
-<p>M -model     数据模型</p>
-<p>V -view    视图模板</p>
-<p>C  -控制器     业务逻辑控制既视图函数</p>
-<p>变量标记</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;  &#125;&#125;</span><br><span class="xml">变量输出以</span><span class="hljs-template-variable">&#123;&#123; &#125;&#125;</span><span class="xml">包裹</span><br><span class="xml">变量  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">变量名</span> &#125;&#125;</span><span class="xml">  比如</span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">myname</span> &#125;&#125;</span><br><span class="xml">对象  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">obj.属性</span> &#125;&#125;</span><br><span class="xml">字典  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">dict</span>[&#x27;key&#x27;] &#125;&#125;</span><br><span class="xml">列表  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">list</span>[i] &#125;&#125;</span><br><span class="xml">函数  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">func</span>() &#125;&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-<p>语句执行</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><code class="hljs gcode">&#123;<span class="hljs-meta">%</span>  <span class="hljs-meta">%</span>&#125;<br></code></pre></td></tr></table></figure>
-
-
-<p>注释标签</p>
-<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">&#123;#  #&#125;<br></code></pre></td></tr></table></figure>
-
-
-<p>条件语句</p>
-<p>根据条件选择显示不同的html部分</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">if</span> condition %&#125;<br>	html<br>&#123;% <span class="hljs-keyword">elif</span> condition %&#125;<br>	html<br>&#123;% <span class="hljs-keyword">else</span> %&#125;<br>	html<br>&#123;% endif %&#125;<br></code></pre></td></tr></table></figure>
-
-
-<p>for循环语句</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> items %&#125;<br>	html &#123;&#123; item &#125;&#125; html<br>&#123;% endfor %&#125;<br></code></pre></td></tr></table></figure>
-
-
-<p>模板继承</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">#父模板 base.html<br><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>       <br>&#123;% block nav %&#125;<br>html<br>&#123;% endblock %&#125;<br><br>&#123;% block content %&#125;<br>&#123;% endblock %&#125;<br><br>&#123;% block footer %&#125;<br>html<br>&#123;% endfooter %&#125;<br>     <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">#子模板</span><br><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">extends</span></span> &quot;base.html&quot; %&#125;</span><br><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">block</span></span> content %&#125;</span><br><span class="xml">页面内容</span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endblock</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-<p>模板全局变量</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-comment">#上下文处理函数</span><br><br><span class="hljs-variable">@app</span>.context_processor<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">account</span><span class="hljs-params">()</span></span><span class="hljs-symbol">:</span><br>	username=<span class="hljs-string">&quot;小博&quot;</span><br>	<span class="hljs-keyword">return</span>&#123;<span class="hljs-string">&quot;username&quot;</span><span class="hljs-symbol">:username</span>&#125;<br><br><span class="hljs-comment">#每个视图函数执行的时候,会自动执行该函数,接收该变量并渲染模板</span><br><br><br><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>Flask</tag>
+        <tag>Django</tag>
       </tags>
   </entry>
   <entry>
@@ -591,33 +545,46 @@
       </tags>
   </entry>
   <entry>
-    <title>Django-视图函数和模板</title>
-    <url>/2021/02/17/Django-%E8%A7%86%E5%9B%BE%E5%87%BD%E6%95%B0%E5%92%8C%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<h3 id="本章目标"><a href="#本章目标" class="headerlink" title="本章目标"></a>本章目标</h3><p>​    1.编写视图函数 </p>
-<p>​    2.编写前端模板 </p>
-<p>​    3.设置应用内的路由</p>
-<h3 id="1-视图函数"><a href="#1-视图函数" class="headerlink" title="1.视图函数"></a>1.视图函数</h3><p>​        概念:当用户向服务器发起一个请求时,接收用户请求的应用程序,并根据请求响应,返回一些信息.</p>
-<p>​        分类:—基于函数的视图 —基于类的视图</p>
-<p>​        放置位置: views.py</p>
-<p>编写基于函数的视图</p>
-<p>在views.py文件下写入以下代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render<br><span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> BlogArticles<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">blog_title</span>(<span class="hljs-params">request</span>):</span>	<span class="hljs-comment"># request 是 用户请求所有信息的对象</span><br>    blogs = BlogArticles.objects.<span class="hljs-built_in">all</span>()   <span class="hljs-comment">#读出BlogArticles模型类中的所有信息</span><br>    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&#x27;blog/titles.html&#x27;</span>,&#123;<span class="hljs-string">&#x27;blogs&#x27;</span>:blogs&#125;)<br></code></pre></td></tr></table></figure>
-<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20210218111255.png"></p>
-<p><img src="/img/render-20210218112456.png"></p>
-<h3 id="2-模板"><a href="#2-模板" class="headerlink" title="2.模板"></a>2.模板</h3><p>模板规定:使用默认规定</p>
-<p>默认规定位置:setting.py文件中,55行左右的TEMPLATES里</p>
-<p>在blog文件夹下创建一个templates文件夹,在templates文件夹下创建blog文件夹并放入titles.html</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-cn&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>blog titles<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            &#123;% for blog in blogs %&#125;    #在网页中循环出blog标题<br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123;blog.title&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   <br>            &#123;% endfor %&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>在blog应用下的urls中写入路由</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path<br><span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, views.blog_title),<br>]<br></code></pre></td></tr></table></figure>
-<p>启动应用  python manage.py runserver</p>
-<p>打开返回的网址,在网址后面加上blog就行了(127.0.0.1:8000/blog/) </p>
+    <title>Flask-模板语法</title>
+    <url>/2021/03/09/Flask-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>MVC模式</p>
+<p>M -model     数据模型</p>
+<p>V -view    视图模板</p>
+<p>C  -控制器     业务逻辑控制既视图函数</p>
+<p>变量标记</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;  &#125;&#125;</span><br><span class="xml">变量输出以</span><span class="hljs-template-variable">&#123;&#123; &#125;&#125;</span><span class="xml">包裹</span><br><span class="xml">变量  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">变量名</span> &#125;&#125;</span><span class="xml">  比如</span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">myname</span> &#125;&#125;</span><br><span class="xml">对象  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">obj.属性</span> &#125;&#125;</span><br><span class="xml">字典  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">dict</span>[&#x27;key&#x27;] &#125;&#125;</span><br><span class="xml">列表  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">list</span>[i] &#125;&#125;</span><br><span class="xml">函数  </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">func</span>() &#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>语句执行</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><code class="hljs gcode">&#123;<span class="hljs-meta">%</span>  <span class="hljs-meta">%</span>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>注释标签</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">&#123;#  #&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>条件语句</p>
+<p>根据条件选择显示不同的html部分</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">if</span> condition %&#125;<br>	html<br>&#123;% <span class="hljs-keyword">elif</span> condition %&#125;<br>	html<br>&#123;% <span class="hljs-keyword">else</span> %&#125;<br>	html<br>&#123;% endif %&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>for循环语句</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&#123;% <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> items %&#125;<br>	html &#123;&#123; item &#125;&#125; html<br>&#123;% endfor %&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>模板继承</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">#父模板 base.html<br><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>       <br>&#123;% block nav %&#125;<br>html<br>&#123;% endblock %&#125;<br><br>&#123;% block content %&#125;<br>&#123;% endblock %&#125;<br><br>&#123;% block footer %&#125;<br>html<br>&#123;% endfooter %&#125;<br>     <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="code"><pre><code class="hljs django"><span class="xml">#子模板</span><br><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">extends</span></span> &quot;base.html&quot; %&#125;</span><br><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">block</span></span> content %&#125;</span><br><span class="xml">页面内容</span><br><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endblock</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>模板全局变量</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-comment">#上下文处理函数</span><br><br><span class="hljs-variable">@app</span>.context_processor<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">account</span><span class="hljs-params">()</span></span><span class="hljs-symbol">:</span><br>	username=<span class="hljs-string">&quot;小博&quot;</span><br>	<span class="hljs-keyword">return</span>&#123;<span class="hljs-string">&quot;username&quot;</span><span class="hljs-symbol">:username</span>&#125;<br><br><span class="hljs-comment">#每个视图函数执行的时候,会自动执行该函数,接收该变量并渲染模板</span><br><br><br><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>Django</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
   <entry>
@@ -695,27 +662,43 @@
       </tags>
   </entry>
   <entry>
+    <title>Flask-模板输出</title>
+    <url>/2021/03/08/Flask-%E6%A8%A1%E6%9D%BF%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<h4 id="目标-模板输出"><a href="#目标-模板输出" class="headerlink" title="目标:    模板输出"></a>目标:    模板输出</h4><ol>
+<li><h6 id="创建templates目录"><a href="#创建templates目录" class="headerlink" title="创建templates目录"></a>创建templates目录</h6><p>在myflask文件下创建templates文件夹</p>
+<p>templates文件夹用于存放HTML文件</p>
+</li>
+<li><h6 id="创建html文件模板"><a href="#创建html文件模板" class="headerlink" title="创建html文件模板"></a>创建html文件模板</h6><p>将写好的模板放到templates目录下</p>
+</li>
+<li><h6 id="网页上输出模板"><a href="#网页上输出模板" class="headerlink" title="网页上输出模板"></a>网页上输出模板</h6><p>编写app.py</p>
+<p>​    引入模块 render_templates</p>
+<p>​    编写路由</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask,render_template<br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;index.html&quot;</span>)  <span class="hljs-comment">#index.html需要自己写好</span><br></code></pre></td></tr></table></figure></li>
+<li><h6 id="加载静态文件"><a href="#加载静态文件" class="headerlink" title="加载静态文件"></a>加载静态文件</h6><p>创建static目录(flask目录下)</p>
+<p>static目录下放入js css  img fonts 等文件</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 通过static 可以引入css等</span><br>&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">&quot;static/css/bootstrap.css&quot;</span>/&gt;<br></code></pre></td></tr></table></figure>
+<p>url_for 可以根据视图函数生成URL</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">视图函数</span>,默认值) &#125;&#125;</span><br><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;static&quot;</span>,<span class="hljs-attr">filename</span>=<span class="hljs-string">&quot;资源路径&quot;</span>) &#125;&#125;</span><br><br><span class="xml">#例子</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;static&quot;</span>,<span class="hljs-attr">filename</span>=<span class="hljs-string">&quot;css/bootstrap.css&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="xml">#例子</span><br><span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;login&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml">   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&quot;register&quot;</span>) &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>注册<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>http协议</title>
     <url>/2021/06/04/Linux-http%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[<h4 id="http请求头"><a href="#http请求头" class="headerlink" title="http请求头"></a>http请求头</h4><p>http协议是应用层协议-超文本传输协议。<br>http协议用于互联网之间的文件传输，如何请求文件，如何返回文件</p>
 <p>http协议是建立在tcp协议之上的协议<br>http协议是无状态协议，请求应答结束，连接即关闭，下一次的请求与应答重新进行tcp连接</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux-mysql主从复制</title>
-    <url>/2021/05/02/Linux-mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</url>
-    <content><![CDATA[<p>主从复制</p>
-<p>主从复制就是一台主Mysql服务器，能够接受数据的写入与读取，另外可能还有多台从节点Mysql服务器，他们不能被直接写入数据，只能通过主节点的二进制日志复制数据，为外部程序提供数据读取服务，是Mysql集群部署最简单的一种</p>
-<p>1.主从复制依赖于Mysql的二进制日志</p>
-<p>2.从服务器首先复制主服务器的二进制日志</p>
-<p>3.然后从该二进制日志中恢复数据到从库</p>
-<p>4.复制二进制日志过程默认是异步的，所以从数据库上的数据相对主数据库来讲，有一定的延迟。但是最终，两者的数据是一致的</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -804,6 +787,42 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux-mysql主从复制</title>
+    <url>/2021/05/02/Linux-mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</url>
+    <content><![CDATA[<p>主从复制</p>
+<p>主从复制就是一台主Mysql服务器，能够接受数据的写入与读取，另外可能还有多台从节点Mysql服务器，他们不能被直接写入数据，只能通过主节点的二进制日志复制数据，为外部程序提供数据读取服务，是Mysql集群部署最简单的一种</p>
+<p>1.主从复制依赖于Mysql的二进制日志</p>
+<p>2.从服务器首先复制主服务器的二进制日志</p>
+<p>3.然后从该二进制日志中恢复数据到从库</p>
+<p>4.复制二进制日志过程默认是异步的，所以从数据库上的数据相对主数据库来讲，有一定的延迟。但是最终，两者的数据是一致的</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux-nginx代理配置</title>
+    <url>/2021/05/01/Linux-nginx%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>Nginx代理模式</p>
+<p>正向代理</p>
+<p>比如我们使用的vpn，就是一种代理，通过vpn我们就可以一种特别的通道上网vpn的代理模式是正向代理，代理层是透明的，上网时感觉不到这一层代理</p>
+<p>反向代理</p>
+<p>在反向代理中，客户端只知道代理节点，将请求发给代理节点，由代理节点决定将请求发给哪个服务器节点，代理节点就是访问目标服务器</p>
+<p>nginx作为web服务器使用时，可以看作是一个文件分发服务器</p>
+<p>在反向代理模式下，用户将请求发送到nginx服务器，nginx决定将用户请求转发到节点的某一台服务器节点组成对用户来讲是不透明的，用户只知道nginx服务器的存在</p>
+<p>当nginx代理请求时，它将请求发送到指定的代理服务器，获取响应，并将其发送回客户端。可以使用指定的协议将请求代理到HTTP服务器或非HTTP服务器。<br>1.代理到HTTP服务器使用Proxy协议<br>2.代理到非HTTP服务器支持的协议包括FastCGl，uwsgi，SCGI和memcached。</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux-mysql安装</title>
     <url>/2021/05/01/Linux-mysql%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h3 id="在Linux系统中安装mysql"><a href="#在Linux系统中安装mysql" class="headerlink" title="在Linux系统中安装mysql"></a>在Linux系统中安装mysql</h3><p>下载历史版本5.7.28的版本<br>找到下载地址后右键下载，复制下载链接</p>
@@ -843,16 +862,38 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux-nginx代理配置</title>
-    <url>/2021/05/01/Linux-nginx%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>Nginx代理模式</p>
-<p>正向代理</p>
-<p>比如我们使用的vpn，就是一种代理，通过vpn我们就可以一种特别的通道上网vpn的代理模式是正向代理，代理层是透明的，上网时感觉不到这一层代理</p>
-<p>反向代理</p>
-<p>在反向代理中，客户端只知道代理节点，将请求发给代理节点，由代理节点决定将请求发给哪个服务器节点，代理节点就是访问目标服务器</p>
-<p>nginx作为web服务器使用时，可以看作是一个文件分发服务器</p>
-<p>在反向代理模式下，用户将请求发送到nginx服务器，nginx决定将用户请求转发到节点的某一台服务器节点组成对用户来讲是不透明的，用户只知道nginx服务器的存在</p>
-<p>当nginx代理请求时，它将请求发送到指定的代理服务器，获取响应，并将其发送回客户端。可以使用指定的协议将请求代理到HTTP服务器或非HTTP服务器。<br>1.代理到HTTP服务器使用Proxy协议<br>2.代理到非HTTP服务器支持的协议包括FastCGl，uwsgi，SCGI和memcached。</p>
+    <title>Linux-socket编程</title>
+    <url>/2021/05/02/Linux-socket%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h4 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h4><p>在实际的TCP/IP应用程序开发中，并不需要去实现细节部分，通常会由系统提供socket接口，这个接口又被称为套接字，基于这个接口就可以轻松的开发网络通讯程序<br>python标准库提供的socket模块，可以实现服务端与客户端的编程</p>
+<h4 id="服务端开发"><a href="#服务端开发" class="headerlink" title="服务端开发"></a>服务端开发</h4><p>1.服务器端一直运行，直到关闭</p>
+<p>2.服务器端端口是固定的</p>
+<p>3.服务器端拥有固定的ip或者主机名</p>
+<p>4.服务器端运行后，会等待客户端连接</p>
+<p>5.一旦连接成功，就可以相互发送消息</p>
+<p>1.s= socket(套接字类别, SOCK_STREAM)<br>套接字类别:AF_INET-IP寻址，AF_UNIX-文件类型套接字</p>
+<p>返回一个socket对象实例</p>
+<p>2.s.bind((“127.0.0.1”,8000))<br>参数是元组类型，(ip地址，端口号)</p>
+<p>3.s.listen(num)<br>启动监听，如果提供了num，表示允许的最多连接数，超过的将被拒绝</p>
+<p>4.socket, address = s.accept()<br>等待连接，如果有连接,返回由客户端socket对象与address信息组成的元组</p>
+<p>安装Wireshark抓包工具</p>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><h6 id="服务器设置（基本设置）"><a href="#服务器设置（基本设置）" class="headerlink" title="服务器设置（基本设置）"></a>服务器设置（基本设置）</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> socket import socket, AF_INET, SOCK_STREAM<br><br><span class="hljs-comment"># AF_INET  - IPV4 协议</span><br><span class="hljs-comment"># SOCK_STREAM - 套接字类型为面向连接的可靠字节流</span><br><br><span class="hljs-comment"># 创建socket对象实例</span><br>s_server = socket(AF_INET, SOCK_STREAM)<br><br><span class="hljs-comment"># 绑定IP与端口号</span><br>s_server.bind((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, 8000))<br><br><span class="hljs-comment"># 开始监听</span><br>s_server.listen()<br><br><span class="hljs-comment"># 显示等待链接接入中</span><br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;等待链接中~~~~~~&quot;</span>)<br>client_sock, client_addr = s_server.accept()<br><span class="hljs-builtin-name">print</span>(client_sock, client_addr)<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;-&quot;</span><span class="hljs-number">*50</span>)<br>client_sock.close()<br>s_server.close()<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;服务器已关闭&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h6><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-built_in">from</span> <span class="hljs-built_in">socket</span> import *<br><br><span class="hljs-comment"># 创建实例</span><br>c_client = <span class="hljs-built_in">socket</span>(AF_INET, SOCK_STREAM)<br><br><span class="hljs-comment"># 链接到服务器</span><br>c_client.connect((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br><br><span class="hljs-comment"># 关闭链接</span><br>c_client.<span class="hljs-built_in">close</span>()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h6><p>服务器设置（主要是加上了while循环）</p>
+<figure class="highlight perl"><table><tr><td class="code"><pre><code class="hljs perl">from <span class="hljs-keyword">socket</span> import <span class="hljs-keyword">socket</span>, AF_INET, SOCK_STREAM<br><br>s_server = <span class="hljs-keyword">socket</span>(AF_INET, SOCK_STREAM)<br>s_server.bind((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br>s_server.listen()<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;等待链接中~~~~~~&quot;</span>)<br>client_sock, client_addr = s_server.accept()<br><span class="hljs-keyword">print</span>(client_sock, client_addr)<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;-&quot;</span>*<span class="hljs-number">50</span>)<br><br><span class="hljs-keyword">while</span> True:<br>    message = client_sock.recv(<span class="hljs-number">1024</span>)       <span class="hljs-comment"># 读取socket的数据，如果没有读取到数据就会停留在这一句</span><br>    message = message.decode(<span class="hljs-string">&quot;utf-8&quot;</span>)      <span class="hljs-comment"># 将读取到的message字节解码</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> message:<br>        <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">if</span> message == <span class="hljs-string">&quot;exit&quot;</span>:<br>        client_sock.close()                 <span class="hljs-comment"># 发出关闭信号</span><br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;客户端消息》》&quot;</span>, message)<br>        client_sock.send(b<span class="hljs-string">&quot;continue...&quot;</span>)<br><br>s_server.close()<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;服务器已关闭&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<p>客户端设置</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-built_in">from</span> <span class="hljs-built_in">socket</span> import *<br><br>c_client = <span class="hljs-built_in">socket</span>(AF_INET, SOCK_STREAM)<br>c_client.connect((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br><br><span class="hljs-keyword">while</span> True:<br>    message = input(<span class="hljs-string">&quot;请输入发送的消息：&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> message:<br>        continue<br>    c_client.<span class="hljs-built_in">send</span>(<span class="hljs-keyword">bytes</span>(message, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>))<br><br>    <span class="hljs-keyword">if</span> message == <span class="hljs-string">&quot;exit&quot;</span>:<br>        break<br>    <span class="hljs-built_in">result</span> = c_client.recv(<span class="hljs-number">1024</span>)<br>    print(<span class="hljs-built_in">result</span>.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br><br><span class="hljs-comment"># 关闭链接</span><br>c_client.<span class="hljs-built_in">close</span>()<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="udp"><a href="#udp" class="headerlink" title="udp"></a>udp</h4><h6 id="服务器设置"><a href="#服务器设置" class="headerlink" title="服务器设置"></a>服务器设置</h6><figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">from</span> socket <span class="hljs-keyword">import</span> *<br><br><span class="hljs-type">HOST</span> = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-type">PORT</span> = <span class="hljs-number">21111</span><br><span class="hljs-type">BUFSIZE</span> = <span class="hljs-number">1024</span><br><br><span class="hljs-meta"># 创建udp服务器</span><br><span class="hljs-title">udpSerSock</span> = socket(<span class="hljs-type">AF_INET</span>, <span class="hljs-type">SOCK_DGRAM</span>)<br><span class="hljs-title">udpSerSock</span>.bind((<span class="hljs-type">HOST</span>, <span class="hljs-type">PORT</span>))<br><span class="hljs-title">while</span> <span class="hljs-type">True</span>:<br>    # recvform返回数据<span class="hljs-class"><span class="hljs-keyword">data</span>，与发送消息端的(<span class="hljs-title">ip</span>, <span class="hljs-title">port</span>)</span><br>    <span class="hljs-class"><span class="hljs-keyword">data</span>, addr = udpSerSock.recvfrom(<span class="hljs-type">BUFSIZE</span>)</span><br>    print(addr, <span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-class"><span class="hljs-keyword">data</span>)</span><br>    udpSerSock.sendto(bytes(<span class="hljs-string">&quot;ok&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>), addr)<br>    <br><span class="hljs-title">udpSerSock</span>.close()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="客户端设置-1"><a href="#客户端设置-1" class="headerlink" title="客户端设置"></a>客户端设置</h6><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">from socket import *<br><br>HOST = <span class="hljs-string">&quot;&quot;</span><br>PORT = <span class="hljs-number">21111</span><br>BUFSIZ = <span class="hljs-number">1024</span><br>ADDR = (HOST, PORT)<br><br><span class="hljs-comment"># 创建一个socket对象</span><br><span class="hljs-comment"># SOCK_DGRAM - 套接字类型为udp数据报</span><br>udpClient = socket(AF_INET, SOCK_DGRAM)<br><br><span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:<br>    <span class="hljs-keyword">message</span> = input(<span class="hljs-string">&quot;请输入:&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">message</span> ==<span class="hljs-string">&quot;quit&quot;</span>:<br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">message</span>:<br>        <span class="hljs-keyword">continue</span><br>    udpClient.sendto(bytes(<span class="hljs-keyword">message</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>), ADDR)<br>    <span class="hljs-keyword">message</span>, addr = udpClient.recvfrom(<span class="hljs-number">1024</span>)<br>    print(addr, <span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-keyword">message</span>.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br>    <br>udpClient.close()<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -901,47 +942,6 @@
 <figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">复制上方   <span class="hljs-keyword">include</span>后边路径下的    <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span>*.conf  目录下的defoult.conf文件<br><br>例：复制文件     cp <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span><span class="hljs-regexp">/default.conf /</span>etc<span class="hljs-regexp">/nginx/</span>conf.d/myweb.conf<br><br>打开刚刚复制的文件，按下面修改<br>server &#123;<br>    listen       <span class="hljs-number">80</span>;<br>    server_name  localhost;		#将此处的localhost修改为自己的域名<br><br>    #access_log  <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/nginx/</span>host.access.log  main;<br><br>    location / &#123;<br>        root   <span class="hljs-regexp">/usr/</span>share<span class="hljs-regexp">/nginx/</span>html;	#此处为自己网页的根目录<br>        index  index.html index.htm;<br>    &#125;<br>    <br> 修改后示例<br> server &#123;<br>    listen       <span class="hljs-number">80</span>;<br>    server_name  xiaobo.com;<br><br>    #access_log  <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/nginx/</span>host.access.log  main;<br><br>    location / &#123;<br>        root   <span class="hljs-regexp">/wwwroot/my</span>web;<br>        index  index.html index.htm;<br>    &#125;<br></code></pre></td></tr></table></figure>
 <p>修改完成后，重启nginx，就可以访问域名了</p>
 <h4 id="nginx主进程控制"><a href="#nginx主进程控制" class="headerlink" title="nginx主进程控制"></a>nginx主进程控制</h4><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><code class="hljs jboss-cli">nginx修改配置后需要重启后才能生效.<br><br>1.启动nginx<br>nginx<br><br>⒉快速停止nginx运行<br>nginx -s stop<br><br>3.重启加载<br>nginx -s <span class="hljs-keyword">reload</span><br><br>4.正常关闭<br>nginxnginx -s <span class="hljs-keyword">quit</span><br><br>5.重新打开日志<br>nginx -s reopen<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux-socket编程</title>
-    <url>/2021/05/02/Linux-socket%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<h4 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h4><p>在实际的TCP/IP应用程序开发中，并不需要去实现细节部分，通常会由系统提供socket接口，这个接口又被称为套接字，基于这个接口就可以轻松的开发网络通讯程序<br>python标准库提供的socket模块，可以实现服务端与客户端的编程</p>
-<h4 id="服务端开发"><a href="#服务端开发" class="headerlink" title="服务端开发"></a>服务端开发</h4><p>1.服务器端一直运行，直到关闭</p>
-<p>2.服务器端端口是固定的</p>
-<p>3.服务器端拥有固定的ip或者主机名</p>
-<p>4.服务器端运行后，会等待客户端连接</p>
-<p>5.一旦连接成功，就可以相互发送消息</p>
-<p>1.s= socket(套接字类别, SOCK_STREAM)<br>套接字类别:AF_INET-IP寻址，AF_UNIX-文件类型套接字</p>
-<p>返回一个socket对象实例</p>
-<p>2.s.bind((“127.0.0.1”,8000))<br>参数是元组类型，(ip地址，端口号)</p>
-<p>3.s.listen(num)<br>启动监听，如果提供了num，表示允许的最多连接数，超过的将被拒绝</p>
-<p>4.socket, address = s.accept()<br>等待连接，如果有连接,返回由客户端socket对象与address信息组成的元组</p>
-<p>安装Wireshark抓包工具</p>
-<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><h6 id="服务器设置（基本设置）"><a href="#服务器设置（基本设置）" class="headerlink" title="服务器设置（基本设置）"></a>服务器设置（基本设置）</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> socket import socket, AF_INET, SOCK_STREAM<br><br><span class="hljs-comment"># AF_INET  - IPV4 协议</span><br><span class="hljs-comment"># SOCK_STREAM - 套接字类型为面向连接的可靠字节流</span><br><br><span class="hljs-comment"># 创建socket对象实例</span><br>s_server = socket(AF_INET, SOCK_STREAM)<br><br><span class="hljs-comment"># 绑定IP与端口号</span><br>s_server.bind((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, 8000))<br><br><span class="hljs-comment"># 开始监听</span><br>s_server.listen()<br><br><span class="hljs-comment"># 显示等待链接接入中</span><br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;等待链接中~~~~~~&quot;</span>)<br>client_sock, client_addr = s_server.accept()<br><span class="hljs-builtin-name">print</span>(client_sock, client_addr)<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;-&quot;</span><span class="hljs-number">*50</span>)<br>client_sock.close()<br>s_server.close()<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;服务器已关闭&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h6><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-built_in">from</span> <span class="hljs-built_in">socket</span> import *<br><br><span class="hljs-comment"># 创建实例</span><br>c_client = <span class="hljs-built_in">socket</span>(AF_INET, SOCK_STREAM)<br><br><span class="hljs-comment"># 链接到服务器</span><br>c_client.connect((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br><br><span class="hljs-comment"># 关闭链接</span><br>c_client.<span class="hljs-built_in">close</span>()<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h6><p>服务器设置（主要是加上了while循环）</p>
-<figure class="highlight perl"><table><tr><td class="code"><pre><code class="hljs perl">from <span class="hljs-keyword">socket</span> import <span class="hljs-keyword">socket</span>, AF_INET, SOCK_STREAM<br><br>s_server = <span class="hljs-keyword">socket</span>(AF_INET, SOCK_STREAM)<br>s_server.bind((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br>s_server.listen()<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;等待链接中~~~~~~&quot;</span>)<br>client_sock, client_addr = s_server.accept()<br><span class="hljs-keyword">print</span>(client_sock, client_addr)<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;-&quot;</span>*<span class="hljs-number">50</span>)<br><br><span class="hljs-keyword">while</span> True:<br>    message = client_sock.recv(<span class="hljs-number">1024</span>)       <span class="hljs-comment"># 读取socket的数据，如果没有读取到数据就会停留在这一句</span><br>    message = message.decode(<span class="hljs-string">&quot;utf-8&quot;</span>)      <span class="hljs-comment"># 将读取到的message字节解码</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> message:<br>        <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">if</span> message == <span class="hljs-string">&quot;exit&quot;</span>:<br>        client_sock.close()                 <span class="hljs-comment"># 发出关闭信号</span><br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;客户端消息》》&quot;</span>, message)<br>        client_sock.send(b<span class="hljs-string">&quot;continue...&quot;</span>)<br><br>s_server.close()<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;服务器已关闭&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-
-<p>客户端设置</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-built_in">from</span> <span class="hljs-built_in">socket</span> import *<br><br>c_client = <span class="hljs-built_in">socket</span>(AF_INET, SOCK_STREAM)<br>c_client.connect((<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8000</span>))<br><br><span class="hljs-keyword">while</span> True:<br>    message = input(<span class="hljs-string">&quot;请输入发送的消息：&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> message:<br>        continue<br>    c_client.<span class="hljs-built_in">send</span>(<span class="hljs-keyword">bytes</span>(message, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>))<br><br>    <span class="hljs-keyword">if</span> message == <span class="hljs-string">&quot;exit&quot;</span>:<br>        break<br>    <span class="hljs-built_in">result</span> = c_client.recv(<span class="hljs-number">1024</span>)<br>    print(<span class="hljs-built_in">result</span>.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br><br><span class="hljs-comment"># 关闭链接</span><br>c_client.<span class="hljs-built_in">close</span>()<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="udp"><a href="#udp" class="headerlink" title="udp"></a>udp</h4><h6 id="服务器设置"><a href="#服务器设置" class="headerlink" title="服务器设置"></a>服务器设置</h6><figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">from</span> socket <span class="hljs-keyword">import</span> *<br><br><span class="hljs-type">HOST</span> = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-type">PORT</span> = <span class="hljs-number">21111</span><br><span class="hljs-type">BUFSIZE</span> = <span class="hljs-number">1024</span><br><br><span class="hljs-meta"># 创建udp服务器</span><br><span class="hljs-title">udpSerSock</span> = socket(<span class="hljs-type">AF_INET</span>, <span class="hljs-type">SOCK_DGRAM</span>)<br><span class="hljs-title">udpSerSock</span>.bind((<span class="hljs-type">HOST</span>, <span class="hljs-type">PORT</span>))<br><span class="hljs-title">while</span> <span class="hljs-type">True</span>:<br>    # recvform返回数据<span class="hljs-class"><span class="hljs-keyword">data</span>，与发送消息端的(<span class="hljs-title">ip</span>, <span class="hljs-title">port</span>)</span><br>    <span class="hljs-class"><span class="hljs-keyword">data</span>, addr = udpSerSock.recvfrom(<span class="hljs-type">BUFSIZE</span>)</span><br>    print(addr, <span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-class"><span class="hljs-keyword">data</span>)</span><br>    udpSerSock.sendto(bytes(<span class="hljs-string">&quot;ok&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>), addr)<br>    <br><span class="hljs-title">udpSerSock</span>.close()<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="客户端设置-1"><a href="#客户端设置-1" class="headerlink" title="客户端设置"></a>客户端设置</h6><figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake">from socket import *<br><br>HOST = <span class="hljs-string">&quot;&quot;</span><br>PORT = <span class="hljs-number">21111</span><br>BUFSIZ = <span class="hljs-number">1024</span><br>ADDR = (HOST, PORT)<br><br><span class="hljs-comment"># 创建一个socket对象</span><br><span class="hljs-comment"># SOCK_DGRAM - 套接字类型为udp数据报</span><br>udpClient = socket(AF_INET, SOCK_DGRAM)<br><br><span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:<br>    <span class="hljs-keyword">message</span> = input(<span class="hljs-string">&quot;请输入:&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">message</span> ==<span class="hljs-string">&quot;quit&quot;</span>:<br>        <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">message</span>:<br>        <span class="hljs-keyword">continue</span><br>    udpClient.sendto(bytes(<span class="hljs-keyword">message</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>), ADDR)<br>    <span class="hljs-keyword">message</span>, addr = udpClient.recvfrom(<span class="hljs-number">1024</span>)<br>    print(addr, <span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-keyword">message</span>.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br>    <br>udpClient.close()<br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -1061,36 +1061,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux-虚拟机安装</title>
-    <url>/2021/04/15/Linux-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h4 id="VirtualBox"><a href="#VirtualBox" class="headerlink" title="VirtualBox"></a>VirtualBox</h4><p>VirtualBox由oracle公司出品，可以在window、linux、macos上运行</p>
-<p>官方网站: <a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></p>
-<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>Linux是系统内核，单独使用linux内核会很困难，因此许多厂家以linux内核版本为基础，开发了功能丰富的组件，<br>常见的linux发行版本:</p>
-<ol>
-<li><p>Red Hat Linux(免费版Fedora Core，用于测试新内核)官方网址: http: //<a href="http://www.redhat.com/">www.redhat.com/</a><br>官方网址:<a href="https://getfedora.org/">https://getfedora.org/</a></p>
-</li>
-<li><p>Debian Linux<br>官方网址: <a href="http://www.debian.org/">http://www.debian.org/</a></p>
-</li>
-<li><p>Ubuntu Linux(在Debian的基础上改良的桌面工作环境)<br>官方网址: <a href="http://www.ubuntulinux.org/%E3%80%82">http://www.ubuntulinux.org/。</a></p>
-</li>
-<li><p>Centos (Red Hat的收费版的社区版，功能接近一致，不收费)<br>官方网址:<a href="https://www.centos.org/">https://www.centos.org/</a><br><a href="http://mirrors.163.com/centos/7.7.1908/isos/x86_64/">http://mirrors.163.com/centos/7.7.1908/isos/x86_64/</a></p>
-</li>
-</ol>
-<h4 id="Linux文件组织"><a href="#Linux文件组织" class="headerlink" title="Linux文件组织"></a>Linux文件组织</h4><p>liunx没有盘符的概念，所有目录，文件都在/根目录下</p>
-<p>主要的文件夹介绍:<br>/bin系统命令</p>
-<p>/boot系统启动命令</p>
-<p>/etc配置文件<br>/home普通用户主目录</p>
-<p>/root root用户目录</p>
-<p>/usr用户安装程序</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>flask-起步</title>
     <url>/2021/03/08/flask-%E8%B5%B7%E6%AD%A5/</url>
     <content><![CDATA[<h4 id="创建flask工程目录"><a href="#创建flask工程目录" class="headerlink" title="创建flask工程目录"></a>创建flask工程目录</h4><ol>
@@ -1132,34 +1102,33 @@
       </tags>
   </entry>
   <entry>
-    <title>mysql-update与delete语句</title>
-    <url>/2021/04/06/mysql-update%E4%B8%8Edelete%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h6 id="delete语句"><a href="#delete语句" class="headerlink" title="delete语句"></a>delete语句</h6><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">#将符合<span class="hljs-keyword">condition</span>的记录删除<br><br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><br>例：<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users limit <span class="hljs-number">10</span>  	#删除<span class="hljs-number">10</span>条会员记录<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id<span class="hljs-operator">&gt;</span><span class="hljs-number">10</span> <span class="hljs-keyword">and</span> id<span class="hljs-operator">&lt;</span><span class="hljs-number">15</span>		#删除id为<span class="hljs-number">10</span><span class="hljs-operator">~</span><span class="hljs-number">15</span>的记录<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="update语句"><a href="#update语句" class="headerlink" title="update语句"></a>update语句</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#update用于更新数据表的记录</span><br><br>update table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=new_val1,field2=new_val2 where condition<br><br>例：将<span class="hljs-attribute">ID</span>=3的会员名改为笑哈哈，性别改为女。<br>update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">username</span>=<span class="hljs-string">&quot;笑哈哈&quot;</span>，sex=&quot;女&quot; where <span class="hljs-attribute">user_id</span>=3<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="delete-–-mysql实例"><a href="#delete-–-mysql实例" class="headerlink" title="delete – mysql实例"></a>delete – mysql实例</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.<span class="hljs-keyword">connect</span>(<span class="hljs-keyword">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        <span class="hljs-keyword">password</span>=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        <span class="hljs-keyword">database</span>=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br><span class="hljs-keyword">cursor</span> = cnx.<span class="hljs-keyword">cursor</span>()<br><br><span class="hljs-keyword">sql</span> = &quot;delete from users where realname like &#x27;%啦%&#x27;&quot;<br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">execute</span>(<span class="hljs-keyword">sql</span>)<br>cnx.<span class="hljs-keyword">commit</span>()        #这句不能少<br>res = <span class="hljs-keyword">cursor</span>.rowcount<br>print(res)<br><br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">close</span>()<br>cnx.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="delete-–-sqlalcheny实例"><a href="#delete-–-sqlalcheny实例" class="headerlink" title="delete – sqlalcheny实例"></a>delete – sqlalcheny实例</h6><figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># 需要安装SQLAlchemy，pymysql模块</span><br><br><span class="hljs-title">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine, Column, Integer, String, Enum<br><span class="hljs-title">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker<br><span class="hljs-title">from</span> sqlalchemy.ext.declarative <span class="hljs-keyword">import</span> declarative_base<br><br><span class="hljs-meta"># 创建数据库引擎</span><br><span class="hljs-title">engine</span> = create_engine(<span class="hljs-string">&quot;mysql+pymysql://root:tbz1548638666@localhost/mydb&quot;</span>)<br><br><span class="hljs-meta">#创建会话对象，根据不同数据库引擎创建对应的会话对象</span><br><span class="hljs-type">Session</span> = sessionmaker(bind=engine)<br><br><span class="hljs-meta">#创建会话对象实例</span><br><span class="hljs-title">session</span> = <span class="hljs-type">Session</span>()<br><br><span class="hljs-meta">#Base为映射基类</span><br><span class="hljs-type">Base</span> = declarative_base()<br><br><span class="hljs-meta">#数据表模型</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Users</span>(<span class="hljs-type">Base</span>):</span><br><span class="hljs-class">    __tablename__ = &quot;users&quot;</span><br><span class="hljs-class">    user_id = <span class="hljs-type">Column</span>(<span class="hljs-type">Integer</span>, <span class="hljs-title">primary_key</span>=<span class="hljs-type">True</span>)</span><br><span class="hljs-class">    username = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    realname = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    password = <span class="hljs-type">Column</span>(<span class="hljs-type">String(64)</span>)</span><br><span class="hljs-class"></span><br><span class="hljs-class"></span><br><span class="hljs-class">#以上都是准备</span><br><span class="hljs-class">#下面才是重点，删除的重点</span><br><span class="hljs-class"></span><br><span class="hljs-class">#获取用户</span><br><span class="hljs-class">def getUsers():</span><br><span class="hljs-class">	objs = session.query(<span class="hljs-type">Users</span>).filter(<span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &gt;= 2, <span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &lt;= 8).all()</span><br><span class="hljs-class">	return objs</span><br><span class="hljs-class"></span><br><span class="hljs-class">#删除得到的数据中的第一条</span><br><span class="hljs-class">session.delete(<span class="hljs-title">getUsers</span>()[0])</span><br><span class="hljs-class">session.commit()</span><br><span class="hljs-class"></span><br><span class="hljs-class">#修改数据</span><br><span class="hljs-class">#getUsers()[0].username=&quot;欢天喜地一家人&quot;	#修改第一条数据，getUsers()[0] 是一个对象，修改前先找到对象</span><br><span class="hljs-class">#session.commit()</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="update-mysql-实例"><a href="#update-mysql-实例" class="headerlink" title="update - mysql 实例"></a>update - mysql 实例</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br><span class="hljs-comment">#查询函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUser</span>(<span class="hljs-params">user_id</span>):</span><br>    <span class="hljs-comment"># user_id = user_id</span><br>    sql = (<span class="hljs-string">&quot;select * from users where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id))<br>    cursor.execute(sql)<br>    res = cursor.fetchone()<br>    print(res)<br><br><span class="hljs-comment">#修改函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">updateUser</span>(<span class="hljs-params">user_id</span>):</span><br>    sql1 = <span class="hljs-string">&quot;update users set sex=&#x27;女&#x27; where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id)<br>    <span class="hljs-keyword">try</span>:<br>        cursor.execute(sql1)<br>        cnx.commit()<br>        print(<span class="hljs-string">&quot;修改成功&quot;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        cnx.rollback()<br>        print(<span class="hljs-string">&quot;修改失败:&quot;</span>,e)<br><br><br>userid = <span class="hljs-number">2</span>			<span class="hljs-comment">#修改id为2的用户信息</span><br>getUser(userid) 	<span class="hljs-comment">#修改前</span><br>updateUser(userid)	<span class="hljs-comment">#修改</span><br>getUser(userid)		<span class="hljs-comment">#修改后</span><br><br><span class="hljs-comment">#关闭连接资源</span><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="update-sqlalchemy实例"><a href="#update-sqlalchemy实例" class="headerlink" title="update - sqlalchemy实例"></a>update - sqlalchemy实例</h6><p>在delete – sqlalcheny实例的最后</p>
-<h6 id="锁的概念（行锁）"><a href="#锁的概念（行锁）" class="headerlink" title="锁的概念（行锁）"></a>锁的概念（行锁）</h6><p>通常情况下，update的时候，innodb引擎会给这一行加锁，mysql会自动加锁</p>
-<p>例：当多人同时修改一个数据时，如何只保留第一个人修改的内容</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">age</span>=10 where <span class="hljs-attribute">user_id</span>=2 <span class="hljs-keyword">and</span> age is <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
-<p>当age为空时可以修改，当age不为空时，不可修改，这个方法可以用作抽奖。</p>
+    <title>Linux-虚拟机安装</title>
+    <url>/2021/04/15/Linux-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h4 id="VirtualBox"><a href="#VirtualBox" class="headerlink" title="VirtualBox"></a>VirtualBox</h4><p>VirtualBox由oracle公司出品，可以在window、linux、macos上运行</p>
+<p>官方网站: <a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></p>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>Linux是系统内核，单独使用linux内核会很困难，因此许多厂家以linux内核版本为基础，开发了功能丰富的组件，<br>常见的linux发行版本:</p>
+<ol>
+<li><p>Red Hat Linux(免费版Fedora Core，用于测试新内核)官方网址: http: //<a href="http://www.redhat.com/">www.redhat.com/</a><br>官方网址:<a href="https://getfedora.org/">https://getfedora.org/</a></p>
+</li>
+<li><p>Debian Linux<br>官方网址: <a href="http://www.debian.org/">http://www.debian.org/</a></p>
+</li>
+<li><p>Ubuntu Linux(在Debian的基础上改良的桌面工作环境)<br>官方网址: <a href="http://www.ubuntulinux.org/%E3%80%82">http://www.ubuntulinux.org/。</a></p>
+</li>
+<li><p>Centos (Red Hat的收费版的社区版，功能接近一致，不收费)<br>官方网址:<a href="https://www.centos.org/">https://www.centos.org/</a><br><a href="http://mirrors.163.com/centos/7.7.1908/isos/x86_64/">http://mirrors.163.com/centos/7.7.1908/isos/x86_64/</a></p>
+</li>
+</ol>
+<h4 id="Linux文件组织"><a href="#Linux文件组织" class="headerlink" title="Linux文件组织"></a>Linux文件组织</h4><p>liunx没有盘符的概念，所有目录，文件都在/根目录下</p>
+<p>主要的文件夹介绍:<br>/bin系统命令</p>
+<p>/boot系统启动命令</p>
+<p>/etc配置文件<br>/home普通用户主目录</p>
+<p>/root root用户目录</p>
+<p>/usr用户安装程序</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
       </categories>
       <tags>
-        <tag>MySQL</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1240,12 +1209,28 @@
       </tags>
   </entry>
   <entry>
-    <title>mysql-三大范式</title>
-    <url>/2021/04/09/mysql-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/</url>
-    <content><![CDATA[<h6 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h6><p>在关系模型中，对数据列的一个规范要求，所有的列都应该是原子性的，即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组，记录等非原子数据项。即实体中的某个属性有多个值时，必须拆分为不同的属性。在符合第一范式(1NF）表中的每个域值只能是实体的一个属性或一个属性的一部分。</p>
-<p><strong>简而言之，第一范式就是无重复的列。</strong></p>
-<h6 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h6><p>满足第二范式(2NF）必须先满足第一范式(1NF)。第二范式(2NF）要求数据库表中的每个实例或记录必须可以被唯一的区分,即每一行代表一个不同的实体。</p>
-<h6 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h6><p>第三范式(3NF）是第二范式(2NF)的一个子集，即满足第三范式(3NF）必须满足第二范式(2NF)。简而言之，第三范式(3NF）要求一个关系中不包含已在其它关系已包含的非主关键字信息</p>
+    <title>mysql-update与delete语句</title>
+    <url>/2021/04/06/mysql-update%E4%B8%8Edelete%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h6 id="delete语句"><a href="#delete语句" class="headerlink" title="delete语句"></a>delete语句</h6><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">#将符合<span class="hljs-keyword">condition</span>的记录删除<br><br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">condition</span><br><br>例：<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users limit <span class="hljs-number">10</span>  	#删除<span class="hljs-number">10</span>条会员记录<br><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id<span class="hljs-operator">&gt;</span><span class="hljs-number">10</span> <span class="hljs-keyword">and</span> id<span class="hljs-operator">&lt;</span><span class="hljs-number">15</span>		#删除id为<span class="hljs-number">10</span><span class="hljs-operator">~</span><span class="hljs-number">15</span>的记录<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update语句"><a href="#update语句" class="headerlink" title="update语句"></a>update语句</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#update用于更新数据表的记录</span><br><br>update table <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=new_val1,field2=new_val2 where condition<br><br>例：将<span class="hljs-attribute">ID</span>=3的会员名改为笑哈哈，性别改为女。<br>update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">username</span>=<span class="hljs-string">&quot;笑哈哈&quot;</span>，sex=&quot;女&quot; where <span class="hljs-attribute">user_id</span>=3<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="delete-–-mysql实例"><a href="#delete-–-mysql实例" class="headerlink" title="delete – mysql实例"></a>delete – mysql实例</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.<span class="hljs-keyword">connect</span>(<span class="hljs-keyword">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        <span class="hljs-keyword">password</span>=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        <span class="hljs-keyword">database</span>=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br><span class="hljs-keyword">cursor</span> = cnx.<span class="hljs-keyword">cursor</span>()<br><br><span class="hljs-keyword">sql</span> = &quot;delete from users where realname like &#x27;%啦%&#x27;&quot;<br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">execute</span>(<span class="hljs-keyword">sql</span>)<br>cnx.<span class="hljs-keyword">commit</span>()        #这句不能少<br>res = <span class="hljs-keyword">cursor</span>.rowcount<br>print(res)<br><br><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">close</span>()<br>cnx.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="delete-–-sqlalcheny实例"><a href="#delete-–-sqlalcheny实例" class="headerlink" title="delete – sqlalcheny实例"></a>delete – sqlalcheny实例</h6><figure class="highlight haskell"><table><tr><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># 需要安装SQLAlchemy，pymysql模块</span><br><br><span class="hljs-title">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine, Column, Integer, String, Enum<br><span class="hljs-title">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker<br><span class="hljs-title">from</span> sqlalchemy.ext.declarative <span class="hljs-keyword">import</span> declarative_base<br><br><span class="hljs-meta"># 创建数据库引擎</span><br><span class="hljs-title">engine</span> = create_engine(<span class="hljs-string">&quot;mysql+pymysql://root:tbz1548638666@localhost/mydb&quot;</span>)<br><br><span class="hljs-meta">#创建会话对象，根据不同数据库引擎创建对应的会话对象</span><br><span class="hljs-type">Session</span> = sessionmaker(bind=engine)<br><br><span class="hljs-meta">#创建会话对象实例</span><br><span class="hljs-title">session</span> = <span class="hljs-type">Session</span>()<br><br><span class="hljs-meta">#Base为映射基类</span><br><span class="hljs-type">Base</span> = declarative_base()<br><br><span class="hljs-meta">#数据表模型</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Users</span>(<span class="hljs-type">Base</span>):</span><br><span class="hljs-class">    __tablename__ = &quot;users&quot;</span><br><span class="hljs-class">    user_id = <span class="hljs-type">Column</span>(<span class="hljs-type">Integer</span>, <span class="hljs-title">primary_key</span>=<span class="hljs-type">True</span>)</span><br><span class="hljs-class">    username = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    realname = <span class="hljs-type">Column</span>(<span class="hljs-type">String(25)</span>)</span><br><span class="hljs-class">    password = <span class="hljs-type">Column</span>(<span class="hljs-type">String(64)</span>)</span><br><span class="hljs-class"></span><br><span class="hljs-class"></span><br><span class="hljs-class">#以上都是准备</span><br><span class="hljs-class">#下面才是重点，删除的重点</span><br><span class="hljs-class"></span><br><span class="hljs-class">#获取用户</span><br><span class="hljs-class">def getUsers():</span><br><span class="hljs-class">	objs = session.query(<span class="hljs-type">Users</span>).filter(<span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &gt;= 2, <span class="hljs-type">Users</span>.<span class="hljs-title">user_id</span> &lt;= 8).all()</span><br><span class="hljs-class">	return objs</span><br><span class="hljs-class"></span><br><span class="hljs-class">#删除得到的数据中的第一条</span><br><span class="hljs-class">session.delete(<span class="hljs-title">getUsers</span>()[0])</span><br><span class="hljs-class">session.commit()</span><br><span class="hljs-class"></span><br><span class="hljs-class">#修改数据</span><br><span class="hljs-class">#getUsers()[0].username=&quot;欢天喜地一家人&quot;	#修改第一条数据，getUsers()[0] 是一个对象，修改前先找到对象</span><br><span class="hljs-class">#session.commit()</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update-mysql-实例"><a href="#update-mysql-实例" class="headerlink" title="update - mysql 实例"></a>update - mysql 实例</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        password=<span class="hljs-string">&#x27;tbz1548638666&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br>cursor = cnx.cursor()<br><br><span class="hljs-comment">#查询函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUser</span>(<span class="hljs-params">user_id</span>):</span><br>    <span class="hljs-comment"># user_id = user_id</span><br>    sql = (<span class="hljs-string">&quot;select * from users where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id))<br>    cursor.execute(sql)<br>    res = cursor.fetchone()<br>    print(res)<br><br><span class="hljs-comment">#修改函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">updateUser</span>(<span class="hljs-params">user_id</span>):</span><br>    sql1 = <span class="hljs-string">&quot;update users set sex=&#x27;女&#x27; where user_id=&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(user_id)<br>    <span class="hljs-keyword">try</span>:<br>        cursor.execute(sql1)<br>        cnx.commit()<br>        print(<span class="hljs-string">&quot;修改成功&quot;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        cnx.rollback()<br>        print(<span class="hljs-string">&quot;修改失败:&quot;</span>,e)<br><br><br>userid = <span class="hljs-number">2</span>			<span class="hljs-comment">#修改id为2的用户信息</span><br>getUser(userid) 	<span class="hljs-comment">#修改前</span><br>updateUser(userid)	<span class="hljs-comment">#修改</span><br>getUser(userid)		<span class="hljs-comment">#修改后</span><br><br><span class="hljs-comment">#关闭连接资源</span><br>cursor.close()<br>cnx.close()<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="update-sqlalchemy实例"><a href="#update-sqlalchemy实例" class="headerlink" title="update - sqlalchemy实例"></a>update - sqlalchemy实例</h6><p>在delete – sqlalcheny实例的最后</p>
+<h6 id="锁的概念（行锁）"><a href="#锁的概念（行锁）" class="headerlink" title="锁的概念（行锁）"></a>锁的概念（行锁）</h6><p>通常情况下，update的时候，innodb引擎会给这一行加锁，mysql会自动加锁</p>
+<p>例：当多人同时修改一个数据时，如何只保留第一个人修改的内容</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">update<span class="hljs-built_in"> users </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">age</span>=10 where <span class="hljs-attribute">user_id</span>=2 <span class="hljs-keyword">and</span> age is <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
+<p>当age为空时可以修改，当age不为空时，不可修改，这个方法可以用作抽奖。</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -1286,6 +1271,57 @@
 
 
 <h6 id="执行插入"><a href="#执行插入" class="headerlink" title="执行插入"></a>执行插入</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.conmector <span class="hljs-keyword">as</span> connector<br>sql = <span class="hljs-string">&quot;INSERT INTO</span><br><span class="hljs-string">`mydb`.`users`&quot;</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql-三大范式</title>
+    <url>/2021/04/09/mysql-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F/</url>
+    <content><![CDATA[<h6 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h6><p>在关系模型中，对数据列的一个规范要求，所有的列都应该是原子性的，即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组，记录等非原子数据项。即实体中的某个属性有多个值时，必须拆分为不同的属性。在符合第一范式(1NF）表中的每个域值只能是实体的一个属性或一个属性的一部分。</p>
+<p><strong>简而言之，第一范式就是无重复的列。</strong></p>
+<h6 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h6><p>满足第二范式(2NF）必须先满足第一范式(1NF)。第二范式(2NF）要求数据库表中的每个实例或记录必须可以被唯一的区分,即每一行代表一个不同的实体。</p>
+<h6 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h6><p>第三范式(3NF）是第二范式(2NF)的一个子集，即满足第三范式(3NF）必须满足第二范式(2NF)。简而言之，第三范式(3NF）要求一个关系中不包含已在其它关系已包含的非主关键字信息</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql-查询语句</title>
+    <url>/2021/04/05/mysql-%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h4 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h4><h6 id="select语句"><a href="#select语句" class="headerlink" title="select语句"></a>select语句</h6><figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">select</span> <span class="hljs-number">10</span> * <span class="hljs-number">10</span>			#计算<span class="hljs-number">10</span>*<span class="hljs-number">10</span><br><span class="hljs-attribute">select</span> <span class="hljs-number">10</span> * <span class="hljs-number">10</span> as num   #num=<span class="hljs-number">10</span>*<span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="从表中检索数据"><a href="#从表中检索数据" class="headerlink" title="从表中检索数据"></a>从表中检索数据</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">检索所有字段：<br>select * from table<br><br>检索特定字段：<br>select field1, field2, field3 from table<br><br>select &#96;field1&#96; as un, &#96;field2&#96; as rn from table	#将字段重命名，便于引用<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="where条件查询语句"><a href="#where条件查询语句" class="headerlink" title="where条件查询语句"></a>where条件查询语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">select * from table where condition<br><br>&#x3D; , &gt; , &lt; , &gt;&#x3D; , &lt;&#x3D;<br>&lt;&gt; , !&#x3D;  #这两个都是不等于<br>&lt;&#x3D;&gt;      #null相等<br>is null			#是NULL值<br>is not null		#不是NULL值<br><br>例：<br>select * from users where user_id&gt;100;<br>select * from users where user_id&lt;&gt;100;<br><br></code></pre></td></tr></table></figure>
+<h6 id="between-区间查询"><a href="#between-区间查询" class="headerlink" title="between-区间查询"></a>between-区间查询</h6><figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> table <span class="hljs-keyword">where</span> field <span class="hljs-keyword">between</span> <span class="hljs-built_in">min</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">max</span>;<br><br>例：<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> age <span class="hljs-keyword">between</span> <span class="hljs-number">18</span> <span class="hljs-keyword">and</span> <span class="hljs-number">25</span>;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="in-存在于指定集合"><a href="#in-存在于指定集合" class="headerlink" title="in -存在于指定集合"></a>in -存在于指定集合</h6><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> table <span class="hljs-keyword">where</span> field <span class="hljs-title">in</span> (<span class="hljs-params">x,y,z</span>)</span>;<br><br>例：<br><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> user_id <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-number">2</span>,<span class="hljs-number">4</span></span>)</span>;<br></code></pre></td></tr></table></figure>
+
+
+<p>模糊查询</p>
+<h6 id="like-通配符-匹配"><a href="#like-通配符-匹配" class="headerlink" title="like -通配符%匹配"></a>like -通配符%匹配</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">%表示任意一个字符，_表示一个字符<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> field <span class="hljs-keyword">like</span> &quot;%博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">like</span> &quot;%博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">like</span> &quot;_博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">not</span> <span class="hljs-keyword">like</span> &quot;_博%&quot;;<br></code></pre></td></tr></table></figure>
+<h6 id="regexp-正则匹配"><a href="#regexp-正则匹配" class="headerlink" title="regexp - 正则匹配"></a>regexp - 正则匹配</h6><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">a-z</span>]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>&#125; <span class="hljs-meta">#3个字母</span><br><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> username regexp <span class="hljs-string">&quot;[a-z]+x&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="组合查询（and-，or）"><a href="#组合查询（and-，or）" class="headerlink" title="组合查询（and ，or）"></a>组合查询（and ，or）</h6><figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> (username <span class="hljs-keyword">like</span> <span class="hljs-string">&quot;%博%&quot;</span>) and (user_id&gt;<span class="hljs-number">3</span>);<br><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> (age&lt;<span class="hljs-number">18</span>) or (age&gt;<span class="hljs-number">60</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="查询实例"><a href="#查询实例" class="headerlink" title="查询实例"></a>查询实例</h4><h6 id="python中查询实例"><a href="#python中查询实例" class="headerlink" title="python中查询实例"></a>python中查询实例</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br><span class="hljs-comment">#连接数据库</span><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        password=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br><span class="hljs-comment">#创建游标对象</span><br>cursor = cnx.cursor()<br><br><span class="hljs-comment">#sql语句</span><br>sql = <span class="hljs-string">&quot;select * from mydb.users where realname like &#x27;%博%&#x27;&quot;</span><br><br><span class="hljs-comment">#将sql语句提交并执行</span><br>cursor.execute(sql)<br><br><span class="hljs-comment">#查询到的第一条结果</span><br>res = cursor.fetchone()<br>print(<span class="hljs-string">&quot;第一条&quot;</span>)<br>print(res)<br><br><span class="hljs-comment">#将查询到的前3条记录返回，括号里是几就返回几条</span><br><span class="hljs-comment"># res1 = cursor.fetchmany(3)</span><br><span class="hljs-comment"># print(&quot;前3条&quot;)</span><br><span class="hljs-comment"># print(res1)</span><br><br><span class="hljs-comment">#查询并返回所有记录</span><br><span class="hljs-comment"># res_all = cursor.fetchall()</span><br><span class="hljs-comment"># print(&quot;所有记录&quot;)</span><br><span class="hljs-comment"># print(res_all)</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="SQLAlchemy-查询实例"><a href="#SQLAlchemy-查询实例" class="headerlink" title="SQLAlchemy-查询实例"></a>SQLAlchemy-查询实例</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"># 需要安装SQLAlchemy，pymysql模块<br><br><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine, <span class="hljs-keyword">Column</span>, <span class="hljs-type">Integer</span>, String, Enum<br><span class="hljs-keyword">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker<br><span class="hljs-keyword">from</span> sqlalchemy.ext.declarative <span class="hljs-keyword">import</span> declarative_base<br><br># 创建数据库引擎<br>engine = create_engine(&quot;mysql+pymysql://root:tbz1548638666@localhost/mydb&quot;)<br><br>#创建会话对象，根据不同数据库引擎创建对应的会话对象<br><span class="hljs-keyword">Session</span> = sessionmaker(bind=engine)<br><br>#创建会话对象实例<br><span class="hljs-keyword">session</span> = <span class="hljs-keyword">Session</span>()<br><br><span class="hljs-meta">#Base为映射基类</span><br>Base = declarative_base()<br><br>#数据表模型<br><span class="hljs-keyword">class</span> Users(Base):<br>    __tablename__ = &quot;users&quot;<br>    user_id = <span class="hljs-keyword">Column</span>(<span class="hljs-type">Integer</span>, primary_key=<span class="hljs-keyword">True</span>)<br>    username = <span class="hljs-keyword">Column</span>(String(<span class="hljs-number">25</span>))<br>    realname = <span class="hljs-keyword">Column</span>(String(<span class="hljs-number">25</span>))<br>    <span class="hljs-keyword">password</span> = <span class="hljs-keyword">Column</span>(String(<span class="hljs-number">64</span>))<br><br><br>#查询<br>res = <span class="hljs-keyword">session</span>.query(Users, Users.realname).<span class="hljs-keyword">filter</span>(Users.realname.<span class="hljs-keyword">like</span>(&quot;%啦%&quot;)).<span class="hljs-keyword">limit</span>(<span class="hljs-number">3</span>).<span class="hljs-keyword">all</span>()<br><br>print(res)<br><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -1399,42 +1435,6 @@
       </tags>
   </entry>
   <entry>
-    <title>mysql-查询语句</title>
-    <url>/2021/04/05/mysql-%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h4 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h4><h6 id="select语句"><a href="#select语句" class="headerlink" title="select语句"></a>select语句</h6><figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">select</span> <span class="hljs-number">10</span> * <span class="hljs-number">10</span>			#计算<span class="hljs-number">10</span>*<span class="hljs-number">10</span><br><span class="hljs-attribute">select</span> <span class="hljs-number">10</span> * <span class="hljs-number">10</span> as num   #num=<span class="hljs-number">10</span>*<span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="从表中检索数据"><a href="#从表中检索数据" class="headerlink" title="从表中检索数据"></a>从表中检索数据</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">检索所有字段：<br>select * from table<br><br>检索特定字段：<br>select field1, field2, field3 from table<br><br>select &#96;field1&#96; as un, &#96;field2&#96; as rn from table	#将字段重命名，便于引用<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="where条件查询语句"><a href="#where条件查询语句" class="headerlink" title="where条件查询语句"></a>where条件查询语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">select * from table where condition<br><br>&#x3D; , &gt; , &lt; , &gt;&#x3D; , &lt;&#x3D;<br>&lt;&gt; , !&#x3D;  #这两个都是不等于<br>&lt;&#x3D;&gt;      #null相等<br>is null			#是NULL值<br>is not null		#不是NULL值<br><br>例：<br>select * from users where user_id&gt;100;<br>select * from users where user_id&lt;&gt;100;<br><br></code></pre></td></tr></table></figure>
-<h6 id="between-区间查询"><a href="#between-区间查询" class="headerlink" title="between-区间查询"></a>between-区间查询</h6><figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> table <span class="hljs-keyword">where</span> field <span class="hljs-keyword">between</span> <span class="hljs-built_in">min</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">max</span>;<br><br>例：<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> age <span class="hljs-keyword">between</span> <span class="hljs-number">18</span> <span class="hljs-keyword">and</span> <span class="hljs-number">25</span>;<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="in-存在于指定集合"><a href="#in-存在于指定集合" class="headerlink" title="in -存在于指定集合"></a>in -存在于指定集合</h6><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> table <span class="hljs-keyword">where</span> field <span class="hljs-title">in</span> (<span class="hljs-params">x,y,z</span>)</span>;<br><br>例：<br><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> user_id <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-number">2</span>,<span class="hljs-number">4</span></span>)</span>;<br></code></pre></td></tr></table></figure>
-
-
-<p>模糊查询</p>
-<h6 id="like-通配符-匹配"><a href="#like-通配符-匹配" class="headerlink" title="like -通配符%匹配"></a>like -通配符%匹配</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">%表示任意一个字符，_表示一个字符<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> field <span class="hljs-keyword">like</span> &quot;%博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">like</span> &quot;%博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">like</span> &quot;_博%&quot;;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">where</span> username <span class="hljs-keyword">not</span> <span class="hljs-keyword">like</span> &quot;_博%&quot;;<br></code></pre></td></tr></table></figure>
-<h6 id="regexp-正则匹配"><a href="#regexp-正则匹配" class="headerlink" title="regexp - 正则匹配"></a>regexp - 正则匹配</h6><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">a-z</span>]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>&#125; <span class="hljs-meta">#3个字母</span><br><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> username regexp <span class="hljs-string">&quot;[a-z]+x&quot;</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="组合查询（and-，or）"><a href="#组合查询（and-，or）" class="headerlink" title="组合查询（and ，or）"></a>组合查询（and ，or）</h6><figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> (username <span class="hljs-keyword">like</span> <span class="hljs-string">&quot;%博%&quot;</span>) and (user_id&gt;<span class="hljs-number">3</span>);<br><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> (age&lt;<span class="hljs-number">18</span>) or (age&gt;<span class="hljs-number">60</span>)<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="查询实例"><a href="#查询实例" class="headerlink" title="查询实例"></a>查询实例</h4><h6 id="python中查询实例"><a href="#python中查询实例" class="headerlink" title="python中查询实例"></a>python中查询实例</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> mysql.connector <span class="hljs-keyword">as</span> connector<br><br><span class="hljs-comment">#连接数据库</span><br>cnx = connector.connect(user=<span class="hljs-string">&#x27;root&#x27;</span>,<br>                        password=<span class="hljs-string">&#x27;123456&#x27;</span>,<br>                        host=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,<br>                        database=<span class="hljs-string">&#x27;mydb&#x27;</span>)<br><br><span class="hljs-comment">#创建游标对象</span><br>cursor = cnx.cursor()<br><br><span class="hljs-comment">#sql语句</span><br>sql = <span class="hljs-string">&quot;select * from mydb.users where realname like &#x27;%博%&#x27;&quot;</span><br><br><span class="hljs-comment">#将sql语句提交并执行</span><br>cursor.execute(sql)<br><br><span class="hljs-comment">#查询到的第一条结果</span><br>res = cursor.fetchone()<br>print(<span class="hljs-string">&quot;第一条&quot;</span>)<br>print(res)<br><br><span class="hljs-comment">#将查询到的前3条记录返回，括号里是几就返回几条</span><br><span class="hljs-comment"># res1 = cursor.fetchmany(3)</span><br><span class="hljs-comment"># print(&quot;前3条&quot;)</span><br><span class="hljs-comment"># print(res1)</span><br><br><span class="hljs-comment">#查询并返回所有记录</span><br><span class="hljs-comment"># res_all = cursor.fetchall()</span><br><span class="hljs-comment"># print(&quot;所有记录&quot;)</span><br><span class="hljs-comment"># print(res_all)</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="SQLAlchemy-查询实例"><a href="#SQLAlchemy-查询实例" class="headerlink" title="SQLAlchemy-查询实例"></a>SQLAlchemy-查询实例</h6><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"># 需要安装SQLAlchemy，pymysql模块<br><br><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> create_engine, <span class="hljs-keyword">Column</span>, <span class="hljs-type">Integer</span>, String, Enum<br><span class="hljs-keyword">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> sessionmaker<br><span class="hljs-keyword">from</span> sqlalchemy.ext.declarative <span class="hljs-keyword">import</span> declarative_base<br><br># 创建数据库引擎<br>engine = create_engine(&quot;mysql+pymysql://root:tbz1548638666@localhost/mydb&quot;)<br><br>#创建会话对象，根据不同数据库引擎创建对应的会话对象<br><span class="hljs-keyword">Session</span> = sessionmaker(bind=engine)<br><br>#创建会话对象实例<br><span class="hljs-keyword">session</span> = <span class="hljs-keyword">Session</span>()<br><br><span class="hljs-meta">#Base为映射基类</span><br>Base = declarative_base()<br><br>#数据表模型<br><span class="hljs-keyword">class</span> Users(Base):<br>    __tablename__ = &quot;users&quot;<br>    user_id = <span class="hljs-keyword">Column</span>(<span class="hljs-type">Integer</span>, primary_key=<span class="hljs-keyword">True</span>)<br>    username = <span class="hljs-keyword">Column</span>(String(<span class="hljs-number">25</span>))<br>    realname = <span class="hljs-keyword">Column</span>(String(<span class="hljs-number">25</span>))<br>    <span class="hljs-keyword">password</span> = <span class="hljs-keyword">Column</span>(String(<span class="hljs-number">64</span>))<br><br><br>#查询<br>res = <span class="hljs-keyword">session</span>.query(Users, Users.realname).<span class="hljs-keyword">filter</span>(Users.realname.<span class="hljs-keyword">like</span>(&quot;%啦%&quot;)).<span class="hljs-keyword">limit</span>(<span class="hljs-number">3</span>).<span class="hljs-keyword">all</span>()<br><br>print(res)<br><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mysql-统计与排序</title>
     <url>/2021/04/07/mysql-%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<h6 id="limit限制"><a href="#limit限制" class="headerlink" title="limit限制"></a>limit限制</h6><p>当数据很多的时候，往往需要添加限制，取出想要的结果</p>
@@ -1529,6 +1529,49 @@
       </tags>
   </entry>
   <entry>
+    <title>web性能优化-memcached</title>
+    <url>/2021/06/23/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-memcached/</url>
+    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>为什么需要缓存</p>
+<p>memcache安装与使用</p>
+<p>缓存问题</p>
+<h4 id="为什么需要缓存？"><a href="#为什么需要缓存？" class="headerlink" title="为什么需要缓存？"></a>为什么需要缓存？</h4><p>我们网页访问久了，电脑里会有很多浏览缓存，隔一段时间需要清理一下释放空间网页在浏览器端的缓存是客户端缓存，可以在nginx中配置缓存有效期</p>
+<p>浏览器–   第一次访问  –服务器</p>
+<p>浏览器–   第二次访问  –本地缓存</p>
+<h4 id="服务器缓存"><a href="#服务器缓存" class="headerlink" title="服务器缓存"></a>服务器缓存</h4><p>在我们开发的系统功能中，几乎都是对数据库的CURD操作，因此当系统同时接受多个用户并发访问的时候，就会遇到数据库瓶颈。<br>因为数据库需要从磁盘中读取数据以及向磁盘写入数据，而磁盘的读取速度相对于整个系统的其他部分，很慢，因此数据库访问是一个瓶颈</p>
+<p>解决这个问题的方式：</p>
+<p>1.数据库集群 - 方法昂贵，复杂（主从架构+读写分离）</p>
+<p>2.启用缓存，减少直接访问数据库的访问<br>比如:文章的内容基本上不变，那么可以生成好静态的缓存，这样避免每次访问文章，就需要读取mysql</p>
+<p>能够提供缓存服务的数据库称为缓存数据库，他们大多数以键值对形式存储数据。<br>这类数据库不需要SQL语句查询，所以又称为NoSQL -Not Only SQL,表示除了关系型数据库之外的另一种数据存储方式的选择。<br>有这么几种常用NoSQL数据库:<br>1.memcache -使用最便捷的缓存库<br>2.redis-支持更多数据类型的缓存库,可以利用他的列表类型实现队列<br>3.mongodb -文档型数据库，支持索引，范围搜索，排序，有些时候，可以单独使用</p>
+<p>缓存数据库存储方式:<br>1.将缓存写入内存-内存的速度很快，但是关机后，数据会丢失⒉.将缓存写入内存，每隔一段时间将缓存刷入到硬盘</p>
+<h4 id="memcached简介"><a href="#memcached简介" class="headerlink" title="memcached简介"></a>memcached简介</h4><h6 id="memcached资料"><a href="#memcached资料" class="headerlink" title="memcached资料:"></a>memcached资料:</h6><p>memcached官方网站: memcached.org</p>
+<h6 id="安装"><a href="#安装" class="headerlink" title="安装:"></a>安装:</h6><p>wget <a href="http://memcached.org/latesttar-zxvf">http://memcached.org/latesttar-zxvf</a> memcached-1.x.x.tar.gzcd memcached-1.x.x<br>yum install libevent-devel<br>./configure &amp;&amp; make &amp;&amp; make test &amp;&amp; sudo make install</p>
+<h6 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器:"></a>运行服务器:</h6><p>memcached -u root -d</p>
+<p>-u指定用户运行，生产环境不要用root用户</p>
+<p>-d后台守护进程</p>
+<p>-h帮助信息</p>
+<p>memcache模块</p>
+<p>1.安装: pip install python-memcached<br>        还有其他的客户端，包括pymemcache、django-pymemcache</p>
+<p>2.mc= memcache.Client([host],debug=True)</p>
+<p>3.mc.set、mc.get、..</p>
+<h4 id="缓存策略问题"><a href="#缓存策略问题" class="headerlink" title="缓存策略问题"></a>缓存策略问题</h4><p>缓存更新策略:<br>1.缓存如果不及时更新，可能数据属于无效</p>
+<p>2.如果定时更新，需要接受数据更新延时</p>
+<p>3.如果数据更新频繁，导致缓存不断更新，也会导致系统性能变差</p>
+<p>缓存命中率:</p>
+<p>1.缓存数据占用内存，缓存越多，占用内存越多，意味着成本上升</p>
+<p>⒉.缓存利用率很低，即查询命中率，比如缓存了10000个快照，只有10个是经常读取的</p>
+<p>3.需要根据业务情况调整缓存策略</p>
+<p>缓存穿透:<br>1.缓存逻辑是如果缓存不存在就去数据库查询<br>2.如果某些查询，数据库查询也没有结果，那么就会也没有缓存3.结果导致这些查询始终查询数据库，解决方案缓存空对象</p>
+<p>缓存雪崩:<br>1.采用缓存系统后，大部分访问都由缓存提供<br>2.如果缓存服务器发生故障,大量请求就直接涌向数据库3.最终直接导致整个系统崩溃<br>4.解决方法就是为缓存层设计高可用架构<br>5.数据库隔离，即使缓存层丧失功能，也不能让所有请求涌向数据库，以便尽快恢复缓存</p>
+<p>缓存预热:<br>1.如果系统存在大量的缓存<br>2.在启动整个系统的时候，会出现大量的数据库请求，从而导致缓存加载失败3.解决办法就是分批预先加载</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql创建数据表</title>
     <url>/2021/04/01/mysql%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8/</url>
     <content><![CDATA[<h6 id="存储引擎（mysql）"><a href="#存储引擎（mysql）" class="headerlink" title="存储引擎（mysql）"></a>存储引擎（mysql）</h6><ul>
@@ -1573,49 +1616,6 @@
 <p>db.users.insert</p>
 <p>db.users.updatedb.users.find</p>
 <p>db.users.delete_one</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>web性能优化-memcached</title>
-    <url>/2021/06/23/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-memcached/</url>
-    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>为什么需要缓存</p>
-<p>memcache安装与使用</p>
-<p>缓存问题</p>
-<h4 id="为什么需要缓存？"><a href="#为什么需要缓存？" class="headerlink" title="为什么需要缓存？"></a>为什么需要缓存？</h4><p>我们网页访问久了，电脑里会有很多浏览缓存，隔一段时间需要清理一下释放空间网页在浏览器端的缓存是客户端缓存，可以在nginx中配置缓存有效期</p>
-<p>浏览器–   第一次访问  –服务器</p>
-<p>浏览器–   第二次访问  –本地缓存</p>
-<h4 id="服务器缓存"><a href="#服务器缓存" class="headerlink" title="服务器缓存"></a>服务器缓存</h4><p>在我们开发的系统功能中，几乎都是对数据库的CURD操作，因此当系统同时接受多个用户并发访问的时候，就会遇到数据库瓶颈。<br>因为数据库需要从磁盘中读取数据以及向磁盘写入数据，而磁盘的读取速度相对于整个系统的其他部分，很慢，因此数据库访问是一个瓶颈</p>
-<p>解决这个问题的方式：</p>
-<p>1.数据库集群 - 方法昂贵，复杂（主从架构+读写分离）</p>
-<p>2.启用缓存，减少直接访问数据库的访问<br>比如:文章的内容基本上不变，那么可以生成好静态的缓存，这样避免每次访问文章，就需要读取mysql</p>
-<p>能够提供缓存服务的数据库称为缓存数据库，他们大多数以键值对形式存储数据。<br>这类数据库不需要SQL语句查询，所以又称为NoSQL -Not Only SQL,表示除了关系型数据库之外的另一种数据存储方式的选择。<br>有这么几种常用NoSQL数据库:<br>1.memcache -使用最便捷的缓存库<br>2.redis-支持更多数据类型的缓存库,可以利用他的列表类型实现队列<br>3.mongodb -文档型数据库，支持索引，范围搜索，排序，有些时候，可以单独使用</p>
-<p>缓存数据库存储方式:<br>1.将缓存写入内存-内存的速度很快，但是关机后，数据会丢失⒉.将缓存写入内存，每隔一段时间将缓存刷入到硬盘</p>
-<h4 id="memcached简介"><a href="#memcached简介" class="headerlink" title="memcached简介"></a>memcached简介</h4><h6 id="memcached资料"><a href="#memcached资料" class="headerlink" title="memcached资料:"></a>memcached资料:</h6><p>memcached官方网站: memcached.org</p>
-<h6 id="安装"><a href="#安装" class="headerlink" title="安装:"></a>安装:</h6><p>wget <a href="http://memcached.org/latesttar-zxvf">http://memcached.org/latesttar-zxvf</a> memcached-1.x.x.tar.gzcd memcached-1.x.x<br>yum install libevent-devel<br>./configure &amp;&amp; make &amp;&amp; make test &amp;&amp; sudo make install</p>
-<h6 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器:"></a>运行服务器:</h6><p>memcached -u root -d</p>
-<p>-u指定用户运行，生产环境不要用root用户</p>
-<p>-d后台守护进程</p>
-<p>-h帮助信息</p>
-<p>memcache模块</p>
-<p>1.安装: pip install python-memcached<br>        还有其他的客户端，包括pymemcache、django-pymemcache</p>
-<p>2.mc= memcache.Client([host],debug=True)</p>
-<p>3.mc.set、mc.get、..</p>
-<h4 id="缓存策略问题"><a href="#缓存策略问题" class="headerlink" title="缓存策略问题"></a>缓存策略问题</h4><p>缓存更新策略:<br>1.缓存如果不及时更新，可能数据属于无效</p>
-<p>2.如果定时更新，需要接受数据更新延时</p>
-<p>3.如果数据更新频繁，导致缓存不断更新，也会导致系统性能变差</p>
-<p>缓存命中率:</p>
-<p>1.缓存数据占用内存，缓存越多，占用内存越多，意味着成本上升</p>
-<p>⒉.缓存利用率很低，即查询命中率，比如缓存了10000个快照，只有10个是经常读取的</p>
-<p>3.需要根据业务情况调整缓存策略</p>
-<p>缓存穿透:<br>1.缓存逻辑是如果缓存不存在就去数据库查询<br>2.如果某些查询，数据库查询也没有结果，那么就会也没有缓存3.结果导致这些查询始终查询数据库，解决方案缓存空对象</p>
-<p>缓存雪崩:<br>1.采用缓存系统后，大部分访问都由缓存提供<br>2.如果缓存服务器发生故障,大量请求就直接涌向数据库3.最终直接导致整个系统崩溃<br>4.解决方法就是为缓存层设计高可用架构<br>5.数据库隔离，即使缓存层丧失功能，也不能让所有请求涌向数据库，以便尽快恢复缓存</p>
-<p>缓存预热:<br>1.如果系统存在大量的缓存<br>2.在启动整个系统的时候，会出现大量的数据库请求，从而导致缓存加载失败3.解决办法就是分批预先加载</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -2153,53 +2153,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构-栈</title>
-    <url>/2021/06/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/</url>
-    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>什么是栈</p>
-<p>栈的python实现</p>
-<h4 id="什么是栈？"><a href="#什么是栈？" class="headerlink" title="什么是栈？"></a>什么是栈？</h4><p>栈是一种线性表（**<em>后进先出**</em>）</p>
-<p>1.栈中必须有第一个元素与最后一个元素</p>
-<p>2.对栈的操作只能从某一端操作，即栈顶(top)</p>
-<p>3.栈的数据访问遵从LIFO (last-in first-out)协议</p>
-<h4 id="栈的python实现"><a href="#栈的python实现" class="headerlink" title="栈的python实现"></a>栈的python实现</h4><p>主要方法列表</p>
-<table>
-<thead>
-<tr>
-<th align="center">方法</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">s.isEmpty()</td>
-<td align="center">栈是否为空</td>
-</tr>
-<tr>
-<td align="center">s._ _ len_  _ ()</td>
-<td align="center">栈中的项目数</td>
-</tr>
-<tr>
-<td align="center">s.push()</td>
-<td align="center">在栈顶压入一项</td>
-</tr>
-<tr>
-<td align="center">s.top()</td>
-<td align="center">如果s不为空返回顶部第一项，否则抛出EmptyError</td>
-</tr>
-<tr>
-<td align="center">s.pop()</td>
-<td align="center">如果s不为空，返回并删除第一项，否则抛出EmptyError</td>
-</tr>
-</tbody></table>
-<p>列表实现<br>1.使用列表实现栈，可以从列表末尾压入与弹出<br>2.由于列表是一个动态数组，当栈的变化引起列表内存占用变大时，会引起性能的损耗</p>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构-数组</title>
     <url>/2021/06/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h4 id="数组：array"><a href="#数组：array" class="headerlink" title="数组：array"></a>数组：array</h4><h6 id="array创建实例："><a href="#array创建实例：" class="headerlink" title="array创建实例："></a>array创建实例：</h6><figure class="highlight smali"><table><tr><td class="code"><pre><code class="hljs smali">from<span class="hljs-built_in"> array </span>import array<br>myarray1 = array.array(<span class="hljs-string">&quot;i&quot;</span>,[1,2,3,4])			<span class="hljs-comment">#i是类型码</span><br>myarray2 = array.array(<span class="hljs-string">&quot;u&quot;</span>,[<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>])<br></code></pre></td></tr></table></figure>
@@ -2271,21 +2224,44 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构-链表（单、双）</title>
-    <url>/2021/06/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8%EF%BC%88%E5%8D%95%E3%80%81%E5%8F%8C%EF%BC%89/</url>
-    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>链表数据的结构</p>
-<p>链表结构的python实现</p>
-<p>链表的操作时间复杂度</p>
-<h4 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h4><p>链表就好像链条一样，一节就是一个数据节点。</p>
-<p>单列表：尾连着下一个数据</p>
-<p>双列表：尾连着下一个数据，头连着上一个数据</p>
-<p>循环列表：头尾相连，从而循环</p>
-<p>链表特点<br>1.每一个数据节点包括数据本身以及前后节点位置（单链表只包含下一节点位置)</p>
-<p>2.链表不需要连续内存空间</p>
-<p>3.插入快，查询慢</p>
-<h6 id="单链表节点类"><a href="#单链表节点类" class="headerlink" title="单链表节点类"></a>单链表节点类</h6><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>,data,<span class="hljs-keyword">next</span>=None)</span></span><span class="hljs-symbol">:</span><br>		<span class="hljs-keyword">self</span>.data = data<br>		<span class="hljs-keyword">self</span>.<span class="hljs-keyword">next</span> = <span class="hljs-keyword">next</span><br></code></pre></td></tr></table></figure>
-<p>单链表的优势<br>1.内存空间利用率高(不需要连续内存空间)，空间复杂度低</p>
-<p>2.适合开始处插入，开始处读取的场景</p>
+    <title>数据结构-栈</title>
+    <url>/2021/06/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88/</url>
+    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>什么是栈</p>
+<p>栈的python实现</p>
+<h4 id="什么是栈？"><a href="#什么是栈？" class="headerlink" title="什么是栈？"></a>什么是栈？</h4><p>栈是一种线性表（**<em>后进先出**</em>）</p>
+<p>1.栈中必须有第一个元素与最后一个元素</p>
+<p>2.对栈的操作只能从某一端操作，即栈顶(top)</p>
+<p>3.栈的数据访问遵从LIFO (last-in first-out)协议</p>
+<h4 id="栈的python实现"><a href="#栈的python实现" class="headerlink" title="栈的python实现"></a>栈的python实现</h4><p>主要方法列表</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">s.isEmpty()</td>
+<td align="center">栈是否为空</td>
+</tr>
+<tr>
+<td align="center">s._ _ len_  _ ()</td>
+<td align="center">栈中的项目数</td>
+</tr>
+<tr>
+<td align="center">s.push()</td>
+<td align="center">在栈顶压入一项</td>
+</tr>
+<tr>
+<td align="center">s.top()</td>
+<td align="center">如果s不为空返回顶部第一项，否则抛出EmptyError</td>
+</tr>
+<tr>
+<td align="center">s.pop()</td>
+<td align="center">如果s不为空，返回并删除第一项，否则抛出EmptyError</td>
+</tr>
+</tbody></table>
+<p>列表实现<br>1.使用列表实现栈，可以从列表末尾压入与弹出<br>2.由于列表是一个动态数组，当栈的变化引起列表内存占用变大时，会引起性能的损耗</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
@@ -2404,6 +2380,30 @@
       </tags>
   </entry>
   <entry>
+    <title>数据结构-链表（单、双）</title>
+    <url>/2021/06/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8%EF%BC%88%E5%8D%95%E3%80%81%E5%8F%8C%EF%BC%89/</url>
+    <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>链表数据的结构</p>
+<p>链表结构的python实现</p>
+<p>链表的操作时间复杂度</p>
+<h4 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h4><p>链表就好像链条一样，一节就是一个数据节点。</p>
+<p>单列表：尾连着下一个数据</p>
+<p>双列表：尾连着下一个数据，头连着上一个数据</p>
+<p>循环列表：头尾相连，从而循环</p>
+<p>链表特点<br>1.每一个数据节点包括数据本身以及前后节点位置（单链表只包含下一节点位置)</p>
+<p>2.链表不需要连续内存空间</p>
+<p>3.插入快，查询慢</p>
+<h6 id="单链表节点类"><a href="#单链表节点类" class="headerlink" title="单链表节点类"></a>单链表节点类</h6><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>,data,<span class="hljs-keyword">next</span>=None)</span></span><span class="hljs-symbol">:</span><br>		<span class="hljs-keyword">self</span>.data = data<br>		<span class="hljs-keyword">self</span>.<span class="hljs-keyword">next</span> = <span class="hljs-keyword">next</span><br></code></pre></td></tr></table></figure>
+<p>单链表的优势<br>1.内存空间利用率高(不需要连续内存空间)，空间复杂度低</p>
+<p>2.适合开始处插入，开始处读取的场景</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>电商实战-电商二次开发</title>
     <url>/2021/06/24/%E7%94%B5%E5%95%86%E5%AE%9E%E6%88%98-%E7%94%B5%E5%95%86%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<h4 id="二次开发"><a href="#二次开发" class="headerlink" title="二次开发"></a>二次开发</h4><p>1.在项目实践中，我们通常并不是从0开始写起，而是在已经存在的项目上开始</p>
@@ -2415,7 +2415,7 @@
 <p>3.收到任务后，首先询问有没有相关技术文档，代码库，沟通需求</p>
 <h4 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h4><p>1.主管会通过文档或者邮件给你发送一些相关的信息，比如版本地址、服务器IP与权限、环境要求，辅助工具<br>2.获取开发版本，在本地运行开发环境</p>
 <p>首先好创建远程仓库</p>
-<p>step1:基础版本获取<br>1.克隆: <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;">&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;</a>:luxp4588/flask-mall-base.git2.从该版本库导出无版本控制源程序（克隆前创建好文件夹）</p>
+<p>step1:基础版本获取<br>1.克隆: <a href="mailto:&#103;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#109;">&#103;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#109;</a>:luxp4588/flask-mall-base.git2.从该版本库导出无版本控制源程序（克隆前创建好文件夹）</p>
 <p>2.删除 .git 文件夹（隐藏文件）</p>
 <p>3.git init        初始化</p>
 <p>4.git add .     将文件添加到暂存区</p>
@@ -2527,6 +2527,75 @@
       </tags>
   </entry>
   <entry>
+    <title>算法-排序算法</title>
+    <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>举例：[5,2,4,3,1]</p>
+<p>1.排序目的是在一个排好序的序列里面，从左到右是从小到大排列的，比如[1,2,3,4,5]</p>
+<p>2.选择一个元素，然后与所有其他尚未排序元素比较，如果最小与左侧交换位置</p>
+<p>3.第一轮:[1,2,4,3,5]  (最小数为1，将1,5换位置)</p>
+<p>4.第二轮:[1,2,4,3,5]（看2,4,3,5由于2最小位置不变）</p>
+<p>5.第三轮:[1,2,3,4,5]（看4,3,5发现3最小，将3,4换位置，）</p>
+<p>6.第四轮:[1,2,3,4,5]（看4,5发现4最小，位置不变）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">select_sort</span>(<span class="hljs-params">lists</span>):</span><br>    max_index = <span class="hljs-built_in">len</span>(lists)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(max_index):<br>         min_index = i<br>         <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i+<span class="hljs-number">1</span>, max_index):<br>             <span class="hljs-keyword">if</span> lists[min_index] &gt; lists[j]:<br>                 min_index = j<br>         <span class="hljs-keyword">if</span> min_index != i:<br>             print(<span class="hljs-string">&quot;min_index=&quot;</span>, min_index,<span class="hljs-string">&quot; &quot;</span>, lists[min_index],<span class="hljs-string">&quot;&lt;=&gt;&quot;</span>, lists[i])<br>             lists[i], lists[min_index] = lists[min_index], lists[i]<br>             print(lists)<br>             print(<span class="hljs-string">&quot;-&quot;</span>*<span class="hljs-number">100</span>)<br>         i += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> lists<br><br>lists = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>))<br><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> shuffle<br><br>shuffle(lists)<br>print(lists)<br>print(<span class="hljs-string">&quot;end=&gt;&quot;</span>, select_sort(lists))<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><p>举例:[5,2,4,3,1]<br>1.插入排序从第2个元素开始排序，与该元素之前的元素比较2.该元素之前的顺序已经排好<br>3.如果该元素顺序可以插入的话，将元素按照顺序插入</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert_sort</span>(<span class="hljs-params">lists</span>):</span><br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(lists)):<br>        <span class="hljs-comment"># 准备被插入排序的元素</span><br>        item_to_insert = lists[i]<br>        <span class="hljs-comment"># 将这个元素与它之前排好顺序的元素比较</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i-<span class="hljs-number">1</span>,-<span class="hljs-number">2</span>,-<span class="hljs-number">1</span>):<br><span class="hljs-comment">#           # 如果这个元素比前面的某个元素小，那么要把它插进去</span><br>            <span class="hljs-comment"># 插入过程就是前面的元素需要一个个后移，直到大于其中的某个元素</span><br>            <span class="hljs-keyword">if</span> item_to_insert &lt; lists[j]:<br>                lists[j+<span class="hljs-number">1</span>] = lists[j]<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">break</span><br>        <span class="hljs-comment"># 插入空出来的位置</span><br>        <span class="hljs-comment"># 在j位置的元素比等待插入的元素要小，所以插入位置为j+1</span><br>        lists[j+<span class="hljs-number">1</span>] = item_to_insert<br><br>    <span class="hljs-keyword">return</span> lists<br>    <br>lists = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">20</span>))<br><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> shuffle<br><br>shuffle(lists)<br>print(lists)<br>print(<span class="hljs-string">&quot;end=&gt;&quot;</span>, insert_sort(lists))<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>举例:[5,2,4,3,1]<br>1.从第一个元素开始，每个元素与后面的一个元素比较，较大的排到后面</p>
+<p>2.第一轮:[2,4,3,1,5]</p>
+<p>3.第二轮:[2,3,1,4,5]</p>
+<p>4.第三轮:[2,1,3,4,5]</p>
+<p>5.第四轮:[1,2,3,4,5]</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br>def <span class="hljs-keyword">bubble_sort(lists):</span><br><span class="hljs-keyword"> </span>   max_index = len(lists)<br>    for i in range(max_index<span class="hljs-number">-1</span>):<br>        for <span class="hljs-keyword">j </span>in range(max_index<span class="hljs-number">-1</span>):<br>            if lists[<span class="hljs-keyword">j] </span>&gt; lists [<span class="hljs-keyword">j+1]:</span><br><span class="hljs-keyword"> </span>               lists[<span class="hljs-keyword">j], </span>lists[<span class="hljs-keyword">j+1] </span>= lists[<span class="hljs-keyword">j+1], </span>lists[<span class="hljs-keyword">j]</span><br><span class="hljs-keyword"> </span>               print(<span class="hljs-string">&quot;i=&quot;</span>,i,<span class="hljs-string">&quot;:&quot;</span>, <span class="hljs-keyword">j,&quot;=&gt;&quot;,lists)</span><br><span class="hljs-keyword"> </span>           <br><br>lists = list(range(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>))<br>from <span class="hljs-built_in">random</span> import <span class="hljs-keyword">shuffle</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword">shuffle(lists)</span><br><span class="hljs-keyword">print(lists)</span><br><span class="hljs-keyword">print(&quot;end=&gt;&quot;, </span><span class="hljs-keyword">bubble_sort(lists))</span><br><span class="hljs-keyword"></span><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>举例:[5,2,4,3,1]</p>
+<p>1.找一个基准点，比如4，</p>
+<p>2.以4交换到最后一项[5,2,3,1,4]</p>
+<p>3.在列表开始处设立一个边界标志，比如现在[:5,2,3,1,4]的5左侧:为边界标志</p>
+<p>4.小于4的项放到边界左侧，直到所有小于4的放到边界左侧，每在边界左侧放置一个，边界位置右移一次,边界右侧的都比4大</p>
+<p>5.[2,3,1,:5,4]</p>
+<p>6.然后将4放置边界标志:的左侧[2,3,1,4,:5]</p>
+<p>7.在边界两侧重复以上过程，直到分组里只有一个元素</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"># -*- codin<span class="hljs-variable">g:</span> utf-<span class="hljs-number">8</span> -*-<br><br>def quicksort(lists):<br>    # 初始左边界为<span class="hljs-number">0</span>， 右边界为列表上界<br>    quick_sort_helper(lists,<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(lists)-<span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">return</span> lists<br>    <br>def quick_sort_helper(lists, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>):<br>    # 边界左边不能超越边界右边<br>#    <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;left=&quot;</span>,<span class="hljs-keyword">left</span>, <span class="hljs-string">&quot;right=&quot;</span>, <span class="hljs-keyword">right</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span> &lt; righ<span class="hljs-variable">t:</span><br>        # 分割列表设置分界点<br>        boundary = partition(lists, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>)<br>        # 分界点左侧接着分割<br>        quick_sort_helper(lists, <span class="hljs-keyword">left</span>, boundary - <span class="hljs-number">1</span>)<br>        # 分界点右侧接着分割<br>        quick_sort_helper(lists, boundary+<span class="hljs-number">1</span>, <span class="hljs-keyword">right</span>)<br>        <br>        <br>def partition(lists, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>):<br>    # 根据<span class="hljs-keyword">left</span>，<span class="hljs-keyword">right</span>寻找分界点<br>    middle = (<span class="hljs-keyword">left</span> + <span class="hljs-keyword">right</span>) // <span class="hljs-number">2</span><br>    # 将分界点放置于该段最右侧<br>    lists[<span class="hljs-keyword">right</span>], lists[middle] = lists[middle], lists[<span class="hljs-keyword">right</span>]<br>    boundary = <span class="hljs-keyword">left</span><br>    # 将小于分界点的排到左边，边界右移+<span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>):<br>        <span class="hljs-keyword">print</span>(lists)<br>        <span class="hljs-keyword">if</span> lists[i] &lt; lists[<span class="hljs-keyword">right</span>]:<br>            lists[i],lists[boundary] = lists[boundary], lists[i]<br>            boundary += <span class="hljs-number">1</span><br>    # 再将分界点移回<br>    lists[<span class="hljs-keyword">right</span>], lists[boundary] = lists[boundary], lists[<span class="hljs-keyword">right</span>]<br>    <span class="hljs-keyword">return</span> boundary<br>            <br>    <br>lists = <span class="hljs-keyword">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">6</span>))<br>from random import shuffle<br><br>shuffle(lists)<br><span class="hljs-keyword">print</span>(lists)<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;end=&gt;&quot;</span>, quicksort(lists))<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="合并排序"><a href="#合并排序" class="headerlink" title="合并排序"></a>合并排序</h4><p>举例:[5,2,4,3,1]</p>
+<p>1.选一个点将列表分成左右3部分[2,3,1]+[4]+[5]2.左边的列表所有的元素&lt;分割点</p>
+<p>3.右边的列表所有的元素&gt;分割点</p>
+<p>4.将左边的部分[2,3,1]重复1～3步骤[2,1]+[3] +[]</p>
+<p>5.将[2,1]重复1～3步骤[+[1]+[2]</p>
+<p>6.通过递归将他们合并起来[+[1]+[2]+[3]+[+[4]+[5]</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"># -*- coding: utf-<span class="hljs-number">8</span> -*-<br>def <span class="hljs-built_in">merg_sort</span>(lists):<br>    if <span class="hljs-built_in">len</span>(lists) &lt;= <span class="hljs-number">1</span>:<br>        return lists<br>    middle = <span class="hljs-built_in">len</span>(lists)//<span class="hljs-number">2</span><br>    left_list = []<br>    right_list = []<br>    for i in lists[:middle]:<br>        if i &lt;= lists[middle]:<br>            left_list.<span class="hljs-built_in">append</span>(i)<br>        else:<br>            right_list.<span class="hljs-built_in">append</span>(i)<br>    for i in lists[middle+<span class="hljs-number">1</span>:]:<br>        if i &lt;= lists[middle]:<br>            left_list.<span class="hljs-built_in">append</span>(i)<br>        else:<br>            right_list.<span class="hljs-built_in">append</span>(i)<br>    <span class="hljs-built_in">print</span>(left_list, right_list)<br>    return <span class="hljs-built_in">merg_sort</span>(left_list) + [lists[middle]] + <span class="hljs-built_in">merg_sort</span>(right_list)<br><br>lists = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>))<br>from random import shuffle<br><br><span class="hljs-built_in">shuffle</span>(lists)<br><span class="hljs-built_in">print</span>(lists)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;end=&gt;&quot;</span>, <span class="hljs-built_in">merg_sort</span>(lists))<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法-递归与回溯</title>
+    <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E4%B8%8E%E5%9B%9E%E6%BA%AF/</url>
+    <content><![CDATA[<p>递归</p>
+<p>1.函数直接或间接调用自身</p>
+<p>2.必须具有递归结束条件</p>
+<p>3.每一次递归，问题规模缩小</p>
+<p>4.python限制了递归深度（sys.getrecursionlimit()）</p>
+<p>回溯</p>
+<p>回溯法是一个比较经典的算法<br>1.回溯法(探索与回溯法）是一种选优搜索法，又称为试探法<br>2.按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择<br>3.这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”</p>
+]]></content>
+      <categories>
+        <category>服务器运维</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法-背包问题</title>
     <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h4 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h4><p>什么是背包问题</p>
@@ -2591,75 +2660,6 @@
 
 
 
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-排序算法</title>
-    <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>举例：[5,2,4,3,1]</p>
-<p>1.排序目的是在一个排好序的序列里面，从左到右是从小到大排列的，比如[1,2,3,4,5]</p>
-<p>2.选择一个元素，然后与所有其他尚未排序元素比较，如果最小与左侧交换位置</p>
-<p>3.第一轮:[1,2,4,3,5]  (最小数为1，将1,5换位置)</p>
-<p>4.第二轮:[1,2,4,3,5]（看2,4,3,5由于2最小位置不变）</p>
-<p>5.第三轮:[1,2,3,4,5]（看4,3,5发现3最小，将3,4换位置，）</p>
-<p>6.第四轮:[1,2,3,4,5]（看4,5发现4最小，位置不变）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">select_sort</span>(<span class="hljs-params">lists</span>):</span><br>    max_index = <span class="hljs-built_in">len</span>(lists)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(max_index):<br>         min_index = i<br>         <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i+<span class="hljs-number">1</span>, max_index):<br>             <span class="hljs-keyword">if</span> lists[min_index] &gt; lists[j]:<br>                 min_index = j<br>         <span class="hljs-keyword">if</span> min_index != i:<br>             print(<span class="hljs-string">&quot;min_index=&quot;</span>, min_index,<span class="hljs-string">&quot; &quot;</span>, lists[min_index],<span class="hljs-string">&quot;&lt;=&gt;&quot;</span>, lists[i])<br>             lists[i], lists[min_index] = lists[min_index], lists[i]<br>             print(lists)<br>             print(<span class="hljs-string">&quot;-&quot;</span>*<span class="hljs-number">100</span>)<br>         i += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> lists<br><br>lists = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>))<br><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> shuffle<br><br>shuffle(lists)<br>print(lists)<br>print(<span class="hljs-string">&quot;end=&gt;&quot;</span>, select_sort(lists))<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><p>举例:[5,2,4,3,1]<br>1.插入排序从第2个元素开始排序，与该元素之前的元素比较2.该元素之前的顺序已经排好<br>3.如果该元素顺序可以插入的话，将元素按照顺序插入</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert_sort</span>(<span class="hljs-params">lists</span>):</span><br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(lists)):<br>        <span class="hljs-comment"># 准备被插入排序的元素</span><br>        item_to_insert = lists[i]<br>        <span class="hljs-comment"># 将这个元素与它之前排好顺序的元素比较</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i-<span class="hljs-number">1</span>,-<span class="hljs-number">2</span>,-<span class="hljs-number">1</span>):<br><span class="hljs-comment">#           # 如果这个元素比前面的某个元素小，那么要把它插进去</span><br>            <span class="hljs-comment"># 插入过程就是前面的元素需要一个个后移，直到大于其中的某个元素</span><br>            <span class="hljs-keyword">if</span> item_to_insert &lt; lists[j]:<br>                lists[j+<span class="hljs-number">1</span>] = lists[j]<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">break</span><br>        <span class="hljs-comment"># 插入空出来的位置</span><br>        <span class="hljs-comment"># 在j位置的元素比等待插入的元素要小，所以插入位置为j+1</span><br>        lists[j+<span class="hljs-number">1</span>] = item_to_insert<br><br>    <span class="hljs-keyword">return</span> lists<br>    <br>lists = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">20</span>))<br><span class="hljs-keyword">from</span> random <span class="hljs-keyword">import</span> shuffle<br><br>shuffle(lists)<br>print(lists)<br>print(<span class="hljs-string">&quot;end=&gt;&quot;</span>, insert_sort(lists))<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>举例:[5,2,4,3,1]<br>1.从第一个元素开始，每个元素与后面的一个元素比较，较大的排到后面</p>
-<p>2.第一轮:[2,4,3,1,5]</p>
-<p>3.第二轮:[2,3,1,4,5]</p>
-<p>4.第三轮:[2,1,3,4,5]</p>
-<p>5.第四轮:[1,2,3,4,5]</p>
-<figure class="highlight mipsasm"><table><tr><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br>def <span class="hljs-keyword">bubble_sort(lists):</span><br><span class="hljs-keyword"> </span>   max_index = len(lists)<br>    for i in range(max_index<span class="hljs-number">-1</span>):<br>        for <span class="hljs-keyword">j </span>in range(max_index<span class="hljs-number">-1</span>):<br>            if lists[<span class="hljs-keyword">j] </span>&gt; lists [<span class="hljs-keyword">j+1]:</span><br><span class="hljs-keyword"> </span>               lists[<span class="hljs-keyword">j], </span>lists[<span class="hljs-keyword">j+1] </span>= lists[<span class="hljs-keyword">j+1], </span>lists[<span class="hljs-keyword">j]</span><br><span class="hljs-keyword"> </span>               print(<span class="hljs-string">&quot;i=&quot;</span>,i,<span class="hljs-string">&quot;:&quot;</span>, <span class="hljs-keyword">j,&quot;=&gt;&quot;,lists)</span><br><span class="hljs-keyword"> </span>           <br><br>lists = list(range(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>))<br>from <span class="hljs-built_in">random</span> import <span class="hljs-keyword">shuffle</span><br><span class="hljs-keyword"></span><br><span class="hljs-keyword">shuffle(lists)</span><br><span class="hljs-keyword">print(lists)</span><br><span class="hljs-keyword">print(&quot;end=&gt;&quot;, </span><span class="hljs-keyword">bubble_sort(lists))</span><br><span class="hljs-keyword"></span><br></code></pre></td></tr></table></figure>
-
-
-<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>举例:[5,2,4,3,1]</p>
-<p>1.找一个基准点，比如4，</p>
-<p>2.以4交换到最后一项[5,2,3,1,4]</p>
-<p>3.在列表开始处设立一个边界标志，比如现在[:5,2,3,1,4]的5左侧:为边界标志</p>
-<p>4.小于4的项放到边界左侧，直到所有小于4的放到边界左侧，每在边界左侧放置一个，边界位置右移一次,边界右侧的都比4大</p>
-<p>5.[2,3,1,:5,4]</p>
-<p>6.然后将4放置边界标志:的左侧[2,3,1,4,:5]</p>
-<p>7.在边界两侧重复以上过程，直到分组里只有一个元素</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"># -*- codin<span class="hljs-variable">g:</span> utf-<span class="hljs-number">8</span> -*-<br><br>def quicksort(lists):<br>    # 初始左边界为<span class="hljs-number">0</span>， 右边界为列表上界<br>    quick_sort_helper(lists,<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(lists)-<span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">return</span> lists<br>    <br>def quick_sort_helper(lists, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>):<br>    # 边界左边不能超越边界右边<br>#    <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;left=&quot;</span>,<span class="hljs-keyword">left</span>, <span class="hljs-string">&quot;right=&quot;</span>, <span class="hljs-keyword">right</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span> &lt; righ<span class="hljs-variable">t:</span><br>        # 分割列表设置分界点<br>        boundary = partition(lists, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>)<br>        # 分界点左侧接着分割<br>        quick_sort_helper(lists, <span class="hljs-keyword">left</span>, boundary - <span class="hljs-number">1</span>)<br>        # 分界点右侧接着分割<br>        quick_sort_helper(lists, boundary+<span class="hljs-number">1</span>, <span class="hljs-keyword">right</span>)<br>        <br>        <br>def partition(lists, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>):<br>    # 根据<span class="hljs-keyword">left</span>，<span class="hljs-keyword">right</span>寻找分界点<br>    middle = (<span class="hljs-keyword">left</span> + <span class="hljs-keyword">right</span>) // <span class="hljs-number">2</span><br>    # 将分界点放置于该段最右侧<br>    lists[<span class="hljs-keyword">right</span>], lists[middle] = lists[middle], lists[<span class="hljs-keyword">right</span>]<br>    boundary = <span class="hljs-keyword">left</span><br>    # 将小于分界点的排到左边，边界右移+<span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>):<br>        <span class="hljs-keyword">print</span>(lists)<br>        <span class="hljs-keyword">if</span> lists[i] &lt; lists[<span class="hljs-keyword">right</span>]:<br>            lists[i],lists[boundary] = lists[boundary], lists[i]<br>            boundary += <span class="hljs-number">1</span><br>    # 再将分界点移回<br>    lists[<span class="hljs-keyword">right</span>], lists[boundary] = lists[boundary], lists[<span class="hljs-keyword">right</span>]<br>    <span class="hljs-keyword">return</span> boundary<br>            <br>    <br>lists = <span class="hljs-keyword">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">6</span>))<br>from random import shuffle<br><br>shuffle(lists)<br><span class="hljs-keyword">print</span>(lists)<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;end=&gt;&quot;</span>, quicksort(lists))<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="合并排序"><a href="#合并排序" class="headerlink" title="合并排序"></a>合并排序</h4><p>举例:[5,2,4,3,1]</p>
-<p>1.选一个点将列表分成左右3部分[2,3,1]+[4]+[5]2.左边的列表所有的元素&lt;分割点</p>
-<p>3.右边的列表所有的元素&gt;分割点</p>
-<p>4.将左边的部分[2,3,1]重复1～3步骤[2,1]+[3] +[]</p>
-<p>5.将[2,1]重复1～3步骤[+[1]+[2]</p>
-<p>6.通过递归将他们合并起来[+[1]+[2]+[3]+[+[4]+[5]</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"># -*- coding: utf-<span class="hljs-number">8</span> -*-<br>def <span class="hljs-built_in">merg_sort</span>(lists):<br>    if <span class="hljs-built_in">len</span>(lists) &lt;= <span class="hljs-number">1</span>:<br>        return lists<br>    middle = <span class="hljs-built_in">len</span>(lists)//<span class="hljs-number">2</span><br>    left_list = []<br>    right_list = []<br>    for i in lists[:middle]:<br>        if i &lt;= lists[middle]:<br>            left_list.<span class="hljs-built_in">append</span>(i)<br>        else:<br>            right_list.<span class="hljs-built_in">append</span>(i)<br>    for i in lists[middle+<span class="hljs-number">1</span>:]:<br>        if i &lt;= lists[middle]:<br>            left_list.<span class="hljs-built_in">append</span>(i)<br>        else:<br>            right_list.<span class="hljs-built_in">append</span>(i)<br>    <span class="hljs-built_in">print</span>(left_list, right_list)<br>    return <span class="hljs-built_in">merg_sort</span>(left_list) + [lists[middle]] + <span class="hljs-built_in">merg_sort</span>(right_list)<br><br>lists = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>))<br>from random import shuffle<br><br><span class="hljs-built_in">shuffle</span>(lists)<br><span class="hljs-built_in">print</span>(lists)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;end=&gt;&quot;</span>, <span class="hljs-built_in">merg_sort</span>(lists))<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>服务器运维</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-递归与回溯</title>
-    <url>/2021/06/12/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E4%B8%8E%E5%9B%9E%E6%BA%AF/</url>
-    <content><![CDATA[<p>递归</p>
-<p>1.函数直接或间接调用自身</p>
-<p>2.必须具有递归结束条件</p>
-<p>3.每一次递归，问题规模缩小</p>
-<p>4.python限制了递归深度（sys.getrecursionlimit()）</p>
-<p>回溯</p>
-<p>回溯法是一个比较经典的算法<br>1.回溯法(探索与回溯法）是一种选优搜索法，又称为试探法<br>2.按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择<br>3.这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”</p>
 ]]></content>
       <categories>
         <category>服务器运维</category>
