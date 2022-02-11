@@ -1,23 +1,16 @@
-/* global Fluid, CONFIG */
+/* global Fluid */
 
 Fluid.boot = {};
 
 Fluid.boot.registerEvents = function() {
+  Fluid.events.billboard();
   Fluid.events.registerNavbarEvent();
   Fluid.events.registerParallaxEvent();
   Fluid.events.registerScrollDownArrowEvent();
   Fluid.events.registerScrollTopArrowEvent();
-};
-
-Fluid.boot.refresh = function() {
-  CONFIG.toc.enable && Fluid.plugins.initTocBot();
-  CONFIG.image_zoom && Fluid.plugins.wrapImageWithFancyBox();
-  CONFIG.anchorjs.enable && Fluid.plugins.registerAnchor();
-  CONFIG.copy_btn && Fluid.plugins.registerCopyCode();
-  CONFIG.progressbar && Fluid.plugins.registerImageLoaded();
+  Fluid.events.registerImageLoadedEvent();
 };
 
 document.addEventListener('DOMContentLoaded', function() {
   Fluid.boot.registerEvents();
-  Fluid.boot.refresh();
 });
