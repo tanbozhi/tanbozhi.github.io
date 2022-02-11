@@ -3925,6 +3925,31 @@
 <p>没有变量提升，内部this指向当前作用域</p>
 <p>不可以被new</p>
 <figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">tbz = <span class="hljs-function"><span class="hljs-params">sky</span> =&gt;</span> <span class="hljs-number">10</span><br>相当于<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tbz</span>(<span class="hljs-params">sky</span>)</span>&#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">10</span><br>&#125;<br><br>（）内可以放入多个参数<br>tbz = <span class="hljs-function">(<span class="hljs-params">x,y,z</span>) =&gt;</span> x+y+z<br>相当于<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tbz</span>(<span class="hljs-params">x,y,z</span>)</span>&#123;<br>	<span class="hljs-keyword">return</span> x+y+z<br>&#125;<br><br>还可以这样写&#123;&#125;可以写入执行语句<br>tbz = <span class="hljs-function">(<span class="hljs-params">x,y,z</span>) =&gt;</span>&#123;alert(<span class="hljs-number">1</span>);<span class="hljs-keyword">return</span> x+y+z&#125;<br><br>匿名箭头函数<br>( <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;alert(<span class="hljs-number">1</span>)&#125; )()<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="setup方法"><a href="#setup方法" class="headerlink" title="setup方法"></a>setup方法</h5><h6 id="setup方法的基本使用"><a href="#setup方法的基本使用" class="headerlink" title="setup方法的基本使用"></a>setup方法的基本使用</h6><p>在setup中，我们可以声明内容和输出内容</p>
+<p>setup里面的值不要和data与methods或其他的输出值重叠</p>
+<p>setup里面的事件是没法操作data的内容的，但是methods里面的事件可以操作setup定义的值</p>
+<p>setup里面的内容改变后，不会重新渲染页面，如果页面渲染时，被改变的值得内容会被渲染上</p>
+<p>setup里面的内容如果使用ref方法(需要引入)包装，那么内容改变时就会重新渲染页面</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;ref&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><br><span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">var</span> a = ref(<span class="hljs-number">20</span>);<br>	<span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>		<span class="hljs-comment">//this.a++;</span><br>		a.value++;	使用value更靠谱一些<br>	&#125;<br>	<span class="hljs-keyword">return</span> &#123;a,add&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="setup-props"><a href="#setup-props" class="headerlink" title="setup-props"></a>setup-props</h6><p>在setup参数中，第一个参数代表的是父级传入的props</p>
+<p>ref的内容的修改尽量使用其变量的value属性</p>
+<p>在vue中watchEffect监听会有初始化和全局化，watch监听更准确</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">&lt;tan :title=<span class="hljs-string">&quot;title&quot;</span>&gt;&lt;/tan&gt;<br>props[<span class="hljs-string">&#x27;title&#x27;</span>]<br>或者<br>props&#123;<br>	title:<span class="hljs-built_in">String</span><br>&#125;<br><br><span class="hljs-keyword">import</span> &#123;watchEffect,watch&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><br>setup(props)&#123;<br>	watchEffect(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>		<span class="hljs-built_in">console</span>.log(props.title)<br>	&#125;)<br>	watch(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>		<span class="hljs-keyword">return</span> props.title<br>	&#125;,<span class="hljs-function"><span class="hljs-params">(newValue)</span>=&gt;</span>&#123;<br>		<span class="hljs-built_in">console</span>.log(neValue)<br>	&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="setup-context"><a href="#setup-context" class="headerlink" title="setup-context"></a>setup-context</h6><p>在setup中，第二个参数为上下文对象，可以使用解构赋值</p>
+<p>上下文对象的attrs为可以显示传递过来的属性，但是不可以和props属性共存</p>
+<p>上下文对象的emit可以给父级发送数据，使用方式和普通emit统一</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props,context</span>)</span>&#123;<br>	<span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;<br>	<span class="hljs-keyword">var</span> &#123;attrs,emit&#125; =context;<br>	<span class="hljs-keyword">var</span> abc = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>		emit(<span class="hljs-string">&quot;zhangsan&quot;</span>,a) <span class="hljs-comment">//a为传递的数据</span><br>	&#125;<br>&#125;<br>或者<br><span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props,context</span>)</span>&#123;<br>	<span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;<br>	<span class="hljs-keyword">var</span> abc = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>		context.emit(<span class="hljs-string">&quot;zhangsan&quot;</span>,a) <span class="hljs-comment">//a为传递的数据</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="setup-context-solts"><a href="#setup-context-solts" class="headerlink" title="setup-context-solts"></a>setup-context-solts</h6><p>slots属性需要以函数的形式去查看插槽内容，可以通过赋值去修改    插槽内容</p>
+<p>如果slot传值的话，使用solts会报错，就算使用定时器也会报错</p>
+<p>slot内容发生修改，slot永远为最新值</p>
 ]]></content>
       <categories>
         <category>Web前端(网易学习)</category>
