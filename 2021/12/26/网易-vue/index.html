@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-26T14:56:40.000Z">
-<meta property="article:modified_time" content="2022-02-11T16:16:45.579Z">
+<meta property="article:modified_time" content="2022-02-28T09:21:52.932Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
         
         
         
-          256 分钟
+          257 分钟
         
       </span>
     
@@ -631,6 +631,12 @@
 <h6 id="setup-context-solts"><a href="#setup-context-solts" class="headerlink" title="setup-context-solts"></a>setup-context-solts</h6><p>slots属性需要以函数的形式去查看插槽内容，可以通过赋值去修改    插槽内容</p>
 <p>如果slot传值的话，使用solts会报错，就算使用定时器也会报错</p>
 <p>slot内容发生修改，slot永远为最新值</p>
+<h5 id="toRef的基本使用"><a href="#toRef的基本使用" class="headerlink" title="toRef的基本使用"></a>toRef的基本使用</h5><p>可以使用vue3的toRef方法来控制对象的某个属性</p>
+<p>toRef方法进行更改原有内容后，原对象会发生改变</p>
+<p>ref更改内容后，原对象不会发生改变</p>
+<p>toRef方法不是响应式的，发生改变后，页面不会发生渲染</p>
+<p>toRef如果放入非对象内容会报错或者不显示内容</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">var</span> arr=[<span class="hljs-string">&#x27;mmm&#x27;</span>,<span class="hljs-string">&#x27;kkk&#x27;</span>]<br><span class="hljs-keyword">var</span> sky = toRef(arr,<span class="hljs-string">&#x27;0&#x27;</span>);<br><br></code></pre></td></tr></table></figure>
 
               
             </div>

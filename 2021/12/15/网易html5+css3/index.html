@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-15T12:58:47.000Z">
-<meta property="article:modified_time" content="2021-12-23T14:21:20.666Z">
+<meta property="article:modified_time" content="2022-03-01T10:02:10.624Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="html5">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.5k 字
+          8.1k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          55 分钟
+          68 分钟
         
       </span>
     
@@ -280,6 +280,7 @@
 
 
 <h6 id="过渡样式"><a href="#过渡样式" class="headerlink" title="过渡样式"></a>过渡样式</h6><p>transition</p>
+<p>必须要有事件触发才会有效果</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">transition</span>:过渡名称，过渡时间，过渡类型，延时时间<br>transition-property: all; 过渡属性的名称（all,<span class="hljs-attribute">width</span>,<span class="hljs-attribute">height</span>）<br><span class="hljs-attribute">transition-duration</span>:<span class="hljs-number">2s</span>;	过渡时间(单位s或者ms)<br><span class="hljs-attribute">transition-timing-function</span>:		过渡类型（ease,linear,ease-in,ease-out,ease-in-out,cubic-bezier）<br>transition-delay:<span class="hljs-number">3s</span>;	定义过渡延时时间<br><br>ease,		linear,	ease-in,	ease-out,	ease-in-out，	  cubic-bezier<br>先加速后减速，匀速，	    加速，		 减速，	  先加速后减速（增强）， 贝塞尔曲线<br></code></pre></td></tr></table></figure>
 
 
@@ -394,6 +395,7 @@
 
 
 <p>分块（flex-grow）</p>
+<p>不需要设置宽度</p>
 <p>只针对宽度进行分块，对高度无效</p>
 <p>如果所有元素都不给宽度，那么第一个元素会稍短一点</p>
 <p>第一个元素给宽度，那么后面的元素就会平均分配多于的宽度</p>
@@ -401,6 +403,7 @@
 
 
 <p>分层（flex-wrap）</p>
+<p>需要设置宽度，并且flex-wrap</p>
 <p>默认值是nowrap</p>
 <p>当值为wrap时，元素会被挤到下一层，flex-grow会以当层计算</p>
 <p>flex-wrap:wrap-reverse;反向分层排序</p>
@@ -440,6 +443,18 @@
 
 <p>rem算法</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml">//总宽度 = 基数 * 倍数		倍数最好大于12，因为有些低版本浏览器字体最小只能是12px<br>//320   = 16  *  20		基数一般使用16<br><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>	font-size:16px;<br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-built_in">document</span>.documentElement.style.fontSize = innerWidth/<span class="hljs-number">16</span>+<span class="hljs-string">&#x27;px&#x27;</span>;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h5 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h5><p>主要语句</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-attribute">animation-name</span>:name;	动画名字<br><span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">2s</span>;	动画时间<br><br><span class="hljs-attribute">animation-timing-function</span>:ease;<br>动画曲线:linear,ease,ease-in.ease-out,ease-in-out,cubic-bezier<br>		匀速,先快后慢，加速，减速，正常，先快后慢（强），贝塞尔曲线<br>animation-timing-function:steps(<span class="hljs-number">3</span>,start);	步进 steps(<span class="hljs-number">3</span>,start)先走在停 steps(<span class="hljs-number">3</span>,end)先停再走<br><br><span class="hljs-attribute">animation-direction</span>:normal;	控制动画方向:normal(正常),reverse(反转),alternate(平滑轮回)，alternate-reverse(轮回反转)<br>animation-delay:<span class="hljs-number">4s</span>;		动画延时时间<br><span class="hljs-attribute">animation-iteration-count</span>:infinite;		无限循环 属性:infinite 无限，属性:<span class="hljs-number">2</span> 循环两次<br>animation-fill-mode:forwards;	填充 动画停留在哪一帧<br>forwards(初始，停留最后<span class="hljs-number">1</span>帧) backwards(从<span class="hljs-number">0</span>帧开始,停留在初始状态) both(从<span class="hljs-number">0</span>帧开始，停留在最后一帧)<br><br><span class="hljs-attribute">animation-play-state</span>:running;	动画播放(running)与暂停(paused)<br><br>简写<br><span class="hljs-attribute">animation</span>: name forwards <span class="hljs-number">2s</span> <span class="hljs-number">0.3s</span>;	<span class="hljs-comment">//前面是动画时间，后边是延时时间，其他的位置顺序可以改变</span><br><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="帧动画"><a href="#帧动画" class="headerlink" title="帧动画"></a>帧动画</h6><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;<br>	<span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">background-color</span>:white;<br>	<span class="hljs-attribute">animation-name</span>:changes;		*第一步<br>	<span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">3s</span>;		*<br>&#125;<br><br>*第二步<br><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-selector-tag">from</span>&#123;<br>		<span class="hljs-attribute">background-color</span>:white;<br>	&#125;<br>	<span class="hljs-selector-tag">to</span>&#123;<br>		<span class="hljs-attribute">background-color</span>:red;<br>	&#125;<br>&#125;<br><br>第二步可以写成这样<br><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-number">0%</span>&#123;<span class="hljs-attribute">background-color</span>:white;&#125;		*<span class="hljs-number">0%</span>可以不写，默认为元素背景色<br>	<span class="hljs-number">30%</span>&#123;&#125;<br>	<span class="hljs-number">70%</span>&#123;&#125;<br>	<span class="hljs-number">100%</span>&#123;<span class="hljs-attribute">background-color</span>:red;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>当有相同语句时可以合并写</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-number">0%</span>&#123;<span class="hljs-attribute">background-color</span>:white;&#125;<br>	<span class="hljs-number">30%</span>&#123;&#125;<br>	<span class="hljs-number">70%</span>&#123;&#125;<br>	<span class="hljs-number">100%</span>&#123;<span class="hljs-attribute">background-color</span>:red;&#125;<br>	<br>	<span class="hljs-number">30%</span>,<span class="hljs-number">70%</span>&#123;<span class="hljs-attribute">border-radius</span>:<span class="hljs-number">50%</span>&#125;	*合并写<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>多个动画应用到一个元素上</p>
+<p>当属性重叠时，优先使用后添加上名字的动画</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;<br>	<span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">background-color</span>:white;<br>	<span class="hljs-attribute">animation-name</span>:changes,radius,translate;		*放多个动画，都会生效，当某些属性重叠时，优先使用translate<br>	<span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">3s</span>,<span class="hljs-number">2s</span>,<span class="hljs-number">1s</span>;		*定义每个动画的时间，如果某个动画没定义时间，就按第一个时间算<br>&#125;<br></code></pre></td></tr></table></figure>
 
               
             </div>
