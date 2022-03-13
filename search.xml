@@ -1858,6 +1858,100 @@
 <p>③.update:指令所在模板结构被重新解析时调用</p>
 <p>4.指令定义时不用加V-,但使用时要加。多个单词命名时要用    user-name形式命名</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//第一种写法</span><br>directive:&#123;<br>	<span class="hljs-function"><span class="hljs-title">big</span>(<span class="hljs-params">element,binding</span>)</span>&#123;<br>		<span class="hljs-built_in">console</span>.log(element,binding)<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">//第二种写法</span><br>directive:&#123;<br>	big:&#123;<br>		<span class="hljs-function"><span class="hljs-title">bind</span>(<span class="hljs-params">element,binding</span>)</span>&#123;<br>			<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;成功绑定时&#x27;</span>)<br>		&#125;，<br>		<span class="hljs-function"><span class="hljs-title">inserted</span>(<span class="hljs-params">element,binding</span>)</span>&#123;<br>			<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;元素被插入页面&#x27;</span>)<br>		&#125;，<br>		<span class="hljs-function"><span class="hljs-title">update</span>(<span class="hljs-params">element,binding</span>)</span>&#123;<br>			<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;模板被重新解析&#x27;</span>)<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h5><figure class="highlight avrasm"><table><tr><td class="code"><pre><code class="hljs avrasm">beforecreate：创建之前		数据代理，数据监测还未开始创建<br>created：创建完成		 数据代理，数据监测已经创建完成<br><span class="hljs-symbol">beforemount:</span>挂载之前		虚拟dom还未编译成真实dom<br>mounted：挂在完成			虚拟dom转换成真实dom,且已经插入页面<br>发送ajax请求，启动定时器，绑定自定义事件，订阅消息（初始化操作）<br><br><span class="hljs-symbol">beforeupdate:</span>			更新数据之前<br><span class="hljs-symbol">updated:</span>				更新数据完成<br><span class="hljs-symbol">beforedistroy:</span>			销毁之前（vm.$destroy()）<br>不要在这儿操作数据，可以清除定时器，解绑自定义事件，取消订阅消息（收尾工作）<br><br><span class="hljs-symbol">destroyed:</span>				销毁完成<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h5><h6 id="如何使用组件"><a href="#如何使用组件" class="headerlink" title="如何使用组件"></a>如何使用组件</h6><p>1.定义组件 2.注册组件 3.使用组件</p>
+<p>定义：</p>
+<p>使用Vue.extend(options)创建</p>
+<p>不要写el ,data要写成函数，template配置组件结构</p>
+<p>注册：</p>
+<p>局部：new Vue时传入components选项</p>
+<p>全局：Vue.component(‘组件名’,组件)</p>
+<p>使用：&lt;组件名&gt;&lt;/组件名&gt;</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">创建组件<br><span class="hljs-keyword">const</span> school = Vue.extend(&#123;			<span class="hljs-comment">//Vue.extend可省略 school = &#123; ....&#125;</span><br>	<span class="hljs-function"><span class="hljs-title">data</span>(<span class="hljs-params"></span>)</span>&#123;		<span class="hljs-comment">//要写成函数，不需要el</span><br>		name:<span class="hljs-string">&#x27;张三&#x27;</span><br>	&#125;,<br>	template:<span class="hljs-string">`		//结构,外面要包裹一个div</span><br><span class="hljs-string">		&lt;div&gt;</span><br><span class="hljs-string">			&lt;h1&gt;我是school组件&lt;/h1&gt;</span><br><span class="hljs-string">		&lt;/div&gt;</span><br><span class="hljs-string">	`</span><br>&#125;)<br><br>注册组件（局部）<br><span class="hljs-keyword">new</span> Vue(&#123;<br>	el:<span class="hljs-string">&#x27;.box&#x27;</span>,<br>	components:&#123;<br>		school:school,		<span class="hljs-comment">//前面是真正的组件名，后面是一个中转变量，如果一样就可以简写成一个</span><br>	&#125;<br>&#125;)<br>注册组件（全局）<br>Vue.component(<span class="hljs-string">&#x27;hello&#x27;</span>,hello)	<span class="hljs-comment">//前面是组件名，后面是创建组件的变量名</span><br><br>使用组件<br>&lt;body&gt;<br>	&lt;school&gt;&lt;/school&gt;<br>&lt;/body&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="组件注意点"><a href="#组件注意点" class="headerlink" title="组件注意点"></a>组件注意点</h6><p>组件命名</p>
+<p>一个单词：全小写，首字母大写</p>
+<p>多个单词：’my-name’ ,MyName(脚手架里才可以)</p>
+<p>不要使用HTML的标签名当组件名</p>
+<p>可以使用name配置项指定组件在开发者工具中的名字</p>
+<p>组件标签</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">第一种：<span class="hljs-tag">&lt;<span class="hljs-name">school</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">school</span>&gt;</span><br>第二种：<span class="hljs-tag">&lt;<span class="hljs-name">school</span>/&gt;</span>		这种只能在脚手架里使用<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="VueComponent"><a href="#VueComponent" class="headerlink" title="VueComponent"></a>VueComponent</h6><p>1.是一个构造函数，是Vue.ectend生成的</p>
+<p>2.每次调用组件时，都会创建一个组件的实例对象，都会返回一个全新的Vue.Component</p>
+<p>3.组件中的this都指向VueComponent实例对象，简称vc, Vue的this称为vm</p>
+<h5 id="单文件组件"><a href="#单文件组件" class="headerlink" title="单文件组件"></a>单文件组件</h5><p>快捷键：&lt;v</p>
+<p>school.vue</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>	写HTML<br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">	<span class="hljs-comment">//写js ,vue</span></span><br>	<br><span class="javascript">	<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="javascript">		name:<span class="hljs-string">&#x27;school&#x27;</span>,	<span class="hljs-comment">//name后面写组件名，不写也可以，最好与文件名一致</span></span><br><span class="javascript">		<span class="hljs-function"><span class="hljs-title">data</span>(<span class="hljs-params"></span>)</span>&#123;</span><br>			...<br>		&#125;,<br>		methods:&#123;<br>			.....<br>		&#125;<br>	&#125;<br>	<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>	写css<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">app<span class="hljs-selector-class">.vue</span>		汇总组件<br><span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.js</span>		入口文件<br>index.html<br><br>school<span class="hljs-selector-class">.vue</span>	子组件<br>student<span class="hljs-selector-class">.vue</span>	子组件<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="创建脚手架"><a href="#创建脚手架" class="headerlink" title="创建脚手架"></a>创建脚手架</h5><figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">下载<br><span class="hljs-built_in">npm</span> install -g @vue/cli<br>创建项目<br>vue create XXX<br>运行<br><span class="hljs-built_in">npm</span> run serve<br></code></pre></td></tr></table></figure>
+
+
+<p>render</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">render</span>(<span class="hljs-params">createElement</span>)</span>&#123;<br>	<span class="hljs-keyword">return</span> crenteElement(<span class="hljs-string">&#x27;h1&#x27;</span>,<span class="hljs-string">&#x27;你好&#x27;</span>)<br>&#125;<br>简写箭头函数<br>render:<span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span>h(app)<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="ref属性"><a href="#ref属性" class="headerlink" title="ref属性"></a>ref属性</h5><p>1.被用来给元素或子组件注册引用信息（id的替代者）</p>
+<p>2.应用在HTML标签上获取的是真实DOM元素，应用在组件标签上是组件实例对象（VC）</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">&lt;h1 <span class="hljs-attribute">ref</span>=<span class="hljs-string">&#x27;xxx&#x27;</span>&gt;&lt;/h1&gt;<br>&lt;School <span class="hljs-attribute">ref</span>=<span class="hljs-string">&#x27;xxx&#x27;</span>&gt;&lt;/School&gt;<br><br>获取：<br>this.<span class="hljs-variable">$refs</span>.xxx<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="props"><a href="#props" class="headerlink" title="props"></a>props</h5><p>让组件接收外部传过来的数据</p>
+<p>props传输的数据不可以修改，可以中转变量到data中修改</p>
+<p>1.传递数据</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">&lt;School <span class="hljs-attribute">name</span>=<span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-attribute">age</span>=<span class="hljs-string">&#x27;xxx&#x27;</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>2.接收数据</p>
+<figure class="highlight sqf"><table><tr><td class="code"><pre><code class="hljs sqf">一、只接收<br>props:[<span class="hljs-string">&#x27;name&#x27;</span>,<span class="hljs-string">&#x27;age&#x27;</span>]<br>二、限制类型<br>props:&#123;<br>	<span class="hljs-built_in">name</span>:<span class="hljs-string">&#x27;String&#x27;</span>,<br>	age:<span class="hljs-string">&#x27;Number&#x27;</span><br>&#125;<br>三、限制类型，限制必要性，指定默认值<br>props:&#123;<br>	<span class="hljs-built_in">name</span>:&#123;<br>		<span class="hljs-built_in">type</span>:String,		<span class="hljs-comment">//类型</span><br>		required:<span class="hljs-literal">true</span>,		<span class="hljs-comment">//必须传入name</span><br>		<span class="hljs-keyword">default</span>:<span class="hljs-string">&#x27;默认值&#x27;</span>		<span class="hljs-comment">//默认值</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="mixin-混入"><a href="#mixin-混入" class="headerlink" title="mixin(混入)"></a>mixin(混入)</h5><p>功能：把多个组件共用的配置提取成一个混入对象</p>
+<p>定义混入：</p>
+<figure class="highlight nim"><table><tr><td class="code"><pre><code class="hljs nim">&#123;<br>	data()<span class="hljs-meta">&#123;...&#125;</span>,<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用混入：</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><code class="hljs angelscript">全局混入：Vue.<span class="hljs-keyword">mixin</span>(xxx)<br>局部混入：mixins:[<span class="hljs-string">&#x27;xxx&#x27;</span>]<br></code></pre></td></tr></table></figure>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">mixin.js<br>---------<br>export const hunhe = &#123;<br><span class="hljs-code">	data()&#123;</span><br><span class="hljs-code">		return&#123;</span><br><span class="hljs-code">			x:2,</span><br><span class="hljs-code">			y:5</span><br><span class="hljs-code">		&#125;</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br><br><br><br>School.vue<br>-----------<br>&lt;script&gt;<br><span class="hljs-code">	import &#123;&#125; from &#x27;./mixin.js&#x27;</span><br><span class="hljs-code">	</span><br><span class="hljs-code">	export default &#123;</span><br><span class="hljs-code">		data()&#123;</span><br><span class="hljs-code">			name:&#x27;尚硅谷&#x27;,</span><br><span class="hljs-code">			address:&#x27;北京&#x27;</span><br><span class="hljs-code">		&#125;,</span><br><span class="hljs-code">		mixins:[]</span><br><span class="hljs-code">	&#125;</span><br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h5><p>功能：用于增强vue</p>
+<p>本质：包含install方法的一个对象，第一个参数是Vue，后面就是传递的参数数据</p>
+<p>定义：</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">plugins.js<br>----------------------------<br>export default&#123;<br><span class="hljs-code">	install = function(Vue,options)&#123;</span><br><span class="hljs-code">        1.添加全局过滤器</span><br><span class="hljs-code">        Vue.filter(....)</span><br><span class="hljs-code">        2.添加全局指令</span><br><span class="hljs-code">        Vue.directive(....)</span><br><span class="hljs-code">        3.配置全局混入</span><br><span class="hljs-code">        Vue.mixin(....)</span><br><span class="hljs-code">        4.添加实例方法</span><br><span class="hljs-code">        Vue.prototype.$myMethod = function()</span><br><span class="hljs-code">        Vue.prototype.$myProperty = xxx</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br><br><br>Student.vue<br>-----------------<br>引入插件<br>import plugins from <span class="hljs-emphasis">&#x27;./plugins.js&#x27;</span><br><br>使用插件：Vue.use(plugins)<br><br>创建实例。。。。。<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="scoped"><a href="#scoped" class="headerlink" title="scoped"></a>scoped</h5><p>作用：让样式局部生效</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h5 id="案例总结"><a href="#案例总结" class="headerlink" title="案例总结"></a>案例总结</h5><h6 id="1-组件化编码流程"><a href="#1-组件化编码流程" class="headerlink" title="1.组件化编码流程"></a>1.组件化编码流程</h6><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">拆分静态组件：按功能点拆分，命名不要与<span class="hljs-selector-tag">HTML</span>元素冲突<br>实现动态组件：考虑好数据存放的位置，数据是一个组件用还是多个组件用<br>		一个：放在自身<br>		多个：放到共同父组件上（状态提升）<br>实现交互：从绑定事件开始<br></code></pre></td></tr></table></figure>
+<h6 id="2-props适用于"><a href="#2-props适用于" class="headerlink" title="2.props适用于"></a>2.props适用于</h6><figure class="highlight ada"><table><tr><td class="code"><pre><code class="hljs ada"><span class="hljs-number">1</span>.父组件<span class="hljs-comment">----&gt;&gt;&gt;子组件	通信</span><br><span class="hljs-number">2</span>.子组件<span class="hljs-comment">----&gt;&gt;&gt;父组件 通信(要求父组件先给子组件一个函数)</span><br></code></pre></td></tr></table></figure>
+<h6 id="3-v-modle与props注意事项"><a href="#3-v-modle与props注意事项" class="headerlink" title="3.v-modle与props注意事项"></a>3.v-modle与props注意事项</h6><p>v-modle绑定的值不能通过props来传递，props的值是不可以被修改的</p>
+<p>props传过来的若是对象类型的值，修改对象中的属性不会报错，但不推荐。</p>
+<h5 id="webStorage浏览器缓存"><a href="#webStorage浏览器缓存" class="headerlink" title="webStorage浏览器缓存"></a>webStorage浏览器缓存</h5><p>Window.localStorage</p>
+<p>关闭浏览器缓存还在</p>
+<p>Window.sessionStorage</p>
+<p>关闭浏览器，缓存消失</p>
+<p>相关API(两个通用)</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">xxxStorage.setItem(<span class="hljs-string">&#x27;key&#x27;</span>,<span class="hljs-string">&#x27;value&#x27;</span>)	<span class="hljs-regexp">//</span>添加<br>xxxStorage.getItem(<span class="hljs-string">&#x27;key&#x27;</span>)	<span class="hljs-regexp">//</span>获取	获取不到，返回null<br>xxxStorage.removeItem(<span class="hljs-string">&#x27;key&#x27;</span>)	<span class="hljs-regexp">//</span>删除<br>xxxStorage.clear()	<span class="hljs-regexp">//</span>清空<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="自定义事件（子传父）"><a href="#自定义事件（子传父）" class="headerlink" title="自定义事件（子传父）"></a>自定义事件（子传父）</h5><h6 id="函数，-emit，ref"><a href="#函数，-emit，ref" class="headerlink" title="函数，$emit，ref"></a>函数，$emit，ref</h6><p>第一种：通过父组件给子组件传递函数类型的props实现</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">app.vue<br>----------<br>&lt;School :getchildvalue= <span class="hljs-emphasis">&#x27;getchildvalue&#x27;</span>   /&gt;<br><br>methods:&#123;<br><span class="hljs-code">	getchildvalue(value)&#123;</span><br><span class="hljs-code">		console.log(&#x27;父组件得到了：&#x27;,value)</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br><br>school.vue<br>---------------<br>&lt;button @click=<span class="hljs-emphasis">&#x27;sendStudentName&#x27;</span>&gt;给父组件传递参数&lt;/button&gt;<br><br>props:[<span class="hljs-emphasis">&#x27;getchildvalue&#x27;</span>]<br>data()&#123;<br><span class="hljs-code">	value:&#x27;练习&#x27;</span><br>&#125;,<br>methods:&#123;<br><span class="hljs-code">	sendStudentName()&#123;</span><br><span class="hljs-code">		this.getchildvalue(this.value)</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>第二种 ：$emit 通过父组件给子组件绑定一个自定义事件</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">app.vue<br>----------<br>&lt;School @getvalue= <span class="hljs-emphasis">&#x27;getchildvalue&#x27;</span>   /&gt;<br><br>methods:&#123;<br><span class="hljs-code">	getchildvalue(value,...params)&#123;			//...params 接收剩余的参数</span><br><span class="hljs-code">		console.log(&#x27;父组件得到了：&#x27;,value)</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br><br>school.vue<br>---------------<br>&lt;button @click=<span class="hljs-emphasis">&#x27;sendStudentName&#x27;</span>&gt;给父组件传递参数&lt;/button&gt;<br><br>methods:&#123;<br><span class="hljs-code">	sendStudentName()&#123;</span><br><span class="hljs-code">		this.$emit(&#x27;getvalue&#x27;)</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>第三种：ref </p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">app.vue<br>----------<br>&lt;School ref=<span class="hljs-emphasis">&#x27;student&#x27;</span>   /&gt;<br><br><br>methods:&#123;<br><span class="hljs-code">	getchildvalue(value,...params)&#123;			//...params 接收剩余的参数</span><br><span class="hljs-code">		console.log(&#x27;父组件得到了：&#x27;,value)</span><br><span class="hljs-code">	&#125;</span><br>&#125;，<br>mounted()&#123;<br><span class="hljs-code">	this.$refs.student.$on(&#x27;getvalue&#x27;,this.getchildvalue)</span><br><span class="hljs-code">	//this.$refs.student.$once(&#x27;getvalue&#x27;,this.getchildvalue)  执行一次</span><br>&#125;<br><br>school.vue<br>---------------<br><br>&lt;button @click=<span class="hljs-emphasis">&#x27;sendStudentName&#x27;</span>&gt;给父组件传递参数&lt;/button&gt;<br><br>methods:&#123;<br><span class="hljs-code">	sendStudentName()&#123;</span><br><span class="hljs-code">		this.$emit(&#x27;getvalue&#x27;)</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Web前端(尚硅谷)</category>
@@ -3952,11 +4046,12 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> json = &#123;&#125;;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-built_in">Object</span>();<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br></code></pre></td></tr></table></figure>
 
 
-<h5 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h5><h6 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h6><p>对数组进行过滤</p>
+<h5 id="常用函数-数组"><a href="#常用函数-数组" class="headerlink" title="常用函数-数组"></a>常用函数-数组</h5><h6 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h6><p>对数组进行过滤</p>
 <figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver">arr.<span class="hljs-built_in">filter</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-string">&#x27;当前元素的值&#x27;</span>，当前元素索引,当前<span class="hljs-title">arr</span>)&#123;</span><br>	<span class="hljs-literal">return</span> ？？？<br>&#125;)<br><br>例<br>var <span class="hljs-keyword">items</span> = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">10</span>]<br><br><span class="hljs-keyword">items</span>.<span class="hljs-built_in">filter</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-title">item</span>)&#123;</span><br>	<span class="hljs-literal">return</span> <span class="hljs-keyword">item</span>&gt;<span class="hljs-number">5</span><br>&#125;)<br>&gt;&gt;&gt; [<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">10</span>]<br></code></pre></td></tr></table></figure>
 <h6 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h6><p>对数组进行排序</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">arr<span class="hljs-selector-class">.sort</span>(function(<span class="hljs-selector-tag">a</span>,<span class="hljs-selector-tag">b</span>)&#123;<br>	return <span class="hljs-selector-tag">a</span>-<span class="hljs-selector-tag">b</span>		//<span class="hljs-selector-tag">a</span>-<span class="hljs-selector-tag">b</span> 是升序 <span class="hljs-selector-tag">b</span>-<span class="hljs-selector-tag">a</span>是降序<br>&#125;)<br></code></pre></td></tr></table></figure>
-]]></content>
+<h6 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h6><p>统计需要的元素的个数（汇总累加器）</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(prev, current,currentindex,arr)</span>&#123;</span><br>		<span class="hljs-keyword">return</span> <span class="hljs-keyword">prev</span> +current<br>&#125;,initialvalue)<br><br><span class="hljs-keyword">pre</span><span class="hljs-variable">v:</span> 初始值或者上一次回调的返回值<br>current：当前元素的处理值<br>currentindex:当前元素索引<br>arr:当前元素数组本身<br>initialvalue:传给函数的初始值<br><br>例<br>arr = [<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>]<br><br>arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(prev,current)</span>&#123;</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">prev</span>+(current==<span class="hljs-number">2</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>)<br>&#125;,<span class="hljs-number">0</span>)<br><br>写成箭头函数<br>arr.reduce((<span class="hljs-keyword">prev</span>,current)=&gt; <span class="hljs-keyword">prev</span>+(current==<span class="hljs-number">2</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>),<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Web前端(网易学习)</category>
       </categories>
@@ -4347,6 +4442,33 @@
       </categories>
       <tags>
         <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>尚硅谷-ES6</title>
+    <url>/2022/03/12/%E5%B0%9A%E7%A1%85%E8%B0%B7-ES6/</url>
+    <content><![CDATA[<h5 id="模块化引入"><a href="#模块化引入" class="headerlink" title="模块化引入"></a>模块化引入</h5><h6 id="导入方式"><a href="#导入方式" class="headerlink" title="导入方式"></a>导入方式</h6><p>1.通用导入方式</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span>  写导入语句 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br>或<br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;./app.js&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span>  写导入语句 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>app.js文件里写入导入语句<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">引入全部内容<br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./ls/my1.js&#x27;</span><br><br>引入全部内容并存到my变量中<br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> my <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./ls/my2.js&#x27;</span>		<span class="hljs-comment">//as 设置别名</span><br></code></pre></td></tr></table></figure>
+<p>2.解构赋值方式</p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-keyword">import</span> &#123;school,teacher&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./my1.js&#x27;</span><br><span class="hljs-keyword">import</span> &#123;school <span class="hljs-keyword">as</span> sch,teacher&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./my2.js&#x27;</span><br><span class="hljs-keyword">import</span> &#123;<span class="hljs-keyword">default</span> <span class="hljs-keyword">as</span> mm&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./my3.js&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>3.简便形式（针对默认暴露）</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> mm <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./my3.js&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="暴露方式"><a href="#暴露方式" class="headerlink" title="暴露方式"></a>暴露方式</h6><figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">my1.js<br>--------<br>分别暴露<br>export let schoool = <span class="hljs-emphasis">&#x27;尚硅谷&#x27;</span><br>export function teacher()&#123;<br><span class="hljs-code">	console.log(&#x27;加上export就可以引入我了&#x27;)</span><br>&#125;<br><br><br>my2.js<br>-----------<br><br>统一暴露<br>let schoool = <span class="hljs-emphasis">&#x27;尚硅谷&#x27;</span><br>function teacher()&#123;<br><span class="hljs-code">	console.log(&#x27;快来引入我吧&#x27;)</span><br>&#125;<br><br>export &#123;school,teacher&#125;<br><br><br>my3.js<br>---------<br><br>默认暴露<br>export default&#123;<br><span class="hljs-code">	school:&#x27;qwewq&#x27;,</span><br><span class="hljs-code">	change:function()&#123;</span><br><span class="hljs-code">		.....</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Web前端(尚硅谷)</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
       </tags>
   </entry>
 </search>
