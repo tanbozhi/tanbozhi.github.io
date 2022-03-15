@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-12T08:39:54.000Z">
-<meta property="article:modified_time" content="2022-03-12T10:25:24.618Z">
+<meta property="article:modified_time" content="2022-03-14T11:21:57.279Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="ES6">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          934 字
+          1.2k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          8 分钟
+          11 分钟
         
       </span>
     
@@ -277,8 +277,7 @@
 <h6 id="暴露方式"><a href="#暴露方式" class="headerlink" title="暴露方式"></a>暴露方式</h6><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">my1.js<br>--------<br>分别暴露<br>export let schoool = <span class="hljs-emphasis">&#x27;尚硅谷&#x27;</span><br>export function teacher()&#123;<br><span class="hljs-code">	console.log(&#x27;加上export就可以引入我了&#x27;)</span><br>&#125;<br><br><br>my2.js<br>-----------<br><br>统一暴露<br>let schoool = <span class="hljs-emphasis">&#x27;尚硅谷&#x27;</span><br>function teacher()&#123;<br><span class="hljs-code">	console.log(&#x27;快来引入我吧&#x27;)</span><br>&#125;<br><br>export &#123;school,teacher&#125;<br><br><br>my3.js<br>---------<br><br>默认暴露<br>export default&#123;<br><span class="hljs-code">	school:&#x27;qwewq&#x27;,</span><br><span class="hljs-code">	change:function()&#123;</span><br><span class="hljs-code">		.....</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 
-
-
+<h5 id="es6语法"><a href="#es6语法" class="headerlink" title="es6语法"></a>es6语法</h5><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs lasso">arr = &#123;<span class="hljs-string">&#x27;tan&#x27;</span>:<span class="hljs-number">12</span>,<span class="hljs-string">&#x27;bo&#x27;</span>:<span class="hljs-number">67</span>,<span class="hljs-string">&#x27;zhi&#x27;</span>:<span class="hljs-number">87</span>&#125;<br>arr2 = &#123;<span class="hljs-string">&#x27;tan&#x27;</span>:<span class="hljs-number">22</span>,<span class="hljs-string">&#x27;bo&#x27;</span>:<span class="hljs-number">77</span>&#125;<br><br>arr3 = &#123;<span class="hljs-params">...</span>arr,<span class="hljs-params">...</span>arr2&#125;		<span class="hljs-comment">//后面对象会覆盖前面对象属性的值，后面没有的属性，会保留前面的属性</span><br>&gt;&gt;&gt;&#123;<span class="hljs-string">&#x27;tan&#x27;</span>:<span class="hljs-number">22</span>,<span class="hljs-string">&#x27;bo&#x27;</span>:<span class="hljs-number">77</span>,<span class="hljs-string">&#x27;zhi&#x27;</span>:<span class="hljs-number">87</span>&#125;<br></code></pre></td></tr></table></figure>
 
               
             </div>
