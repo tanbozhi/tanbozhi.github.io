@@ -17,14 +17,14 @@
   <meta name="keywords" content="">
   
     <meta name="description" content="摘要">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="尚硅谷-Vue2">
-<meta property="og:url" content="http://example.com/%E5%B0%9A%E7%A1%85%E8%B0%B7-Vue2.html">
+<meta property="og:url" content="http://example.com/2022/03/08/%E5%B0%9A%E7%A1%85%E8%B0%B7-Vue2/index.html">
 <meta property="og:site_name" content="tanbozhi-blog">
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-08T08:42:10.000Z">
-<meta property="article:modified_time" content="2022-03-15T08:36:14.083Z">
+<meta property="article:modified_time" content="2022-03-15T08:49:01.263Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="Vue2">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,6 +35,12 @@
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -76,7 +82,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -186,6 +192,46 @@
         </div>
 
         
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-08 16:42" pubdate>
+          2022年3月8日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          146 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
 
       
@@ -199,17 +245,25 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<article class="page-content">
-  <h4 id="vue2"><a href="#vue2" class="headerlink" title="vue2"></a>vue2</h4><h5 id="初始Vue2"><a href="#初始Vue2" class="headerlink" title="初始Vue2"></a>初始Vue2</h5><p>1.想要Vue工作，就必须创建Vue实例，传入配置对象</p>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">尚硅谷-Vue2</h1>
+            
+            <div class="markdown-body">
+              
+              <h4 id="vue2"><a href="#vue2" class="headerlink" title="vue2"></a>vue2</h4><h5 id="初始Vue2"><a href="#初始Vue2" class="headerlink" title="初始Vue2"></a>初始Vue2</h5><p>1.想要Vue工作，就必须创建Vue实例，传入配置对象</p>
 <p>2.在指定的容器里写入特殊的vue语法</p>
 <p>3.指定容器被称为【Vue模板】</p>
 <p>4.中要写js表达式，且xxx可以读取到data里的属性</p>
@@ -506,7 +560,7 @@
 
 
 <h5 id="VueX"><a href="#VueX" class="headerlink" title="VueX"></a>VueX</h5><p>专门在Vue中实现集中式状态管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式管理</p>
-<p>store —&gt;&gt;&gt;Actions/Mutations/State</p>
+<p>store →Actions/Mutations/State</p>
 <h6 id="安装vuex"><a href="#安装vuex" class="headerlink" title="安装vuex"></a>安装vuex</h6><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">npm</span> i vuex@<span class="hljs-number">3</span>		//添加@<span class="hljs-number">3</span>就是指定<span class="hljs-number">3</span>版本<br><br><span class="hljs-attribute">vue2</span>  &gt;&gt;&gt;  vuex<span class="hljs-number">3</span><br><span class="hljs-attribute">vue3</span>  &gt;&gt;&gt;	vuex<span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
 <p>引入与使用</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">import Vuex from <span class="hljs-string">&#x27;vuex&#x27;</span>	<span class="hljs-regexp">//</span>引入<br>Vue.use(Vuex)		<span class="hljs-regexp">//</span>使用<br></code></pre></td></tr></table></figure>
@@ -516,21 +570,19 @@
 
 <p>在main.js中创建vm时传入store配置项</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">main.js<br>-------------------<br><br>import store from <span class="hljs-emphasis">&#x27;./store&#x27;</span>		//引入store<br><br><span class="hljs-comment">//创建VM</span><br>new Vue(&#123;<br><span class="hljs-code">	store,</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">组件中读取数据：<span class="hljs-variable">$store</span><span class="hljs-selector-class">.state</span>.sum<br>组件中修改数据：<span class="hljs-variable">$store</span><span class="hljs-selector-class">.dispatch</span>(<span class="hljs-string">&#x27;action方法名&#x27;</span>,数据)或<span class="hljs-variable">$store</span><span class="hljs-selector-class">.commit</span>(<span class="hljs-string">&#x27;mutations方法名&#x27;</span>,数据)<br></code></pre></td></tr></table></figure>
 
 
-<p>组件中读取数据：$store.state.sum</p>
-<p>组件中修改数据：$store.dispatch(‘action方法名’,数据)或$store.commit(‘mutations方法名’,数据)</p>
 <h5 id="四个map方法"><a href="#四个map方法" class="headerlink" title="四个map方法"></a>四个map方法</h5><p>引入</p>
 <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> &#123;mapState,mapGetters,mapMutations,mapActions&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span><br></code></pre></td></tr></table></figure>
 <p>1.mapState：用于映射state中的属性</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">computed:&#123;<br>	...map<span class="hljs-constructor">State(&#123;<span class="hljs-params">sum</span>:&#x27;<span class="hljs-params">sum</span>&#x27;,<span class="hljs-params">school</span>:&#x27;<span class="hljs-params">school</span>&#x27;&#125;)</span>,<br>	<br>	或者<br>	...map<span class="hljs-constructor">State([&#x27;<span class="hljs-params">sum</span>&#x27;,&#x27;<span class="hljs-params">school</span>&#x27;])</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>2.mapGetter:映射getters中的属性</p>
-<p>​    用法和mapState一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">用法和mapState一样<br></code></pre></td></tr></table></figure>
 <p>3.mapMutations:用于帮助生成mutations对话方法</p>
-<p>​    即包含$store.commit(xxx)的函数</p>
-<p>​    用法和mapState一样</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss">即包含<span class="hljs-variable">$store</span><span class="hljs-selector-class">.commit</span>(xxx)的函数<br>用法和mapState一样<br></code></pre></td></tr></table></figure>
 <p>4.mapActions:用于帮助生成actions对话方法</p>
-<p>​    即包含$store.aispatch(xxx)的函数</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss">即包含<span class="hljs-variable">$store</span><span class="hljs-selector-class">.aispatch</span>(xxx)的函数<br></code></pre></td></tr></table></figure>
 <p>mapMutations,mapActions使用时，若需要传递参数，需要在模板中绑定事件时传递好参数</p>
 <h5 id="vuex模块化-nameSpace"><a href="#vuex模块化-nameSpace" class="headerlink" title="vuex模块化+nameSpace"></a>vuex模块化+nameSpace</h5><h6 id="目的：让代码更好维护，数据分类更加明确"><a href="#目的：让代码更好维护，数据分类更加明确" class="headerlink" title="目的：让代码更好维护，数据分类更加明确"></a>目的：让代码更好维护，数据分类更加明确</h6><h6 id="修改store-js"><a href="#修改store-js" class="headerlink" title="修改store.js"></a>修改store.js</h6><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs vim">const <span class="hljs-built_in">tan</span> = &#123;<br>	namespaced:true,	//开启命名空间<br>	state:&#123;&#125;,<br>	mutation<span class="hljs-variable">s:</span>&#123;&#125;,<br>	action<span class="hljs-variable">s:</span>&#123;&#125;,<br>	getter<span class="hljs-variable">s:</span>&#123;&#125;<br>&#125;<br><br>const <span class="hljs-keyword">bo</span> = &#123;<br>	namespaced:true,	//开启命名空间<br>	state:&#123;&#125;,<br>	mutation<span class="hljs-variable">s:</span>&#123;&#125;,<br>	action<span class="hljs-variable">s:</span>&#123;&#125;,<br>	getter<span class="hljs-variable">s:</span>&#123;&#125;<br>&#125;<br><br>const store = <span class="hljs-keyword">new</span> Vuex.Store(&#123;<br>	modul<span class="hljs-variable">s:</span>&#123;<br>		<span class="hljs-built_in">tan</span>,		//原始：<span class="hljs-built_in">tan</span>:<span class="hljs-built_in">tan</span><br>		<span class="hljs-keyword">bo</span>			//原始: <span class="hljs-keyword">bo</span>:<span class="hljs-keyword">bo</span><br>	&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 
@@ -542,18 +594,163 @@
 
 <h6 id="开启命名空间后，组件调用commit"><a href="#开启命名空间后，组件调用commit" class="headerlink" title="开启命名空间后，组件调用commit"></a>开启命名空间后，组件调用commit</h6><p>mapAutations  与mapActions一样</p>
 
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Web%E5%89%8D%E7%AB%AF-%E5%B0%9A%E7%A1%85%E8%B0%B7/" class="category-chain-item">Web前端(尚硅谷)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Vue2/">#Vue2</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>尚硅谷-Vue2</div>
+      <div>http://example.com/2022/03/08/%E5%B0%9A%E7%A1%85%E8%B0%B7-Vue2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>博博</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月8日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/12/%E5%B0%9A%E7%A1%85%E8%B0%B7-ES6/" title="尚硅谷-ES6">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">尚硅谷-ES6</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/03/%E7%BD%91%E6%98%93-jQuery/" title="网易-jQuery">
+                        <span class="hidden-mobile">网易-jQuery</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
 
   
 
-</article>
+
+
+  
 
 
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
     
 
     
@@ -649,6 +846,137 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
