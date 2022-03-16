@@ -4565,6 +4565,90 @@
 
 
 <h6 id="开启命名空间后，组件调用commit"><a href="#开启命名空间后，组件调用commit" class="headerlink" title="开启命名空间后，组件调用commit"></a>开启命名空间后，组件调用commit</h6><p>mapAutations  与mapActions一样</p>
+<h5 id="Route-路由"><a href="#Route-路由" class="headerlink" title="Route(路由)"></a>Route(路由)</h5><p>1.理解：一个路由(route)就是一个映射关系(key-value)，多个路由需要路由器(router)管理。</p>
+<p>2.前端路由：key是路径，value是组件</p>
+<h6 id="1-基本使用"><a href="#1-基本使用" class="headerlink" title="1.基本使用"></a>1.基本使用</h6><p>①安装vue-router，命令：<code>npm i vue-router</code></p>
+<p>②应用插件：<code>Vue.use(VueRouter)</code></p>
+<p>③编写router配置项</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><code class="hljs gradle">src<span class="hljs-regexp">/router/i</span>ndex.js 	<span class="hljs-comment">//路由配置文件路径，相关的路由组件放到src/pages里</span><br>==================================================<br><span class="hljs-keyword">import</span> VueRouter <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span>	<span class="hljs-comment">//引入路由</span><br><br><span class="hljs-keyword">import</span> luyou1 <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../components/luyou1&#x27;</span>	<span class="hljs-comment">//引入需要配置路由的组件</span><br><br><span class="hljs-comment">//创建router实例</span><br>const router = <span class="hljs-keyword">new</span> VueRouter(&#123;<br>	routes:[<br>		&#123;<br>			path:<span class="hljs-string">&#x27;/about&#x27;</span>,<br>			commponent:luyou1<br>		&#125;,<br>		&#123;<br>			path:<span class="hljs-string">&#x27;/home&#x27;</span>,<br>			commponent:luyou2<br>		&#125;,<br>		<br>	]<br>&#125;)<br><br>export <span class="hljs-keyword">default</span> router	<span class="hljs-comment">//暴露router</span><br></code></pre></td></tr></table></figure>
+<p>④实现切换（active-class可配置高亮样式）</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">&lt;router-link <span class="hljs-attribute">active-class</span>=<span class="hljs-string">&quot;active&quot;</span> <span class="hljs-attribute">to</span>=<span class="hljs-string">&#x27;/luyou1&#x27;</span>&gt;About&lt;/router-link&gt;<br></code></pre></td></tr></table></figure>
+<p>⑤指定展示的位置</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-section">&lt;router-view&gt;</span><span class="hljs-section">&lt;/router-view&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>路由切换时，隐藏了的路由组件，默认是被销毁的，需要时在挂载</p>
+<p>每个组件都有$route属性，里面存储着自己的路由信息</p>
+<p>整个应用只有一个router，可以通过组件的$router属性获取到</p>
+<h6 id="多级路由-嵌套路由"><a href="#多级路由-嵌套路由" class="headerlink" title="多级路由(嵌套路由)"></a>多级路由(嵌套路由)</h6><p>配置</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">const router = new VueRouter(&#123;<br>	routes:[<br>		&#123;<br>			name:<span class="hljs-string">&#x27;test&#x27;</span>,	<span class="hljs-regexp">//</span>给路由命名，在模板中：	:to=<span class="hljs-string">&quot;&#123;name:&#x27;hello&#x27;&#125;&quot;</span><br>			path:<span class="hljs-string">&#x27;/about&#x27;</span>,<br>			commponent:luyou1<br>		&#125;,<br>		&#123;<br>			path:<span class="hljs-string">&#x27;/home&#x27;</span>,<br>			commponent:luyou2，<br>			children:[	<span class="hljs-regexp">//</span>通过children配置子级路由<br>				&#123;<br>					path:<span class="hljs-string">&#x27;news&#x27;</span>,	<span class="hljs-regexp">//</span>一定不要加/<br>					component:News<br>				&#125;,<br>				&#123;<br>					path:<span class="hljs-string">&#x27;message&#x27;</span>,	<span class="hljs-regexp">//</span>一定不要加/<br>					component:Message<br>				&#125;<br>			]<br>		&#125;,<br>		<br>	]<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>跳转（要写完整路径）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/home/news&quot;</span>&gt;</span>News<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h5 id="路由的query参数"><a href="#路由的query参数" class="headerlink" title="路由的query参数"></a>路由的query参数</h5><p>1.传递参数</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><code class="hljs elixir">方法一：<br>&lt;li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">&quot;m in messageList&quot;</span> <span class="hljs-symbol">:key=<span class="hljs-string">&quot;m.id&quot;</span>&gt;</span><br>	&lt;<span class="hljs-regexp">/router-link :to=&quot;/home</span><span class="hljs-regexp">/message/detail</span>?id=<span class="hljs-number">666</span>&amp;title=你好<span class="hljs-string">&quot;&gt;&lt;/router-link&gt;</span><br><span class="hljs-string">	或</span><br><span class="hljs-string">	&lt;/router-link :to=&quot;</span>`/home/detail?<span class="hljs-variable">$(</span>m.id)&amp;title=<span class="hljs-variable">$(</span>m.title)`<span class="hljs-string">&quot;&gt;&lt;/router-link&gt;</span><br><span class="hljs-string">&lt;/li&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">方法二：建议</span><br><span class="hljs-string">&lt;router-link</span><br><span class="hljs-string">	:to=&quot;</span>&#123;<br>		<span class="hljs-symbol">path:</span><span class="hljs-string">&#x27;/home/message/detail&#x27;</span>,<br>		<span class="hljs-symbol">query:</span>&#123;<br>			<span class="hljs-symbol">id:</span><span class="hljs-number">666</span>,<br>			<span class="hljs-symbol">title:</span><span class="hljs-string">&#x27;你好&#x27;</span><br>		&#125;<br>	&#125;<span class="hljs-string">&quot;</span><br><span class="hljs-string">&gt;跳转&lt;/router-link&gt;</span><br></code></pre></td></tr></table></figure>
+<p>2.接收参数：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-variable">$route</span><span class="hljs-selector-class">.query</span>.id<br><span class="hljs-variable">$route</span><span class="hljs-selector-class">.query</span>.title<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="路由的params参数"><a href="#路由的params参数" class="headerlink" title="路由的params参数"></a>路由的params参数</h5><p>1.配置路由，声明params参数</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">&#123;<br>	path:<span class="hljs-string">&#x27;/home/:id/:title&#x27;</span>,	<span class="hljs-regexp">//</span>使用占位符声明接收params参数<br>	component:Home,<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>2.传递参数</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><code class="hljs elixir">方法一：<br>&lt;li v-<span class="hljs-keyword">for</span>=<span class="hljs-string">&quot;m in messageList&quot;</span> <span class="hljs-symbol">:key=<span class="hljs-string">&quot;m.id&quot;</span>&gt;</span><br>	&lt;<span class="hljs-regexp">/router-link :to=&quot;/home</span><span class="hljs-regexp">/message/detail</span><span class="hljs-regexp">/666/</span>你好<span class="hljs-string">&quot;&gt;&lt;/router-link&gt;</span><br><span class="hljs-string">	或</span><br><span class="hljs-string">	&lt;/router-link :to=&quot;</span>`/home/detail/<span class="hljs-variable">$(</span>m.id)/<span class="hljs-variable">$(</span>m.title)`<span class="hljs-string">&quot;&gt;&lt;/router-link&gt;</span><br><span class="hljs-string">&lt;/li&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">方法二：建议</span><br><span class="hljs-string">&lt;router-link</span><br><span class="hljs-string">	:to=&quot;</span>&#123;<br>		<span class="hljs-symbol">name:</span><span class="hljs-string">&#x27;xiangxi&#x27;</span>,		<span class="hljs-regexp">//</span>必须用name<br>		<span class="hljs-symbol">params:</span>&#123;			<span class="hljs-regexp">//</span>用params<br>			<span class="hljs-symbol">id:</span><span class="hljs-number">666</span>,<br>			<span class="hljs-symbol">title:</span><span class="hljs-string">&#x27;你好&#x27;</span><br>		&#125;<br>	&#125;<span class="hljs-string">&quot;</span><br><span class="hljs-string">&gt;跳转&lt;/router-link&gt;</span><br></code></pre></td></tr></table></figure>
+<p>3.接收参数</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-variable">$route</span><span class="hljs-selector-class">.params</span>.id<br><span class="hljs-variable">$route</span><span class="hljs-selector-class">.params</span>.title<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="路由的props配置"><a href="#路由的props配置" class="headerlink" title="路由的props配置"></a>路由的props配置</h5><figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">&#123;<br>	name:<span class="hljs-string">&#x27;xiangxi&#x27;</span>,<br>	path:<span class="hljs-string">&#x27;detail/:id&#x27;</span>,<br>	component:Detail,<br>	<br>	props:&#123;<span class="hljs-selector-tag">a</span>:<span class="hljs-number">666</span>&#125;	<span class="hljs-comment">//第一种写法，只能传递括号里的内容</span><br>	props:true		<span class="hljs-comment">//第二种写法，为true时，路由收到的所有params参数传给组件</span><br>	props(<span class="hljs-variable">$router</span>)&#123;	<span class="hljs-comment">//该函数会把对象中的每一组key-value都会传给组件</span><br>		return&#123;<br>			id:<span class="hljs-variable">$router</span><span class="hljs-selector-class">.query</span><span class="hljs-selector-class">.id</span>,<br>			title:router<span class="hljs-selector-class">.query</span>.title<br>		&#125;<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="push与replace属性"><a href="#push与replace属性" class="headerlink" title="push与replace属性"></a>push与replace属性</h5><p>1.作用：用于控制路由跳转时操作浏览器历史记录模式</p>
+<p>2.记录模式：push(默认)/replace</p>
+<p>3.开启replace：</p>
+<p>开启后，每次点击会替换前一条历史记录</p>
+<figure class="highlight sas"><table><tr><td class="code"><pre><code class="hljs sas">&lt;router-<span class="hljs-meta">link</span> <span class="hljs-meta">replace</span>&gt;&lt;/router-<span class="hljs-meta">link</span>&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="编程式路由导航"><a href="#编程式路由导航" class="headerlink" title="编程式路由导航"></a>编程式路由导航</h5><p>1.作用：不借助<code>&lt;router-rwatlink&gt;</code>实现路由跳转，让跳转更灵活</p>
+<p>2.使用</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">this</span>.$router.push(&#123;<br>	name:<span class="hljs-string">&#x27;xiangqing&#x27;</span>,<br>	params:&#123;<br>		id:xxx,<br>		title:xxx<br>	&#125;<br>&#125;)<br><br><span class="hljs-keyword">this</span>.$router.replace(&#123;<br>	name:<span class="hljs-string">&#x27;xiangqing&#x27;</span>,<br>	params:&#123;<br>		id:xxx,<br>		title:xxx<br>	&#125;<br>&#125;)<br><br><span class="hljs-keyword">this</span>.$router.back	<span class="hljs-comment">//后退</span><br><span class="hljs-keyword">this</span>.$router.foward	<span class="hljs-comment">//前进</span><br><span class="hljs-keyword">this</span>.$router.go(n)	<span class="hljs-comment">//指定跳几步 go(2)前进两步</span><br></code></pre></td></tr></table></figure>
+
+
+<h5 id="缓存路由组件"><a href="#缓存路由组件" class="headerlink" title="缓存路由组件"></a>缓存路由组件</h5><p>让不展示的路由组件保持挂载，不被销毁</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><code class="hljs stata">不写<span class="hljs-keyword">include</span>就是全部保持不销毁<br>写上可以指定不销毁，写的是组件名<br><br>&lt;<span class="hljs-keyword">keep</span>-alive <span class="hljs-keyword">include</span>=&#x27;组件名&#x27;&gt;		<span class="hljs-comment">//只能指定一个</span><br>	&lt;router-<span class="hljs-keyword">view</span>&gt;&lt;/router-<span class="hljs-keyword">view</span>&gt;<br>&lt;/<span class="hljs-keyword">keep</span>-alive&gt;<br><br>&lt;<span class="hljs-keyword">keep</span>-alive :<span class="hljs-keyword">include</span>=[&#x27;组件名1&#x27;,组件名2]&gt;	<span class="hljs-comment">//指定多个</span><br>	&lt;router-<span class="hljs-keyword">view</span>&gt;&lt;/router-<span class="hljs-keyword">view</span>&gt;<br>&lt;/<span class="hljs-keyword">keep</span>-alive&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="激活、失活-生命周期"><a href="#激活、失活-生命周期" class="headerlink" title="激活、失活 生命周期"></a>激活、失活 生命周期</h5><p>组件激活和失活时触发</p>
+<p>activated()    激活</p>
+<p>deactivated()    失活</p>
+<p>nextTick(前面已经讲过)</p>
+<h5 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h5><p>1.对路由进行权限控制</p>
+<p>2.分类：全局守卫、独享守卫、组件内守卫</p>
+<h6 id="全局守卫：初始化和每次切换时执行"><a href="#全局守卫：初始化和每次切换时执行" class="headerlink" title="全局守卫：初始化和每次切换时执行"></a>全局守卫：初始化和每次切换时执行</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">router/index.js<br>---------------------<br>全局前置守卫<br>router.beforeEach(<span class="hljs-function">(<span class="hljs-params">to,<span class="hljs-keyword">from</span>,next</span>)=&gt;</span>&#123;		<span class="hljs-comment">//to:去哪儿from:从哪儿来next:放行</span><br>	<span class="hljs-keyword">if</span>(to.mata.isAuth)&#123;			<span class="hljs-comment">//判断是否需要进行权限控制(需要在路由配置中配置mata)</span><br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">localStorage</span>.getItem(<span class="hljs-string">&#x27;school&#x27;</span>)===<span class="hljs-string">&#x27;atguigu&#x27;</span>)&#123;	<span class="hljs-comment">//控制权限的具体规则</span><br>			next()		<span class="hljs-comment">//放行</span><br>		&#125;<span class="hljs-keyword">else</span>&#123;<br>			alert(<span class="hljs-string">&#x27;无权限&#x27;</span>)<br>		&#125;<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>		next()<br>	&#125;<br>&#125;)<br><br><br>全局后置守卫<br>router.afterEach(<span class="hljs-function">(<span class="hljs-params">to,<span class="hljs-keyword">from</span></span>)=&gt;</span>&#123;<br>	<span class="hljs-keyword">if</span>(to.meta.title)&#123;<br>		<span class="hljs-built_in">document</span>.title=to.meat.title<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>		<span class="hljs-built_in">document</span>.title = <span class="hljs-string">&#x27;vuetitle&#x27;</span><br>	&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h6 id="独享路由守卫"><a href="#独享路由守卫" class="headerlink" title="独享路由守卫"></a>独享路由守卫</h6><p>beforeEnter(写到路由配置中)</p>
+<p>写法和全局路由守卫的前置路由守卫一样,后面可以和全局后置守卫配合</p>
+<h6 id="组件内路由守卫"><a href="#组件内路由守卫" class="headerlink" title="组件内路由守卫"></a>组件内路由守卫</h6><figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">pages/about.vue<br>-----------------------<br><span class="hljs-comment">//进入该组件时调用		进入守卫</span><br>beforeRouterEnter(to,from,next)&#123;<br><span class="hljs-code">	里面写法和全局路由守卫一样</span><br>&#125;<br><br><span class="hljs-comment">//离开该组件时调用		离开守卫</span><br>beforeRouterLeave(to,from,next)&#123;<br><span class="hljs-code">	里面写法和全局路由守卫一样</span><br><span class="hljs-code">	next()</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="路由器的两种工作模式"><a href="#路由器的两种工作模式" class="headerlink" title="路由器的两种工作模式"></a>路由器的两种工作模式</h5><p>1.hash模式</p>
+<p>地址带#,不美观</p>
+<p>若将地址通过第三方手机app分享，若app校验严格，则被标记不合法</p>
+<p>兼容性好</p>
+<p>2.history模式</p>
+<p>地址干净美观</p>
+<p>兼容性略差</p>
+<p>部署上线时需要后端人员支持，解决页面刷新404问题</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">router/index.js<br>---------------------------<br>cosnt router = new VueRouter(&#123;<br><span class="hljs-code">	mode:&#x27;history&#x27;,		//默hash模式，切换到history模式</span><br><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h5><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">npm <span class="hljs-builtin-name">run</span> build<br></code></pre></td></tr></table></figure>
+<p>将dist文件里面的所有同喜复制给后端部署就行了</p>
+<h5 id="vue组件库"><a href="#vue组件库" class="headerlink" title="vue组件库"></a>vue组件库</h5><h6 id="移动端常用"><a href="#移动端常用" class="headerlink" title="移动端常用"></a>移动端常用</h6><p>Vant            htttps://youzan.github.io/vant</p>
+<p>Cube UI        htttps://didi.github.io/cube-ui</p>
+<p>Mint UI        htttps://mint-ui.github.io</p>
+<h6 id="pc端"><a href="#pc端" class="headerlink" title="pc端"></a>pc端</h6><p>Element UI        htttps://element.eleme.cn</p>
+<p>IView UI            htttps://<a href="http://www.iviewui.com/">www.iviewui.com</a></p>
 ]]></content>
       <categories>
         <category>Web前端(尚硅谷)</category>
