@@ -3426,7 +3426,8 @@
   <entry>
     <title>尚硅谷-Vue2</title>
     <url>/2022/03/08/%E5%B0%9A%E7%A1%85%E8%B0%B7-Vue2/</url>
-    <content><![CDATA[<h3 id="vue2"><a href="#vue2" class="headerlink" title="vue2"></a>vue2</h3><h4 id="初始Vue2"><a href="#初始Vue2" class="headerlink" title="初始Vue2"></a>初始Vue2</h4><p>1.想要Vue工作，就必须创建Vue实例，传入配置对象</p>
+    <content><![CDATA[<p>[TOC]</p>
+<h4 id="Vue2基础"><a href="#Vue2基础" class="headerlink" title="Vue2基础"></a>Vue2基础</h4><p>1.想要Vue工作，就必须创建Vue实例，传入配置对象</p>
 <p>2.在指定的容器里写入特殊的vue语法</p>
 <p>3.指定容器被称为【Vue模板】</p>
 <p>4.中要写js表达式，且xxx可以读取到data里的属性</p>
