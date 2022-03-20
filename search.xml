@@ -3474,7 +3474,7 @@
   <entry>
     <title>黑马-node.js</title>
     <url>/2022/03/19/%E9%BB%91%E9%A9%AC-node-js/</url>
-    <content><![CDATA[<h4 id="node"><a href="#node" class="headerlink" title="node"></a>node</h4><p>安装：node.js 官网下载</p>
+    <content><![CDATA[<h4 id="node"><a href="#node" class="headerlink" title="node"></a>node</h4><p>安装：<code>node.js 官网下载</code></p>
 <p>查看版本： <code>node -v</code></p>
 <h4 id="fs文件系统模块"><a href="#fs文件系统模块" class="headerlink" title="fs文件系统模块"></a>fs文件系统模块</h4><p>用来操作文件的模块</p>
 <h5 id="readFile"><a href="#readFile" class="headerlink" title="readFile"></a>readFile</h5><p>读取文件</p>
