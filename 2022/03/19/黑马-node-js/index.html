@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-19T02:44:32.000Z">
-<meta property="article:modified_time" content="2022-03-20T10:48:55.705Z">
+<meta property="article:modified_time" content="2022-03-26T04:02:31.621Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="node">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          4.5k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          31 分钟
+          38 分钟
         
       </span>
     
@@ -323,6 +323,25 @@
 <h5 id="根据不同的url响应不同的内容"><a href="#根据不同的url响应不同的内容" class="headerlink" title="根据不同的url响应不同的内容"></a>根据不同的url响应不同的内容</h5><h6 id="核心步骤"><a href="#核心步骤" class="headerlink" title="核心步骤"></a>核心步骤</h6><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs delphi"><span class="hljs-number">1</span>.获取请求的URL地址<br><span class="hljs-number">2</span>.设置默认的响应内容为 <span class="hljs-number">404</span> <br><span class="hljs-number">3</span>.判断用户请求是否为/或/<span class="hljs-keyword">index</span>.html首页<br><span class="hljs-number">4</span>.判断用户请求是否为/about.html页面<br><span class="hljs-number">5</span>.设置Content-<span class="hljs-keyword">Type</span>响应头,防止中文乱码<br><span class="hljs-number">6</span>.使用res.<span class="hljs-keyword">end</span>()，把内容响应给客户端<br></code></pre></td></tr></table></figure>
 <h6 id="动态响应内容"><a href="#动态响应内容" class="headerlink" title="动态响应内容"></a>动态响应内容</h6><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs awk">server.on(<span class="hljs-string">&#x27;request&#x27;</span>,(req，res)=&gt;&#123;<br>	const url = req.url		<span class="hljs-regexp">//</span>获取请求的URL地址<br>	let content = <span class="hljs-string">&#x27;&lt;h1&gt;404 Not found!&lt;/h1&gt;&#x27;</span>		<span class="hljs-regexp">//</span>设置默认的响应内容为 <span class="hljs-number">404</span> <br>	<span class="hljs-keyword">if</span>(url === <span class="hljs-string">&#x27;/&#x27;</span> || url === <span class="hljs-string">&#x27;index.html&#x27;</span>)&#123;	<span class="hljs-regexp">//</span>判断用户请求是否为<span class="hljs-regexp">/或/i</span>ndex.html首页<br>		content = <span class="hljs-string">&#x27;&lt;h1&gt;首页&lt;/h1&gt;&#x27;</span><br>	&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(url === <span class="hljs-string">&#x27;/about.html&#x27;</span>)&#123;			<span class="hljs-regexp">//</span>判断用户请求是否为/about.html页面<br>		content = <span class="hljs-string">&#x27;&lt;h1&gt;关于页面&lt;/h1&gt;&#x27;</span><br>	&#125;<br>	res.setHeader(<span class="hljs-string">&#x27;Content-Type&#x27;</span>,<span class="hljs-string">&#x27;text/html;charset=utf-8&#x27;</span>)	<span class="hljs-regexp">//</span>设置Content-Type响应头,防止中文乱码<br>	res.end(content)			<span class="hljs-regexp">//</span>使用res.end()，把内容响应给客户端<br>&#125;)<br></code></pre></td></tr></table></figure>
 
+
+<h5 id="将文件内容给客户端"><a href="#将文件内容给客户端" class="headerlink" title="将文件内容给客户端"></a>将文件内容给客户端</h5><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs qml">①导入需要的模块<br>②常见基本的web服务器<br>③将资源的请求<span class="hljs-built_in">url</span>地址映射为文件的存放路径<br>④读取文件的内容响应给客户端<br>⑤优化资源的请求路径<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><h6 id="三大类："><a href="#三大类：" class="headerlink" title="三大类："></a>三大类：</h6><p>内置模块（官方定义，例fs,path.http模块）</p>
+<p>自定义模块（自己创建的js文件）</p>
+<p>第三方模块（由第三方发出来的模块，需要下载）</p>
+<h6 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">内置: <span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>自定义: <span class="hljs-keyword">const</span> custom = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./custom.js&#x27;</span>)	<span class="hljs-comment">//需要提供路径，可以省略.js</span><br>第三方: <span class="hljs-keyword">const</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;moment&#x27;</span>)		<span class="hljs-comment">//与内置模块加载一样，需要提前下载</span><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="module对象"><a href="#module对象" class="headerlink" title="module对象"></a>module对象</h4><p>向外共享模块作用域中的成员，里面存储了当前模块的有关信息</p>
+<h5 id="module-exports对象"><a href="#module-exports对象" class="headerlink" title="module.exports对象"></a><code>module.exports</code>对象</h5><p>将模块内的成员共享出去，供外界使用</p>
+<p>外界用require方法导入自定义模块时，得到的就是<code>module.exports</code>指定的对象</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs livescript">默认<br><span class="hljs-built_in">module</span>.<span class="hljs-built_in">exports</span> = &#123;&#125;<br><br>挂载username属性<br><span class="hljs-built_in">module</span>.<span class="hljs-built_in">exports</span>.username = <span class="hljs-string">&#x27;zs&#x27;</span><br><br>挂载方法<br><span class="hljs-built_in">module</span>.<span class="hljs-built_in">exports</span>.sayhello = <span class="hljs-keyword">function</span>()&#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;hello&#x27;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java">暴露内容<br><span class="hljs-keyword">const</span> age = <span class="hljs-number">10</span><br><br>modle.<span class="hljs-keyword">exports</span>.age = age	将age暴露到外界<br><br><span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> =&#123;<br>	name:<span class="hljs-string">&quot;小黑&quot;</span>,<br>	这个对象里的内容会覆盖前面的内容<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="exports对象"><a href="#exports对象" class="headerlink" title="exports对象"></a>exports对象</h5><p>exports和<code>module.exports</code>都指向同一个对象</p>
+<p>exports是为了简化代码,写法简单一些</p>
+<p>结果最终以<code>module.exports</code>为准</p>
+<h5 id="防止混乱不要同时使用module-exports和exports两个模块"><a href="#防止混乱不要同时使用module-exports和exports两个模块" class="headerlink" title="防止混乱不要同时使用module.exports和exports两个模块"></a>防止混乱不要同时使用module.exports和exports两个模块</h5>
               
             </div>
             <hr/>
@@ -408,6 +427,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/03/29/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" title="前端面试题总结">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">前端面试题总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
