@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-29T02:49:49.000Z">
-<meta property="article:modified_time" content="2022-04-04T09:17:18.824Z">
+<meta property="article:modified_time" content="2022-04-05T07:53:52.919Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k 字
+          15k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          93 分钟
+          126 分钟
         
       </span>
     
@@ -382,7 +382,58 @@
 
 
 <h4 id="sessionStorage、localStorage和cookie的区别"><a href="#sessionStorage、localStorage和cookie的区别" class="headerlink" title="sessionStorage、localStorage和cookie的区别"></a>sessionStorage、localStorage和cookie的区别</h4><p>1）相同点是都是保存在浏览器端、且同源的<br>2）cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，而sessionStorage和localStorage不会自动把数据发送给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下<br>3）存储大小限制也不同，cookie数据不能超过4K，同时因为每次http请求都会携带cookie、所以cookie只适合保存很小的数据，如会话标识。sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大<br>4）数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭之前有效；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie：只在设置的cookie过期时间之前有效，即使窗口关闭或浏览器关闭<br>5）作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localstorage在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的<br>6）web Storage支持事件通知机制，可以将数据更新的通知发送给监听者<br>7）web Storage的api接口使用更方便<br>————————————————<br>版权声明：本文为CSDN博主「浮生离梦」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42614080/article/details/90706499">https://blog.csdn.net/weixin_42614080/article/details/90706499</a></p>
-<h3 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h3><h3 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h3>
+<h3 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h3><h4 id="jQuery优化方法"><a href="#jQuery优化方法" class="headerlink" title="jQuery优化方法"></a>jQuery优化方法</h4><p><a target="_blank" rel="noopener" href="http://t.csdn.cn/F4xpn">http://t.csdn.cn/F4xpn</a></p>
+<p><a target="_blank" rel="noopener" href="http://t.csdn.cn/hIuK5">http://t.csdn.cn/hIuK5</a></p>
+<h4 id="jQuery中-的作用"><a href="#jQuery中-的作用" class="headerlink" title="jQuery中$的作用"></a>jQuery中$的作用</h4><figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs nim">作为jQuery包装器，利用选择器来选择<span class="hljs-type">DOM</span>元素（这个也是最强大的功能）<br>例如：$(<span class="hljs-string">&quot;table tr:nth-child(even)&quot;</span>)<br><br>实用工具函数，作为几个通用的实用工具函数的命名空间的前缀<br>例如：$.trim(someString)<br><br>文档就绪处理程序，相当于$(document).ready(...)<br>例如：$(function()<span class="hljs-meta">&#123;...&#125;</span>); 里面的函数会在<span class="hljs-type">DOM</span>树加载完之后执行<br><br>创建<span class="hljs-type">DOM</span>元素<br>例如：$(<span class="hljs-string">&quot;&lt;p&gt;how are you?&lt;/p&gt;&quot;</span>)<br><br>扩展jQuery<br>例如：$.fn.disable = function()<span class="hljs-meta">&#123;...&#125;</span><br><br>使用jQuery和其他库<br>例如：<span class="hljs-type">Prototype</span>库也是使用$符号，jQuery提供noConflict函数避免冲突，jQuery.noConflict();把$符号还原到非jQuery库定义的含义。<br>————————————————<br>版权声明：本文为<span class="hljs-type">CSDN</span>博主「communicate_」的原创文章，遵循<span class="hljs-type">CC</span> <span class="hljs-number">4</span>.<span class="hljs-number">0</span> <span class="hljs-type">BY</span>-<span class="hljs-type">SA</span>版权协议，转载请附上原文出处链接及本声明。<br>原文链接：https://blog.csdn.net/communicate_/article/details/<span class="hljs-number">8170546</span><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="Body中的onload和jQuery中的ready的区别"><a href="#Body中的onload和jQuery中的ready的区别" class="headerlink" title="Body中的onload和jQuery中的ready的区别"></a>Body中的onload和jQuery中的ready的区别</h4><p>1.执行时间不同</p>
+<pre><code class="hljs">window.onload必须等到页面内包括图片的所有元素加载完毕后才能执行。 
+$(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。 
+</code></pre>
+<p>2.编写个数不同 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.onload不能同时编写多个，如果有多个<span class="hljs-built_in">window</span>.onload方法，只会执行一个（结果显示最后一个<br>$(<span class="hljs-built_in">document</span>).ready()可以同时编写多个，并且都可以得到执行 <br></code></pre></td></tr></table></figure>
+<p>3.简化写法 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.onload没有简化写法 <br>$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;)可以简写成$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;);<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="jQuery有那些常见选择器"><a href="#jQuery有那些常见选择器" class="headerlink" title="jQuery有那些常见选择器"></a>jQuery有那些常见选择器</h4><p>基本选择器、层次选择器、过滤选择器</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">1、基本选择器：<br>#id 、element 、.class 、* 、selector1,selector2,selectorN<br>2、层次选择器：<br>ancestor descendant 、parent &gt; child 、prev + next 、prev ~ siblings<br>3、基本过滤器选择器<br><span class="hljs-meta">:first 、:last</span> 、:not 、:even 、:odd 、:eq 、:gt 、:lt 、:header 、<br>:animated<br>4、内容过滤器选择器<br><span class="hljs-meta">:contains 、:empty</span> 、:has 、:parent<br>5、可见性过滤器选择器<br><span class="hljs-meta">:hidden 、:visible</span><br><span class="hljs-meta">6、属性过滤器选择器</span><br><span class="hljs-meta">[attribute]</span> 、[attribute=value] 、[attribute!=value] 、[attribute^=value] 、[attribute$=value] 、[attribute*=value] 、[attrSel1][attrSel2][attrSelN]<br>7、子元素过滤器选择器<br><span class="hljs-meta">:nth-child 、:first-child</span> 、:last-child 、:only-child<br>8、表单选择器<br><span class="hljs-meta">:input 、:text</span> 、:password 、:radio 、:checkbox 、:submit 、:image 、:reset 、:button<br>、:file 、:hidden<br>9、表单过滤器选择器<br><span class="hljs-meta">:enabled 、:disabled</span> 、:checked 、:selected<br>————————————————<br>版权声明：本文为CSDN博主「weixin_45490208」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：https://blog.csdn.net/weixin_45490208/article/details/103712213<br></code></pre></td></tr></table></figure>
+<p>详细链接(使用)</p>
+<p><a target="_blank" rel="noopener" href="http://t.csdn.cn/3HUTr">http://t.csdn.cn/3HUTr</a></p>
+<h4 id="Jquery页面中所有的边框设置"><a href="#Jquery页面中所有的边框设置" class="headerlink" title="Jquery页面中所有的边框设置"></a>Jquery页面中所有的边框设置</h4><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&quot;*&quot;</span>).css(<span class="hljs-string">&quot;border&quot;</span>, <span class="hljs-string">&quot;2px dashed red&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="jQuery中id选择器和类选择器的区别"><a href="#jQuery中id选择器和类选择器的区别" class="headerlink" title="jQuery中id选择器和类选择器的区别"></a>jQuery中id选择器和类选择器的区别</h4><p>id只被引用一次，class可以被引用多次</p>
+<p>一个标签可以使用多个类选择器，但只能使用一个ID选择器</p>
+<h4 id="document-ready-的作用是什么，为什么要用它"><a href="#document-ready-的作用是什么，为什么要用它" class="headerlink" title="$(document).ready()的作用是什么，为什么要用它"></a><code>$(document).ready()</code>的作用是什么，为什么要用它</h4><p>当DOM载入就绪可以查询及操纵时绑定一个要执行的函数。这是事件模块中最重要的一个函数，因为它可以极大地提高web应用程序的响应速度。</p>
+<h4 id="全选与全不选"><a href="#全选与全不选" class="headerlink" title="全选与全不选"></a>全选与全不选</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//checkbox 全选/取消全选  </span><br>	<span class="hljs-keyword">var</span> isCheckAll = <span class="hljs-literal">false</span>;<br>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swapCheck</span>(<span class="hljs-params"></span>) </span>&#123;<br>		<span class="hljs-keyword">if</span> (isCheckAll) &#123;<br>			$(<span class="hljs-string">&quot;input[type=&#x27;checkbox&#x27;]&quot;</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>				<span class="hljs-keyword">if</span>(!$(<span class="hljs-built_in">this</span>).is(<span class="hljs-string">&#x27;:disabled&#x27;</span>))&#123;<br>				<span class="hljs-built_in">this</span>.checked = <span class="hljs-literal">false</span>;<br>				&#125;<br>			&#125;);<br>			isCheckAll = <span class="hljs-literal">false</span>;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			$(<span class="hljs-string">&quot;input[type=&#x27;checkbox&#x27;]&quot;</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>				<span class="hljs-keyword">if</span>(!$(<span class="hljs-built_in">this</span>).is(<span class="hljs-string">&#x27;:disabled&#x27;</span>))&#123;<br>				<span class="hljs-built_in">this</span>.checked = <span class="hljs-literal">true</span>;<br>				&#125;<br>			&#125;);<br>			isCheckAll = <span class="hljs-literal">true</span>;<br>		&#125;<br>	&#125;<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">function checkOne(obj)&#123;//当下面的复选框全部被选中时，全选复选框自动被选中
+      if(!obj.checked)&#123;
+        document.forms[1].selectAllCK.checked = obj.checked; //forms[1]代表页面中的第二个form表单,如果是一个form则是forms[0]
+      &#125;
+      var flag = true;
+      var arr = document.getElementsByName(obj.name);
+      for(var i=0;i&lt;arr.length;i++)&#123;
+         if(!arr[i].checked)&#123;
+             flag=false; 
+             break;
+             &#125;
+      &#125;
+      document.forms[1].selectAllCK.checked = flag;
+</code></pre>
+<p>————————————————<br>版权声明：本文为CSDN博主「Messiah-」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/koso10201/article/details/72962914">https://blog.csdn.net/koso10201/article/details/72962914</a></p>
+<h4 id="jQuery中each-的作用"><a href="#jQuery中each-的作用" class="headerlink" title="jQuery中each()的作用"></a>jQuery中<code>each()</code>的作用</h4><p>each() 方法用于遍历匹配的元素信息。以每一个匹配的元素作为上下文来执行一个函数。每次执行传递进来的函数时，函数中的 this 关键字都指向一个不同的DOM元素（每次都是一个不同的匹配元素）。而且，在每次执行函数时，都会给函数传递一个表示作为执行环境的元素在匹配的元素集合中所处位置的数字值作为参数（从零开始的整型）。 返回 ‘false’ 将停止循环（就像在普通的循环中使用 ‘break’）。返回 ‘true’ 跳至下一个循环（就像在普通的循环中使用’continue’）。<br>————————————————<br>版权声明：本文为CSDN博主「pan_junbiao」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/pan_junbiao/article/details/107682956">https://blog.csdn.net/pan_junbiao/article/details/107682956</a></p>
+<h4 id="Jquery中修改元素的属性值"><a href="#Jquery中修改元素的属性值" class="headerlink" title="Jquery中修改元素的属性值"></a>Jquery中修改元素的属性值</h4><h6 id="内置属性"><a href="#内置属性" class="headerlink" title="内置属性"></a>内置属性</h6><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;.checkall &#x27;</span>).prop(<span class="hljs-string">&#x27;checked&#x27;</span>)<span class="hljs-comment">//获取值</span><br>$(<span class="hljs-string">&#x27;.checkall &#x27;</span>).prop(<span class="hljs-string">&#x27;checked&#x27;</span>,<span class="hljs-literal">true</span>)<span class="hljs-comment">//修改值</span><br></code></pre></td></tr></table></figure>
+<h6 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h6><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;.checkall &#x27;</span>).attr(<span class="hljs-string">&#x27;indexx&#x27;</span>)<span class="hljs-comment">//获取值</span><br>$(<span class="hljs-string">&#x27;.checkall &#x27;</span>).attr(<span class="hljs-string">&#x27;indexx&#x27;</span>,<span class="hljs-literal">true</span>)<span class="hljs-comment">//修改值</span><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="jQuery中detach-和remove-的区别"><a href="#jQuery中detach-和remove-的区别" class="headerlink" title="jQuery中detach()和remove()的区别"></a><code>jQuery中detach()</code>和<code>remove()</code>的区别</h4><p>remove:移除筛选出的节点以及该节点的内部的所有节点，包括节点上事件与数据</p>
+<p>detach:与remove不同的是，所有绑定的事件、附加的数据等都会保留下来</p>
+<h4 id="Jquery中ajax使用"><a href="#Jquery中ajax使用" class="headerlink" title="Jquery中ajax使用"></a>Jquery中ajax使用</h4><p><a target="_blank" rel="noopener" href="http://t.csdn.cn/JNqoZ">http://t.csdn.cn/JNqoZ</a></p>
+<h4 id="jquery动画"><a href="#jquery动画" class="headerlink" title="jquery动画"></a>jquery动画</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">https</span>://tanbozhi.github.io/<span class="hljs-number">2022</span>/<span class="hljs-number">03</span>/<span class="hljs-number">03</span>/%E<span class="hljs-number">7</span>%BD%<span class="hljs-number">91</span>%E<span class="hljs-number">6</span>%<span class="hljs-number">98</span>%<span class="hljs-number">93</span>-jQuery/#jQuery动画效果<br></code></pre></td></tr></table></figure>
+<h4 id="map-和-each-的区别"><a href="#map-和-each-的区别" class="headerlink" title="$.map()和$.each()的区别"></a><code>$.map()和$.each()</code>的区别</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jinxing-tc/p/9568832.html">https://www.cnblogs.com/jinxing-tc/p/9568832.html</a></p>
+<h3 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h3>
               
             </div>
             <hr/>
