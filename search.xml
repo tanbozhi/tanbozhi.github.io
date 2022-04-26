@@ -3552,7 +3552,40 @@
 <h5 id="解决跨域问题"><a href="#解决跨域问题" class="headerlink" title="解决跨域问题"></a>解决跨域问题</h5><p>安装cors</p>
 <figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> i cors<br></code></pre></td></tr></table></figure>
 <p>导入并注册</p>
-<figure class="highlight isbl"><table><tr><td class="code"><pre><code class="hljs isbl"><span class="hljs-comment">//要在路由之前导入注册</span><br><span class="hljs-variable">const</span> <span class="hljs-variable">cors</span> = <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-string">&#x27;cors&#x27;</span>)</span><br><span class="hljs-variable">app.use</span>(<span class="hljs-function"><span class="hljs-title">cors</span>())</span><br></code></pre></td></tr></table></figure>]]></content>
+<figure class="highlight isbl"><table><tr><td class="code"><pre><code class="hljs isbl"><span class="hljs-comment">//要在路由之前导入注册</span><br><span class="hljs-variable">const</span> <span class="hljs-variable">cors</span> = <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-string">&#x27;cors&#x27;</span>)</span><br><span class="hljs-variable">app.use</span>(<span class="hljs-function"><span class="hljs-title">cors</span>())</span><br></code></pre></td></tr></table></figure>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>用来组织、存储、和管理数据的仓库</p>
+<p>数据结构：数据库(database)、数据表(table)、数据行(row)、字段(filed)</p>
+<h5 id="相关软件"><a href="#相关软件" class="headerlink" title="相关软件"></a>相关软件</h5><p>MySQL Server：专门用来提供数据存储和服务的软件</p>
+<p>MySQL Workbench: 可视化的MySQL管理工具</p>
+<h6 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h6><p>dataType类型</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">int <span class="hljs-comment">//整数</span><br><span class="hljs-function"><span class="hljs-title">varchar</span><span class="hljs-params">(len)</span></span>	<span class="hljs-comment">//字符串</span><br><span class="hljs-function"><span class="hljs-title">tinyint</span><span class="hljs-params">(<span class="hljs-number">1</span>)</span></span>	<span class="hljs-comment">//布尔值</span><br></code></pre></td></tr></table></figure>
+<p>字段的特殊标识</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">PK</span><span class="hljs-params">(Primary Key)</span></span>	<span class="hljs-comment">//主键、唯一标识</span><br><span class="hljs-function"><span class="hljs-title">NN</span><span class="hljs-params">(Not Null)</span></span>	<span class="hljs-comment">//值不允许为空</span><br><span class="hljs-function"><span class="hljs-title">UQ</span><span class="hljs-params">(Unique)</span></span>		<span class="hljs-comment">//值唯一</span><br><span class="hljs-function"><span class="hljs-title">AI</span><span class="hljs-params">(Auto Increment)</span></span><span class="hljs-comment">//值自动增长</span><br></code></pre></td></tr></table></figure>
+<h6 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h6><p>select 查询</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-comment">//查询所有内容</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tablename<br><br><span class="hljs-comment">//查询字段</span><br><span class="hljs-keyword">select</span> field1,field2 <span class="hljs-keyword">from</span> tablename<br></code></pre></td></tr></table></figure>
+<p>insert into插入</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">insert</span> into tablename(field<span class="hljs-number">1</span>,field<span class="hljs-number">2</span>) values(值<span class="hljs-number">1</span>，值<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+<p>update更新</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">update tablename <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">field1</span>=新值，field2=新值 where field = 某值<br>				  要修改的内容          判断条件<br></code></pre></td></tr></table></figure>
+<p>delete删除</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> tablename <span class="hljs-keyword">where</span> fiele=值<br>				 			条件<br></code></pre></td></tr></table></figure>
+<h6 id="where子句"><a href="#where子句" class="headerlink" title="where子句"></a>where子句</h6><p>可用于查询，删除，修改</p>
+<p>运算符</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel">=等于  &lt;&gt;不等于(或 != )<br>&gt;		&lt;<br>&lt;=		&lt;=<br>BETWEEN 在某个范围<br>LIKE 	搜素某种模式,模糊搜索<br></code></pre></td></tr></table></figure>
+<h6 id="and和or"><a href="#and和or" class="headerlink" title="and和or"></a>and和or</h6><p>and:必须同时满足多个条件</p>
+<p>or:只要满足一个条件即可</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-comment">//id大于3，小于4的用户</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id&gt;<span class="hljs-number">3</span> and id&lt;<span class="hljs-number">4</span><br><br><span class="hljs-comment">//id&gt;3,或者性别为男的用户</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id&gt;<span class="hljs-number">3</span> or sex=<span class="hljs-string">&#x27;男&#x27;</span><br></code></pre></td></tr></table></figure>
+<h6 id="order-by"><a href="#order-by" class="headerlink" title="order by"></a>order by</h6><p>对指定的结果集进行排序</p>
+<p>升序：默认 加[asc]</p>
+<p>降序：加上DESC</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-comment">//升序：asc可加可不加</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users  <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> id<br><br><span class="hljs-comment">//降序：</span><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users  <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> id <span class="hljs-keyword">desc</span><br></code></pre></td></tr></table></figure>
+<p>多重排序</p>
+<p>第一个字段为主排序，后面字段小范围排序(asc可省略)</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> users <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> status <span class="hljs-keyword">desc</span>,username <span class="hljs-keyword">asc</span><br></code></pre></td></tr></table></figure>
+<h6 id="count"><a href="#count" class="headerlink" title="count"></a>count</h6><p>统计条数</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-comment">//id&gt;3的有多少</span><br><span class="hljs-keyword">select</span> <span class="hljs-keyword">count</span>(*) <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id&gt;<span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<h6 id="as-别名"><a href="#as-别名" class="headerlink" title="as  别名"></a>as  别名</h6><figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> <span class="hljs-keyword">count</span>(*) <span class="hljs-keyword">as</span> total <span class="hljs-keyword">from</span> users <span class="hljs-keyword">where</span> id&gt;<span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>Web前端</category>
       </categories>
