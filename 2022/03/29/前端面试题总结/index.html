@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-29T02:49:49.000Z">
-<meta property="article:modified_time" content="2022-05-18T11:09:01.085Z">
+<meta property="article:modified_time" content="2022-05-19T06:48:27.560Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
         
         
         
-          156 分钟
+          160 分钟
         
       </span>
     
@@ -487,9 +487,22 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <p>比较只会在同层级进行, 不会跨层级比较</p>
 <p>在diff比较的过程中，循环从两边向中间比较</p>
 <h4 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h4><p>路由参数有两种，分别是query和params。</p>
-<p>query传参是直接在router-link标签的to属性后边直接加上？,?后面跟参数，通过<code>this.$route.query</code>接收参数</p>
-<p>params传参需要在路由配置中的path后面占位声明接收params参数，然后在router-link标签的to属性后面添加需要传递的参数，通过<code>this.$route.params</code>接收参数</p>
-<h4 id="v-model的原理"><a href="#v-model的原理" class="headerlink" title="v-model的原理"></a>v-model的原理</h4><h4 id="vue数据流原理"><a href="#vue数据流原理" class="headerlink" title="vue数据流原理"></a>vue数据流原理</h4>
+<p>query传参是直接在to属性后边直接加上？,?后面跟参数，可以写成一个对象，对象里必须写上path和query属性，通过<code>this.$route.query</code>接收参数</p>
+<p>params传参需要在路由配置中占位声明要接收params参数，然后在to属性后面添加需要传递的参数，也可以写成一个对象，对象里必须写上name和params属性,通过<code>this.$route.params</code>接收参数</p>
+<h4 id="vue-中v-model双向绑定的原理"><a href="#vue-中v-model双向绑定的原理" class="headerlink" title="vue 中v-model双向绑定的原理"></a>vue 中v-model双向绑定的原理</h4><p>主要是用到了v-bind和input事件，在输入框上用v-bind绑定一个响应式数据，在添加一个input事件，input事件可以监听输入框内容的改变，当内容改变后，将event.targer.value的值赋给响应式数据 ，就实现了双向绑定。</p>
+<h4 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h4><p>插槽就是在子组件中写一个slot标签作为占位符，父组件可以在这个占位符中填写DOM结构</p>
+<p>插槽有三种，分别是默认插槽，具名插槽，作用域插槽</p>
+<p>默认插槽</p>
+<p>子组件用slot标签来确定渲染的位置，父组件直接在子组件的标签内写入内容即可</p>
+<p>具名插槽</p>
+<p>子组件用name属性来表示插槽的名字，父组件可以根据名字在子组件相应的地方插入内容</p>
+<p>作用域插槽</p>
+<p>子组件通过在作用域上绑定属性的方法将信息传给父组件使用，父组件根据这些数据生成需要的内容，然后再给子组件使用</p>
+<h4 id="动态添加类"><a href="#动态添加类" class="headerlink" title="动态添加类"></a>动态添加类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">v-bind:<span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+<p>绑定的值可以是数组和对象，可以通过对数组的添加和删除来添加类和删除类</p>
+<p>当绑定的值是一个对象时，通过判断对象属性的值决定是否添加</p>
+<p>还可以用三元表达式来实现动态添加</p>
+
               
             </div>
             <hr/>
