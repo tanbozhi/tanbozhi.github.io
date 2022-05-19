@@ -2280,17 +2280,17 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <h6 id="组件内路由守卫"><a href="#组件内路由守卫" class="headerlink" title="组件内路由守卫"></a>组件内路由守卫</h6><p>beforeRouterEnter、beforeRouterUpdata、beforeRouterLeave</p>
 <p>执行顺序：beforeRouteLeave&gt;beforeEach&gt;beforeRouteUpdate&gt;beforeEnter&gt;</p>
 <p>beforeRouterEnter&gt;beforeResolve&gt;afterEach&gt;beforeRouteEnter</p>
-<h4 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h4><p>diff整体策略为：深度优先，同层比较</p>
-<p>在diff比较的过程中，循环从两边向中间比较</p>
+<h4 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h4><p><code>diff</code>整体策略为：深度优先，同层比较</p>
+<p>在<code>diff</code>比较的过程中，循环从两边向中间比较</p>
 <p>首先，我们拿到新旧节点的数组，然后初始化四个指针，分别指向新旧节点的开始位置和结束位置，进行两两对比，若是 新的开始节点和旧开始节点相同，则都向后面移动，若是结尾节点相匹配，则都前移指针。若是新开始节点和旧结尾节点匹配上了，则会将旧的结束节点移动到旧的开始节点前。若是旧开始节点和新的结束节点相匹配，则会将旧开始节点移动到旧结束节点的后面。若是上述节点都没配有匹配上，则会进行一个兜底逻辑的判断，判断开始节点是否在旧节点中，若是存在则复用，若是不存在则创建。最终跳出循环，进行裁剪或者新增，若是旧的开始节点小于旧的结束节点，则会删除之间的节点，反之则是新增新的开始节点到新的结束节点。</p>
 <h4 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h4><p>路由参数有两种，分别是query和params。</p>
 <p>query传参是直接在to属性后边直接加上？,?后面跟参数，可以写成一个对象，对象里必须写上path和query属性，通过<code>this.$route.query</code>接收参数</p>
 <p>params传参需要在路由配置中占位声明要接收params参数，然后在to属性后面添加需要传递的参数，也可以写成一个对象，对象里必须写上name和params属性,通过<code>this.$route.params</code>接收参数</p>
 <h4 id="vue-中v-model双向绑定的原理"><a href="#vue-中v-model双向绑定的原理" class="headerlink" title="vue 中v-model双向绑定的原理"></a>vue 中<code>v-model</code>双向绑定的原理</h4><p>主要是用到了<code>v-bind</code>和<code>input</code>事件，在输入框上用<code>v-bind</code>绑定一个响应式数据，在添加一个<code>input</code>事件，<code>input</code>事件可以监听输入框内容的改变，当内容改变后，将<code>event.targer.value</code>的值赋给响应式数据 ，就实现了双向绑定。</p>
-<h4 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h4><p>插槽就是在子组件中写一个slot标签作为占位符，父组件可以在这个占位符中填写DOM结构</p>
+<h4 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h4><p>插槽就是在子组件中写一个<code>slot</code>标签作为占位符，父组件可以在这个占位符中填写DOM结构</p>
 <p>插槽有三种，分别是默认插槽，具名插槽，作用域插槽</p>
 <p>默认插槽</p>
-<p>子组件用slot标签来确定渲染的位置，父组件直接在子组件的标签内写入内容即可</p>
+<p>子组件用<code>slot</code>标签来确定渲染的位置，父组件直接在子组件的标签内写入内容即可</p>
 <p>具名插槽</p>
 <p>子组件用name属性来表示插槽的名字，父组件可以根据名字在子组件相应的地方插入内容</p>
 <p>作用域插槽</p>
