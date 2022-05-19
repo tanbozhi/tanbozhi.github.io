@@ -2273,7 +2273,7 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <h4 id="mvvm"><a href="#mvvm" class="headerlink" title="mvvm"></a>mvvm</h4><p>Model:数据模型</p>
 <p>View:视图</p>
 <p>ViewModel:视图模型：view和model连接的桥梁</p>
-<p>mvvm的核心是VM的双向数据绑定，vm能够监听数据变化，当数据变化时，vm会通知视图更新，反之亦然，当用户操作视图时，数据也会自动更新。双向数据绑定是通过Object.defineProperty 的 getter 和 setter，并结合观察者模式来实现的。因此开发者不需要手动操作DOM，只需专注于数据的维护操作与业务逻辑。</p>
+<p>mvvm的核心是VM的双向数据绑定，vm能够监听数据变化，当数据变化时，vm会通知视图更新，反之亦然，当用户操作视图时，数据也会自动更新。双向数据绑定是通过<code>Object.defineProperty </code>的<code>getter</code>和 <code>setter</code>，并结合观察者模式来实现的。因此开发者不需要手动操作DOM，只需专注于数据的维护操作与业务逻辑。</p>
 <h4 id="路由导航守卫-导航钩子"><a href="#路由导航守卫-导航钩子" class="headerlink" title="路由导航守卫(导航钩子)"></a>路由导航守卫(导航钩子)</h4><h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><figure class="highlight vbnet"><table><tr><td class="code"><pre><code class="hljs vbnet"><span class="hljs-keyword">to</span> 进入目标的路由对象<br><span class="hljs-keyword">from</span> 离开目标的路由对象<br><span class="hljs-keyword">next</span> 放行<br></code></pre></td></tr></table></figure>
 <h6 id="全局守卫"><a href="#全局守卫" class="headerlink" title="全局守卫"></a>全局守卫</h6><p>beforeEach、beforeResovle、afterEach</p>
 <h6 id="独享路由守卫"><a href="#独享路由守卫" class="headerlink" title="独享路由守卫"></a>独享路由守卫</h6><p>beforeEnter</p>
