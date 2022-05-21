@@ -2287,6 +2287,7 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <p>query传参是直接在to属性后边直接加上？,?后面跟参数，可以写成一个对象，对象里必须写上<code>path</code>和<code>query</code>属性，通过<code>this.$route.query</code>接收参数</p>
 <p>params传参需要在路由配置中占位声明要接收params参数，然后在to属性后面添加需要传递的参数，也可以写成一个对象，对象里必须写上name和params属性,通过<code>this.$route.params</code>接收参数</p>
 <h4 id="vue-中v-model双向绑定的原理"><a href="#vue-中v-model双向绑定的原理" class="headerlink" title="vue 中v-model双向绑定的原理"></a>vue 中<code>v-model</code>双向绑定的原理</h4><p>主要是用到了<code>v-bind</code>和<code>input</code>事件，在输入框上用<code>v-bind</code>绑定一个响应式数据，在添加一个<code>input</code>事件，<code>input</code>事件可以监听输入框内容的改变，当内容改变后，将<code>event.targer.value</code>的值赋给响应式数据 ，就实现了双向绑定。</p>
+<h4 id="vue的原理"><a href="#vue的原理" class="headerlink" title="vue的原理"></a>vue的原理</h4><p>当一个Vue实例创建时，Vue会遍历data中的属性，用 Object.defineProperty（vue3.0使用proxy ）将每一个属性身上绑定一个 getter和setter，并且在内部追踪相关依赖，在属性被访问和修改时通知变化。 每个组件实例都有相应的 watcher 程序实例，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的setter被调用时，会通知watcher重新计算，从而致使它关联的组件得以更新。</p>
 <h4 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h4><p>插槽就是在子组件中写一个<code>slot</code>标签作为占位符，父组件可以在这个占位符中填写DOM结构</p>
 <p>插槽有三种，分别是默认插槽，具名插槽，作用域插槽</p>
 <p>默认插槽</p>
