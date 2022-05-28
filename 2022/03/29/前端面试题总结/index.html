@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-29T02:49:49.000Z">
-<meta property="article:modified_time" content="2022-05-25T03:57:25.497Z">
+<meta property="article:modified_time" content="2022-05-28T08:02:18.095Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          21k 字
+          22k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          180 分钟
+          184 分钟
         
       </span>
     
@@ -469,7 +469,7 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <p>设置了keep-alive缓存的组件会多出两个生命周期(activated与deactivated)，当组件激活和失活的时候会被触发</p>
 <h4 id="v-if与v-for优先级"><a href="#v-if与v-for优先级" class="headerlink" title="v-if与v-for优先级"></a>v-if与v-for优先级</h4><p>当v-if与v-for一起使用时，v-for的优先级更高，会先运行v-for的循环，然后在每个循环中进行v-if 的条件对比，会造成性能的问题，影响速度</p>
 <h4 id="v-if与v-show的区别"><a href="#v-if与v-show的区别" class="headerlink" title="v-if与v-show的区别"></a>v-if与v-show的区别</h4><p>v-if在条件切换时，会对标签进行销毁和创建，v-show只是对display的属性进行切换</p>
-<p>v-if仅在初始化时加载一次，而v-if在初始化时会判断条件是否为真，为真会渲染，不为真就不渲染</p>
+<p>v-show仅在初始化时加载一次，而v-if在初始化时会判断条件是否为真，为真会渲染，不为真就不渲染</p>
 <p>所以v-if有更高的切换消耗，而v-show有更高的初始渲染消耗</p>
 <p>v-if适用于不频繁切换的场景，而v-show适用于需要频繁切换的场景</p>
 <h4 id="mvvm"><a href="#mvvm" class="headerlink" title="mvvm"></a>mvvm</h4><p>Model:数据模型</p>
@@ -516,7 +516,7 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <h4 id="es6-class"><a href="#es6-class" class="headerlink" title="es6 class"></a><code>es6 class</code></h4><p>通过 class 关键字，可以定义类。基本上，ES6 的 class 可以看作只是 一个语法糖，它的绝大部分功能，ES5 都可以做到，新的 class 写法只是让对象 原型的写法更加清晰、更像面向对象编程的语法而已。</p>
 <p>它的属性有，constructor 定义构造函数初始化 ，extends 继承父类 ，super 调用父级构造方法 ，static 定义静态方法和属性</p>
 <h4 id="es6-set-map"><a href="#es6-set-map" class="headerlink" title="es6 set map"></a><code>es6 set map</code></h4><p><code>Set</code>是一种叫做集合的数据结构，集合里面的值是不可以重复的，可以用for-of和forEach进行遍历，set的实例有一些方法,比如add增加，delete删除，has检测集合中是否包含某个元素，clear清除所有元素，size返回集合中元素的个数。</p>
-<p><code>Map</code>是一种叫做字典的数据结构，是以键值对的形式存储， 字典里面的键是不可以重复的，他可以用扩展运算符或者for-of进行遍历，它的方法和属性有，size：返回个数，set：增加元素,get：返回一个键的值,has：检测是否包含某个元素,clear：清空所有键值对</p>
+<p><code>Map</code>是一种叫做字典的数据结构，是以键值对的形式存储， 字典里面的键是不可以重复的，他可以用扩展运算符或者for-of进行遍历，它的方法和属性有，size：返回个数 ,set：增加元素,get：返回一个键的值,has：检测是否包含某个元素，delete:删除,clear：清空所有键值对</p>
 <h4 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h4><p>数组，对象，字符串都支持解构赋值，解构赋值就是从数组或者对象中提取元素，给对应的变量进行赋值。解构赋值的目的是为了简化数据的提取过程，增强代码的可读性。</p>
 <h4 id="animation与transition的区别"><a href="#animation与transition的区别" class="headerlink" title="animation与transition的区别"></a><code>animation</code>与<code>transition</code>的区别</h4><p><code>transition </code>需要去触发比如：点击事件、鼠标移入事件；而 <code>animation </code>可以配合<code> @keyframe</code> 可以不触发事件就触发这个动画</p>
 <p><code>transition</code> 触发一次播放一次；而<code> animation</code> 则是可以设置很多的属性，比如循环次数，动画结束的状态等等；</p>
@@ -527,6 +527,15 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a><code>transition</code></h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">transition:</span>过渡名称，过渡时间，过渡类型，延时时间<br></code></pre></td></tr></table></figure>
 <p>变形：<code>transform</code></p>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs processing">缩放：<span class="hljs-built_in">scale</span>、平移:<span class="hljs-built_in">translate</span>、旋转<span class="hljs-built_in">rotate</span>、倾斜skew、景深<span class="hljs-built_in">perspective</span>、<span class="hljs-number">3</span>D空间preserve<span class="hljs-number">-3</span>d<br></code></pre></td></tr></table></figure>
+<h4 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h4><p>响应式布局就是在同一页面下，在不同尺寸下 ，有不同的布局。</p>
+<p>百分比，rem,媒体查询，vw,flex布局，grid栅格，都可以实现响应式布局，我们一般都会将他们搭配使用</p>
+<p>用<code>rem</code>来做字体的适配，宽度可以用<code>rem</code>，<code>flex</code>，栅格系统等来实现响应式,，然后媒体查询来作为响应式布局的基础,</p>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>闭包就是在函数外部读能够读取其他函数内部的变量的函数。</p>
+<p>当函数作为参数被传递或者作为返回值被传递就会产生闭包。常见的闭包就是在函数内部return一个函数，被返回的函数是可以使用外层函数里面的参数和变量。闭包引用的变量不会被销毁，可以实现局部变量，避免全局变量污染。但是闭包会造成内存泄露</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">function <span class="hljs-function"><span class="hljs-title">fun</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;<br>	<span class="hljs-keyword">return</span> function f()&#123;<br>		console.log(a)<br>	&#125;<br>&#125;<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;<br><span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-title">fun</span><span class="hljs-params">()</span></span>;<br>f(); <span class="hljs-comment">//打印出a的值为100</span><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="vue3的了解"><a href="#vue3的了解" class="headerlink" title="vue3的了解"></a>vue3的了解</h4><p>vue3的响应式原理是通过proxy与reflect结合起来实现的，还有就是组合式API(setup),祖孙间的传值provide,inject</p>
 
               
             </div>
