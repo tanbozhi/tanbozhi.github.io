@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-29T02:49:49.000Z">
-<meta property="article:modified_time" content="2022-05-28T08:02:18.095Z">
+<meta property="article:modified_time" content="2022-05-29T10:28:51.943Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary_large_image">
@@ -528,14 +528,14 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <p>变形：<code>transform</code></p>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs processing">缩放：<span class="hljs-built_in">scale</span>、平移:<span class="hljs-built_in">translate</span>、旋转<span class="hljs-built_in">rotate</span>、倾斜skew、景深<span class="hljs-built_in">perspective</span>、<span class="hljs-number">3</span>D空间preserve<span class="hljs-number">-3</span>d<br></code></pre></td></tr></table></figure>
 <h4 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h4><p>响应式布局就是在同一页面下，在不同尺寸下 ，有不同的布局。</p>
-<p>百分比，rem,媒体查询，vw,flex布局，grid栅格，都可以实现响应式布局，我们一般都会将他们搭配使用</p>
+<p>百分比，<code>rem</code>,媒体查询，<code>vw</code>,<code>flex</code>布局，<code>grid</code>栅格，都可以实现响应式布局，我们一般都会将他们搭配使用</p>
 <p>用<code>rem</code>来做字体的适配，宽度可以用<code>rem</code>，<code>flex</code>，栅格系统等来实现响应式,，然后媒体查询来作为响应式布局的基础,</p>
 <h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>闭包就是在函数外部读能够读取其他函数内部的变量的函数。</p>
 <p>当函数作为参数被传递或者作为返回值被传递就会产生闭包。常见的闭包就是在函数内部return一个函数，被返回的函数是可以使用外层函数里面的参数和变量。闭包引用的变量不会被销毁，可以实现局部变量，避免全局变量污染。但是闭包会造成内存泄露</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">function <span class="hljs-function"><span class="hljs-title">fun</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;<br>	<span class="hljs-keyword">return</span> function f()&#123;<br>		console.log(a)<br>	&#125;<br>&#125;<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;<br><span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-title">fun</span><span class="hljs-params">()</span></span>;<br>f(); <span class="hljs-comment">//打印出a的值为100</span><br></code></pre></td></tr></table></figure>
 
 
-<h4 id="vue3的了解"><a href="#vue3的了解" class="headerlink" title="vue3的了解"></a>vue3的了解</h4><p>vue3的响应式原理是通过proxy与reflect结合起来实现的，还有就是组合式API(setup),祖孙间的传值provide,inject</p>
+<h4 id="vue3的了解"><a href="#vue3的了解" class="headerlink" title="vue3的了解"></a>vue3的了解</h4><p>vue3的响应式原理是通过<code>proxy与reflect</code>结合起来实现的，还有就是组合式<code>API(setup)</code>,祖孙间的传值<code>provide,inject</code></p>
 
               
             </div>
