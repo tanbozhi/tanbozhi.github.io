@@ -509,7 +509,16 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><code class="hljs kotlin">function <span class="hljs-function"><span class="hljs-title">fun</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;<br>	<span class="hljs-keyword">return</span> function f()&#123;<br>		console.log(a)<br>	&#125;<br>&#125;<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;<br><span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-title">fun</span><span class="hljs-params">()</span></span>;<br>f(); <span class="hljs-comment">//打印出a的值为100</span><br></code></pre></td></tr></table></figure>
 
 
-<h4 id="vue3的了解"><a href="#vue3的了解" class="headerlink" title="vue3的了解"></a><code>vue3</code>的了解</h4><p><code>vue3</code>的响应式原理是通过<code>proxy与reflect</code>结合起来实现的，还有就是组合式<code>API(setup)</code>,祖孙间的传值<code>provide,inject</code></p>
+<h4 id="vue3的了解"><a href="#vue3的了解" class="headerlink" title="vue3的了解"></a><code>vue3</code>的了解</h4><p>vue3是支持大多数vue2的特性</p>
+<p>vue3设计了一套强大的组合式<code>API(setup)</code>，复用性更强</p>
+<p>最主要的是<code>vue3</code>的响应式原理是通过<code>proxy与reflect</code>结合起来实现的</p>
+<p>重写了虚拟dom,速度更快。</p>
+<p>有了一些新的组件Fragment(片段)，Teleport(瞬移)，Suspense(不确定)</p>
+<p>设计了一个新的脚手架工具vite</p>
+<p>祖孙间的传值<code>provide,inject</code></p>
+<p>Fragment:template不用写根标签</p>
+<p>Teleport：传送,将当前组件的内容传送到指定的地方</p>
+<p>Suspense：异步组件，等待异步组件时,渲染一些额外的内容</p>
 ]]></content>
       <categories>
         <category>Web前端</category>
