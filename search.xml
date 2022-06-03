@@ -515,7 +515,12 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <p>浅拷贝直接用一个for循环遍历一次就可以实现，深拷贝则需要用到循环递归才能实现。</p>
 <p>浅拷贝的方法有：<code>Object.assign、concat、扩展运算符、lodash.clone</code></p>
 <p>深拷贝方法有：<code>jQuery.extend()、JSON.stringify()、lodash里面的cloneDeep()</code></p>
-<h4 id="vue加载优化方法"><a href="#vue加载优化方法" class="headerlink" title="vue加载优化方法"></a>vue加载优化方法</h4><p>路由懒加载、图片懒加载、插件按需引入、 开启gizp压缩，</p>
+<h4 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h4><p>在js中，在进行运算时，如果两边的数据类型不统一就会发生隐式转换。</p>
+<p>+-*/% 关系运算符 都会触发</p>
+<p>减/乘/除  都会将非number类型转换成number类型</p>
+<p>加     如果是数字与字符串相加，数字会被转化成字符串</p>
+<p>true false null undefined在运算时都会转化成数字，</p>
+<h4 id="vue加载优化方法"><a href="#vue加载优化方法" class="headerlink" title="vue加载优化方法"></a>vue加载优化方法</h4><p>路由懒加载、图片懒加载、插件按需引入、 开启gzip压缩，</p>
 <p>对代码进行优化，合理使用v-if/v-show,还有computed和watch</p>
 <h4 id="vue3的了解"><a href="#vue3的了解" class="headerlink" title="vue3的了解"></a><code>vue3</code>的了解</h4><p>vue3是支持大多数vue2的特性</p>
 <p>vue3设计了一套强大的组合式<code>API(setup)</code>，复用性更强</p>
@@ -1235,6 +1240,37 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
       </categories>
       <tags>
         <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>尚硅谷-git</title>
+    <url>/2022/04/21/%E5%B0%9A%E7%A1%85%E8%B0%B7-git/</url>
+    <content><![CDATA[<h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><h6 id="命令行常用命令"><a href="#命令行常用命令" class="headerlink" title="命令行常用命令"></a>命令行常用命令</h6><figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">ls</span>/<span class="hljs-keyword">ll</span> 查看目录/隐藏目录也能查看<br><span class="hljs-keyword">cat</span> 查看文件内容<br>touch 创建文件<br><span class="hljs-keyword">vi</span> <span class="hljs-keyword">vi</span>编辑器<br></code></pre></td></tr></table></figure>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>工作区&gt;暂存区&gt;仓库</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">git add . 	<span class="hljs-regexp">//</span>添加到暂存区<br>git commit -m <span class="hljs-string">&#x27;首次提交&#x27;</span>	<span class="hljs-regexp">//</span>提交到仓库并添加说明<br><br>git status	<span class="hljs-regexp">//</span>查看状态<br>git log	<span class="hljs-regexp">//</span>查看提交记录<br>git reset commitid --hard	<span class="hljs-regexp">//</span>版本回退<br><br>git branch	<span class="hljs-regexp">//</span>查看分支<br>git branch 分支名	<span class="hljs-regexp">//</span>创建分支<br>git checkout -b 分支名	<span class="hljs-regexp">//</span>创建并切换分支<br>git merge 分支名	<span class="hljs-regexp">//</span>分支合并，合并后记得push<br><br>git branch -d 分支名	<span class="hljs-regexp">//</span>删除分支，需要做各种检查<br>git branch -D 分支名	<span class="hljs-regexp">//</span>强制删除，不做检查<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h4><p>创建&gt;配置ssh秘钥</p>
+<h5 id="创建仓库："><a href="#创建仓库：" class="headerlink" title="创建仓库："></a>创建仓库：</h5><p>就填写仓库名，其他什么都不要选。</p>
+<h5 id="配置秘钥："><a href="#配置秘钥：" class="headerlink" title="配置秘钥："></a>配置秘钥：</h5><figure class="highlight typescript"><table><tr><td class="code"><pre><code class="hljs typescript">gitbash命令行执行以下代码<br><br>①生成秘钥，执行后一直回车<br>ssh-keygen -t rsa<br><br>②查看秘钥<br>cat ~<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub<br><br>③复制秘钥到码云上ssh私钥验证<br><br>④验证是否配置成功<br>ssh -T git<span class="hljs-meta">@gitee</span>.com<br><br></code></pre></td></tr></table></figure>
+
+
+<h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><p>添加</p>
+<figure class="highlight llvm"><table><tr><td class="code"><pre><code class="hljs llvm">git remote <span class="hljs-keyword">add</span> origin git<span class="hljs-title">@gitee.com</span>:tanbozhi/git-test.git<br>               设置名字  远程仓库地址(选择ssh地址)<br></code></pre></td></tr></table></figure>
+<p>查看</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote</span><br></code></pre></td></tr></table></figure>
+<p>推送</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><code class="hljs crmsh">git push origin <span class="hljs-literal">master</span><br>	 前面设置的名字 推送到<span class="hljs-literal">master</span>分支上<br></code></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><code class="hljs avrasm">命令：git <span class="hljs-keyword">push</span> [-f] [--<span class="hljs-keyword">set</span>-upstream] [远端名称 [本地分支名][:远端分支名] ]<br>如果远程分支名和本地分支名称相同，则可以只写本地分支<br>git <span class="hljs-keyword">push</span> origin master<br>-f 表示强制覆盖<br>--<span class="hljs-keyword">set</span>-upstream 推送到远端的同时并且建立起和远端分支的关联关系。<br>git <span class="hljs-keyword">push</span> --<span class="hljs-keyword">set</span>-upstream origin master<br>如果当前分支已经和远端分支关联，则可以省略分支名和远端名。<br>git <span class="hljs-keyword">push</span> 将master分支推送到已关联的远端分支<br></code></pre></td></tr></table></figure>
+<h4 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h4><figure class="highlight crmsh"><table><tr><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">&lt;仓库路径&gt; [本地目录]</span><br></code></pre></td></tr></table></figure>
+<h4 id="抓取"><a href="#抓取" class="headerlink" title="抓取"></a>抓取</h4><figure class="highlight delphi"><table><tr><td class="code"><pre><code class="hljs delphi">抓取 命令：git fetch [remote <span class="hljs-keyword">name</span>] [branch <span class="hljs-keyword">name</span>]	<span class="hljs-comment">//</span><br>抓取指令就是将仓库里的更新都抓取到本地，不会进行合并<br>如果不指定远端名称(remote <span class="hljs-keyword">name</span>)和分支名(branch <span class="hljs-keyword">name</span>)，则抓取所有分支。<br></code></pre></td></tr></table></figure>
+<h4 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h4><figure class="highlight fortran"><table><tr><td class="code"><pre><code class="hljs fortran">拉取 命令：git pull [remote <span class="hljs-keyword">name</span>] [branch <span class="hljs-keyword">name</span>]<br>拉取指令就是将远端仓库的修改拉到本地并自动进行合并，等同于fetch+<span class="hljs-built_in">merge</span><br>如果不指定远端名称和分支名，则抓取所有并更新当前分支。<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Web前端</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
