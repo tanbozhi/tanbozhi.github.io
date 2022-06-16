@@ -18,19 +18,19 @@
   
     <meta name="description" content="摘要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="尚硅谷-git">
-<meta property="og:url" content="http://example.com/2022/04/21/%E5%B0%9A%E7%A1%85%E8%B0%B7-git/index.html">
+<meta property="og:title" content="前端-echarts">
+<meta property="og:url" content="http://example.com/2022/06/08/%E5%89%8D%E7%AB%AF-echarts/index.html">
 <meta property="og:site_name" content="tanbozhi-blog">
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-21T01:02:18.000Z">
-<meta property="article:modified_time" content="2022-06-14T04:52:02.289Z">
+<meta property="article:published_time" content="2022-06-08T02:17:53.000Z">
+<meta property="article:modified_time" content="2022-06-08T07:20:57.246Z">
 <meta property="article:author" content="博博">
-<meta property="article:tag" content="git">
+<meta property="article:tag" content="echarts">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>尚硅谷-git - tanbozhi-blog</title>
+  <title>前端-echarts - tanbozhi-blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -186,7 +186,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="尚硅谷-git">
+          <span id="subtitle" title="前端-echarts">
             
           </span>
         </div>
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-21 09:02" pubdate>
-          2022年4月21日 上午
+        <time datetime="2022-06-08 10:17" pubdate>
+          2022年6月8日 上午
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2.3k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          10 分钟
+          20 分钟
         
       </span>
     
@@ -259,31 +259,50 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">尚硅谷-git</h1>
+            <h1 style="display: none">前端-echarts</h1>
             
             <div class="markdown-body">
               
-              <h4 id="git"><a href="#git" class="headerlink" title="git"></a>git</h4><h6 id="命令行常用命令"><a href="#命令行常用命令" class="headerlink" title="命令行常用命令"></a>命令行常用命令</h6><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">ls</span>/<span class="hljs-keyword">ll</span> 查看目录/隐藏目录也能查看<br><span class="hljs-keyword">cat</span> 查看文件内容<br>touch 创建文件<br><span class="hljs-keyword">vi</span> <span class="hljs-keyword">vi</span>编辑器<br></code></pre></td></tr></table></figure>
-<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git init	<span class="hljs-regexp">//</span>在目录中初始化仓库<br></code></pre></td></tr></table></figure>
-<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>工作区&gt;暂存区&gt;仓库</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs awk">git add . 	<span class="hljs-regexp">//</span>添加到暂存区<br>git commit -m <span class="hljs-string">&#x27;首次提交&#x27;</span>	<span class="hljs-regexp">//</span>提交到仓库并添加说明<br><br>git status	<span class="hljs-regexp">//</span>查看状态<br>git log	<span class="hljs-regexp">//</span>查看提交记录<br>git reset commitid --hard	<span class="hljs-regexp">//</span>版本回退<br><br>git branch	<span class="hljs-regexp">//</span>查看分支<br>git branch 分支名	<span class="hljs-regexp">//</span>创建分支<br>git checkout -b 分支名	<span class="hljs-regexp">//</span>创建并切换分支<br>git merge 分支名	<span class="hljs-regexp">//</span>分支合并，合并后记得push<br><br>git branch -d 分支名	<span class="hljs-regexp">//</span>删除分支，需要做各种检查<br>git branch -D 分支名	<span class="hljs-regexp">//</span>强制删除，不做检查<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h4><p>创建&gt;配置ssh秘钥</p>
-<h5 id="创建仓库："><a href="#创建仓库：" class="headerlink" title="创建仓库："></a>创建仓库：</h5><p>就填写仓库名，其他什么都不要选。</p>
-<h5 id="配置秘钥："><a href="#配置秘钥：" class="headerlink" title="配置秘钥："></a>配置秘钥：</h5><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript">gitbash命令行执行以下代码<br><br>①生成秘钥，执行后一直回车<br>ssh-keygen -t rsa<br><br>②查看秘钥<br>cat ~<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub<br><br>③复制秘钥到码云上ssh私钥验证<br><br>④验证是否配置成功<br>ssh -T git<span class="hljs-meta">@gitee</span>.com<br><br></code></pre></td></tr></table></figure>
-
-
-<h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><p>添加</p>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs llvm">git remote <span class="hljs-keyword">add</span> origin git<span class="hljs-title">@gitee.com</span>:tanbozhi/git-test.git<br>               设置名字  远程仓库地址(选择ssh地址)<br></code></pre></td></tr></table></figure>
-<p>查看</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">git remote</span><br></code></pre></td></tr></table></figure>
-<p>推送</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git push origin <span class="hljs-literal">master</span><br>	 前面设置的名字 推送到<span class="hljs-literal">master</span>分支上<br></code></pre></td></tr></table></figure>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">命令：git <span class="hljs-keyword">push</span> [-f] [--<span class="hljs-keyword">set</span>-upstream] [远端名称 [本地分支名][:远端分支名] ]<br>如果远程分支名和本地分支名称相同，则可以只写本地分支<br>git <span class="hljs-keyword">push</span> origin master<br>-f 表示强制覆盖<br>--<span class="hljs-keyword">set</span>-upstream 推送到远端的同时并且建立起和远端分支的关联关系。<br>git <span class="hljs-keyword">push</span> --<span class="hljs-keyword">set</span>-upstream origin master<br>如果当前分支已经和远端分支关联，则可以省略分支名和远端名。<br>git <span class="hljs-keyword">push</span> 将master分支推送到已关联的远端分支<br></code></pre></td></tr></table></figure>
-<h4 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">&lt;仓库路径&gt; [本地目录]</span><br></code></pre></td></tr></table></figure>
-<h4 id="抓取"><a href="#抓取" class="headerlink" title="抓取"></a>抓取</h4><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs delphi">抓取 命令：git fetch [remote <span class="hljs-keyword">name</span>] [branch <span class="hljs-keyword">name</span>]	<span class="hljs-comment">//</span><br>抓取指令就是将仓库里的更新都抓取到本地，不会进行合并<br>如果不指定远端名称(remote <span class="hljs-keyword">name</span>)和分支名(branch <span class="hljs-keyword">name</span>)，则抓取所有分支。<br></code></pre></td></tr></table></figure>
-<h4 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs fortran">拉取 命令：git pull [remote <span class="hljs-keyword">name</span>] [branch <span class="hljs-keyword">name</span>]<br>拉取指令就是将远端仓库的修改拉到本地并自动进行合并，等同于fetch+<span class="hljs-built_in">merge</span><br>如果不指定远端名称和分支名，则抓取所有并更新当前分支。<br></code></pre></td></tr></table></figure>
+              <h4 id="常见的数据可视化库"><a href="#常见的数据可视化库" class="headerlink" title="常见的数据可视化库"></a>常见的数据可视化库</h4><ul>
+<li>D3.js   目前 Web 端评价最高的 Javascript 可视化工具库(入手难)  </li>
+<li>ECharts.js   百度出品的一个开源 Javascript 数据可视化库   </li>
+<li>Highcharts.js  国外的前端数据可视化库，非商用免费，被许多国外大公司所使用  </li>
+<li>AntV  蚂蚁金服全新一代数据可视化解决方案  等等</li>
+<li>Highcharts 和 Echarts 就像是 Office 和 WPS 的关系</li>
+</ul>
+<h4 id="echarts"><a href="#echarts" class="headerlink" title="echarts"></a>echarts</h4><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install echarts <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure>
+<h4 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h4><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> echarts <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;echarts&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<h4 id="基本实例"><a href="#基本实例" class="headerlink" title="基本实例"></a>基本实例</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> 基于准备好的dom，初始化echarts实例<br>var myChart = echarts.init(document.getElementById(<span class="hljs-string">&#x27;main&#x27;</span>));<br><br><span class="hljs-regexp">//</span>响应容器大小变化<br>window.onresize = <span class="hljs-keyword">function</span>() &#123;<br>    myChart.resize();<br>  &#125;;<br><br><span class="hljs-regexp">//</span>设置图表大小，不随容器变化<br>myChart.resize(&#123;<br>  width: <span class="hljs-number">800</span>,<br>  height: <span class="hljs-number">400</span><br>&#125;);<br><br><span class="hljs-regexp">//</span> 绘制图表 这个要写到最后面<br>myChart.setOption(&#123;<br>  title: &#123;<br>    text: <span class="hljs-string">&#x27;ECharts 入门示例&#x27;</span><br>  &#125;,<br>  tooltip: &#123;&#125;,<br>  xAxis: &#123;<br>    data: [<span class="hljs-string">&#x27;衬衫&#x27;</span>, <span class="hljs-string">&#x27;羊毛衫&#x27;</span>, <span class="hljs-string">&#x27;雪纺衫&#x27;</span>, <span class="hljs-string">&#x27;裤子&#x27;</span>, <span class="hljs-string">&#x27;高跟鞋&#x27;</span>, <span class="hljs-string">&#x27;袜子&#x27;</span>]<br>  &#125;,<br>  yAxis: &#123;&#125;,<br>  series: [<br>    &#123;<br>      name: <span class="hljs-string">&#x27;销量&#x27;</span>,<br>      type: <span class="hljs-string">&#x27;bar&#x27;</span>,<br>      data: [<span class="hljs-number">5</span>, <span class="hljs-number">20</span>, <span class="hljs-number">36</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>]<br>    &#125;<br>  ]<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h4 id="主要配置"><a href="#主要配置" class="headerlink" title="主要配置"></a>主要配置</h4><blockquote>
+<p>主要配置：<code>series</code> <code>xAxis</code> <code>yAxis</code> <code>grid</code> <code>tooltip</code> <code>title</code> <code>legend</code> <code>color</code> </p>
+</blockquote>
+<ul>
+<li><p>series</p>
+<ul>
+<li>系列列表。每个系列通过 <code>type</code> 决定自己的图表类型</li>
+<li>大白话：图标数据，指定什么类型的图标，可以多个图表重叠。</li>
+</ul>
+</li>
+<li><p>xAxis：直角坐标系 grid 中的 x 轴</p>
+<ul>
+<li>boundaryGap: 坐标轴两边留白策略 true，这时候刻度只是作为分隔线，标签和数据点都会在两个刻度之间的带(band)中间。</li>
+</ul>
+</li>
+<li><p>yAxis：直角坐标系 grid 中的 y 轴</p>
+</li>
+<li><p>grid：直角坐标系内绘图网格。 </p>
+</li>
+<li><p>title：标题组件</p>
+</li>
+<li><p>tooltip：提示框组件</p>
+</li>
+<li><p>legend：图例组件</p>
+</li>
+<li><p>color：调色盘颜色列表</p>
+<p>数据堆叠，同个类目轴上系列配置相同的<code>stack</code>值后 后一个系列的值会在前一个系列的值上相加。</p>
+</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs awk">option = &#123;<br>    <span class="hljs-regexp">//</span> color设置我们线条的颜色 注意后面是个数组<br>    color: [<span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>, <span class="hljs-string">&#x27;skyblue&#x27;</span>],<br>    <span class="hljs-regexp">//</span> 设置图表的标题<br>    title: &#123;<br>        text: <span class="hljs-string">&#x27;折线图堆叠123&#x27;</span><br>    &#125;,<br>    <span class="hljs-regexp">//</span> 图表的提示框组件 <br>    tooltip: &#123;<br>        <span class="hljs-regexp">//</span> 触发方式<br>        trigger: <span class="hljs-string">&#x27;axis&#x27;</span><br>    &#125;,<br>    <span class="hljs-regexp">//</span> 图例组件<br>    legend: &#123;<br>       <span class="hljs-regexp">//</span> series里面有了 name值则 legend里面的data可以删掉<br>    &#125;,<br>    <span class="hljs-regexp">//</span> 网格配置  grid可以控制线形图 柱状图 图表大小<br>    grid: &#123;<br>        left: <span class="hljs-string">&#x27;3%&#x27;</span>,<br>        right: <span class="hljs-string">&#x27;4%&#x27;</span>,<br>        bottom: <span class="hljs-string">&#x27;3%&#x27;</span>,<br>        <span class="hljs-regexp">//</span> 是否显示刻度标签 如果是true 就显示 否则反之<br>        containLabel: true<br>    &#125;,<br>    <span class="hljs-regexp">//</span> 工具箱组件  可以另存为图片等功能<br>    toolbox: &#123;<br>        feature: &#123;<br>            saveAsImage: &#123;&#125;<br>        &#125;<br>    &#125;,<br>    <span class="hljs-regexp">//</span> 设置x轴的相关配置<br>    xAxis: &#123;<br>        type: <span class="hljs-string">&#x27;category&#x27;</span>,<br>        <span class="hljs-regexp">//</span> 是否让我们的线条和坐标轴有缝隙<br>        boundaryGap: false,<br>        data: [<span class="hljs-string">&#x27;星期一&#x27;</span>, <span class="hljs-string">&#x27;周二&#x27;</span>, <span class="hljs-string">&#x27;周三&#x27;</span>, <span class="hljs-string">&#x27;周四&#x27;</span>, <span class="hljs-string">&#x27;周五&#x27;</span>, <span class="hljs-string">&#x27;周六&#x27;</span>, <span class="hljs-string">&#x27;周日&#x27;</span>]<br>    &#125;,<br>     <span class="hljs-regexp">//</span> 设置y轴的相关配置<br>    yAxis: &#123;<br>        type: <span class="hljs-string">&#x27;value&#x27;</span><br>    &#125;,<br>    <span class="hljs-regexp">//</span> 系列图表配置 它决定着显示那种类型的图表<br>    series: [<br>        &#123;<br>            name: <span class="hljs-string">&#x27;邮件营销&#x27;</span>,<br>            type: <span class="hljs-string">&#x27;line&#x27;</span>,<br>           <br>            data: [<span class="hljs-number">120</span>, <span class="hljs-number">132</span>, <span class="hljs-number">101</span>, <span class="hljs-number">134</span>, <span class="hljs-number">90</span>, <span class="hljs-number">230</span>, <span class="hljs-number">210</span>]<br>        &#125;,<br>        &#123;<br>            name: <span class="hljs-string">&#x27;联盟广告&#x27;</span>,<br>            type: <span class="hljs-string">&#x27;line&#x27;</span>,<br><br>            data: [<span class="hljs-number">220</span>, <span class="hljs-number">182</span>, <span class="hljs-number">191</span>, <span class="hljs-number">234</span>, <span class="hljs-number">290</span>, <span class="hljs-number">330</span>, <span class="hljs-number">310</span>]<br>        &#125;,<br>    ]<br>&#125;;<br></code></pre></td></tr></table></figure>
 
               
             </div>
@@ -316,7 +335,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/git/">#git</a>
+        <a href="/tags/echarts/">#echarts</a>
       
     </div>
   
@@ -328,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>尚硅谷-git</div>
-      <div>http://example.com/2022/04/21/%E5%B0%9A%E7%A1%85%E8%B0%B7-git/</div>
+      <div>前端-echarts</div>
+      <div>http://example.com/2022/06/08/%E5%89%8D%E7%AB%AF-echarts/</div>
     </div>
     <div class="license-meta">
       
@@ -341,7 +360,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月21日</div>
+          <div>2022年6月8日</div>
         </div>
       
       
@@ -371,18 +390,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/22/%E5%89%8D%E7%AB%AF-webpack/" title="webpack">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">webpack</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/29/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" title="前端面试题总结">
-                        <span class="hidden-mobile">前端面试题总结</span>
+                      <a href="/2022/05/29/%E5%89%8D%E7%AB%AF-TypeScript/" title="前端-TypeScript">
+                        <span class="hidden-mobile">前端-TypeScript</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
