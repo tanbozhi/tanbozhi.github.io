@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-29T02:49:49.000Z">
-<meta property="article:modified_time" content="2022-06-06T02:16:22.176Z">
+<meta property="article:modified_time" content="2022-06-23T02:05:45.584Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
         
         
         
-          190 分钟
+          191 分钟
         
       </span>
     
@@ -294,6 +294,7 @@
 
 <h4 id="float"><a href="#float" class="headerlink" title="float"></a>float</h4><h5 id="float原理及清除浮动"><a href="#float原理及清除浮动" class="headerlink" title="float原理及清除浮动"></a>float原理及清除浮动</h5><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs scss">浮动原理：<br>浮动的框可以左右移动，直至它的外边缘遇到包含框或者另一个浮动框的边缘。浮动框脱离了文档流，当一个元素浮动之后，不会影响到块级框的布局而只会影响内联框（通常是文本）的排列，文档中的普通流就会表现得和浮动框不存在一样，当浮动框高度超出包含框的时候，也就会出现包含框不会 自动伸高来闭合浮动元素（“高度塌陷”现象）<br><br>清除浮动：<br>①在浮动元素末尾加一个空<span class="hljs-selector-tag">div</span>，空<span class="hljs-selector-tag">div</span>样式<span class="hljs-attribute">clear</span>:both;<br>②给父元素添加<span class="hljs-attribute">overflow</span>:hidden;(属性任意)<br>③添加伪元素(:after,:before)<br><span class="hljs-selector-class">.clearfix</span>:after &#123;content:<span class="hljs-string">&quot;.&quot;</span>; <span class="hljs-attribute">display</span>:block; <span class="hljs-attribute">height</span>:<span class="hljs-number">0</span>; <span class="hljs-attribute">visibility</span>:hidden; <span class="hljs-attribute">clear</span>:both; &#125; <br><span class="hljs-selector-class">.clearfix</span> &#123; *zoom:<span class="hljs-number">1</span>; &#125; <span class="hljs-comment">//为了适配ie6</span><br></code></pre></td></tr></table></figure>
 <h5 id="position-absolute与float的异同"><a href="#position-absolute与float的异同" class="headerlink" title="position:absolute与float的异同"></a><code>position:absolute</code>与float的异同</h5><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino">同：都能让元素脱离文档流，可以设置高宽<br>异：<span class="hljs-keyword">float</span>会占据位置，<span class="hljs-built_in">position</span>会覆盖其他元素，<br></code></pre></td></tr></table></figure>
+<h4 id="css语义化标签"><a href="#css语义化标签" class="headerlink" title="css语义化标签"></a>css语义化标签</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span> 头部		<span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span> 尾部<br><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span> 导航		<span class="hljs-tag">&lt;<span class="hljs-name">action</span>&gt;</span> 主题内容<br><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span> 一个片段	<span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span> 侧边栏<br></code></pre></td></tr></table></figure>
 <h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><h4 id="js垃圾回收机制"><a href="#js垃圾回收机制" class="headerlink" title="js垃圾回收机制"></a>js垃圾回收机制</h4><p>原理：垃圾收集器会定期（周期性）找出那些不在继续使用的变量，然后释放其内存。</p>
 <h5 id="①标记清除"><a href="#①标记清除" class="headerlink" title="①标记清除"></a>①标记清除</h5><p> 在函数声明一个变量的时候，就将这个变量标记为“进入环境”。从逻辑上讲，永远都不能释放进入环境的变量作占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。而当变量离开环境时，则将其标记为“离开环境”。垃圾回收器在运行时候会给存储在内存中中的所有变量都加上标记。然后它会去掉环境中的变量以及被环境中的变量引用的变量的标记（闭包）。在此之后再被标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后，垃圾回收器完成内存清楚工作，销毁那些带标记的值并回收他们所占用的内存空间。</p>
 <h5 id="②引用计数法"><a href="#②引用计数法" class="headerlink" title="②引用计数法"></a>②引用计数法</h5><p>引用计数的含义是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是1。如果同一个值又被赋给另一个变量，则该值的引用次数加1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减1。当这个值的引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾回收器下次再运行时，它就会释放那些引用次数为0的值所占用的内存。</p>
@@ -368,7 +369,7 @@
 <h4 id="什么是事件代理"><a href="#什么是事件代理" class="headerlink" title="什么是事件代理"></a>什么是事件代理</h4><p>就是把一个元素响应事件（<code>click</code>、<code>keydown</code>……）的函数委托到另一个元素</p>
 <p>事件委托就是在冒泡阶段完成事件委托，会把一个或者一组元素的事件委托到它的父层或者更外层元素上，真正绑定事件的是外层元素，而不是目标元素当事件响应到目标元素上时，会通过事件冒泡机制从而触发它的外层元素的绑定事件上，然后在外层元素上去执行函数</p>
 <h4 id="js里函数参数arguments"><a href="#js里函数参数arguments" class="headerlink" title="js里函数参数arguments"></a>js里函数参数arguments</h4><p>arguments参数是传递给函数的所有参数的集合。无论是否有明确定义对应的形参，通过它我们可以访问到函数的所有参数。</p>
-<h4 id="如何阻止事件冒泡"><a href="#如何阻止事件冒泡" class="headerlink" title="如何阻止事件冒泡"></a>如何阻止事件冒泡</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs csharp">阻止冒泡<br><span class="hljs-keyword">event</span>.stopPropagation()		都支持<br><span class="hljs-keyword">event</span>.cancelBubble = <span class="hljs-literal">true</span>;	IE<br><br>阻止默认事件<br><span class="hljs-keyword">event</span>.preventDefault()<br><span class="hljs-keyword">event</span>.returnValue = <span class="hljs-literal">false</span>	IE<br><br><span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>	同时阻止冒泡和默认事件<br></code></pre></td></tr></table></figure>
+<h4 id="如何阻止事件冒泡"><a href="#如何阻止事件冒泡" class="headerlink" title="如何阻止事件冒泡"></a>如何阻止事件冒泡</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs csharp">阻止冒泡<br><span class="hljs-keyword">event</span>.stopPropagation()		<span class="hljs-comment">//IE不支持</span><br><span class="hljs-keyword">event</span>.cancelBubble = <span class="hljs-literal">true</span>;	<span class="hljs-comment">//都支持</span><br><br>阻止默认事件<br><span class="hljs-keyword">event</span>.preventDefault()		<span class="hljs-comment">//IE不支持</span><br><span class="hljs-keyword">event</span>.returnValue = <span class="hljs-literal">false</span>	<span class="hljs-comment">//都支持</span><br><br><span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>	同时阻止冒泡和默认事件<br></code></pre></td></tr></table></figure>
 <h4 id="什么是事件捕获和事件冒泡"><a href="#什么是事件捕获和事件冒泡" class="headerlink" title="什么是事件捕获和事件冒泡"></a>什么是事件捕获和事件冒泡</h4><h6 id="事件冒泡："><a href="#事件冒泡：" class="headerlink" title="事件冒泡："></a>事件冒泡：</h6><p>从事件源朝父级一直到根元素（HTML）。当某个元素的某类型事件被触发时，那么它的父元素同类型的事件也会被触发，一直触发到根源上；<br>从具体的元素到不确定的元素。</p>
 <h6 id="事件捕获："><a href="#事件捕获：" class="headerlink" title="事件捕获："></a>事件捕获：</h6><p>从根元素（HTML）到事件源，当某个元素的某类型事件被触发时，先触发根元素的同类型事件，朝子一级触发，一直触发到事件源。<br>从不确定的元素到具体的元素；</p>
 <h4 id="Js原型链的理解"><a href="#Js原型链的理解" class="headerlink" title="Js原型链的理解"></a>Js原型链的理解</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36996271/article/details/82527256">https://blog.csdn.net/qq_36996271/article/details/82527256</a></p>
@@ -484,7 +485,8 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <p>beforeRouterEnter&gt;beforeResolve&gt;afterEach&gt;beforeRouteEnter</p>
 <h4 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h4><p><code>diff</code>整体策略为：深度优先，同层比较</p>
 <p>在<code>diff</code>比较的过程中，循环从两边向中间比较</p>
-<p>首先，我们拿到新旧节点的数组，然后初始化四个指针，分别指向新旧节点的开始位置和结束位置，进行两两对比，若是 新的开始节点和旧开始节点相同，则都向后面移动，若是结尾节点相匹配，则都前移指针。若是新开始节点和旧结尾节点匹配上了，则会将旧的结束节点移动到旧的开始节点前。若是旧开始节点和新的结束节点相匹配，则会将旧开始节点移动到旧结束节点的后面。若是上述节点都没配有匹配上，则会进行一个兜底逻辑的判断，判断开始节点是否在旧节点中，若是存在则复用，若是不存在则创建。最终跳出循环，进行裁剪或者新增，若是旧的开始节点小于旧的结束节点，则会删除之间的节点，反之则是新增新的开始节点到新的结束节点。</p>
+<p>1.当新老节点的 开始节点相同时，直接复用，同时新老节点的开始节点都移动到下一位</p>
+<p>2.当新老节点的 尾结点相同时，同样直接复用，同时新老节点的尾结点都向前移动一位。<br>3.当老节点的 开始节点和新 节点的 尾结点相同时，这时候在 复用后，还需要将当前真实 dom 节点移动到 旧节点的的最后面，同时老 节点的开始节点向后移动一位，新节点的尾结点相前移动一位。<br>4.当老节点的 尾结点 和 新节点的 开始节点 相同时，这时候在 复用后，还需要将当前真实 dom 节点移动到 旧节点的的最前面，同时老 节点结束节点向前移动一位，新节点的开始节点向后移动一位</p>
 <h4 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h4><p>路由参数有两种，分别是<code>query</code>和<code>params</code>。</p>
 <p>query传参是直接在to属性后边直接加上？,?后面跟参数，可以写成一个对象，对象里必须写上<code>path</code>和<code>query</code>属性，通过<code>this.$route.query</code>接收参数</p>
 <p>params传参需要在路由配置中占位声明要接收params参数，然后在to属性后面添加需要传递的参数，也可以写成一个对象，对象里必须写上name和params属性,通过<code>this.$route.params</code>接收参数</p>
@@ -541,6 +543,7 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <p>浅拷贝直接用一个for循环遍历一次就可以实现，深拷贝则需要用到循环递归才能实现。</p>
 <p>浅拷贝的方法有：<code>Object.assign、concat、扩展运算符、lodash.clone</code></p>
 <p>深拷贝方法有：<code>jQuery.extend()、JSON.stringify()、lodash里面的cloneDeep()</code></p>
+<h4 id="JSON-stringify-的缺陷"><a href="#JSON-stringify-的缺陷" class="headerlink" title="JSON.stringify()的缺陷"></a><code>JSON.stringify()</code>的缺陷</h4><p>会忽略<code>undefined</code>，函数，<code>symbol</code></p>
 <h4 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h4><p>在js中，在进行运算时，如果两边的数据类型不统一就会发生隐式转换。</p>
 <p>+-*/% 关系运算符 都会触发</p>
 <p>减/乘/除  都会将非number类型转换成number类型</p>
