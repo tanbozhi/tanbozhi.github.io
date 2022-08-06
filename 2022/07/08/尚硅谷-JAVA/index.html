@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="博博">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="摘要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尚硅谷-JAVA">
+<meta property="og:url" content="http://example.com/2022/07/08/%E5%B0%9A%E7%A1%85%E8%B0%B7-JAVA/index.html">
+<meta property="og:site_name" content="tanbozhi-blog">
+<meta property="og:description" content="摘要">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-08T13:58:43.000Z">
+<meta property="article:modified_time" content="2022-08-05T07:28:17.068Z">
+<meta property="article:author" content="博博">
+<meta property="article:tag" content="JAVA">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>尚硅谷-JAVA - tanbozhi-blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tanbozhi-博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          <span id="subtitle" title="尚硅谷-JAVA">
+            
+          </span>
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-08 21:58" pubdate>
+          2022年7月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">尚硅谷-JAVA</h1>
+            
+            <div class="markdown-body">
+              
+              <h3 id="JAVA基础"><a href="#JAVA基础" class="headerlink" title="JAVA基础"></a>JAVA基础</h3><h6 id="cmd基础命令（Windows）"><a href="#cmd基础命令（Windows）" class="headerlink" title="cmd基础命令（Windows）"></a>cmd基础命令（Windows）</h6><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs awk">dir 列出当前目录下的文件与文件夹<br>md 文件夹名 创建文件夹<br>rd 文件夹名 删除目录<br>cd 目录名 		进入指定目录<br>cd ..		返回上一级目录<br>cd/			退回到根目录<br><br>del 文件名		删除文件 <br>del *.txt 删除.txt文件结尾的文件<br>del 文件夹名 删除该文件夹下的所有文件<br><br><span class="hljs-keyword">exit</span> 		退出dos命令行<br><br>Java -version 在安装目录下，查看java版本<br></code></pre></td></tr></table></figure>
+<h6 id="java语言环境搭建"><a href="#java语言环境搭建" class="headerlink" title="java语言环境搭建"></a><code>java</code>语言环境搭建</h6><p><code>JDk</code>:包含了开发工具也包括了JRE</p>
+<p><code>JRE</code>:<code>java</code>运行环境，他包括了虚拟机<code>(JVM)</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">JDK</span>=JRE+JVM	开发环境+运行环境<br></code></pre></td></tr></table></figure>
+<p>配置<code>path</code>(让<code>java</code>命令无论在哪都能运行)</p>
+<p>高级系统设置&gt; 环境变量&gt;新建[变量名：<code>JAVA_HOME</code>，变量值：安装目录(有<code>bin</code>的那个目录)]&gt;在<code>path</code>里面添加一个<code>%JAVA_HOME%\bin</code>&gt;确定</p>
+<h6 id="打印hello-world"><a href="#打印hello-world" class="headerlink" title="打印hello world"></a>打印<code>hello world</code></h6><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">java</span>&#123;</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span></span>&#123;<br>		System.out.<span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;hello world&quot;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="文档注释（java特有的）"><a href="#文档注释（java特有的）" class="headerlink" title="文档注释（java特有的）"></a>文档注释（<code>java</code>特有的）</h6><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-comment">/**</span><br><span class="hljs-comment">这是文档注释 会被jdk提供的javadoc所解析</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+<h6 id="pulic声明"><a href="#pulic声明" class="headerlink" title="pulic声明"></a><code>pulic</code>声明</h6><p>在一个<code>java</code>原文件中可以声明多个<code>class</code>，但是，只能有一个类声明为<code>public</code>,而且声明的类名与源文件名相同</p>
+<p>程序的入口是<code>main()</code>方法，格式是固定的</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-comment">//hello.java</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">hello</span>&#123;</span>  <span class="hljs-comment">//只有都为hello才能加public</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span></span>&#123;		<span class="hljs-comment">//入口 main</span><br>		System.out.<span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;hello world&quot;</span>);		<span class="hljs-comment">//输出并换行</span><br>		System.out.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello world&quot;</span>);		<span class="hljs-comment">//只输出，不换行</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><h6 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h6><p>包名：都小写 <code>xxyy</code></p>
+<p>类名 接口名：大驼峰命名<code>XxxYyy</code></p>
+<p>变量名、方法名：小驼峰命名<code>xxYyyZzz</code></p>
+<p>常量名：都大写，下划线连接<code>XXX_YYY</code></p>
+<h6 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h6><p>先声明并赋值再使用</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-comment">//数据类型 变量名=变量值</span><br><br><span class="hljs-built_in">int</span> age = <span class="hljs-number">12</span><br><br><span class="hljs-built_in">int</span> <span class="hljs-keyword">sum</span>;<br><span class="hljs-keyword">sum</span> = <span class="hljs-number">1001</span><br></code></pre></td></tr></table></figure>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs d">基本类型：<br>	数值：<br>		整数：<span class="hljs-keyword">byte</span>,<span class="hljs-built_in">short</span>,<span class="hljs-keyword">int</span>,<span class="hljs-built_in">long</span><br>		浮点：<span class="hljs-built_in">float</span>,<span class="hljs-built_in">double</span><br>	字符：<span class="hljs-built_in">char</span><br>	布尔：boolean<br>引用类型：<br>	类：<span class="hljs-keyword">class</span> <span class="hljs-built_in">string</span>是一个类<br>	接口：<span class="hljs-keyword">interface</span><br>	数组：[]<br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">占用存储空间</th>
+<th align="center">表数范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">byte</td>
+<td align="center">1字节= 8bit位</td>
+<td align="center">-128~127</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">2字节</td>
+<td align="center">-2^15~2^15-1</td>
+</tr>
+<tr>
+<td align="center">int（最常使用）</td>
+<td align="center">4字节</td>
+<td align="center">-2^31~2^31-1(约21亿)</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">8字节</td>
+<td align="center">-2^63~2^63-1</td>
+</tr>
+<tr>
+<td align="center">单精度float</td>
+<td align="center">4字节</td>
+<td align="center">-3.403E38~3.403E38</td>
+</tr>
+<tr>
+<td align="center">双精度double(常使用)</td>
+<td align="center">8字节</td>
+<td align="center">-1.798E308~1.798E308</td>
+</tr>
+<tr>
+<td align="center">char(字符型)</td>
+<td align="center">2字节</td>
+<td align="center">char a = ‘中’  //只能一个字符,单引号</td>
+</tr>
+<tr>
+<td align="center">boolean(布尔值)</td>
+<td align="center"></td>
+<td align="center">boolean = true 常用于条件判断</td>
+</tr>
+</tbody></table>
+<p><code>long</code>定义时要加L</p>
+<p><code>float</code>定义时要加F或f</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">long</span> aa = <span class="hljs-number">1342334</span>L<br><span class="hljs-attribute">float</span> bb = <span class="hljs-number">8958778</span>F<br></code></pre></td></tr></table></figure>
+<h6 id="运算规则"><a href="#运算规则" class="headerlink" title="运算规则"></a>运算规则</h6><p>1.自动类型提升</p>
+<p>当容量小的数据类型的变量与容量大的数据类型的变量做运算时，结果自动提升为 容量大的数据类型</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">byte</span>、<span class="hljs-keyword">char</span>、<span class="hljs-keyword">short</span>&gt;<span class="hljs-keyword">int</span>&gt;<span class="hljs-keyword">long</span>&gt;<span class="hljs-keyword">float</span>&gt;<span class="hljs-keyword">double</span><br><br><span class="hljs-comment">//byte、char、short相互运算时，都为int类型</span><br></code></pre></td></tr></table></figure>
+<p>2.强制类型转换</p>
+<p>强制类型转换，可能造成精度缺失</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-comment">//有精度损失</span><br><span class="hljs-keyword">double</span> d1 = <span class="hljs-number">12.9</span><br><span class="hljs-keyword">int</span> i1 = (<span class="hljs-keyword">int</span>)d1 <span class="hljs-comment">//截断操作 // 12</span><br><br><span class="hljs-keyword">int</span> i2 = <span class="hljs-number">128</span><br><span class="hljs-keyword">byte</span> b = (<span class="hljs-keyword">byte</span>)i2 <span class="hljs-comment">// -127</span><br><br><span class="hljs-comment">//没有精度损失</span><br><span class="hljs-keyword">long</span> l1 = <span class="hljs-number">123</span><br><span class="hljs-keyword">short</span> s2 = (<span class="hljs-keyword">short</span>)l1	<span class="hljs-comment">//123</span><br><br></code></pre></td></tr></table></figure>
+<h6 id="string"><a href="#string" class="headerlink" title="string"></a><code>string</code></h6><p><code>string</code>属于引用数据类型，翻译为字符串</p>
+<p>声明时用一对引号<code>&quot;&quot;</code></p>
+<p><code>string</code>可以和8种基本数据类型变量做运算且只能做连接运算<code>+</code></p>
+<p>运算的结果也是<code>string</code>类型</p>
+<p><code>string </code>转换成数字(不能强制转换)</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs processing">string 转换成数字<br><span class="hljs-keyword">String</span> <span class="hljs-built_in">str</span> = <span class="hljs-string">&#x27;123&#x27;</span> <br><span class="hljs-built_in">int</span> num = Integer.parseInt(<span class="hljs-built_in">str</span>)  <span class="hljs-comment">//123 正确</span><br><br><span class="hljs-built_in">int</span> num = (<span class="hljs-built_in">int</span>)<span class="hljs-built_in">str</span> <span class="hljs-comment">//报错</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h6><table>
+<thead>
+<tr>
+<th align="center">转义字符</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\b</td>
+<td align="center">退格符</td>
+</tr>
+<tr>
+<td align="center">\ n</td>
+<td align="center">换行符</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="center">回车符</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="center">制表符</td>
+</tr>
+<tr>
+<td align="center">\“</td>
+<td align="center">双引号</td>
+</tr>
+<tr>
+<td align="center">\‘</td>
+<td align="center">单引号</td>
+</tr>
+<tr>
+<td align="center">\\</td>
+<td align="center">反斜线</td>
+</tr>
+</tbody></table>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><p>算术运算符</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-literal">+</span> <span class="hljs-literal">-</span> <span class="hljs-comment">*</span> <span class="hljs-comment">/</span> <span class="hljs-comment">%</span><br><span class="hljs-comment"></span>++ -- <br></code></pre></td></tr></table></figure>
+<p>赋值运算符</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">=  +=  -=   *=  /=  %=</span><br></code></pre></td></tr></table></figure>
+<p>比较运算符</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">== != &lt; &gt; &lt;= &gt;= instanceof</span><br><span class="hljs-comment">//比较结果都是boolean类型</span><br></code></pre></td></tr></table></figure>
+<p>逻辑运算符</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-meta">&amp; 逻辑与 &amp;&amp; 短路与</span><br><span class="hljs-string">| 逻辑或 || 短路或</span><br>!逻辑非 ^逻辑异或（两边是否相同）<br></code></pre></td></tr></table></figure>
+<p>位运算符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;&lt; 左移  在一定范围内，每移动i位，相当于 *2^i 2&lt;&lt;<span class="hljs-string">3 等于 2*2^3</span> = 16<br>&gt;&gt; 右移	在一定范围内，每移动i位，相当于 /2^i<br>&gt;&gt;&gt; 无符号右移 最高位都拿0来补<br>&amp; 与运算<br>| 或运算<br>^ 异或运算<br>~ 取反运算<br></code></pre></td></tr></table></figure>
+<p>三元运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">（条件表达式）？表达式1：表达式2<br>条件为真时，执行表达式1<br>条件为假时，执行表达式2<br></code></pre></td></tr></table></figure>
+<h6 id="交换两个变量的方式"><a href="#交换两个变量的方式" class="headerlink" title="交换两个变量的方式"></a>交换两个变量的方式</h6><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nix">//推荐的方法<br>int <span class="hljs-attr">temp</span> = num1<br><span class="hljs-attr">num1</span> = num2<br><span class="hljs-attr">num2</span> = temp<br></code></pre></td></tr></table></figure>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-comment">//不用定义临时变量，相加可能超出范围，只适用于数字</span><br><span class="hljs-symbol">num1</span> = <span class="hljs-symbol">num1</span>+<span class="hljs-symbol">num2</span><br><span class="hljs-symbol">num2</span> = <span class="hljs-symbol">num1</span> - <span class="hljs-symbol">num2</span><br><span class="hljs-symbol">num1</span> = <span class="hljs-symbol">num1</span> - <span class="hljs-symbol">num2</span><br></code></pre></td></tr></table></figure>
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><h6 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h6><p><code>if else</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">if</span><span class="hljs-params">()</span></span>&#123;<br><br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>()&#123;<br><br>&#125;<span class="hljs-keyword">else</span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="键盘输入"><a href="#键盘输入" class="headerlink" title="键盘输入"></a>键盘输入</h6><p>1.导包<code>import java.util.Scanner</code></p>
+<p>2.<code>Scanner</code>的实例化：</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">Scanner scan = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Scanner(System.<span class="hljs-params">in</span>)</span>;<br></code></pre></td></tr></table></figure>
+<p>3.调用Scanner类的相关方法，来获取指定类型的变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScannerTest</span></span>&#123;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>&#123;<br>		Scanner scan = <span class="hljs-keyword">new</span> Scanner(System.in);<br>		<span class="hljs-keyword">int</span> num = scan.nextInt();<br>		System.outprintln(num)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>相关方法</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">String</span> name = scan.next()	<span class="hljs-comment">//string类型</span><br><span class="hljs-built_in">int</span> <span class="hljs-built_in">num</span> = scan.nextInt();	<span class="hljs-comment">//int类型</span><br><span class="hljs-built_in">double</span> <span class="hljs-built_in">num</span> = scan.nextDouble();	<span class="hljs-comment">//double类型</span><br>boolean <span class="hljs-built_in">num</span> = scan.nextBoolean();	<span class="hljs-comment">//boolean类型</span><br><br>除了<span class="hljs-built_in">String</span>是next(),其他都是nextXxx()<br></code></pre></td></tr></table></figure>
+<h6 id="获取索引为0的字符"><a href="#获取索引为0的字符" class="headerlink" title="获取索引为0的字符"></a>获取索引为0的字符</h6><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">String</span> gender = <span class="hljs-string">&#x27;asds&#x27;</span><br><span class="hljs-built_in">char</span> genderChar = gender.charAt(<span class="hljs-number">0</span>) <span class="hljs-comment">//a</span><br></code></pre></td></tr></table></figure>
+<h6 id="switch"><a href="#switch" class="headerlink" title="switch"></a><code>switch</code></h6><p><code>switch</code>结构中的表达式，只能是如下的6种类型</p>
+<p><code>byte,short,char,int,</code></p>
+<p><code>枚举类型(JDK5.0新增),string类型(JDK7.0新增)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">swich</span>(<span class="hljs-params">表达式</span>)</span>&#123;<br>	<span class="hljs-keyword">case</span> 常量<span class="hljs-number">1</span>：<br>		执行语句<span class="hljs-number">1</span><br>		<span class="hljs-keyword">break</span>; <span class="hljs-comment">//跳出swich</span><br>	<span class="hljs-keyword">case</span> 常量<span class="hljs-number">2</span>：<br>		执行语句<span class="hljs-number">2</span><br>		<span class="hljs-keyword">break</span><br>	<span class="hljs-keyword">default</span>:&#123;<br>		以上都没有匹配上就执行这一句<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a><code>for</code>循环</h6><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(初始化条件;循环条件;迭代条件)</span></span>&#123;<br>	循环体<br>&#125;<br><br><span class="hljs-comment">//例：</span><br><span class="hljs-function"><span class="hljs-title">for</span><span class="hljs-params">(int i=<span class="hljs-number">1</span>; i&lt;=<span class="hljs-number">5</span> ; i++)</span></span>&#123;<br>	System<span class="hljs-selector-class">.out</span><span class="hljs-selector-class">.println</span>(i)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a><code>while</code>循环</h6><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">while</span><span class="hljs-params">(条件)</span></span>&#123;<br>	循环语句<br>&#125;<br>例<br><br>int <span class="hljs-selector-tag">i</span> = <span class="hljs-number">1</span><br><span class="hljs-function"><span class="hljs-title">while</span><span class="hljs-params">(i&lt;=<span class="hljs-number">5</span>)</span></span>&#123;<br>	i++<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>do while</code>循环</p>
+<p>会先执行一下循环语句，在判断条件</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-keyword">do</span>&#123;<br>	循环语句<br>&#125;<span class="hljs-keyword">while</span><span class="hljs-comment">(条件)</span><br></code></pre></td></tr></table></figure>
+<h6 id="当前时间的毫秒数"><a href="#当前时间的毫秒数" class="headerlink" title="当前时间的毫秒数"></a>当前时间的毫秒数</h6><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">long</span> end = System.curentTimeMillis() //<span class="hljs-number">1970</span>-<span class="hljs-number">1</span>-<span class="hljs-number">1</span> <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> 的现在的毫秒数<br></code></pre></td></tr></table></figure>
+<h6 id="结束指定循环"><a href="#结束指定循环" class="headerlink" title="结束指定循环"></a>结束指定循环</h6><p>正常情况下只会跳出离自己最近的循环</p>
+<p>加上指定标识可以指定跳出循环</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">lable:<span class="hljs-keyword">for</span>(int i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">5</span>;i++)&#123;<br>	<span class="hljs-keyword">for</span>(int j+<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">4</span>;j++)&#123;<br>		<span class="hljs-keyword">break</span> lable <span class="hljs-regexp">//</span>跳出第一个<span class="hljs-keyword">for</span>循环 <span class="hljs-keyword">break</span>与<span class="hljs-keyword">continue</span>都可以用<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组的理解：<code>Array</code>是多个相同类型数据按一定的顺序排列的集合，并使用一个名字命名</p>
+<p>数组属于引用类型</p>
+<p>数组的元素可以是引用类型也可以是基本类型</p>
+<p>数组的<strong>长度</strong>一旦确定<strong>不能修改</strong></p>
+<p>数组的分类：</p>
+<p>​    ①一维数组、二维数组</p>
+<p>​    ②按照数组元素的类型：基本类型元素的数组，引用数据类型元素的数组</p>
+<h5 id="一维数组数组的使用"><a href="#一维数组数组的使用" class="headerlink" title="一维数组数组的使用"></a>一维数组数组的使用</h5><h6 id="声明和初始化"><a href="#声明和初始化" class="headerlink" title="声明和初始化"></a>声明和初始化</h6><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayTest</span>&#123;</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span></span>&#123;<br>		<span class="hljs-comment">//静态初始化:初始化与元素的赋值同时进行</span><br>		<span class="hljs-keyword">int</span>[] ids = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;<span class="hljs-number">100</span>,<span class="hljs-number">200</span>,<span class="hljs-number">300</span>,<span class="hljs-number">400</span>&#125;;<br>		<span class="hljs-comment">//动态初始化：初始化与元素的赋值分开进行</span><br>		<span class="hljs-keyword">String</span>[] names = <span class="hljs-keyword">new</span> <span class="hljs-keyword">String</span>[<span class="hljs-number">5</span>];<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="如何调用数组的指定位置的元素"><a href="#如何调用数组的指定位置的元素" class="headerlink" title="如何调用数组的指定位置的元素"></a>如何调用数组的指定位置的元素</h6><p>角标从0开始</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">names</span>[<span class="hljs-number">0</span>] = &#x27;<span class="hljs-number">11</span>&#x27;<br><span class="hljs-attribute">names</span>[<span class="hljs-number">1</span>] = &#x27;<span class="hljs-number">22</span>&#x27;<br><span class="hljs-attribute">names</span>[<span class="hljs-number">2</span>] = &#x27;<span class="hljs-number">33</span>&#x27;<br></code></pre></td></tr></table></figure>
+<h6 id="如何获取数组的长度"><a href="#如何获取数组的长度" class="headerlink" title="如何获取数组的长度"></a>如何获取数组的长度</h6><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">names.length  <span class="hljs-regexp">//</span>数组的长度<br></code></pre></td></tr></table></figure>
+<h6 id="如何遍历数组"><a href="#如何遍历数组" class="headerlink" title="如何遍历数组"></a>如何遍历数组</h6><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>; i&lt;names.length; i++)&#123;<br>	<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.print<span class="hljs-constructor">Ln(<span class="hljs-params">names</span>.<span class="hljs-params">length</span>[<span class="hljs-params">i</span>   ])</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="数组元素的默认初始化值"><a href="#数组元素的默认初始化值" class="headerlink" title="数组元素的默认初始化值"></a>数组元素的默认初始化值</h6><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs aspectj">整型：<span class="hljs-number">0</span>,<br>浮点型：<span class="hljs-number">0.0</span>,<br><span class="hljs-keyword">char</span>型：<span class="hljs-number">0</span>或<span class="hljs-string">&#x27;\u0000&#x27;</span>,<br><span class="hljs-keyword">boolean</span>型：<span class="hljs-keyword">false</span>，<br>引用类型：<span class="hljs-keyword">null</span><br></code></pre></td></tr></table></figure>
+<h6 id="数组的内存解析"><a href="#数组的内存解析" class="headerlink" title="数组的内存解析"></a>数组的内存解析</h6><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs haxe">内存中包含了栈、堆、方法区<br><br>栈中存放局部变量（方法中的变量）<br><br>堆中存放<span class="hljs-keyword">new</span><span class="hljs-type"></span>出来的结构（数组，对象）<br><br>方法区中有常量池、静态域等<br></code></pre></td></tr></table></figure>
+<h5 id="二维数组数组的使用"><a href="#二维数组数组的使用" class="headerlink" title="二维数组数组的使用"></a>二维数组数组的使用</h5><h6 id="声明和初始化-1"><a href="#声明和初始化-1" class="headerlink" title="声明和初始化"></a>声明和初始化</h6><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayTest</span>&#123;</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span></span>&#123;<br>		<span class="hljs-comment">//静态初始化:初始化与元素的赋值同时进行</span><br>		<span class="hljs-keyword">int</span>[] ids = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[][]&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">2</span>,<span class="hljs-number">4</span>&#125;&#125;;<br>		<span class="hljs-comment">//动态初始化1：初始化与元素的赋值分开进行</span><br>		<span class="hljs-keyword">String</span>[][] names = <span class="hljs-keyword">new</span> <span class="hljs-keyword">String</span>[<span class="hljs-number">3</span>][<span class="hljs-number">2</span>];<br>		<span class="hljs-comment">//动态初始化2：初始化与元素的赋值分开进行</span><br>		<span class="hljs-keyword">String</span>[][] names = <span class="hljs-keyword">new</span> <span class="hljs-keyword">String</span>[<span class="hljs-number">3</span>][];<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="如何调用数组的指定位置的元素-1"><a href="#如何调用数组的指定位置的元素-1" class="headerlink" title="如何调用数组的指定位置的元素"></a>如何调用数组的指定位置的元素</h6><p>角标从0开始</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">names</span>[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>] = &#x27;<span class="hljs-number">11</span>&#x27;<br></code></pre></td></tr></table></figure>
+<h6 id="如何获取数组的长度-1"><a href="#如何获取数组的长度-1" class="headerlink" title="如何获取数组的长度"></a>如何获取数组的长度</h6><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">names.length  <span class="hljs-regexp">//</span>数组的长度<br></code></pre></td></tr></table></figure>
+<h6 id="如何遍历二维数组"><a href="#如何遍历二维数组" class="headerlink" title="如何遍历二维数组"></a>如何遍历二维数组</h6><p>嵌套<code>for</code>循环</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>; i&lt;names.length; i++)&#123;<br>	<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.print<span class="hljs-constructor">Ln(<span class="hljs-params">names</span>.<span class="hljs-params">length</span>[<span class="hljs-params">i</span>   ])</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="二维数组元素的默认初始化值"><a href="#二维数组元素的默认初始化值" class="headerlink" title="二维数组元素的默认初始化值"></a>二维数组元素的默认初始化值</h6><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">arr</span><span class="hljs-selector-attr">[0]</span>  <span class="hljs-comment">//是一个地址</span><br><span class="hljs-selector-tag">arr</span><span class="hljs-selector-attr">[0]</span><span class="hljs-selector-attr">[0]</span> <span class="hljs-comment">//0</span><br></code></pre></td></tr></table></figure>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%8E%E7%AB%AF/" class="category-chain-item">后端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/JAVA/">#JAVA</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>尚硅谷-JAVA</div>
+      <div>http://example.com/2022/07/08/%E5%B0%9A%E7%A1%85%E8%B0%B7-JAVA/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>博博</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月8日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/08/%E5%89%8D%E7%AB%AF-echarts/" title="前端-echarts">
+                        <span class="hidden-mobile">前端-echarts</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="" target="_blank" rel="nofollow noopener"><span>bobo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var title = subtitle.title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
