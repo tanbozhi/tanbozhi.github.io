@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-08T13:58:43.000Z">
-<meta property="article:modified_time" content="2022-08-13T18:15:19.567Z">
+<meta property="article:modified_time" content="2022-08-13T18:19:45.467Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary_large_image">
@@ -221,7 +221,7 @@
         
         
         
-          72 分钟
+          73 分钟
         
       </span>
     
@@ -464,7 +464,7 @@
 <p>在类中声明的位置不同（属性：直接定义在一对{}内，局部变量：声明在方法内，方法形参、代码块内、构造器形参、构造器内部的变量）</p>
 <p>关于权限修饰符的不同（属性：可以在声明属性时，指明其权限，使用权限修饰符。常用的权限修饰符：<code>private/public/缺省/protected</code>。局部变量：不可以使用权限修饰符）</p>
 <p>默认初始化值的不同（属性：类的属性，根据其类型，都有默认初始化值【整型：<code>byte/short/int/long:0</code>】,浮点型：【<code>float/double:0.0</code>】,字符型：【<code>char:0或‘\u000’</code>】,布尔型：【<code>boolean:false</code>】,引用数据类型【类、数组、接口】:<code>null</code>，局部变量：没有默认初始化值，意味着在调用变量之前一定要赋值，形参在调用时赋值即可。）</p>
-<p>在内存中加载的位置不同（属性：加载到堆空间中（非static）,局部变量：加载到栈空间）</p>
+<p>在内存中加载的位置不同（属性：加载到堆空间中（非<code>static</code>）,局部变量：加载到栈空间）</p>
 <h5 id="方法的分类"><a href="#方法的分类" class="headerlink" title="方法的分类"></a>方法的分类</h5><table>
 <thead>
 <tr>
@@ -537,7 +537,7 @@
 </tr>
 </tbody></table>
 <p>1.可以修饰类及类的内部结构：属性，方法，构造器，内部类</p>
-<p>2.对于<code>class</code>类的权限修饰只可以用public和default(缺省)</p>
+<p>2.对于<code>class</code>类的权限修饰只可以用<code>public</code>和<code>default(缺省)</code></p>
 <p><code>public</code>可以在任意地方被访问</p>
 <p><code>default</code>类只可以被同一个包内部的类访问</p>
 <h6 id="private私有的"><a href="#private私有的" class="headerlink" title="private私有的"></a><code>private</code>私有的</h6><p>修饰后只能由类中自己的方法调用，在类外面不能调用。</p>
@@ -545,7 +545,7 @@
 <h5 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h5><p>作用：创建对象，初始化对象信息</p>
 <p>说明：</p>
 <p>1.如果没有显式的定义类的构造器的话，则系统默认提供一个空参的构造器</p>
-<p>2.定义构造器的格式：权限修饰符 类名(形参列表){}</p>
+<p>2.定义构造器的格式：<code>权限修饰符 类名(形参列表)&#123;&#125;</code></p>
 <p>3.构造器是可以定义多个构造器，称为构造器重载</p>
 <p>4.一旦定义了类的构造器，系统则不提供空的构造器了</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonTest</span></span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span>&#123;<br>		<span class="hljs-comment">//创建类的对象：new + 构造器</span><br>		Person p = <span class="hljs-keyword">new</span> Person()<br>	&#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>&#123;<br>	<span class="hljs-comment">//构造器</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;<br>        System.out.println(<span class="hljs-string">&#x27;构造器运行了&#x27;</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -556,9 +556,9 @@
 <h6 id="调用构造器"><a href="#调用构造器" class="headerlink" title="调用构造器"></a>调用构造器</h6><p>可以使用<code>this(形参列表)</code>的方式调用本类中的其他构造器，</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>&#123;<br>	<span class="hljs-comment">//构造器</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;<br>        System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&#x27;构造器1运行了&#x27;</span>)<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age</span>)</span>&#123;<br>    	<span class="hljs-keyword">this</span>();	调用构造器<span class="hljs-number">1</span><br>        System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&#x27;构造器2运行了&#x27;</span>)<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age,String name</span>)</span>&#123;<br>    	<span class="hljs-keyword">this</span>(age);		<span class="hljs-comment">//调用构造器2</span><br>        System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&#x27;构造器3运行了&#x27;</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h5 id="package关键字"><a href="#package关键字" class="headerlink" title="package关键字"></a><code>package</code>关键字</h5><p>为了更好的管理项目中的类，提供包的概念。</p>
-<p>使用package声明类或接口所属的包，声明在源文件的首行</p>
+<p>使用<code>package</code>声明类或接口所属的包，声明在源文件的首行</p>
 <p>属于标识符，遵循标识符的命名规则</p>
-<p>每“.”一次代表一层文件目录</p>
+<p>每“<code>.</code>”一次代表一层文件目录</p>
 <h5 id="import关键字"><a href="#import关键字" class="headerlink" title="import关键字"></a><code>import</code>关键字</h5><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-number">1.</span>在源文件中使用<span class="hljs-keyword">import</span>显式的导入指定包下的类或接口2.声明在包的声明和类的声明之间。<br><span class="hljs-number">3.</span>如果需要导入多个类或接口，那么就并列显式多个<span class="hljs-keyword">import</span>语句即可<br><span class="hljs-number">4.</span>举例:可以使用java.util.*的方式，一次性导入util包下所有的类或接口。<br><span class="hljs-number">5.</span>如果导入的类或接口是java.lang包下的，或者是当前包下的，则可以省略此<span class="hljs-keyword">import</span>语句。<br><span class="hljs-number">6.</span>如果在代码中使用不同包下的同名的类。那么就需要使用类的全类名的方式指明调用的是哪个类。<br><span class="hljs-number">7.</span>如果已经导入java.a包下的类。那么如果需要使用a包的子包下的类的话，仍然需要导入。<br><span class="hljs-number">8.</span> <span class="hljs-keyword">import</span> static组合的使用:调用指定类或接口下的静态的属性或方法<br></code></pre></td></tr></table></figure>
 
               
