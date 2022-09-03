@@ -16,20 +16,21 @@
   <meta name="author" content="博博">
   <meta name="keywords" content="">
   
-    <meta name="description" content="title: webpackcategories: 前端tags: webpackexcerpt: 摘要date: 2022-05-22 14:58:19 webpack开发时，我们会使用框架（Vue,react）,Es6语法，less&#x2F;sass等css预处理器等语法进行开发。 这些代码想要在浏览器运行，必须编译成浏览器能够识别的代码。 基本使用创建需要的文件 123456webback	publ">
+    <meta name="description" content="摘要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tanbozhi-blog">
+<meta property="og:title" content="webpack">
 <meta property="og:url" content="http://example.com/2022/05/22/%E5%89%8D%E7%AB%AF-webpack/index.html">
 <meta property="og:site_name" content="tanbozhi-blog">
-<meta property="og:description" content="title: webpackcategories: 前端tags: webpackexcerpt: 摘要date: 2022-05-22 14:58:19 webpack开发时，我们会使用框架（Vue,react）,Es6语法，less&#x2F;sass等css预处理器等语法进行开发。 这些代码想要在浏览器运行，必须编译成浏览器能够识别的代码。 基本使用创建需要的文件 123456webback	publ">
+<meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-22T06:56:11.536Z">
-<meta property="article:modified_time" content="2022-09-03T16:15:51.726Z">
+<meta property="article:published_time" content="2022-05-22T06:58:19.000Z">
+<meta property="article:modified_time" content="2022-09-03T16:18:12.554Z">
 <meta property="article:author" content="博博">
+<meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>tanbozhi-blog</title>
+  <title>webpack - tanbozhi-blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -185,7 +186,7 @@
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
-          <span id="subtitle" title="">
+          <span id="subtitle" title="webpack">
             
           </span>
         </div>
@@ -197,7 +198,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-22 14:56" pubdate>
+        <time datetime="2022-05-22 14:58" pubdate>
           2022年5月22日 下午
         </time>
       </span>
@@ -209,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          5.2k 字
         
       </span>
     
@@ -220,7 +221,7 @@
         
         
         
-          17 分钟
+          44 分钟
         
       </span>
     
@@ -258,12 +259,11 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">webpack</h1>
             
             <div class="markdown-body">
               
-              <p>title: webpack<br>categories: 前端<br>tags: webpack<br>excerpt: 摘要<br>date: 2022-05-22 14:58:19</p>
-<h4 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a><code>webpack</code></h4><p>开发时，我们会使用框架（<code>Vue,react</code>）,<code>Es6</code>语法，<code>less/sass</code>等<code>css</code>预处理器等语法进行开发。</p>
+              <h4 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a><code>webpack</code></h4><p>开发时，我们会使用框架（<code>Vue,react</code>）,<code>Es6</code>语法，<code>less/sass</code>等<code>css</code>预处理器等语法进行开发。</p>
 <p>这些代码想要在浏览器运行，必须编译成浏览器能够识别的代码。</p>
 <h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p>创建需要的文件</p>
 <figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">webback<br>	<span class="hljs-meta">public</span>	放入一些静态文件，index<span class="hljs-number">.</span>html也放在里面<br>	src		所有东西都放到这里面<br>		main<span class="hljs-number">.</span><span class="hljs-keyword">js</span>	入口文件<br>		<span class="hljs-keyword">js</span>文件夹 写一些<span class="hljs-keyword">js</span>文件<br>		<br></code></pre></td></tr></table></figure>
@@ -293,6 +293,36 @@
 <h4 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h4><h5 id="热模块替换-HMR"><a href="#热模块替换-HMR" class="headerlink" title="热模块替换(HMR)"></a>热模块替换<code>(HMR)</code></h5><p>热模块替换：在程序运行中替换 、添加、删除模块，从而无需加载整个页面。</p>
 <p>只能在开发模式使用</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">webpack.dev.js<br><br>devServer:&#123;<br>	host:<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-regexp">//</span>启动服务器域名<br>	port:<span class="hljs-string">&quot;3000&quot;</span>, <span class="hljs-regexp">//</span>启动服务器端口号<br>	open:true, <span class="hljs-regexp">//</span>是否自动打开浏览器<br>	hot:true, <span class="hljs-regexp">//</span>是否打开热模块替换(默认开启)<br>&#125;<br><br><span class="hljs-regexp">//</span>这个配置只支持css的热模块替换<br></code></pre></td></tr></table></figure>
+<p>热模块替换（<code>js</code>）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript">main.js<br><br><span class="hljs-keyword">if</span>(mdule.hot)&#123; <span class="hljs-comment">//判断是否支持热模块替换功能</span><br>	<span class="hljs-built_in">module</span>.hot.accept(<span class="hljs-string">&quot;./js/count&quot;</span>); <span class="hljs-comment">//执行替换</span><br>	<span class="hljs-built_in">module</span>.hot.accept(<span class="hljs-string">&quot;./js/sum&quot;</span>，<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;当文件发生改变时，会执行这个回调函数 可选&quot;</span>)<br>	&#125;);<br>&#125;<br><br><span class="hljs-comment">//tip:只有写入的模块才会支持热模块替换</span><br>	  建议使用vue-loader,react-hot-loader来解决<br></code></pre></td></tr></table></figure>
+<h5 id="oneOf"><a href="#oneOf" class="headerlink" title="oneOf"></a><code>oneOf</code></h5><p>让每个文件只能被其中一个loader配置处理</p>
+<p>开发模式、生产模式都可以使用</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">module:</span>&#123;<br><span class="hljs-symbol">	rules:</span>[<br>		<span class="hljs-comment">//loader配置</span><br>		&#123;	<br>			<span class="hljs-comment">//让每个文件只能被其中一个loader配置处理</span><br><span class="hljs-symbol">			oneOf:</span>[<br>				&#123;&#125;,<br>				&#123;&#125;,<br>				&#123;&#125;,<br>			]<br>		&#125;<br>	]<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="include-exclude"><a href="#include-exclude" class="headerlink" title="include/exclude"></a><code>include/exclude</code></h5><p>只编译或者排除编译某些文件,只能选择一种方法使用</p>
+<p><code>include</code>  包含，只处理某些文件</p>
+<p><code>exclude</code> 排除，除了某些文件，其他文件都要处理</p>
+<p>开发模式、生产模式都可以使用</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">加载器-处理js的loader下使用<br>---------------------------------<br>&#123;<br><span class="hljs-code">	test:/\.js$/,</span><br><span class="hljs-code">	//exclude:/node_modules/, //排除node_modules文件</span><br><span class="hljs-code">	include:path.resolve(__dirname,&quot;../src&quot;), //只处理src下的文件</span><br><span class="hljs-code">	loader:&quot;babel-loader&quot;, </span><br>&#125;<br><br>插件下的-eslint<br>-------------------------------<br>new EsLintPlugin(&#123;<br><span class="hljs-code">	context:path.resolve(__dirname,&quot;../src&quot;),</span><br><span class="hljs-code">	exclude:&quot;node_modules&quot;, //默认值 排除node_modules文件</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<h5 id="eslint和bable缓存"><a href="#eslint和bable缓存" class="headerlink" title="eslint和bable缓存"></a><code>eslint</code>和<code>bable</code>缓存</h5><p>每次打包时js文件都要经过Eslint和Bable编译，速度较慢。</p>
+<p>了我们可以缓存之前Eslint和Bable编译的结果，这样在第二次打包时速度就会更快了</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">加载器-处理js的loader下使用<br>---------------------------------<br>&#123;<br><span class="hljs-code">	test:/\.js$/,</span><br><span class="hljs-code">	include:path.resolve(__dirname,&quot;../src&quot;),</span><br><span class="hljs-code">	loader:&quot;babel-loader&quot;, </span><br><span class="hljs-code">	options:&#123;</span><br><span class="hljs-code">		cacheDirectory:true, //开启bable缓存</span><br><span class="hljs-code">		cachCompression:false, //关闭缓存文件压缩，压缩比较慢，所以关闭</span><br><span class="hljs-code">	&#125;</span><br>&#125;<br><br>插件下的-eslint<br>-------------------------------<br>new EsLintPlugin(&#123;<br><span class="hljs-code">	context:path.resolve(__dirname,&quot;../src&quot;),</span><br><span class="hljs-code">	exclude:&quot;node_modules&quot;,</span><br><span class="hljs-code">	cache:true, //开启缓存</span><br><span class="hljs-code">	cacheLocation:path.resolve(__dirname.&quot;../node_modules/.cache/.eslintcache&quot;) //指定缓存路径</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<h5 id="多进程打包（thead）"><a href="#多进程打包（thead）" class="headerlink" title="多进程打包（thead）"></a>多进程打包（<code>thead</code>）</h5><p>提升打包速度，主要提升<code>js</code>的打包速度</p>
+<p>而处理<code>js</code>文件的主要是<code>eslint/babel/terser</code>三个工具，所以要提升他们的运行速度</p>
+<p>开发模式、生产模式都可以使用</p>
+<p><strong>注意</strong>：需要在特别耗时的操作中使用，因为每个进程启动就需要<code>600ms</code>左右的时间</p>
+<p>获取<code>cpu</code>的内核数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;os&#x27;</span>); <span class="hljs-comment">//nodejs的核心模块</span><br><span class="hljs-keyword">const</span> theads = os.cpus().length;	<span class="hljs-comment">//cpu核数</span><br></code></pre></td></tr></table></figure>
+<p>下载依赖包</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">npm <span class="hljs-selector-tag">i</span> <span class="hljs-selector-tag">thead</span>-loader -D<br></code></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs awk">加载器-处理js的loader的前面使用<br>---------------------------------<br>&#123;<br>	test:<span class="hljs-regexp">/\.js$/</span>,<br>	include:path.resolve(__dirname,<span class="hljs-string">&quot;../src&quot;</span>),<br>	use:[<br>		&#123;<br>			loader:<span class="hljs-string">&quot;thread-loader&quot;</span>, <span class="hljs-regexp">//</span>开启多进程<br>			options:&#123;<br>				workers:threads,	<span class="hljs-regexp">//</span>进程数量<br>			&#125;<br>		&#125;,<br>		&#123;<br>			loader:<span class="hljs-string">&quot;babel-loader&quot;</span>, <br>            options:&#123;<br>                cacheDirectory:true, <span class="hljs-regexp">//</span>开启bable缓存<br>                cachCompression:false, <span class="hljs-regexp">//</span>关闭缓存文件压缩，压缩比较慢，所以关闭<br>            &#125;<br>		&#125;<br>	]<br>	<br>&#125;<br><br>插件下的-eslint<br>-------------------------------<br>new EsLintPlugin(&#123;<br>	context:path.resolve(__dirname,<span class="hljs-string">&quot;../src&quot;</span>),<br>	exclude:<span class="hljs-string">&quot;node_modules&quot;</span>,<br>	cache:true, <span class="hljs-regexp">//</span>开启缓存<br>	cacheLocation:path.resolve(__dirname.<span class="hljs-string">&quot;../node_modules/.cache/.eslintcache&quot;</span>) <span class="hljs-regexp">//</span>指定缓存路径<br>	threads, <span class="hljs-regexp">//</span>开启多进程和设置进程数量<br>&#125;)<br><br>压缩js<br>---------------------------<br>const TerserWebpackPlugin =require(<span class="hljs-string">&#x27;terser-webpack-plugin&#x27;</span>)<br><br>plugins:[<br>	new CssMinimizerPligin(),<br>	new TerserWebpackPlugin(&#123;<br>		parallel:threads, <span class="hljs-regexp">//</span>开启多进程和设置进程数量<br>	&#125;),<br>]<br><br><span class="hljs-regexp">//</span>也可以放到外边写<br>optimization:&#123;<br>	minimizer:[<br>		<span class="hljs-regexp">//</span>压缩css<br>		new CssMinimizerPligin(),<br>		<span class="hljs-regexp">//</span>压缩js<br>        new TerserWebpackPlugin(&#123;<br>            parallel:threads, <span class="hljs-regexp">//</span>开启多进程和设置进程数量<br>        &#125;),<br>	],<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="减少代码体积Tree-Shaking"><a href="#减少代码体积Tree-Shaking" class="headerlink" title="减少代码体积Tree Shaking"></a>减少代码体积<code>Tree Shaking</code></h5><p>开发时我们定义了一些工具函数库，或者引用第三方工具函数库或组件库，而我们不可能用到所有东西，需要移除没有使用到的函数。</p>
+<p><code>Webpack</code>默认开启了这个功能，无需其他配置。</p>
+<h5 id="减少Babel生成文件的体积"><a href="#减少Babel生成文件的体积" class="headerlink" title="减少Babel生成文件的体积"></a>减少<code>Babel</code>生成文件的体积</h5><p><code>Babel</code>为编译的每个文件都插入了辅助代码，使代码体积过大</p>
+<p>可以将辅助代码作为一个独立的模块，来避免重复引入</p>
+<p>开发模式、生产模式都可以使用</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">//下载包</span><br>npm <span class="hljs-selector-tag">i</span> @babel/plugin-<span class="hljs-attribute">transform</span>-runtime -D<br></code></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-comment">//配置</span><br>&#123;<br><span class="hljs-symbol">	loader:</span><span class="hljs-string">&quot;babel-loader&quot;</span>,<br><span class="hljs-symbol">	option:</span>&#123;<br><span class="hljs-symbol">		plugins:</span>[<span class="hljs-string">&quot;@babel/plugin-transform-runtime&quot;</span>],	<span class="hljs-comment">//减少代码体积</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
               
             </div>
@@ -300,6 +330,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/webpack/">#webpack</a>
+      
+    </div>
   
 </div>
 
@@ -309,7 +367,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>webpack</div>
       <div>http://example.com/2022/05/22/%E5%89%8D%E7%AB%AF-webpack/</div>
     </div>
     <div class="license-meta">
