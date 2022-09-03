@@ -1096,6 +1096,16 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
 <p>属于标识符，遵循标识符的命名规则</p>
 <p>每“<code>.</code>”一次代表一层文件目录</p>
 <h5 id="import关键字"><a href="#import关键字" class="headerlink" title="import关键字"></a><code>import</code>关键字</h5><figure class="highlight elm"><table><tr><td class="code"><pre><code class="hljs elm"><span class="hljs-number">1.</span>在源文件中使用<span class="hljs-keyword">import</span>显式的导入指定包下的类或接口2.声明在包的声明和类的声明之间。<br><span class="hljs-number">3.</span>如果需要导入多个类或接口，那么就并列显式多个<span class="hljs-keyword">import</span>语句即可<br><span class="hljs-number">4.</span>举例:可以使用java.util.*的方式，一次性导入util包下所有的类或接口。<br><span class="hljs-number">5.</span>如果导入的类或接口是java.lang包下的，或者是当前包下的，则可以省略此<span class="hljs-keyword">import</span>语句。<br><span class="hljs-number">6.</span>如果在代码中使用不同包下的同名的类。那么就需要使用类的全类名的方式指明调用的是哪个类。<br><span class="hljs-number">7.</span>如果已经导入java.a包下的类。那么如果需要使用a包的子包下的类的话，仍然需要导入。<br><span class="hljs-number">8.</span> <span class="hljs-keyword">import</span> static组合的使用:调用指定类或接口下的静态的属性或方法<br></code></pre></td></tr></table></figure>
+<h5 id="继承（extends）"><a href="#继承（extends）" class="headerlink" title="继承（extends）"></a>继承（<code>extends</code>）</h5><p>好处：</p>
+<p>减少了代码的冗余，提高了代码的复用性</p>
+<p>便于功能的扩展</p>
+<p>位置后多态性的使用，提供了前提</p>
+<p>格式：</p>
+<p><code>class A extends B&#123;&#125;</code></p>
+<p>​    A:子类/派生类/<code>subclass</code></p>
+<p>​    B:父类/超类/基类/<code>superclass</code></p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><code class="hljs scala">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span></span>&#123;<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h5><figure class="highlight markdown"><table><tr><td class="code"><pre><code class="hljs markdown">重写的规定:<br>方法的声明:权限修饰符返回值类型方法名(形参列表) throws异常的类型&#123;<br>//方法体<br>&#125;<br>约定俗称:子类中的叫重写的方法，父类中的叫被重写的方法<br>子类重写的方法的方法名和形参列表与父类被重写的方法的方法名和形参列表相同子类重写的方法的权限修饰符不小于父类被重写的方法的权限修饰符<br>&gt;特殊情况:子类不能重写父类中声明为private权限的方法返回值类型:<br>&gt;父类被重写的方法的返回值类型是void，则子类重写的方法的返回值类型只能是void<br>&gt;父类被重写的方法的返回值类型是A类型，则子类重写的方法的返回值类型可以是A类或A类的子类<br>&gt;父类被重写的方法的返回值类型是基本数据类型(比如:double)，则子类重写的方法的返回值类型必须是相F子类重写的方法抛出的异常类型不大于父类被重写的方法抛出的异常类型（具体放到异常处理时候讲)<br><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">**</span><br><span class="hljs-strong">子类和父类中的同名同参数的方法要么都声明为非static的（考虑重写），要么都声明为static的。</span><br><span class="hljs-strong"></span><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>后端</category>
