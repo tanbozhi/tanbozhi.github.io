@@ -1656,72 +1656,6 @@ $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完�
       </tags>
   </entry>
   <entry>
-    <title>数据分析-Numpy</title>
-    <url>/2021/06/26/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Numpy/</url>
-    <content><![CDATA[<h2 id="numpy的安装与说明"><a href="#numpy的安装与说明" class="headerlink" title="numpy的安装与说明"></a>numpy的安装与说明</h2><h4 id="数据-data"><a href="#数据-data" class="headerlink" title="数据(data)"></a>数据(data)</h4><p>–不只是数字</p>
-<p>–“未经处理的原始记录”（《维基百科》)</p>
-<p>–能够被计算机识别、存储和加工处理的</p>
-<p>列：特征、属性、变量</p>
-<p>行：样本、记录、观察、观测</p>
-<h4 id="编辑器-最好使用以下编辑器"><a href="#编辑器-最好使用以下编辑器" class="headerlink" title="编辑器(最好使用以下编辑器)"></a>编辑器(最好使用以下编辑器)</h4><p>1、  jupyterlab</p>
-<p>2、  jupyternotebook</p>
-<p>官网：<a href="https://jupyter.org/">https://jupyter.org/</a></p>
-<p>国内源安装</p>
-<p>pip install jupyterlab -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
-<p>常用库：</p>
-<p>pip install numpy</p>
-<p>pip install pandas</p>
-<h4 id="安装anaconda（有很多数据科学常用工具）"><a href="#安装anaconda（有很多数据科学常用工具）" class="headerlink" title="安装anaconda（有很多数据科学常用工具）"></a>安装anaconda（有很多数据科学常用工具）</h4><p>集成环境:<a href="https://www.anaconda.com/">https://www.anaconda.com/</a></p>
-<h4 id="运行jupyterlab"><a href="#运行jupyterlab" class="headerlink" title="运行jupyterlab"></a>运行jupyterlab</h4><p>在cmd中进入工作文件夹执行</p>
-<p>jupyter lab</p>
-<p>查看Numpy版本：numpy._ _version__  或者 numpy.server.server</p>
-<h2 id="Numpy的使用"><a href="#Numpy的使用" class="headerlink" title="Numpy的使用"></a>Numpy的使用</h2><h4 id="np-array的使用"><a href="#np-array的使用" class="headerlink" title="np.array的使用"></a>np.array的使用</h4><figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment">#创建数组</span><br><span class="hljs-attribute">d</span> = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>]，ndim=<span class="hljs-number">2</span>) 可以自由设置维度等参数<br><br><span class="hljs-comment">#查看类型</span><br><span class="hljs-attribute">type</span>(d)<br><br><span class="hljs-comment">#查看帮助文档</span><br><span class="hljs-attribute">np</span>.array?<br><br><span class="hljs-comment">#数组元素的类型</span><br><span class="hljs-attribute">d</span>.dtype		返回数组中元素的类型<br>	<span class="hljs-attribute">shape</span>(数组的形状几行几列)返回由整数组成的元组，元组中的每个整数依次对应数组的每个轴的元素个数。<br>	<span class="hljs-attribute">size</span>（元素数量）返回一个整数，代表数组中元素的个数。<br>	<span class="hljs-attribute">ndim</span>（几维数组）返回一个整数，代表数组的轴的个数，即维度<br>	<span class="hljs-attribute">nbytes</span>返回一个整数，代表用于保存数据的字节数。<br><br><span class="hljs-comment"># 数组元素类型的转化</span><br><span class="hljs-attribute">d2</span> = d.astype(np.int)<br><br><span class="hljs-comment"># 创建二维数组</span><br><span class="hljs-attribute">da</span> = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],[<span class="hljs-number">3</span>, <span class="hljs-number">4</span> ,<span class="hljs-number">5</span> ,<span class="hljs-number">6</span>],<span class="hljs-meta"> [5, 6, 7, 8], [7, 8, 9, 10]])</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">没列举完，可以上百度更多用法</span><br></code></pre></td></tr></table></figure>
-<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>数组的索引也称为下标</p>
-<p>1.下标是整数</p>
-<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel">import numpy as np<br>b = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">5</span>)<br>b<br>=&gt; array([<span class="hljs-number">0</span>., <span class="hljs-number">25</span>., <span class="hljs-number">50</span>., <span class="hljs-number">75</span>., <span class="hljs-number">100</span>.])<br><br>b[<span class="hljs-number">3</span>]	#取第四个数<br>=&gt; <span class="hljs-number">75.0</span><br><br>b[-<span class="hljs-number">3</span>]<br>=&gt; <span class="hljs-number">50.0</span><br><br>#二维数组<br>c = np.logspace(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">12</span>).reshape(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)<br>c<br><br>c[<span class="hljs-number">1</span>]		#取第二行<br>c[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>]		#取第二行第三个数<br>c[(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)]	#第二行第三个<br><br>c[(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)] = <span class="hljs-number">999</span><br></code></pre></td></tr></table></figure>
-<p>2.下标是列表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs [">import numpy as np<br>b &#x3D; np.linspace(0, 100, 5)<br>b<br>&#x3D;&gt; array([0., 25., 50., 75., 100.])<br><br>b[1]		#返回值<br>&#x3D;&gt;25.0<br><br>b[(1)]		#返回值<br>&#x3D;&gt;25.0<br><br>b[[1, 3]]	#返回数组<br>&#x3D;&gt;array([25.0, 75.0])<br><br>#二维数组<br>c &#x3D; np.logspace(1, 3, 12).reshape(3, 4)<br>c<br><br>c[[0, 2]]		#返回第1行和第三行的数组<br>c[[0, 2], [1, 2]]	#返回以第一行的第二个数和第3行的第3个数组成的数组<br>c[[2,2,2]]		#列表为下标才可以这样写，返回以3个第3行组成的列表<br><br></code></pre></td></tr></table></figure>
-<p>下标是数组</p>
-<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel">d = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>])<br><span class="hljs-built_in">t</span> = d == <span class="hljs-number">5</span><br>d[<span class="hljs-built_in">t</span>]<br>=&gt;array([<span class="hljs-built_in">False</span>, <span class="hljs-built_in">False</span>,  <span class="hljs-built_in">True</span>, <span class="hljs-built_in">False</span>, <span class="hljs-built_in">False</span>])<br><br>e =np.arange(<span class="hljs-number">12</span>).reshape(<span class="hljs-number">2</span>,<span class="hljs-number">6</span>)<br>e<br>#找出数组中的奇数<br><span class="hljs-built_in">t</span> = e % <span class="hljs-number">2</span> ==<span class="hljs-number">1</span>		#e % <span class="hljs-number">2</span> ==<span class="hljs-number">1</span>这个是判断条件<br>e[<span class="hljs-built_in">t</span>]<br><br>#e[<span class="hljs-built_in">t</span>]就是找出数组e里面符合条件<span class="hljs-built_in">t</span>的数<br><br>简化：<br>e[e % <span class="hljs-number">2</span> ==<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h4><p>一维数组的切片与列表切片一样</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">d</span> = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span> ,<span class="hljs-number">15</span>])<br><span class="hljs-attribute">d</span>[<span class="hljs-number">2</span>:<span class="hljs-number">6</span>:<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
-<p>二维数组</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-tag">b</span> = np<span class="hljs-selector-class">.arange</span>(<span class="hljs-number">0</span>,<span class="hljs-number">60</span>,<span class="hljs-number">10</span>)<span class="hljs-selector-class">.reshape</span>(-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)+np<span class="hljs-selector-class">.arange</span>(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>)<br>b<br>=&gt;array(<span class="hljs-selector-attr">[[ 0,  1,  2,  3,  4,  5]</span>,<br>       <span class="hljs-selector-attr">[10, 11, 12, 13, 14, 15]</span>,<br>       <span class="hljs-selector-attr">[20, 21, 22, 23, 24, 25]</span>,<br>       <span class="hljs-selector-attr">[30, 31, 32, 33, 34, 35]</span>,<br>       <span class="hljs-selector-attr">[40, 41, 42, 43, 44, 45]</span>,<br>       <span class="hljs-selector-attr">[50, 51, 52, 53, 54, 55]</span>])<br>       <br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1:4]</span>		#得到第二行到第四行<br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1:4, 2:5]</span>	#得到第二行到第四行与第三列到第五列交叉的数<br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1, :]</span>		#得到第二行的数<br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1]</span>		#同上<br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[:3, [0,3]</span>]	#先取前三行，<span class="hljs-selector-attr">[0,3]</span>的意思是取第一列和第第三列<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel">import numpy as np<br>a = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>).reshape((<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br>a<br>=&gt;array([[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],<br>       [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]])<br> <br>元素级运算： 数组内的数对应加减乘除，数组与数组也是一样的<br>a * <span class="hljs-number">3</span>		#数组内每个数乘以<span class="hljs-number">3</span>，+ - /都是这样计算<br>=&gt;array([[ <span class="hljs-number">0</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">6</span>,  <span class="hljs-number">9</span>, <span class="hljs-number">12</span>],<br>       [<span class="hljs-number">15</span>, <span class="hljs-number">18</span>, <span class="hljs-number">21</span>, <span class="hljs-number">24</span>, <span class="hljs-number">27</span>]])<br>       <br>#广播 二维数组加一维数组<br>a = array([[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],<br>          [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]])<br>b = array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])<br><br>a+b		#a的第一行加上对应的b,a的第二行也加上对应的b<br>=&gt;array([[ <span class="hljs-number">0</span>,  <span class="hljs-number">2</span>,  <span class="hljs-number">4</span>,  <span class="hljs-number">6</span>,  <span class="hljs-number">8</span>],<br>         [ <span class="hljs-number">5</span>,  <span class="hljs-number">7</span>,  <span class="hljs-number">9</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>]])<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h4><h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><h6 id="创建矩阵"><a href="#创建矩阵" class="headerlink" title="创建矩阵"></a>创建矩阵</h6><figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">import numpy as np<br>A = np.mat([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])		#创建矩阵<br>A<br><br>=&gt; matrix(<span class="hljs-string">[[1, 2, 3]]</span>)<br><br>A.shape		#查看形状<br><br>B = np.mat(<span class="hljs-string">&#x27;1 2 3; 4 5 6; 7 8 9&#x27;</span>)		#方阵<br>B<br><br>=&gt; matrix(<span class="hljs-string">[[1, 2, 3],</span><br><span class="hljs-string">          [4, 5, 6],</span><br><span class="hljs-string">          [7, 8, 9]]</span>)<br>          <br># 数组作为参数，创建矩阵<br>M1 = np.mat(np.eye(<span class="hljs-number">3</span>))<br>M1<br><br>#矩阵合并<br>np.bmat(<span class="hljs-string">&#x27;M1 M2;M2 M1&#x27;</span>)<br><br>重要 重要<br>两个数组相乘和两个矩阵相乘是不一样的<br>#矩阵的乘法<br><br>#两个数组相乘用“*”表示，对应元素相乘<br>a = np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)<br>b = np.array(<span class="hljs-string">[[1,0,1],[0,1,1],[1,1,0]]</span>)<br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-&#x27;</span>*<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(b)<br><span class="hljs-string">[[1 2 3]</span><br><span class="hljs-string"> [4 5 6]</span><br><span class="hljs-string"> [7 8 9]]</span><br><span class="hljs-comment">----------</span><br><span class="hljs-string">[[1 0 1]</span><br><span class="hljs-string"> [0 1 1]</span><br><span class="hljs-string"> [1 1 0]]</span><br><br>a*b       # 对应元素相乘<br>array(<span class="hljs-string">[[1, 0, 3],</span><br><span class="hljs-string">       [0, 5, 6],</span><br><span class="hljs-string">       [7, 8, 0]]</span>)<br><br>#两个矩阵用“*”相乘<br>A = np.mat(a)<br>B = np.mat(b)<br><br>A * B		# <span class="hljs-number">4</span>是a的第一行乘以b的第一列元素相加，以此类推<br>=&gt; matrix(<span class="hljs-string">[[ 4,  5,  3],</span><br><span class="hljs-string">        [10, 11,  9],</span><br><span class="hljs-string">        [16, 17, 15]]</span>)<br>        <br>np.dot(a,b)		#等价于上面的矩阵相乘  <br><br>A.T			#矩阵的转置<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="矢量运算"><a href="#矢量运算" class="headerlink" title="矢量运算"></a>矢量运算</h4><p>标量积</p>
-<p>点积：np.dot(a,b)</p>
-<p>内积： np.inner(a,b)</p>
-<p>矢量积(叉积) ：np.cross(v,b)</p>
-<h4 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h4><figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix"><span class="hljs-comment">#创建多项式</span><br><span class="hljs-comment"># f(x) = 2 x^3 - 3 x^2 + 1 x + 6</span><br><span class="hljs-attr">a</span> = np.array([<span class="hljs-number">2</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">6</span>])<br><span class="hljs-attr">fx</span> = np.poly1d(a)	<span class="hljs-comment">#poly1d中 d 前面的1是数字一</span><br>fx<br><br>=&gt; poly1d([ <span class="hljs-number">2</span>, -<span class="hljs-number">3</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">6</span>])<br><br>fx(<span class="hljs-number">2</span>)   <span class="hljs-comment">#给多项式赋值2</span><br>print(fx)	<span class="hljs-comment"># 打印fx多项式</span><br><br>拓展<br><span class="hljs-comment"># g = (x-1)^2 + 3(x-1) + 2</span><br><span class="hljs-attr">p</span> = np.poly1d([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>])<br><span class="hljs-attr">g</span> = lambda x: p(x-<span class="hljs-number">1</span>)	<span class="hljs-comment">#将x替换成x-1</span><br>g(<span class="hljs-number">0</span>)<br><br><span class="hljs-comment">#基于根(解)创建多项式</span><br><span class="hljs-attr">root</span> = np.array([<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-attr">p2</span> = np.poly1d(root, <span class="hljs-attr">r=True)</span><br>print(p2)<br><br><span class="hljs-comment">#在显示上，更换变量（将X替换成Y显示）</span><br><span class="hljs-attr">p3</span> = np.poly1d(a, <span class="hljs-attr">variable=&#x27;y&#x27;)</span><br>print(p3)<br></code></pre></td></tr></table></figure>
-<h4 id="多项式运算"><a href="#多项式运算" class="headerlink" title="多项式运算"></a>多项式运算</h4><h6 id="加减乘除"><a href="#加减乘除" class="headerlink" title="加减乘除"></a>加减乘除</h6><p>正常运算</p>
-<p>本质是系数运算，系数可以是数组，列表，</p>
-<figure class="highlight subunit"><table><tr><td class="code"><pre><code class="hljs subunit">p4 = p2 + [<span class="hljs-string">-2</span>, 1]		#[<span class="hljs-string">-2</span>,1]代表<span class="hljs-string">-2</span>x<span class="hljs-string">+1</span><br></code></pre></td></tr></table></figure>
-<h6 id="微分（求导）"><a href="#微分（求导）" class="headerlink" title="微分（求导）"></a>微分（求导）</h6><figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">pd</span> = p2.deriv()<br></code></pre></td></tr></table></figure>
-<h6 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h6><figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">pint</span> = pd.integ()<br></code></pre></td></tr></table></figure>
-<h6 id="求多项式的根"><a href="#求多项式的根" class="headerlink" title="求多项式的根"></a>求多项式的根</h6><figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">r</span> = np.roots(p2)<br></code></pre></td></tr></table></figure>
-<p>#技巧：tab</p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima"><span class="hljs-built_in">np</span>.po	#按<span class="hljs-built_in">tab</span>键可以选择需要的函数<br><span class="hljs-built_in">np</span>.poly1d?	#查看该函数的方法<br></code></pre></td></tr></table></figure>
-
-
-<h4 id="解线性方程组"><a href="#解线性方程组" class="headerlink" title="解线性方程组"></a>解线性方程组</h4><figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-tag">a</span> = np<span class="hljs-selector-class">.array</span>(<span class="hljs-selector-attr">[[3, 1]</span>, <span class="hljs-selector-attr">[1, 2]</span>])<br><span class="hljs-selector-tag">b</span> = np,array(<span class="hljs-selector-attr">[[9]</span>, <span class="hljs-selector-attr">[8]</span>])<br>x = np<span class="hljs-selector-class">.linalg</span><span class="hljs-selector-class">.solve</span>(<span class="hljs-selector-tag">a</span>, b)<br>x<br><br>=&gt; array(<span class="hljs-selector-attr">[[2.]</span><br>			<span class="hljs-selector-attr">[3]</span>.])<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>Numpy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>尚硅谷-react</title>
     <url>/2022/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7-react/</url>
     <content><![CDATA[<h3 id="react基础"><a href="#react基础" class="headerlink" title="react基础"></a>react基础</h3><h4 id="react优点"><a href="#react优点" class="headerlink" title="react优点"></a>react优点</h4><p>1.采用组件化模式、声明式编码，提高开发效率及组件复用率。</p>
@@ -2141,6 +2075,72 @@ C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125;
       </tags>
   </entry>
   <entry>
+    <title>数据分析-Numpy</title>
+    <url>/2021/06/26/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Numpy/</url>
+    <content><![CDATA[<h2 id="numpy的安装与说明"><a href="#numpy的安装与说明" class="headerlink" title="numpy的安装与说明"></a>numpy的安装与说明</h2><h4 id="数据-data"><a href="#数据-data" class="headerlink" title="数据(data)"></a>数据(data)</h4><p>–不只是数字</p>
+<p>–“未经处理的原始记录”（《维基百科》)</p>
+<p>–能够被计算机识别、存储和加工处理的</p>
+<p>列：特征、属性、变量</p>
+<p>行：样本、记录、观察、观测</p>
+<h4 id="编辑器-最好使用以下编辑器"><a href="#编辑器-最好使用以下编辑器" class="headerlink" title="编辑器(最好使用以下编辑器)"></a>编辑器(最好使用以下编辑器)</h4><p>1、  jupyterlab</p>
+<p>2、  jupyternotebook</p>
+<p>官网：<a href="https://jupyter.org/">https://jupyter.org/</a></p>
+<p>国内源安装</p>
+<p>pip install jupyterlab -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+<p>常用库：</p>
+<p>pip install numpy</p>
+<p>pip install pandas</p>
+<h4 id="安装anaconda（有很多数据科学常用工具）"><a href="#安装anaconda（有很多数据科学常用工具）" class="headerlink" title="安装anaconda（有很多数据科学常用工具）"></a>安装anaconda（有很多数据科学常用工具）</h4><p>集成环境:<a href="https://www.anaconda.com/">https://www.anaconda.com/</a></p>
+<h4 id="运行jupyterlab"><a href="#运行jupyterlab" class="headerlink" title="运行jupyterlab"></a>运行jupyterlab</h4><p>在cmd中进入工作文件夹执行</p>
+<p>jupyter lab</p>
+<p>查看Numpy版本：numpy._ _version__  或者 numpy.server.server</p>
+<h2 id="Numpy的使用"><a href="#Numpy的使用" class="headerlink" title="Numpy的使用"></a>Numpy的使用</h2><h4 id="np-array的使用"><a href="#np-array的使用" class="headerlink" title="np.array的使用"></a>np.array的使用</h4><figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment">#创建数组</span><br><span class="hljs-attribute">d</span> = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>]，ndim=<span class="hljs-number">2</span>) 可以自由设置维度等参数<br><br><span class="hljs-comment">#查看类型</span><br><span class="hljs-attribute">type</span>(d)<br><br><span class="hljs-comment">#查看帮助文档</span><br><span class="hljs-attribute">np</span>.array?<br><br><span class="hljs-comment">#数组元素的类型</span><br><span class="hljs-attribute">d</span>.dtype		返回数组中元素的类型<br>	<span class="hljs-attribute">shape</span>(数组的形状几行几列)返回由整数组成的元组，元组中的每个整数依次对应数组的每个轴的元素个数。<br>	<span class="hljs-attribute">size</span>（元素数量）返回一个整数，代表数组中元素的个数。<br>	<span class="hljs-attribute">ndim</span>（几维数组）返回一个整数，代表数组的轴的个数，即维度<br>	<span class="hljs-attribute">nbytes</span>返回一个整数，代表用于保存数据的字节数。<br><br><span class="hljs-comment"># 数组元素类型的转化</span><br><span class="hljs-attribute">d2</span> = d.astype(np.int)<br><br><span class="hljs-comment"># 创建二维数组</span><br><span class="hljs-attribute">da</span> = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],[<span class="hljs-number">3</span>, <span class="hljs-number">4</span> ,<span class="hljs-number">5</span> ,<span class="hljs-number">6</span>],<span class="hljs-meta"> [5, 6, 7, 8], [7, 8, 9, 10]])</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">没列举完，可以上百度更多用法</span><br></code></pre></td></tr></table></figure>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>数组的索引也称为下标</p>
+<p>1.下标是整数</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel">import numpy as np<br>b = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">5</span>)<br>b<br>=&gt; array([<span class="hljs-number">0</span>., <span class="hljs-number">25</span>., <span class="hljs-number">50</span>., <span class="hljs-number">75</span>., <span class="hljs-number">100</span>.])<br><br>b[<span class="hljs-number">3</span>]	#取第四个数<br>=&gt; <span class="hljs-number">75.0</span><br><br>b[-<span class="hljs-number">3</span>]<br>=&gt; <span class="hljs-number">50.0</span><br><br>#二维数组<br>c = np.logspace(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">12</span>).reshape(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)<br>c<br><br>c[<span class="hljs-number">1</span>]		#取第二行<br>c[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>]		#取第二行第三个数<br>c[(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)]	#第二行第三个<br><br>c[(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)] = <span class="hljs-number">999</span><br></code></pre></td></tr></table></figure>
+<p>2.下标是列表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs [">import numpy as np<br>b &#x3D; np.linspace(0, 100, 5)<br>b<br>&#x3D;&gt; array([0., 25., 50., 75., 100.])<br><br>b[1]		#返回值<br>&#x3D;&gt;25.0<br><br>b[(1)]		#返回值<br>&#x3D;&gt;25.0<br><br>b[[1, 3]]	#返回数组<br>&#x3D;&gt;array([25.0, 75.0])<br><br>#二维数组<br>c &#x3D; np.logspace(1, 3, 12).reshape(3, 4)<br>c<br><br>c[[0, 2]]		#返回第1行和第三行的数组<br>c[[0, 2], [1, 2]]	#返回以第一行的第二个数和第3行的第3个数组成的数组<br>c[[2,2,2]]		#列表为下标才可以这样写，返回以3个第3行组成的列表<br><br></code></pre></td></tr></table></figure>
+<p>下标是数组</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel">d = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>])<br><span class="hljs-built_in">t</span> = d == <span class="hljs-number">5</span><br>d[<span class="hljs-built_in">t</span>]<br>=&gt;array([<span class="hljs-built_in">False</span>, <span class="hljs-built_in">False</span>,  <span class="hljs-built_in">True</span>, <span class="hljs-built_in">False</span>, <span class="hljs-built_in">False</span>])<br><br>e =np.arange(<span class="hljs-number">12</span>).reshape(<span class="hljs-number">2</span>,<span class="hljs-number">6</span>)<br>e<br>#找出数组中的奇数<br><span class="hljs-built_in">t</span> = e % <span class="hljs-number">2</span> ==<span class="hljs-number">1</span>		#e % <span class="hljs-number">2</span> ==<span class="hljs-number">1</span>这个是判断条件<br>e[<span class="hljs-built_in">t</span>]<br><br>#e[<span class="hljs-built_in">t</span>]就是找出数组e里面符合条件<span class="hljs-built_in">t</span>的数<br><br>简化：<br>e[e % <span class="hljs-number">2</span> ==<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h4><p>一维数组的切片与列表切片一样</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">d</span> = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span> ,<span class="hljs-number">15</span>])<br><span class="hljs-attribute">d</span>[<span class="hljs-number">2</span>:<span class="hljs-number">6</span>:<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
+<p>二维数组</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-tag">b</span> = np<span class="hljs-selector-class">.arange</span>(<span class="hljs-number">0</span>,<span class="hljs-number">60</span>,<span class="hljs-number">10</span>)<span class="hljs-selector-class">.reshape</span>(-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)+np<span class="hljs-selector-class">.arange</span>(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>)<br>b<br>=&gt;array(<span class="hljs-selector-attr">[[ 0,  1,  2,  3,  4,  5]</span>,<br>       <span class="hljs-selector-attr">[10, 11, 12, 13, 14, 15]</span>,<br>       <span class="hljs-selector-attr">[20, 21, 22, 23, 24, 25]</span>,<br>       <span class="hljs-selector-attr">[30, 31, 32, 33, 34, 35]</span>,<br>       <span class="hljs-selector-attr">[40, 41, 42, 43, 44, 45]</span>,<br>       <span class="hljs-selector-attr">[50, 51, 52, 53, 54, 55]</span>])<br>       <br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1:4]</span>		#得到第二行到第四行<br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1:4, 2:5]</span>	#得到第二行到第四行与第三列到第五列交叉的数<br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1, :]</span>		#得到第二行的数<br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1]</span>		#同上<br><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[:3, [0,3]</span>]	#先取前三行，<span class="hljs-selector-attr">[0,3]</span>的意思是取第一列和第第三列<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel">import numpy as np<br>a = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>).reshape((<span class="hljs-number">2</span>, <span class="hljs-number">5</span>))<br>a<br>=&gt;array([[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],<br>       [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]])<br> <br>元素级运算： 数组内的数对应加减乘除，数组与数组也是一样的<br>a * <span class="hljs-number">3</span>		#数组内每个数乘以<span class="hljs-number">3</span>，+ - /都是这样计算<br>=&gt;array([[ <span class="hljs-number">0</span>,  <span class="hljs-number">3</span>,  <span class="hljs-number">6</span>,  <span class="hljs-number">9</span>, <span class="hljs-number">12</span>],<br>       [<span class="hljs-number">15</span>, <span class="hljs-number">18</span>, <span class="hljs-number">21</span>, <span class="hljs-number">24</span>, <span class="hljs-number">27</span>]])<br>       <br>#广播 二维数组加一维数组<br>a = array([[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>],<br>          [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]])<br>b = array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])<br><br>a+b		#a的第一行加上对应的b,a的第二行也加上对应的b<br>=&gt;array([[ <span class="hljs-number">0</span>,  <span class="hljs-number">2</span>,  <span class="hljs-number">4</span>,  <span class="hljs-number">6</span>,  <span class="hljs-number">8</span>],<br>         [ <span class="hljs-number">5</span>,  <span class="hljs-number">7</span>,  <span class="hljs-number">9</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>]])<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h4><h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><h6 id="创建矩阵"><a href="#创建矩阵" class="headerlink" title="创建矩阵"></a>创建矩阵</h6><figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">import numpy as np<br>A = np.mat([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])		#创建矩阵<br>A<br><br>=&gt; matrix(<span class="hljs-string">[[1, 2, 3]]</span>)<br><br>A.shape		#查看形状<br><br>B = np.mat(<span class="hljs-string">&#x27;1 2 3; 4 5 6; 7 8 9&#x27;</span>)		#方阵<br>B<br><br>=&gt; matrix(<span class="hljs-string">[[1, 2, 3],</span><br><span class="hljs-string">          [4, 5, 6],</span><br><span class="hljs-string">          [7, 8, 9]]</span>)<br>          <br># 数组作为参数，创建矩阵<br>M1 = np.mat(np.eye(<span class="hljs-number">3</span>))<br>M1<br><br>#矩阵合并<br>np.bmat(<span class="hljs-string">&#x27;M1 M2;M2 M1&#x27;</span>)<br><br>重要 重要<br>两个数组相乘和两个矩阵相乘是不一样的<br>#矩阵的乘法<br><br>#两个数组相乘用“*”表示，对应元素相乘<br>a = np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)<br>b = np.array(<span class="hljs-string">[[1,0,1],[0,1,1],[1,1,0]]</span>)<br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-&#x27;</span>*<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(b)<br><span class="hljs-string">[[1 2 3]</span><br><span class="hljs-string"> [4 5 6]</span><br><span class="hljs-string"> [7 8 9]]</span><br><span class="hljs-comment">----------</span><br><span class="hljs-string">[[1 0 1]</span><br><span class="hljs-string"> [0 1 1]</span><br><span class="hljs-string"> [1 1 0]]</span><br><br>a*b       # 对应元素相乘<br>array(<span class="hljs-string">[[1, 0, 3],</span><br><span class="hljs-string">       [0, 5, 6],</span><br><span class="hljs-string">       [7, 8, 0]]</span>)<br><br>#两个矩阵用“*”相乘<br>A = np.mat(a)<br>B = np.mat(b)<br><br>A * B		# <span class="hljs-number">4</span>是a的第一行乘以b的第一列元素相加，以此类推<br>=&gt; matrix(<span class="hljs-string">[[ 4,  5,  3],</span><br><span class="hljs-string">        [10, 11,  9],</span><br><span class="hljs-string">        [16, 17, 15]]</span>)<br>        <br>np.dot(a,b)		#等价于上面的矩阵相乘  <br><br>A.T			#矩阵的转置<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="矢量运算"><a href="#矢量运算" class="headerlink" title="矢量运算"></a>矢量运算</h4><p>标量积</p>
+<p>点积：np.dot(a,b)</p>
+<p>内积： np.inner(a,b)</p>
+<p>矢量积(叉积) ：np.cross(v,b)</p>
+<h4 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h4><figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix"><span class="hljs-comment">#创建多项式</span><br><span class="hljs-comment"># f(x) = 2 x^3 - 3 x^2 + 1 x + 6</span><br><span class="hljs-attr">a</span> = np.array([<span class="hljs-number">2</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">6</span>])<br><span class="hljs-attr">fx</span> = np.poly1d(a)	<span class="hljs-comment">#poly1d中 d 前面的1是数字一</span><br>fx<br><br>=&gt; poly1d([ <span class="hljs-number">2</span>, -<span class="hljs-number">3</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">6</span>])<br><br>fx(<span class="hljs-number">2</span>)   <span class="hljs-comment">#给多项式赋值2</span><br>print(fx)	<span class="hljs-comment"># 打印fx多项式</span><br><br>拓展<br><span class="hljs-comment"># g = (x-1)^2 + 3(x-1) + 2</span><br><span class="hljs-attr">p</span> = np.poly1d([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>])<br><span class="hljs-attr">g</span> = lambda x: p(x-<span class="hljs-number">1</span>)	<span class="hljs-comment">#将x替换成x-1</span><br>g(<span class="hljs-number">0</span>)<br><br><span class="hljs-comment">#基于根(解)创建多项式</span><br><span class="hljs-attr">root</span> = np.array([<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br><span class="hljs-attr">p2</span> = np.poly1d(root, <span class="hljs-attr">r=True)</span><br>print(p2)<br><br><span class="hljs-comment">#在显示上，更换变量（将X替换成Y显示）</span><br><span class="hljs-attr">p3</span> = np.poly1d(a, <span class="hljs-attr">variable=&#x27;y&#x27;)</span><br>print(p3)<br></code></pre></td></tr></table></figure>
+<h4 id="多项式运算"><a href="#多项式运算" class="headerlink" title="多项式运算"></a>多项式运算</h4><h6 id="加减乘除"><a href="#加减乘除" class="headerlink" title="加减乘除"></a>加减乘除</h6><p>正常运算</p>
+<p>本质是系数运算，系数可以是数组，列表，</p>
+<figure class="highlight subunit"><table><tr><td class="code"><pre><code class="hljs subunit">p4 = p2 + [<span class="hljs-string">-2</span>, 1]		#[<span class="hljs-string">-2</span>,1]代表<span class="hljs-string">-2</span>x<span class="hljs-string">+1</span><br></code></pre></td></tr></table></figure>
+<h6 id="微分（求导）"><a href="#微分（求导）" class="headerlink" title="微分（求导）"></a>微分（求导）</h6><figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">pd</span> = p2.deriv()<br></code></pre></td></tr></table></figure>
+<h6 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h6><figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">pint</span> = pd.integ()<br></code></pre></td></tr></table></figure>
+<h6 id="求多项式的根"><a href="#求多项式的根" class="headerlink" title="求多项式的根"></a>求多项式的根</h6><figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">r</span> = np.roots(p2)<br></code></pre></td></tr></table></figure>
+<p>#技巧：tab</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima"><span class="hljs-built_in">np</span>.po	#按<span class="hljs-built_in">tab</span>键可以选择需要的函数<br><span class="hljs-built_in">np</span>.poly1d?	#查看该函数的方法<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="解线性方程组"><a href="#解线性方程组" class="headerlink" title="解线性方程组"></a>解线性方程组</h4><figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-tag">a</span> = np<span class="hljs-selector-class">.array</span>(<span class="hljs-selector-attr">[[3, 1]</span>, <span class="hljs-selector-attr">[1, 2]</span>])<br><span class="hljs-selector-tag">b</span> = np,array(<span class="hljs-selector-attr">[[9]</span>, <span class="hljs-selector-attr">[8]</span>])<br>x = np<span class="hljs-selector-class">.linalg</span><span class="hljs-selector-class">.solve</span>(<span class="hljs-selector-tag">a</span>, b)<br>x<br><br>=&gt; array(<span class="hljs-selector-attr">[[2.]</span><br>			<span class="hljs-selector-attr">[3]</span>.])<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据分析-Pandas</title>
     <url>/2021/08/12/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-Pandas/</url>
     <content><![CDATA[<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>掌握Series和DataFrame对象的创建方法</p>
@@ -2356,6 +2356,165 @@ C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125;
       </tags>
   </entry>
   <entry>
+    <title>网易-jQuery</title>
+    <url>/2022/03/03/%E7%BD%91%E6%98%93-jQuery/</url>
+    <content><![CDATA[<h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><h5 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h5><figure class="highlight less"><table><tr><td class="code"><pre><code class="hljs less"><span class="hljs-selector-class">.show</span>()显示元素	<span class="hljs-selector-class">.hide</span>()隐藏元素<br><span class="hljs-selector-class">.index</span>()当前元素索引	<span class="hljs-selector-class">.css</span>()设置样式<br><span class="hljs-selector-class">.toFixed</span>(<span class="hljs-number">2</span>)保留<span class="hljs-selector-tag">2</span>位小数	<span class="hljs-selector-class">.substr</span>(<span class="hljs-number">1</span>)截取<span class="hljs-selector-tag">index1</span>往后的<br><span class="hljs-selector-class">.change</span>(fn)<span class="hljs-selector-tag">input</span>框内容发生改变<br><span class="hljs-selector-class">.trigger</span>(<span class="hljs-string">&#x27;click&#x27;</span>) 自动触发事件<br></code></pre></td></tr></table></figure>
+
+
+
+
+<h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><h6 id="等待页面加载"><a href="#等待页面加载" class="headerlink" title="等待页面加载"></a>等待页面加载</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//第一种</span><br>$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;加载完毕&#x27;</span>);<br>&#125;);<br><br><span class="hljs-comment">//第二种</span><br>$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;dom加载完毕&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="对象相互转换"><a href="#对象相互转换" class="headerlink" title="对象相互转换"></a>对象相互转换</h6><p>dom对象：原生js语法得到的对象(document.querySelector(‘div’))</p>
+<p>jQuery对象：通过jQuery获得的对象($(‘div’))</p>
+<p>每个对象只能调用自己的方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">dom转jQuery<br><span class="hljs-keyword">var</span> mydiv = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;div&#x27;</span>);<br><br>$(mydiv)		<span class="hljs-comment">//</span><br><br>jQuery转dom<br>$(<span class="hljs-string">&#x27;div&#x27;</span>)[<span class="hljs-number">0</span>]	后面就可以添加原生js语句了<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).get(<span class="hljs-number">0</span>)  和上面的方法是一样的<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h5><h6 id="css选择"><a href="#css选择" class="headerlink" title="css选择"></a>css选择</h6><p>直接在选择器里写入css选择器就行</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">$(&#x27;<span class="hljs-params">div</span>&#x27;)</span>	<span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>&#x27;)</span><br><span class="hljs-constructor">$(&#x27;.<span class="hljs-params">class</span>&#x27;)</span>	<span class="hljs-constructor">$(&#x27;#<span class="hljs-params">id</span>&#x27;)</span> <br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">ul</span> <span class="hljs-params">li</span>&#x27;)</span><br></code></pre></td></tr></table></figure>
+<h6 id="隐式迭代"><a href="#隐式迭代" class="headerlink" title="隐式迭代"></a>隐式迭代</h6><p>遍历 内部dom元素的过程就叫隐式迭代</p>
+<p>jQuery会给匹配到的所有元素进行循环遍历，不用我们自己在进行循环</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">所有匹配到的元素背景都会变成red<br>$(<span class="hljs-string">&quot;div&quot;</span>).css(<span class="hljs-string">&#x27;backgroundCorlor&#x27;</span>,<span class="hljs-string">&#x27;red&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h6 id="筛选选择器"><a href="#筛选选择器" class="headerlink" title="筛选选择器"></a>筛选选择器</h6><figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">$(&#x27;<span class="hljs-built_in">li</span>:<span class="hljs-built_in">first</span>&#x27;)	第一个<span class="hljs-built_in">li</span><br>$(&#x27;<span class="hljs-built_in">li</span>:<span class="hljs-built_in">last</span>&#x27;)	最后一个<span class="hljs-built_in">li</span><br>$(<span class="hljs-built_in">li</span>:eq(<span class="hljs-number">2</span>))		第二个<span class="hljs-built_in">li</span>,括号里是几就选择第几个<br><br><span class="hljs-built_in">li</span>:<span class="hljs-built_in">odd</span>	选择奇数<br><span class="hljs-built_in">li</span>:<span class="hljs-built_in">even</span>	选择偶数<br></code></pre></td></tr></table></figure>
+<p>父子元素选择</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">$(<span class="hljs-string">&#x27;.li&#x27;</span>)<span class="hljs-selector-class">.parent</span>()		li的父元素<br>$(<span class="hljs-string">&#x27;.li&#x27;</span>)<span class="hljs-selector-class">.parents</span>()		li的所有祖先元素(括号里可以指定祖先元素)<br>$(<span class="hljs-string">&#x27;.li&#x27;</span>)<span class="hljs-selector-class">.children</span>(<span class="hljs-string">&#x27;p&#x27;</span>)	li的最近一级的子元素p<br>$(<span class="hljs-string">&#x27;.li&#x27;</span>)<span class="hljs-selector-class">.find</span>(<span class="hljs-string">&#x27;p&#x27;</span>)		li所有的子元素p<br></code></pre></td></tr></table></figure>
+<p>兄弟元素</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>:<span class="hljs-params">first</span>&#x27;)</span>.siblings(&#x27;li&#x27;)	查找兄弟节点，不包括自己<br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>:<span class="hljs-params">first</span>&#x27;)</span>.next<span class="hljs-constructor">All()</span>			同级后面所有元素<br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>:<span class="hljs-params">first</span>&#x27;)</span>.prev<span class="hljs-constructor">All()</span>			同级前面所有元素<br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>:<span class="hljs-params">first</span>&#x27;)</span>.eq(<span class="hljs-number">2</span>)				查找同级的第几个元素<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h5><p>css()单个样式修改</p>
+<p>css({})多个样式修改</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).css(<span class="hljs-string">&quot;width&quot;</span>,<span class="hljs-string">&quot;500px&quot;</span>)<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).css(&#123;<br>	<span class="hljs-string">&quot;width&quot;</span>:<span class="hljs-string">&quot;300px&quot;</span>,<br>	<span class="hljs-string">&quot;height&quot;</span>:<span class="hljs-string">&quot;200px&quot;</span>,<br>	<span class="hljs-string">&quot;backgroundColor&quot;</span>:<span class="hljs-string">&#x27;red&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>操作类名样式方法</p>
+<p>添加删除时不影响原来已有的类名</p>
+<p>.addClass(‘rotate’)        添加class</p>
+<p>.removeClass(‘rotate’)    删除class</p>
+<p>.toggleClass(‘rotate’)        判断有无class，有:删除，无:加上</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br><span class="css">	<span class="hljs-selector-class">.rotate</span>&#123;<span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>; <span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;&#125;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><br>$(&#x27;div&#x27;).addClass(&#x27;rotate&#x27;)<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="jQuery动画效果"><a href="#jQuery动画效果" class="headerlink" title="jQuery动画效果"></a>jQuery动画效果</h5><h6 id="显示与隐藏"><a href="#显示与隐藏" class="headerlink" title="显示与隐藏"></a>显示与隐藏</h6><p>都有三个参数分别是speed，easing,fn(速度，效果，回调函数)</p>
+<p>.show()    显示</p>
+<p>.hide()    隐藏</p>
+<p>.toggle()    切换</p>
+<p>用这几个方法是一般都不会添加参数（这个动画不好看）</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">上下拉动<br>参数与show的参数一样<br><span class="hljs-title">.slideDown()下拉显示</span><br><span class="hljs-title">.slideUp()上拉消失</span><br><span class="hljs-title">.slideToggle()上下拉切换</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">淡入淡出<br>参数：速度，透明度（效果），回调函数<br>参数与show的参数一样<br><span class="hljs-function"><span class="hljs-title">fadeIn</span><span class="hljs-params">()</span></span>		淡入<br><span class="hljs-function"><span class="hljs-title">fadeOut</span><span class="hljs-params">()</span></span>		淡出<br><span class="hljs-function"><span class="hljs-title">fadeToggle</span><span class="hljs-params">()</span></span>	淡入淡出切换<br><span class="hljs-function"><span class="hljs-title">fadeTo</span><span class="hljs-params">(<span class="hljs-number">1000</span>，<span class="hljs-number">0.5</span>)</span></span>		切换透明度必须写速度与透明度两个参数<br></code></pre></td></tr></table></figure>
+<h6 id="事件切换（鼠标移动）"><a href="#事件切换（鼠标移动）" class="headerlink" title="事件切换（鼠标移动）"></a>事件切换（鼠标移动）</h6><p>hover([over],out)</p>
+<p>只写一个参数时，鼠标进入和移出都触发</p>
+<p>over:鼠标移到元素上触发</p>
+<p>out:鼠标离开元素触发</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;移入事件&#125;,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;移出事件&#125;)<br><br><span class="hljs-comment">//写成一个函数</span><br>$(<span class="hljs-string">&#x27;div&#x27;</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	使用toggle相关方法<br>	&#125;)<br></code></pre></td></tr></table></figure>
+<h6 id="停止动画"><a href="#停止动画" class="headerlink" title="停止动画"></a>停止动画</h6><p>放到动画前执行，停止上一个未执行完的动画</p>
+<p>stop()</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-string">&#x27;div &gt; li&#x27;</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	$(<span class="hljs-built_in">this</span>).children(<span class="hljs-string">&#x27;ul&#x27;</span>).stop().slideToggle();	<span class="hljs-comment">//放到slideToggle前面</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+<h6 id="自定义动画"><a href="#自定义动画" class="headerlink" title="自定义动画"></a>自定义动画</h6><p>animate(params,[speed],[easing],[fn])</p>
+<p>params:想要更改的样式属性，以对象的形式传递，属性不用带引号</p>
+<p>speed ：速度(‘slow’,’normal’,’fast’)或者毫秒数（1000）</p>
+<p>esaing:    切换效果(默认swing)(linear)</p>
+<p>fn:回调函数，动画完成后执行</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">$(<span class="hljs-string">&#x27;div&#x27;</span>)<span class="hljs-selector-class">.animate</span>(&#123;<br>	<span class="hljs-attribute">left</span>:<span class="hljs-number">300</span><br>&#125;,<span class="hljs-number">2000</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="jQuery属性获取与设置"><a href="#jQuery属性获取与设置" class="headerlink" title="jQuery属性获取与设置"></a>jQuery属性获取与设置</h5><h6 id="获取与修改"><a href="#获取与修改" class="headerlink" title="获取与修改"></a>获取与修改</h6><p>prop()    获取固有属性</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">$(&#x27;<span class="hljs-keyword">div</span>&#x27;).<span class="hljs-keyword">prop</span>(&#x27;<span class="hljs-built_in">class</span>&#x27;)	获取<br>$(&#x27;<span class="hljs-keyword">div</span>&#x27;).<span class="hljs-keyword">prop</span>(&#x27;<span class="hljs-built_in">class</span>&#x27;,&#x27;<span class="hljs-built_in">name</span>&#x27;)	设置<br></code></pre></td></tr></table></figure>
+<p>attr()    获取自定义属性</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).attr(<span class="hljs-string">&#x27;index&#x27;</span>)	获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).attr(<span class="hljs-string">&#x27;index&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>)	设置<br></code></pre></td></tr></table></figure>
+<p>data()    数据缓存，设置的属性存放到元素内存里，不会在页面上显示</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).attr(<span class="hljs-string">&#x27;name&#x27;</span>)	获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).data(<span class="hljs-string">&#x27;name&#x27;</span>,<span class="hljs-string">&#x27;tbz&#x27;</span>)	设置<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="jQuery内容文本值"><a href="#jQuery内容文本值" class="headerlink" title="jQuery内容文本值"></a>jQuery内容文本值</h5><h6 id="元素内容"><a href="#元素内容" class="headerlink" title="元素内容"></a>元素内容</h6><p>html()</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).html()		获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).html(<span class="hljs-string">&#x27;&lt;p&gt;123&lt;/p&gt;&#x27;</span>)		设置<br></code></pre></td></tr></table></figure>
+<h6 id="元素文本"><a href="#元素文本" class="headerlink" title="元素文本"></a>元素文本</h6><p>text()</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><code class="hljs mel">$(<span class="hljs-string">&#x27;div&#x27;</span>).<span class="hljs-keyword">text</span>()		获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).<span class="hljs-keyword">text</span>(<span class="hljs-string">&#x27;123&#x27;</span>)		设置<br></code></pre></td></tr></table></figure>
+<h6 id="表单值"><a href="#表单值" class="headerlink" title="表单值"></a>表单值</h6><p>val()</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">$(&#x27;<span class="hljs-params">input</span>&#x27;)</span>.<span class="hljs-keyword">val</span><span class="hljs-literal">()</span>		获取<br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">input</span>&#x27;)</span>.<span class="hljs-keyword">val</span>(&#x27;<span class="hljs-number">123</span>&#x27;)		设置<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="jQuery元素操作"><a href="#jQuery元素操作" class="headerlink" title="jQuery元素操作"></a>jQuery元素操作</h5><h6 id="遍历元素"><a href="#遍历元素" class="headerlink" title="遍历元素"></a>遍历元素</h6><p>$(‘div’).each()    用于遍历dom对象</p>
+<p>$(‘div’).each(function(index,domEle){})</p>
+<p>参数： 索引号，dom对象(需转换$())</p>
+<p>$.each()    用于遍历数据，处理数据</p>
+<p>$.each(arr,fun(数组索引，数组内容))    </p>
+<h6 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h6><p>添加元素</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">var</span> li = $(<span class="hljs-string">&quot;&lt;li&gt;我是新创建的元素&lt;/li&gt;&quot;</span>)<br><br>$(<span class="hljs-string">&#x27;div&#x27;</span>).append(<span class="hljs-string">&#x27;li&#x27;</span>)	内部添加到元素后面<br>	prepend(<span class="hljs-string">&#x27;li&#x27;</span>)	内部添加到元素前面<br>	after(<span class="hljs-string">&#x27;li&#x27;</span>)	外部添加到后面<br>	before(<span class="hljs-string">&#x27;li&#x27;</span>)	外部添加到前面<br></code></pre></td></tr></table></figure>
+<p>删除元素</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).remove();	删除自己<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).empty();	删除子节点，与html(<span class="hljs-string">&#x27;&#x27;</span>)一样<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="jQuery事件"><a href="#jQuery事件" class="headerlink" title="jQuery事件"></a>jQuery事件</h5><h6 id="事件注册"><a href="#事件注册" class="headerlink" title="事件注册"></a>事件注册</h6><p>单个</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;)<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).mousemove(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;)<br></code></pre></td></tr></table></figure>
+<h6 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h6><p>同时添加多个事件</p>
+<p>on()</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).on(&#123;<br>	click:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;,<br>	mouseenter:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;,<br>	mousedown:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>执行相同事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-string">&#x27;div&#x27;</span>).on(<span class="hljs-string">&quot;mouseover mouseout&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	$(<span class="hljs-built_in">this</span>).toggleClass(<span class="hljs-string">&#x27;current&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h6 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h6><p>on(‘事件’，子元素，fn)</p>
+<p>将事件绑定到父元素上，子元素能触发该事件</p>
+<p>也可以给未来动态创建的元素绑定事件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-string">&#x27;ul&#x27;</span>).on(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-string">&#x27;li&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	$(<span class="hljs-built_in">this</span>).toggleClass(<span class="hljs-string">&#x27;current&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>解除事件委托</p>
+<p>off() </p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><code class="hljs gams"><span class="hljs-symbol">$</span>(<span class="hljs-string">&#x27;div&#x27;</span>).off()	解绑所有事件<br><span class="hljs-symbol">$</span>(<span class="hljs-string">&#x27;div&#x27;</span>).off(<span class="hljs-string">&#x27;click&#x27;</span>)	解除<span class="hljs-built_in">div</span>上的click事件<br><span class="hljs-symbol">$</span>(<span class="hljs-string">&#x27;ul&#x27;</span>).off(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-string">&#x27;li&#x27;</span>) 解除事件委托<br></code></pre></td></tr></table></figure>
+<p>只能触发一次</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;ul&#x27;</span>).one(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;<span class="hljs-string">&#x27;)</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="自动触发事件"><a href="#自动触发事件" class="headerlink" title="自动触发事件"></a>自动触发事件</h6><figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">$(&#x27;<span class="hljs-params">div</span>&#x27;)</span>.click<span class="hljs-literal">()</span><br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">div</span>&#x27;)</span>.trigger.(<span class="hljs-string">&quot;click&quot;</span>)<br><br>上面两种都会触发默认行为<br>下面一种不会触发默认事件<br><br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">input</span>&#x27;)</span>.trigger<span class="hljs-constructor">Handler(&#x27;<span class="hljs-params">focus</span>&#x27;)</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h6><p>阻止默认行为：event.preventDefault()或者return false</p>
+<p>阻止冒泡：event.stopPropagation()</p>
+<h5 id="对象拷贝（合并）"><a href="#对象拷贝（合并）" class="headerlink" title="对象拷贝（合并）"></a>对象拷贝（合并）</h5><p>$.extend([deep],target,object1,[objectN])</p>
+<p>deep:true为深拷贝，默认false浅拷贝</p>
+<p>target：要拷贝的目标对象</p>
+<p>object1：待拷贝到的第一个对象</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$.extend(待拷贝，被拷贝)<br></code></pre></td></tr></table></figure>
+<p>浅拷贝：会把原来对象里面的复杂数据类型地址拷贝给目标对象</p>
+<p>深拷贝：完全复制一份，会将不冲突的数据合并在一起</p>
+<h5 id="多库共存（-符冲突）"><a href="#多库共存（-符冲突）" class="headerlink" title="多库共存（$符冲突）"></a>多库共存（$符冲突）</h5><p>1：使用jQuery代替$</p>
+<p>2：让jQuery释放对$的控制权，自己定义</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">var</span> tbz = jQuery.noConflict();<br><br>tbz(<span class="hljs-string">&#x27;div&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+
+<h5 id="jQuery元素尺寸与位置"><a href="#jQuery元素尺寸与位置" class="headerlink" title="jQuery元素尺寸与位置"></a>jQuery元素尺寸与位置</h5><h6 id="元素尺寸"><a href="#元素尺寸" class="headerlink" title="元素尺寸"></a>元素尺寸</h6><p>如果参数为空，获取相应的值返回数字</p>
+<p>如果参数为数字，则是修改相应的值</p>
+<p>参数可以不写单位</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">width</span><span class="hljs-params">()</span></span>/<span class="hljs-attribute">height</span>()			获取元素的宽度/高度 <br><span class="hljs-function"><span class="hljs-title">width</span><span class="hljs-params">(<span class="hljs-number">200</span>)</span></span>/<span class="hljs-attribute">height</span>(<span class="hljs-number">100</span>)	修改元素的宽度/高度 <br><span class="hljs-function"><span class="hljs-title">innerWidth</span><span class="hljs-params">()</span></span>/innerHight()	包含<span class="hljs-attribute">padding</span><br><span class="hljs-function"><span class="hljs-title">outerWidth</span><span class="hljs-params">()</span></span>/outerHight()	包含<span class="hljs-attribute">padding</span>,border<br><span class="hljs-function"><span class="hljs-title">outerWidth</span><span class="hljs-params">(true)</span></span>/outerHight(true)	包含<span class="hljs-attribute">padding</span>,border,margin<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="元素位置"><a href="#元素位置" class="headerlink" title="元素位置"></a>元素位置</h6><p>offset()</p>
+<p>设置/获取元素偏移(相对于文档)</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>)<span class="hljs-selector-class">.offset</span>()<span class="hljs-selector-class">.top</span>	距离文档顶部距离<br>$(<span class="hljs-string">&#x27;div&#x27;</span>)<span class="hljs-selector-class">.offset</span>()<span class="hljs-selector-class">.left</span>	距离文档左侧距离<br><br>设置<br>$(<span class="hljs-string">&#x27;div&#x27;</span>)<span class="hljs-selector-class">.offset</span>(&#123;<br>	<span class="hljs-attribute">top</span>:<span class="hljs-number">100</span>,<br>	<span class="hljs-attribute">left</span>:<span class="hljs-number">200</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+<p>position()</p>
+<p>获取距离带有定位父级位置的偏移（该元素到父级的距离）</p>
+<p>如果没有定位，以文档为准</p>
+<p>只能获取，不能设置</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">$(<span class="hljs-string">&#x27;div&#x27;</span>).<span class="hljs-built_in">position</span>().<span class="hljs-keyword">left</span><br>$(<span class="hljs-string">&#x27;div&#x27;</span>).<span class="hljs-built_in">position</span>().top<br></code></pre></td></tr></table></figure>
+
+
+<p>scroll()    滚动事件</p>
+<p>scrollTop()        被卷去的头部</p>
+<p>scrollLeft()        被卷去的左侧</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-built_in">window</span>).scroll(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">if</span>($(<span class="hljs-built_in">document</span>).scrollTop()&gt;=<span class="hljs-number">200</span>)&#123;<br>		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;111&#x27;</span>)<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;222&#x27;</span>)<br>	&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+<p>返回顶部</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml">赋值滚动距离<br><span class="hljs-constructor">$(<span class="hljs-params">document</span>)</span>.scroll<span class="hljs-constructor">Top(0)</span>	返回顶部(将它添加到一个点击事件里)<br><br>带动画的返回顶部<br><span class="hljs-constructor">$(&#x27;.<span class="hljs-params">back</span>&#x27;)</span>.click(<span class="hljs-keyword">function</span><span class="hljs-literal">()</span>&#123;<br>	<span class="hljs-constructor">$(&#x27;<span class="hljs-params">body</span>,<span class="hljs-params">html</span>&#x27;)</span>.stop<span class="hljs-literal">()</span>.animate(&#123;<br>		scrollTop:<span class="hljs-number">0</span><br>	&#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Web前端(网易学习)</category>
+      </categories>
+      <tags>
+        <tag>jQuery</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>网易-Html</title>
     <url>/2021/10/21/%E7%BD%91%E6%98%93-html/</url>
     <content><![CDATA[<p>前端总结</p>
@@ -2516,165 +2675,6 @@ C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125;
       </categories>
       <tags>
         <tag>html</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网易-jQuery</title>
-    <url>/2022/03/03/%E7%BD%91%E6%98%93-jQuery/</url>
-    <content><![CDATA[<h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><h5 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h5><figure class="highlight less"><table><tr><td class="code"><pre><code class="hljs less"><span class="hljs-selector-class">.show</span>()显示元素	<span class="hljs-selector-class">.hide</span>()隐藏元素<br><span class="hljs-selector-class">.index</span>()当前元素索引	<span class="hljs-selector-class">.css</span>()设置样式<br><span class="hljs-selector-class">.toFixed</span>(<span class="hljs-number">2</span>)保留<span class="hljs-selector-tag">2</span>位小数	<span class="hljs-selector-class">.substr</span>(<span class="hljs-number">1</span>)截取<span class="hljs-selector-tag">index1</span>往后的<br><span class="hljs-selector-class">.change</span>(fn)<span class="hljs-selector-tag">input</span>框内容发生改变<br><span class="hljs-selector-class">.trigger</span>(<span class="hljs-string">&#x27;click&#x27;</span>) 自动触发事件<br></code></pre></td></tr></table></figure>
-
-
-
-
-<h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><h6 id="等待页面加载"><a href="#等待页面加载" class="headerlink" title="等待页面加载"></a>等待页面加载</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//第一种</span><br>$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;加载完毕&#x27;</span>);<br>&#125;);<br><br><span class="hljs-comment">//第二种</span><br>$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;dom加载完毕&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="对象相互转换"><a href="#对象相互转换" class="headerlink" title="对象相互转换"></a>对象相互转换</h6><p>dom对象：原生js语法得到的对象(document.querySelector(‘div’))</p>
-<p>jQuery对象：通过jQuery获得的对象($(‘div’))</p>
-<p>每个对象只能调用自己的方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">dom转jQuery<br><span class="hljs-keyword">var</span> mydiv = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;div&#x27;</span>);<br><br>$(mydiv)		<span class="hljs-comment">//</span><br><br>jQuery转dom<br>$(<span class="hljs-string">&#x27;div&#x27;</span>)[<span class="hljs-number">0</span>]	后面就可以添加原生js语句了<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).get(<span class="hljs-number">0</span>)  和上面的方法是一样的<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h5><h6 id="css选择"><a href="#css选择" class="headerlink" title="css选择"></a>css选择</h6><p>直接在选择器里写入css选择器就行</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">$(&#x27;<span class="hljs-params">div</span>&#x27;)</span>	<span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>&#x27;)</span><br><span class="hljs-constructor">$(&#x27;.<span class="hljs-params">class</span>&#x27;)</span>	<span class="hljs-constructor">$(&#x27;#<span class="hljs-params">id</span>&#x27;)</span> <br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">ul</span> <span class="hljs-params">li</span>&#x27;)</span><br></code></pre></td></tr></table></figure>
-<h6 id="隐式迭代"><a href="#隐式迭代" class="headerlink" title="隐式迭代"></a>隐式迭代</h6><p>遍历 内部dom元素的过程就叫隐式迭代</p>
-<p>jQuery会给匹配到的所有元素进行循环遍历，不用我们自己在进行循环</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">所有匹配到的元素背景都会变成red<br>$(<span class="hljs-string">&quot;div&quot;</span>).css(<span class="hljs-string">&#x27;backgroundCorlor&#x27;</span>,<span class="hljs-string">&#x27;red&#x27;</span>)<br></code></pre></td></tr></table></figure>
-<h6 id="筛选选择器"><a href="#筛选选择器" class="headerlink" title="筛选选择器"></a>筛选选择器</h6><figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">$(&#x27;<span class="hljs-built_in">li</span>:<span class="hljs-built_in">first</span>&#x27;)	第一个<span class="hljs-built_in">li</span><br>$(&#x27;<span class="hljs-built_in">li</span>:<span class="hljs-built_in">last</span>&#x27;)	最后一个<span class="hljs-built_in">li</span><br>$(<span class="hljs-built_in">li</span>:eq(<span class="hljs-number">2</span>))		第二个<span class="hljs-built_in">li</span>,括号里是几就选择第几个<br><br><span class="hljs-built_in">li</span>:<span class="hljs-built_in">odd</span>	选择奇数<br><span class="hljs-built_in">li</span>:<span class="hljs-built_in">even</span>	选择偶数<br></code></pre></td></tr></table></figure>
-<p>父子元素选择</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">$(<span class="hljs-string">&#x27;.li&#x27;</span>)<span class="hljs-selector-class">.parent</span>()		li的父元素<br>$(<span class="hljs-string">&#x27;.li&#x27;</span>)<span class="hljs-selector-class">.parents</span>()		li的所有祖先元素(括号里可以指定祖先元素)<br>$(<span class="hljs-string">&#x27;.li&#x27;</span>)<span class="hljs-selector-class">.children</span>(<span class="hljs-string">&#x27;p&#x27;</span>)	li的最近一级的子元素p<br>$(<span class="hljs-string">&#x27;.li&#x27;</span>)<span class="hljs-selector-class">.find</span>(<span class="hljs-string">&#x27;p&#x27;</span>)		li所有的子元素p<br></code></pre></td></tr></table></figure>
-<p>兄弟元素</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>:<span class="hljs-params">first</span>&#x27;)</span>.siblings(&#x27;li&#x27;)	查找兄弟节点，不包括自己<br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>:<span class="hljs-params">first</span>&#x27;)</span>.next<span class="hljs-constructor">All()</span>			同级后面所有元素<br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>:<span class="hljs-params">first</span>&#x27;)</span>.prev<span class="hljs-constructor">All()</span>			同级前面所有元素<br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">li</span>:<span class="hljs-params">first</span>&#x27;)</span>.eq(<span class="hljs-number">2</span>)				查找同级的第几个元素<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h5><p>css()单个样式修改</p>
-<p>css({})多个样式修改</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).css(<span class="hljs-string">&quot;width&quot;</span>,<span class="hljs-string">&quot;500px&quot;</span>)<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).css(&#123;<br>	<span class="hljs-string">&quot;width&quot;</span>:<span class="hljs-string">&quot;300px&quot;</span>,<br>	<span class="hljs-string">&quot;height&quot;</span>:<span class="hljs-string">&quot;200px&quot;</span>,<br>	<span class="hljs-string">&quot;backgroundColor&quot;</span>:<span class="hljs-string">&#x27;red&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-<p>操作类名样式方法</p>
-<p>添加删除时不影响原来已有的类名</p>
-<p>.addClass(‘rotate’)        添加class</p>
-<p>.removeClass(‘rotate’)    删除class</p>
-<p>.toggleClass(‘rotate’)        判断有无class，有:删除，无:加上</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br><span class="css">	<span class="hljs-selector-class">.rotate</span>&#123;<span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>; <span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;&#125;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><br>$(&#x27;div&#x27;).addClass(&#x27;rotate&#x27;)<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="jQuery动画效果"><a href="#jQuery动画效果" class="headerlink" title="jQuery动画效果"></a>jQuery动画效果</h5><h6 id="显示与隐藏"><a href="#显示与隐藏" class="headerlink" title="显示与隐藏"></a>显示与隐藏</h6><p>都有三个参数分别是speed，easing,fn(速度，效果，回调函数)</p>
-<p>.show()    显示</p>
-<p>.hide()    隐藏</p>
-<p>.toggle()    切换</p>
-<p>用这几个方法是一般都不会添加参数（这个动画不好看）</p>
-<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">上下拉动<br>参数与show的参数一样<br><span class="hljs-title">.slideDown()下拉显示</span><br><span class="hljs-title">.slideUp()上拉消失</span><br><span class="hljs-title">.slideToggle()上下拉切换</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">淡入淡出<br>参数：速度，透明度（效果），回调函数<br>参数与show的参数一样<br><span class="hljs-function"><span class="hljs-title">fadeIn</span><span class="hljs-params">()</span></span>		淡入<br><span class="hljs-function"><span class="hljs-title">fadeOut</span><span class="hljs-params">()</span></span>		淡出<br><span class="hljs-function"><span class="hljs-title">fadeToggle</span><span class="hljs-params">()</span></span>	淡入淡出切换<br><span class="hljs-function"><span class="hljs-title">fadeTo</span><span class="hljs-params">(<span class="hljs-number">1000</span>，<span class="hljs-number">0.5</span>)</span></span>		切换透明度必须写速度与透明度两个参数<br></code></pre></td></tr></table></figure>
-<h6 id="事件切换（鼠标移动）"><a href="#事件切换（鼠标移动）" class="headerlink" title="事件切换（鼠标移动）"></a>事件切换（鼠标移动）</h6><p>hover([over],out)</p>
-<p>只写一个参数时，鼠标进入和移出都触发</p>
-<p>over:鼠标移到元素上触发</p>
-<p>out:鼠标离开元素触发</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;移入事件&#125;,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;移出事件&#125;)<br><br><span class="hljs-comment">//写成一个函数</span><br>$(<span class="hljs-string">&#x27;div&#x27;</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	使用toggle相关方法<br>	&#125;)<br></code></pre></td></tr></table></figure>
-<h6 id="停止动画"><a href="#停止动画" class="headerlink" title="停止动画"></a>停止动画</h6><p>放到动画前执行，停止上一个未执行完的动画</p>
-<p>stop()</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-string">&#x27;div &gt; li&#x27;</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	$(<span class="hljs-built_in">this</span>).children(<span class="hljs-string">&#x27;ul&#x27;</span>).stop().slideToggle();	<span class="hljs-comment">//放到slideToggle前面</span><br>&#125;);<br></code></pre></td></tr></table></figure>
-<h6 id="自定义动画"><a href="#自定义动画" class="headerlink" title="自定义动画"></a>自定义动画</h6><p>animate(params,[speed],[easing],[fn])</p>
-<p>params:想要更改的样式属性，以对象的形式传递，属性不用带引号</p>
-<p>speed ：速度(‘slow’,’normal’,’fast’)或者毫秒数（1000）</p>
-<p>esaing:    切换效果(默认swing)(linear)</p>
-<p>fn:回调函数，动画完成后执行</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">$(<span class="hljs-string">&#x27;div&#x27;</span>)<span class="hljs-selector-class">.animate</span>(&#123;<br>	<span class="hljs-attribute">left</span>:<span class="hljs-number">300</span><br>&#125;,<span class="hljs-number">2000</span>)<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="jQuery属性获取与设置"><a href="#jQuery属性获取与设置" class="headerlink" title="jQuery属性获取与设置"></a>jQuery属性获取与设置</h5><h6 id="获取与修改"><a href="#获取与修改" class="headerlink" title="获取与修改"></a>获取与修改</h6><p>prop()    获取固有属性</p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">$(&#x27;<span class="hljs-keyword">div</span>&#x27;).<span class="hljs-keyword">prop</span>(&#x27;<span class="hljs-built_in">class</span>&#x27;)	获取<br>$(&#x27;<span class="hljs-keyword">div</span>&#x27;).<span class="hljs-keyword">prop</span>(&#x27;<span class="hljs-built_in">class</span>&#x27;,&#x27;<span class="hljs-built_in">name</span>&#x27;)	设置<br></code></pre></td></tr></table></figure>
-<p>attr()    获取自定义属性</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).attr(<span class="hljs-string">&#x27;index&#x27;</span>)	获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).attr(<span class="hljs-string">&#x27;index&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>)	设置<br></code></pre></td></tr></table></figure>
-<p>data()    数据缓存，设置的属性存放到元素内存里，不会在页面上显示</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).attr(<span class="hljs-string">&#x27;name&#x27;</span>)	获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).data(<span class="hljs-string">&#x27;name&#x27;</span>,<span class="hljs-string">&#x27;tbz&#x27;</span>)	设置<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="jQuery内容文本值"><a href="#jQuery内容文本值" class="headerlink" title="jQuery内容文本值"></a>jQuery内容文本值</h5><h6 id="元素内容"><a href="#元素内容" class="headerlink" title="元素内容"></a>元素内容</h6><p>html()</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).html()		获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).html(<span class="hljs-string">&#x27;&lt;p&gt;123&lt;/p&gt;&#x27;</span>)		设置<br></code></pre></td></tr></table></figure>
-<h6 id="元素文本"><a href="#元素文本" class="headerlink" title="元素文本"></a>元素文本</h6><p>text()</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><code class="hljs mel">$(<span class="hljs-string">&#x27;div&#x27;</span>).<span class="hljs-keyword">text</span>()		获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).<span class="hljs-keyword">text</span>(<span class="hljs-string">&#x27;123&#x27;</span>)		设置<br></code></pre></td></tr></table></figure>
-<h6 id="表单值"><a href="#表单值" class="headerlink" title="表单值"></a>表单值</h6><p>val()</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">$(&#x27;<span class="hljs-params">input</span>&#x27;)</span>.<span class="hljs-keyword">val</span><span class="hljs-literal">()</span>		获取<br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">input</span>&#x27;)</span>.<span class="hljs-keyword">val</span>(&#x27;<span class="hljs-number">123</span>&#x27;)		设置<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="jQuery元素操作"><a href="#jQuery元素操作" class="headerlink" title="jQuery元素操作"></a>jQuery元素操作</h5><h6 id="遍历元素"><a href="#遍历元素" class="headerlink" title="遍历元素"></a>遍历元素</h6><p>$(‘div’).each()    用于遍历dom对象</p>
-<p>$(‘div’).each(function(index,domEle){})</p>
-<p>参数： 索引号，dom对象(需转换$())</p>
-<p>$.each()    用于遍历数据，处理数据</p>
-<p>$.each(arr,fun(数组索引，数组内容))    </p>
-<h6 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h6><p>添加元素</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">var</span> li = $(<span class="hljs-string">&quot;&lt;li&gt;我是新创建的元素&lt;/li&gt;&quot;</span>)<br><br>$(<span class="hljs-string">&#x27;div&#x27;</span>).append(<span class="hljs-string">&#x27;li&#x27;</span>)	内部添加到元素后面<br>	prepend(<span class="hljs-string">&#x27;li&#x27;</span>)	内部添加到元素前面<br>	after(<span class="hljs-string">&#x27;li&#x27;</span>)	外部添加到后面<br>	before(<span class="hljs-string">&#x27;li&#x27;</span>)	外部添加到前面<br></code></pre></td></tr></table></figure>
-<p>删除元素</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).remove();	删除自己<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).empty();	删除子节点，与html(<span class="hljs-string">&#x27;&#x27;</span>)一样<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="jQuery事件"><a href="#jQuery事件" class="headerlink" title="jQuery事件"></a>jQuery事件</h5><h6 id="事件注册"><a href="#事件注册" class="headerlink" title="事件注册"></a>事件注册</h6><p>单个</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;)<br>$(<span class="hljs-string">&#x27;div&#x27;</span>).mousemove(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;)<br></code></pre></td></tr></table></figure>
-<h6 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h6><p>同时添加多个事件</p>
-<p>on()</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;div&#x27;</span>).on(&#123;<br>	click:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;,<br>	mouseenter:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;,<br>	mousedown:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
-<p>执行相同事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-string">&#x27;div&#x27;</span>).on(<span class="hljs-string">&quot;mouseover mouseout&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	$(<span class="hljs-built_in">this</span>).toggleClass(<span class="hljs-string">&#x27;current&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-<h6 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h6><p>on(‘事件’，子元素，fn)</p>
-<p>将事件绑定到父元素上，子元素能触发该事件</p>
-<p>也可以给未来动态创建的元素绑定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-string">&#x27;ul&#x27;</span>).on(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-string">&#x27;li&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	$(<span class="hljs-built_in">this</span>).toggleClass(<span class="hljs-string">&#x27;current&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-<p>解除事件委托</p>
-<p>off() </p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><code class="hljs gams"><span class="hljs-symbol">$</span>(<span class="hljs-string">&#x27;div&#x27;</span>).off()	解绑所有事件<br><span class="hljs-symbol">$</span>(<span class="hljs-string">&#x27;div&#x27;</span>).off(<span class="hljs-string">&#x27;click&#x27;</span>)	解除<span class="hljs-built_in">div</span>上的click事件<br><span class="hljs-symbol">$</span>(<span class="hljs-string">&#x27;ul&#x27;</span>).off(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-string">&#x27;li&#x27;</span>) 解除事件委托<br></code></pre></td></tr></table></figure>
-<p>只能触发一次</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$(<span class="hljs-string">&#x27;ul&#x27;</span>).one(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;<span class="hljs-string">&#x27;)</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="自动触发事件"><a href="#自动触发事件" class="headerlink" title="自动触发事件"></a>自动触发事件</h6><figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-constructor">$(&#x27;<span class="hljs-params">div</span>&#x27;)</span>.click<span class="hljs-literal">()</span><br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">div</span>&#x27;)</span>.trigger.(<span class="hljs-string">&quot;click&quot;</span>)<br><br>上面两种都会触发默认行为<br>下面一种不会触发默认事件<br><br><span class="hljs-constructor">$(&#x27;<span class="hljs-params">input</span>&#x27;)</span>.trigger<span class="hljs-constructor">Handler(&#x27;<span class="hljs-params">focus</span>&#x27;)</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h6><p>阻止默认行为：event.preventDefault()或者return false</p>
-<p>阻止冒泡：event.stopPropagation()</p>
-<h5 id="对象拷贝（合并）"><a href="#对象拷贝（合并）" class="headerlink" title="对象拷贝（合并）"></a>对象拷贝（合并）</h5><p>$.extend([deep],target,object1,[objectN])</p>
-<p>deep:true为深拷贝，默认false浅拷贝</p>
-<p>target：要拷贝的目标对象</p>
-<p>object1：待拷贝到的第一个对象</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">$.extend(待拷贝，被拷贝)<br></code></pre></td></tr></table></figure>
-<p>浅拷贝：会把原来对象里面的复杂数据类型地址拷贝给目标对象</p>
-<p>深拷贝：完全复制一份，会将不冲突的数据合并在一起</p>
-<h5 id="多库共存（-符冲突）"><a href="#多库共存（-符冲突）" class="headerlink" title="多库共存（$符冲突）"></a>多库共存（$符冲突）</h5><p>1：使用jQuery代替$</p>
-<p>2：让jQuery释放对$的控制权，自己定义</p>
-<figure class="highlight actionscript"><table><tr><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">var</span> tbz = jQuery.noConflict();<br><br>tbz(<span class="hljs-string">&#x27;div&#x27;</span>)<br></code></pre></td></tr></table></figure>
-
-
-<h5 id="jQuery元素尺寸与位置"><a href="#jQuery元素尺寸与位置" class="headerlink" title="jQuery元素尺寸与位置"></a>jQuery元素尺寸与位置</h5><h6 id="元素尺寸"><a href="#元素尺寸" class="headerlink" title="元素尺寸"></a>元素尺寸</h6><p>如果参数为空，获取相应的值返回数字</p>
-<p>如果参数为数字，则是修改相应的值</p>
-<p>参数可以不写单位</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">width</span><span class="hljs-params">()</span></span>/<span class="hljs-attribute">height</span>()			获取元素的宽度/高度 <br><span class="hljs-function"><span class="hljs-title">width</span><span class="hljs-params">(<span class="hljs-number">200</span>)</span></span>/<span class="hljs-attribute">height</span>(<span class="hljs-number">100</span>)	修改元素的宽度/高度 <br><span class="hljs-function"><span class="hljs-title">innerWidth</span><span class="hljs-params">()</span></span>/innerHight()	包含<span class="hljs-attribute">padding</span><br><span class="hljs-function"><span class="hljs-title">outerWidth</span><span class="hljs-params">()</span></span>/outerHight()	包含<span class="hljs-attribute">padding</span>,border<br><span class="hljs-function"><span class="hljs-title">outerWidth</span><span class="hljs-params">(true)</span></span>/outerHight(true)	包含<span class="hljs-attribute">padding</span>,border,margin<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="元素位置"><a href="#元素位置" class="headerlink" title="元素位置"></a>元素位置</h6><p>offset()</p>
-<p>设置/获取元素偏移(相对于文档)</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">获取<br>$(<span class="hljs-string">&#x27;div&#x27;</span>)<span class="hljs-selector-class">.offset</span>()<span class="hljs-selector-class">.top</span>	距离文档顶部距离<br>$(<span class="hljs-string">&#x27;div&#x27;</span>)<span class="hljs-selector-class">.offset</span>()<span class="hljs-selector-class">.left</span>	距离文档左侧距离<br><br>设置<br>$(<span class="hljs-string">&#x27;div&#x27;</span>)<span class="hljs-selector-class">.offset</span>(&#123;<br>	<span class="hljs-attribute">top</span>:<span class="hljs-number">100</span>,<br>	<span class="hljs-attribute">left</span>:<span class="hljs-number">200</span><br>&#125;)<br></code></pre></td></tr></table></figure>
-
-
-<p>position()</p>
-<p>获取距离带有定位父级位置的偏移（该元素到父级的距离）</p>
-<p>如果没有定位，以文档为准</p>
-<p>只能获取，不能设置</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">$(<span class="hljs-string">&#x27;div&#x27;</span>).<span class="hljs-built_in">position</span>().<span class="hljs-keyword">left</span><br>$(<span class="hljs-string">&#x27;div&#x27;</span>).<span class="hljs-built_in">position</span>().top<br></code></pre></td></tr></table></figure>
-
-
-<p>scroll()    滚动事件</p>
-<p>scrollTop()        被卷去的头部</p>
-<p>scrollLeft()        被卷去的左侧</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-built_in">window</span>).scroll(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	<span class="hljs-keyword">if</span>($(<span class="hljs-built_in">document</span>).scrollTop()&gt;=<span class="hljs-number">200</span>)&#123;<br>		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;111&#x27;</span>)<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>		<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;222&#x27;</span>)<br>	&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-
-<p>返回顶部</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml">赋值滚动距离<br><span class="hljs-constructor">$(<span class="hljs-params">document</span>)</span>.scroll<span class="hljs-constructor">Top(0)</span>	返回顶部(将它添加到一个点击事件里)<br><br>带动画的返回顶部<br><span class="hljs-constructor">$(&#x27;.<span class="hljs-params">back</span>&#x27;)</span>.click(<span class="hljs-keyword">function</span><span class="hljs-literal">()</span>&#123;<br>	<span class="hljs-constructor">$(&#x27;<span class="hljs-params">body</span>,<span class="hljs-params">html</span>&#x27;)</span>.stop<span class="hljs-literal">()</span>.animate(&#123;<br>		scrollTop:<span class="hljs-number">0</span><br>	&#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Web前端(网易学习)</category>
-      </categories>
-      <tags>
-        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
@@ -3368,213 +3368,6 @@ C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125;
       </tags>
   </entry>
   <entry>
-    <title>网易-html5+css3</title>
-    <url>/2021/12/15/%E7%BD%91%E6%98%93html5+css3/</url>
-    <content><![CDATA[<h5 id="css3"><a href="#css3" class="headerlink" title="css3"></a>css3</h5><h6 id="圆角样式"><a href="#圆角样式" class="headerlink" title="圆角样式"></a>圆角样式</h6><p>border-radius：10px 10px 10px 10px;</p>
-<p>border-radius：50%;    圆 椭圆</p>
-<p>10px是每个圆角的半径</p>
-<p>1个值：四个角都是这个值</p>
-<p>两个值：第一个值(左上右下)，第二个值(右上左下)</p>
-<p>三个值：第一个值(左上)，第二个值(右上左下)，第二个值(右下)</p>
-<p>四个值：左上，右上，右下，左下</p>
-<p>单独写：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">border-top-left-radius</span>:<span class="hljs-number">20px</span>;		左上<br><span class="hljs-attribute">border-top-right-radius</span>:<span class="hljs-number">20px</span>;		右上<br><span class="hljs-attribute">border-bottom-left-radius</span>:<span class="hljs-number">20px</span>;		左下<br><span class="hljs-attribute">border-bottom-right-radius</span>:<span class="hljs-number">20px</span>;	右下<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="阴影样式"><a href="#阴影样式" class="headerlink" title="阴影样式"></a>阴影样式</h6><p>box-shadow</p>
-<p>可以设定无限个内外阴影</p>
-<figure class="highlight mipsasm"><table><tr><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">box-shadow:10px </span><span class="hljs-number">10</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px    <span class="hljs-keyword">black,inset </span><span class="hljs-number">0</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px red<br>	 外阴影 x偏移,y偏移,模糊度,拓展大小,颜色  内阴影 后面参数与前面一样<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="滚动动画"><a href="#滚动动画" class="headerlink" title="滚动动画"></a>滚动动画</h6><p>添加下面这一段代码就可以有滚动效果了</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">html</span>&#123;<br>	scroll-behavior: smooth; <br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="过渡样式"><a href="#过渡样式" class="headerlink" title="过渡样式"></a>过渡样式</h6><p>transition</p>
-<p>必须要有事件触发才会有效果</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">transition</span>:过渡名称，过渡时间，过渡类型，延时时间<br>transition-property: all; 过渡属性的名称（all,<span class="hljs-attribute">width</span>,<span class="hljs-attribute">height</span>）<br><span class="hljs-attribute">transition-duration</span>:<span class="hljs-number">2s</span>;	过渡时间(单位s或者ms)<br><span class="hljs-attribute">transition-timing-function</span>:		过渡类型（ease,linear,ease-in,ease-out,ease-in-out,cubic-bezier）<br>transition-delay:<span class="hljs-number">3s</span>;	定义过渡延时时间<br><br>ease,		linear,	ease-in,	ease-out,	ease-in-out，	  cubic-bezier<br>先加速后减速，匀速，	    加速，		 减速，	  先加速后减速（增强）， 贝塞尔曲线<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="变形（transform）"><a href="#变形（transform）" class="headerlink" title="变形（transform）"></a>变形（transform）</h6><p>缩放（scale）</p>
-<p>transform:scale(2);    宽度，高度都放大2倍</p>
-<p>transform:scale(0.5,2);    宽度0.5倍，高度2倍</p>
-<p>transform:scaleX(0.5);    宽度0.5倍</p>
-<p>transform:scaleX(0.5) scaleY(2);    宽度0.5倍，高度2倍</p>
-<p>平移（translate）</p>
-<p>transform:translateX(200px)        沿X轴平移200px</p>
-<p>transform:translateY(200px)        沿y轴平移200px</p>
-<p>transform:translate(200px,100px)        沿y轴,X轴平移200px</p>
-<p>transform:translate(200px)        给一个值只往右移，相当于translate(200px,0)</p>
-<p>transform:translate(50%,10%)        百分比是对应相应的宽度和高度（宽度,高度）</p>
-<p>旋转（rotate）</p>
-<p>transform:rotate(45deg);    放入负数就是逆时针旋转</p>
-<p>transform:rotateX(45deg);    沿X轴旋转（3D）</p>
-<p>transform:rotateY(45deg);    沿Y轴旋转（3D）</p>
-<p>倾斜扭曲（skew）</p>
-<p>transform:skew(45deg);</p>
-<p>中心点（transform-origin）</p>
-<p>以这个点为中心旋转(3中设置中心的方法)</p>
-<p>transform-origin: left top;    以左上点为中心旋转</p>
-<p>transform-origin: 10%  -10%;</p>
-<p>transform-origin: 10px 20px ;</p>
-<p>景深（perspective）</p>
-<p>transform:perspective(800px);</p>
-<p>平移X轴(translateZ)</p>
-<p>拉进元素与视角的距离</p>
-<p>如果在元素内部第一层子元素使用translateZ那么该元素必须具备3D空间</p>
-<p>3D空间：transform-style:preserve-3d;</p>
-<p>变形样式顺序</p>
-<p>样式执行顺序是从左到右，不一样的顺序有不一样的效果，景深效果建议在过渡前加上</p>
-<h6 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h6><p>after（元素之后）</p>
-<p>before（元素之前）</p>
-<p>给予content样式才会显示</p>
-<p>默认为行内样式显示</p>
-<p>可以加position进行定位</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#tan</span>&#123;<span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">background-color</span>: red;&#125;<br><span class="hljs-selector-id">#tan</span>:after&#123;content: <span class="hljs-string">&#x27;456&#x27;</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#009B00</span>;&#125;<br><span class="hljs-selector-id">#tan</span>:before&#123;content: <span class="hljs-string">&#x27;456&#x27;</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffff7f</span>;&#125;<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h6><p>相邻选择器（+）</p>
-<p>找到指定元素同级别的下一个元素</p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">.<span class="hljs-built_in">tan</span>+<span class="hljs-built_in">li</span>&#123;&#125;	<span class="hljs-built_in">tan</span>后面的<span class="hljs-built_in">li</span>元素<br></code></pre></td></tr></table></figure>
-
-
-<p>兄弟选择器（~）</p>
-<p>选择同级别后面的所有元素</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.class</span>~<span class="hljs-selector-tag">li</span>&#123;&#125;		#选择class后面所有的<span class="hljs-selector-tag">li</span>元素<br><span class="hljs-selector-class">.class</span>~*&#123;&#125;		#选择class后面的所有元素<br></code></pre></td></tr></table></figure>
-
-
-<p>指定选择器（nth-of-type()）</p>
-<p>nth-of-type()自上而下选择</p>
-<p>nth-last-of-type()自下而上选择</p>
-<p>参数（数字，odd，even，3n+1)</p>
-<figure class="highlight elm"><table><tr><td class="code"><pre><code class="hljs elm"><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(2)	#选择第二个元素（数字从1开始）<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(odd)	#选择奇数位的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(even)	#选择偶数位的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(3n)		#选择3的倍数的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(3n+1)	#自定义，选择3的倍数的元素+一位的元素，也可以使用-号<br></code></pre></td></tr></table></figure>
-
-
-<p>子元素指定选择器（nth-child()）</p>
-<p>用法跟nth-of-type差不多</p>
-<p>属性选择器</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-attr">[name]</span>&#123;&#125;	#选择 属性名字 为name的元素<br>选择器<span class="hljs-selector-attr">[属性名字]</span>	例：<span class="hljs-selector-tag">div</span><span class="hljs-selector-attr">[jjj]</span>&#123;&#125;<br>选择器<span class="hljs-selector-attr">[属性名字=<span class="hljs-string">&#x27;属性值&#x27;</span>]</span>&#123;&#125;	#属性值与里面的属性值相等<br>选择器<span class="hljs-selector-attr">[属性名字~=<span class="hljs-string">&#x27;属性值&#x27;</span>]</span>&#123;&#125;	#属性值里面包含这个属性值<br></code></pre></td></tr></table></figure>
-<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">[<span class="hljs-keyword">class</span> ^= <span class="hljs-string">&#x27;abc&#x27;</span>]&#123;&#125;	#选择首字母是abc的<span class="hljs-keyword">class</span><br>[<span class="hljs-keyword">class</span> $= <span class="hljs-string">&#x27;def&#x27;</span>]&#123;&#125;	#选择尾字母是def的<span class="hljs-keyword">class</span><br>[<span class="hljs-keyword">class</span> *= <span class="hljs-string">&#x27;ghi&#x27;</span>]&#123;&#125;	#选择包含ghi的<span class="hljs-keyword">class</span><br></code></pre></td></tr></table></figure>
-
-
-<p>非内容选择器（not()）</p>
-<figure class="highlight less"><table><tr><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:not</span>(.tan,.sky)&#123;<span class="hljs-attribute">color</span>:red;&#125;	#选择所有<span class="hljs-selector-tag">div</span>，然后去掉<span class="hljs-selector-tag">tan</span>和<span class="hljs-selector-tag">sky</span><br></code></pre></td></tr></table></figure>
-
-
-<p>启用禁用选择器</p>
-<p>有输入，点击效果的标签才能使用</p>
-<p>enabled/disabled    </p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">*:disabled&#123;border:<span class="hljs-number">1</span>px solid orange;&#125;<br><br>&lt;button <span class="hljs-keyword">type</span>=&quot;button&quot; disabled&gt;&lt;/button&gt;<br>&lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=&quot;text&quot; disabled <span class="hljs-type">name</span>=&quot;&quot; id=&quot;&quot; <span class="hljs-keyword">value</span>=&quot;&quot;/&gt;<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="高亮选择（-selection）"><a href="#高亮选择（-selection）" class="headerlink" title="高亮选择（::selection）"></a>高亮选择（::selection）</h6><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.tan</span><span class="hljs-selector-pseudo">::selection</span>&#123;<span class="hljs-attribute">color</span>:red; <span class="hljs-attribute">background</span>:green;&#125;<br><br>支持四个属性<span class="hljs-attribute">color</span>/<span class="hljs-attribute">background</span>/<span class="hljs-attribute">cursor</span>/<span class="hljs-attribute">outline</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="javascript-query选择器"><a href="#javascript-query选择器" class="headerlink" title="javascript-query选择器"></a>javascript-query选择器</h6><figure class="highlight dart"><table><tr><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">querySelector</span>()	放入css选择器，返回符合条件的第一个<br><span class="hljs-built_in">querySelectorAll</span>()	返回所有符合条件的<br><br><span class="hljs-keyword">var</span> alldiv = <span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(<span class="hljs-string">&#x27;[id=&quot;tan&quot;]&#x27;</span>);<br>	console.log(alldiv);<br>	<br><span class="hljs-keyword">var</span> alldiv = <span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelectorAll</span>(<span class="hljs-string">&#x27;[id=&quot;tan&quot;]&#x27;</span>);<br>		console.log(alldiv);<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="javascript-classList"><a href="#javascript-classList" class="headerlink" title="javascript-classList"></a>javascript-classList</h6><p>ie10才兼容</p>
-<p>常用属性：add/remove/toggle/contains/forEach/item</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><code class="hljs php">leo.classList.add(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>)	<span class="hljs-comment">#添加 给leo这个元素添加a,b两个class名称</span><br>leo.calssList.remove(<span class="hljs-string">&#x27;a&#x27;</span>,b)	<span class="hljs-comment">#删除 这两个class名称</span><br>leo.classList.toggle(<span class="hljs-string">&#x27;a&#x27;</span>)	<span class="hljs-comment"># 切换 判断leo中有没有a，有就删除，没有就添加</span><br>leo.classList.contains(<span class="hljs-string">&#x27;a&#x27;</span>)	<span class="hljs-comment"># 判断是否有这个class名	返回true和false，只能放一个参数</span><br>leo.classList.<span class="hljs-keyword">forEach</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x,y,z</span>)</span>&#123;&#125;)	<span class="hljs-comment">#与数组的foEach使用一样</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="视频标签（video）"><a href="#视频标签（video）" class="headerlink" title="视频标签（video）"></a>视频标签（video）</h6><p>ie8及以上支持</p>
-<p>controls 控制台/poster 封面/loop 默认循环/autoplay 自动播放/muted 禁音</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./video/斗破苍穹.mp4&quot;</span> <span class="hljs-attr">controls</span> <span class="hljs-attr">autoplay</span> <span class="hljs-attr">muted</span> <span class="hljs-attr">poster</span>=<span class="hljs-string">&quot;.image/dpcq封面.png&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br><br>兼容多种格式<br><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">controle</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>	= <span class="hljs-string">&#x27;1.mp4&#x27;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>	= <span class="hljs-string">&#x27;1.ogv&#x27;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="音频标签（audio）"><a href="#音频标签（audio）" class="headerlink" title="音频标签（audio）"></a>音频标签（audio）</h6><p>属性：contrlos/autoplay/muted</p>
-<h6 id="屏幕单位（vh-vw）"><a href="#屏幕单位（vh-vw）" class="headerlink" title="屏幕单位（vh/vw）"></a>屏幕单位（vh/vw）</h6><p>1vh代表1%的屏幕高度</p>
-<p>20vw代表20%的屏幕宽度</p>
-<h6 id="计算样式（calc-）"><a href="#计算样式（calc-）" class="headerlink" title="计算样式（calc()）"></a>计算样式（calc()）</h6><p>支持ie9及以上</p>
-<p>可以放入加减乘除进行计算，需要前后用空格隔开</p>
-<p>可以放入常用单位进行混合计算</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">width</span>:calc(<span class="hljs-number">10</span>% + <span class="hljs-number">20</span>vw +<span class="hljs-number">300</span>px);  屏幕的<span class="hljs-number">30</span>%+<span class="hljs-number">300</span>px<br></code></pre></td></tr></table></figure>
-
-
-<h6 id="移动端设置"><a href="#移动端设置" class="headerlink" title="移动端设置"></a>移动端设置</h6><figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix">&lt;meta&gt;<span class="hljs-attr">content=&quot;width=device-width,</span> <span class="hljs-attr">initial-scale=1.0,</span> <span class="hljs-attr">maximum-scale=1.0,</span> <span class="hljs-attr">user-scalable=0&quot;</span> <span class="hljs-attr">name=&quot;viewport&quot;&lt;/meta&gt;</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="响应式基本布局（-media）"><a href="#响应式基本布局（-media）" class="headerlink" title="响应式基本布局（@media）"></a>响应式基本布局（@media）</h6><p>支持ie9及以上</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@media all and (<span class="hljs-params">width:300px</span>)&#123;语句<span class="hljs-number">1</span>&#125;		</span><span class="hljs-comment">#检测屏幕为300px时，执行语句1</span><br><span class="hljs-meta">@media screen and (<span class="hljs-params">width:300px</span>)&#123;语句<span class="hljs-number">1</span>&#125;	</span><span class="hljs-comment">#检测浏览器可视宽度为300px时，执行语句1</span><br><br><span class="hljs-meta">@media all and (<span class="hljs-params"><span class="hljs-built_in">min</span>-width:400px</span>)(<span class="hljs-params">语句<span class="hljs-number">1</span></span>)	</span><span class="hljs-comment">#检测屏幕 大于等于 400px时</span><br><span class="hljs-meta">@media all and (<span class="hljs-params"><span class="hljs-built_in">min</span>-width:400px</span>) and (<span class="hljs-params"><span class="hljs-built_in">max</span>-width:600px</span>)	</span><span class="hljs-comment">#检测屏幕 大于等于400px 小于等于600px时生效</span><br><br>link引入方式，<span class="hljs-built_in">min</span>.css里写入需要的样式<br>&lt;link rel=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> href=<span class="hljs-string">&quot;min.css&quot;</span>/ media=<span class="hljs-string">&quot;all and (min-width:500px)&quot;</span>&gt;<br><br>横竖屏<br><span class="hljs-meta">@media all and (<span class="hljs-params">orientation:portait</span>)	竖屏</span><br><span class="hljs-meta">@media all and (<span class="hljs-params">orientation:landscape</span>)	横屏</span><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="弹性盒子-flex"><a href="#弹性盒子-flex" class="headerlink" title="弹性盒子(flex)"></a>弹性盒子(flex)</h6><p>支持 ie10</p>
-<p>最外层元素：display:flex;</p>
-<p>对内层元素发号施令</p>
-<figure class="highlight mipsasm"><table><tr><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment">#元素方向</span><br>flex-<span class="hljs-keyword">direction:row;	</span>	<span class="hljs-comment">#从左到右，默认值就是这个</span><br>flex-<span class="hljs-keyword">direcction:row-reverse;	</span><span class="hljs-comment">#从右到左</span><br>flex-<span class="hljs-keyword">direction:column;	</span>		<span class="hljs-comment">#从上到下</span><br>flex-<span class="hljs-keyword">direction:column-reverse;	</span><span class="hljs-comment">#从下到上</span><br></code></pre></td></tr></table></figure>
-
-
-<p>分块（flex-grow）</p>
-<p>不需要设置宽度</p>
-<p>只针对宽度进行分块，对高度无效</p>
-<p>如果所有元素都不给宽度，那么第一个元素会稍短一点</p>
-<p>第一个元素给宽度，那么后面的元素就会平均分配多于的宽度</p>
-<figure class="highlight 1c"><table><tr><td class="code"><pre><code class="hljs 1c">.<span class="hljs-built_in">tan</span>&#123;<br>	flex-grow:<span class="hljs-number">2</span>;		<span class="hljs-meta">#这个元素占两份</span><br>&#125;<br>.<span class="hljs-built_in">tan</span>&#123;<br>	flex-grow:<span class="hljs-number">4</span>;		<span class="hljs-meta">#这个元素占4份</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-<p>分层（flex-wrap）</p>
-<p>需要设置宽度，并且flex-wrap</p>
-<p>默认值是nowrap</p>
-<p>当值为wrap时，元素会被挤到下一层，flex-grow会以当层计算</p>
-<p>flex-wrap:wrap-reverse;反向分层排序</p>
-<p>轴线对齐</p>
-<p>横向</p>
-<p>justify-content</p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">justify-content:flex-start;	<span class="hljs-comment">#轴线左对齐 默认值</span><br>justify-content:center;		<span class="hljs-comment">#轴线中心对齐</span><br>justify-content:flex-<span class="hljs-keyword">end</span>;	<span class="hljs-comment">#轴线右对齐</span><br>justify-content:<span class="hljs-literal">space</span>-<span class="hljs-keyword">between</span>;	<span class="hljs-comment">#轴线两端对齐 中间等距隔开</span><br>justify-content:<span class="hljs-literal">space</span>-<span class="hljs-keyword">around</span>;	<span class="hljs-comment">#环绕对齐	中间等距隔开，两端隔开为中间距离一半</span><br></code></pre></td></tr></table></figure>
-<p>纵向</p>
-<p>align-items</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">align-items</span>:flex-start;		#纵轴线 以上方对齐<br><span class="hljs-attribute">align-items</span>:center;			#以中间对齐<br><span class="hljs-attribute">align-items</span>:flex-end;		#以下方对齐<br><span class="hljs-attribute">align-items</span>:stretch;		#拉伸 如果只有一层横向轴，直接拉满纵向轴，只作用于没有高度的元素<br><span class="hljs-attribute">align-items</span>:baseline;		#以最高的<span class="hljs-attribute">line-height</span>为基准移动其他元素<br><br><span class="hljs-attribute">align-self</span>:<br></code></pre></td></tr></table></figure>
-
-
-<p>自定义对齐</p>
-<p>align-self:center;</p>
-<p>值为align-items里的方法</p>
-<p>多层排序</p>
-<p>align-content</p>
-<p>必须多层，单层没有意义</p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><code class="hljs elixir">align-<span class="hljs-symbol">content:</span>inherit;		<span class="hljs-comment">#默认值 默认平均分配高度给每一层</span><br>			 <span class="hljs-symbol">:flex-start</span>;	<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以上边界开始</span><br>			 <span class="hljs-symbol">:flex-end</span>;		<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以下边界开始</span><br>			 <span class="hljs-symbol">:center</span>;		<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以中间开始</span><br>			 <span class="hljs-symbol">:space-beteen</span>; <span class="hljs-comment">#上下对齐，中间相等距离隔开</span><br>			 <span class="hljs-symbol">:space-around</span>;	<span class="hljs-comment">#上下环绕对齐</span><br></code></pre></td></tr></table></figure>
-
-
-<p>排序</p>
-<p>order:0;</p>
-<p>定义元素的先后顺序，默认值为0</p>
-<p>值越小，排序越靠前</p>
-<p>值可以是负数</p>
-<p>缩小比例</p>
-<p>flex-shrink:1;</p>
-<p>默认值为1，如果为0，则不进行缩放，负数无效</p>
-<p>值越大，被压缩的比例就越大</p>
-<p>如果项目控制在一层，flex-shrink为0，超出父元素宽度，会溢出</p>
-<h6 id="相对单位（rem）"><a href="#相对单位（rem）" class="headerlink" title="相对单位（rem）"></a>相对单位（rem）</h6><p>rem是根据HTML标签中的font-size的大小改变的</p>
-<p>html标签的font-size默认是16px,谷歌最小显示12px</p>
-<p>1rem = font-size的值</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">html&#123;font-size:16px;&#125;<br><br><span class="hljs-attribute">1rem</span>=16px<br><span class="hljs-attribute">10rem</span>=160px<br></code></pre></td></tr></table></figure>
-
-
-<p>rem算法</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">//总宽度 = 基数 * 倍数		倍数最好大于12，因为有些低版本浏览器字体最小只能是12px<br>//320   = 16  *  20		基数一般使用16<br><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>	font-size:16px;<br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-built_in">document</span>.documentElement.style.fontSize = innerWidth/<span class="hljs-number">16</span>+<span class="hljs-string">&#x27;px&#x27;</span>;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-
-<h5 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h5><p>主要语句</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-attribute">animation-name</span>:name;	动画名字<br><span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">2s</span>;	动画时间<br><br><span class="hljs-attribute">animation-timing-function</span>:ease;<br>动画曲线:linear,ease,ease-in.ease-out,ease-in-out,cubic-bezier<br>		匀速,先快后慢，加速，减速，正常，先快后慢（强），贝塞尔曲线<br>animation-timing-function:steps(<span class="hljs-number">3</span>,start);	步进 steps(<span class="hljs-number">3</span>,start)先走在停 steps(<span class="hljs-number">3</span>,end)先停再走<br><br><span class="hljs-attribute">animation-direction</span>:normal;	控制动画方向:normal(正常),reverse(反转),alternate(平滑轮回)，alternate-reverse(轮回反转)<br>animation-delay:<span class="hljs-number">4s</span>;		动画延时时间<br><span class="hljs-attribute">animation-iteration-count</span>:infinite;		无限循环 属性:infinite 无限，属性:<span class="hljs-number">2</span> 循环两次<br>animation-fill-mode:forwards;	填充 动画停留在哪一帧<br>forwards(初始，停留最后<span class="hljs-number">1</span>帧) backwards(从<span class="hljs-number">0</span>帧开始,停留在初始状态) both(从<span class="hljs-number">0</span>帧开始，停留在最后一帧)<br><br><span class="hljs-attribute">animation-play-state</span>:running;	动画播放(running)与暂停(paused)<br><br>简写<br><span class="hljs-attribute">animation</span>: name forwards <span class="hljs-number">2s</span> <span class="hljs-number">0.3s</span>;	<span class="hljs-comment">//前面是动画时间，后边是延时时间，其他的位置顺序可以改变</span><br><br></code></pre></td></tr></table></figure>
-
-
-<h6 id="帧动画"><a href="#帧动画" class="headerlink" title="帧动画"></a>帧动画</h6><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;<br>	<span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">background-color</span>:white;<br>	<span class="hljs-attribute">animation-name</span>:changes;		*第一步<br>	<span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">3s</span>;		*<br>&#125;<br><br>*第二步<br><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-selector-tag">from</span>&#123;<br>		<span class="hljs-attribute">background-color</span>:white;<br>	&#125;<br>	<span class="hljs-selector-tag">to</span>&#123;<br>		<span class="hljs-attribute">background-color</span>:red;<br>	&#125;<br>&#125;<br><br>第二步可以写成这样<br><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-number">0%</span>&#123;<span class="hljs-attribute">background-color</span>:white;&#125;		*<span class="hljs-number">0%</span>可以不写，默认为元素背景色<br>	<span class="hljs-number">30%</span>&#123;&#125;<br>	<span class="hljs-number">70%</span>&#123;&#125;<br>	<span class="hljs-number">100%</span>&#123;<span class="hljs-attribute">background-color</span>:red;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>当有相同语句时可以合并写</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-number">0%</span>&#123;<span class="hljs-attribute">background-color</span>:white;&#125;<br>	<span class="hljs-number">30%</span>&#123;&#125;<br>	<span class="hljs-number">70%</span>&#123;&#125;<br>	<span class="hljs-number">100%</span>&#123;<span class="hljs-attribute">background-color</span>:red;&#125;<br>	<br>	<span class="hljs-number">30%</span>,<span class="hljs-number">70%</span>&#123;<span class="hljs-attribute">border-radius</span>:<span class="hljs-number">50%</span>&#125;	*合并写<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<p>多个动画应用到一个元素上</p>
-<p>当属性重叠时，优先使用后添加上名字的动画</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;<br>	<span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">background-color</span>:white;<br>	<span class="hljs-attribute">animation-name</span>:changes,radius,translate;		*放多个动画，都会生效，当某些属性重叠时，优先使用translate<br>	<span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">3s</span>,<span class="hljs-number">2s</span>,<span class="hljs-number">1s</span>;		*定义每个动画的时间，如果某个动画没定义时间，就按第一个时间算<br>&#125;<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Web前端(网易学习)</category>
-      </categories>
-      <tags>
-        <tag>html5</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>网易-Vue</title>
     <url>/2021/12/26/%E7%BD%91%E6%98%93-vue/</url>
     <content><![CDATA[<h5 id="mvc框架"><a href="#mvc框架" class="headerlink" title="mvc框架"></a>mvc框架</h5><p>Modal(数据模型)</p>
@@ -3957,6 +3750,213 @@ C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125;
       </categories>
       <tags>
         <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网易-html5+css3</title>
+    <url>/2021/12/15/%E7%BD%91%E6%98%93html5+css3/</url>
+    <content><![CDATA[<h5 id="css3"><a href="#css3" class="headerlink" title="css3"></a>css3</h5><h6 id="圆角样式"><a href="#圆角样式" class="headerlink" title="圆角样式"></a>圆角样式</h6><p>border-radius：10px 10px 10px 10px;</p>
+<p>border-radius：50%;    圆 椭圆</p>
+<p>10px是每个圆角的半径</p>
+<p>1个值：四个角都是这个值</p>
+<p>两个值：第一个值(左上右下)，第二个值(右上左下)</p>
+<p>三个值：第一个值(左上)，第二个值(右上左下)，第二个值(右下)</p>
+<p>四个值：左上，右上，右下，左下</p>
+<p>单独写：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">border-top-left-radius</span>:<span class="hljs-number">20px</span>;		左上<br><span class="hljs-attribute">border-top-right-radius</span>:<span class="hljs-number">20px</span>;		右上<br><span class="hljs-attribute">border-bottom-left-radius</span>:<span class="hljs-number">20px</span>;		左下<br><span class="hljs-attribute">border-bottom-right-radius</span>:<span class="hljs-number">20px</span>;	右下<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="阴影样式"><a href="#阴影样式" class="headerlink" title="阴影样式"></a>阴影样式</h6><p>box-shadow</p>
+<p>可以设定无限个内外阴影</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">box-shadow:10px </span><span class="hljs-number">10</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px    <span class="hljs-keyword">black,inset </span><span class="hljs-number">0</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px <span class="hljs-number">10</span>px red<br>	 外阴影 x偏移,y偏移,模糊度,拓展大小,颜色  内阴影 后面参数与前面一样<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="滚动动画"><a href="#滚动动画" class="headerlink" title="滚动动画"></a>滚动动画</h6><p>添加下面这一段代码就可以有滚动效果了</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">html</span>&#123;<br>	scroll-behavior: smooth; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="过渡样式"><a href="#过渡样式" class="headerlink" title="过渡样式"></a>过渡样式</h6><p>transition</p>
+<p>必须要有事件触发才会有效果</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">transition</span>:过渡名称，过渡时间，过渡类型，延时时间<br>transition-property: all; 过渡属性的名称（all,<span class="hljs-attribute">width</span>,<span class="hljs-attribute">height</span>）<br><span class="hljs-attribute">transition-duration</span>:<span class="hljs-number">2s</span>;	过渡时间(单位s或者ms)<br><span class="hljs-attribute">transition-timing-function</span>:		过渡类型（ease,linear,ease-in,ease-out,ease-in-out,cubic-bezier）<br>transition-delay:<span class="hljs-number">3s</span>;	定义过渡延时时间<br><br>ease,		linear,	ease-in,	ease-out,	ease-in-out，	  cubic-bezier<br>先加速后减速，匀速，	    加速，		 减速，	  先加速后减速（增强）， 贝塞尔曲线<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="变形（transform）"><a href="#变形（transform）" class="headerlink" title="变形（transform）"></a>变形（transform）</h6><p>缩放（scale）</p>
+<p>transform:scale(2);    宽度，高度都放大2倍</p>
+<p>transform:scale(0.5,2);    宽度0.5倍，高度2倍</p>
+<p>transform:scaleX(0.5);    宽度0.5倍</p>
+<p>transform:scaleX(0.5) scaleY(2);    宽度0.5倍，高度2倍</p>
+<p>平移（translate）</p>
+<p>transform:translateX(200px)        沿X轴平移200px</p>
+<p>transform:translateY(200px)        沿y轴平移200px</p>
+<p>transform:translate(200px,100px)        沿y轴,X轴平移200px</p>
+<p>transform:translate(200px)        给一个值只往右移，相当于translate(200px,0)</p>
+<p>transform:translate(50%,10%)        百分比是对应相应的宽度和高度（宽度,高度）</p>
+<p>旋转（rotate）</p>
+<p>transform:rotate(45deg);    放入负数就是逆时针旋转</p>
+<p>transform:rotateX(45deg);    沿X轴旋转（3D）</p>
+<p>transform:rotateY(45deg);    沿Y轴旋转（3D）</p>
+<p>倾斜扭曲（skew）</p>
+<p>transform:skew(45deg);</p>
+<p>中心点（transform-origin）</p>
+<p>以这个点为中心旋转(3中设置中心的方法)</p>
+<p>transform-origin: left top;    以左上点为中心旋转</p>
+<p>transform-origin: 10%  -10%;</p>
+<p>transform-origin: 10px 20px ;</p>
+<p>景深（perspective）</p>
+<p>transform:perspective(800px);</p>
+<p>平移X轴(translateZ)</p>
+<p>拉进元素与视角的距离</p>
+<p>如果在元素内部第一层子元素使用translateZ那么该元素必须具备3D空间</p>
+<p>3D空间：transform-style:preserve-3d;</p>
+<p>变形样式顺序</p>
+<p>样式执行顺序是从左到右，不一样的顺序有不一样的效果，景深效果建议在过渡前加上</p>
+<h6 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h6><p>after（元素之后）</p>
+<p>before（元素之前）</p>
+<p>给予content样式才会显示</p>
+<p>默认为行内样式显示</p>
+<p>可以加position进行定位</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#tan</span>&#123;<span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">background-color</span>: red;&#125;<br><span class="hljs-selector-id">#tan</span>:after&#123;content: <span class="hljs-string">&#x27;456&#x27;</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#009B00</span>;&#125;<br><span class="hljs-selector-id">#tan</span>:before&#123;content: <span class="hljs-string">&#x27;456&#x27;</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffff7f</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h6><p>相邻选择器（+）</p>
+<p>找到指定元素同级别的下一个元素</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">.<span class="hljs-built_in">tan</span>+<span class="hljs-built_in">li</span>&#123;&#125;	<span class="hljs-built_in">tan</span>后面的<span class="hljs-built_in">li</span>元素<br></code></pre></td></tr></table></figure>
+
+
+<p>兄弟选择器（~）</p>
+<p>选择同级别后面的所有元素</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.class</span>~<span class="hljs-selector-tag">li</span>&#123;&#125;		#选择class后面所有的<span class="hljs-selector-tag">li</span>元素<br><span class="hljs-selector-class">.class</span>~*&#123;&#125;		#选择class后面的所有元素<br></code></pre></td></tr></table></figure>
+
+
+<p>指定选择器（nth-of-type()）</p>
+<p>nth-of-type()自上而下选择</p>
+<p>nth-last-of-type()自下而上选择</p>
+<p>参数（数字，odd，even，3n+1)</p>
+<figure class="highlight elm"><table><tr><td class="code"><pre><code class="hljs elm"><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(2)	#选择第二个元素（数字从1开始）<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(odd)	#选择奇数位的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(even)	#选择偶数位的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(3n)		#选择3的倍数的元素<br><span class="hljs-title">nth</span>-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">type</span>(3n+1)	#自定义，选择3的倍数的元素+一位的元素，也可以使用-号<br></code></pre></td></tr></table></figure>
+
+
+<p>子元素指定选择器（nth-child()）</p>
+<p>用法跟nth-of-type差不多</p>
+<p>属性选择器</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-attr">[name]</span>&#123;&#125;	#选择 属性名字 为name的元素<br>选择器<span class="hljs-selector-attr">[属性名字]</span>	例：<span class="hljs-selector-tag">div</span><span class="hljs-selector-attr">[jjj]</span>&#123;&#125;<br>选择器<span class="hljs-selector-attr">[属性名字=<span class="hljs-string">&#x27;属性值&#x27;</span>]</span>&#123;&#125;	#属性值与里面的属性值相等<br>选择器<span class="hljs-selector-attr">[属性名字~=<span class="hljs-string">&#x27;属性值&#x27;</span>]</span>&#123;&#125;	#属性值里面包含这个属性值<br></code></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">[<span class="hljs-keyword">class</span> ^= <span class="hljs-string">&#x27;abc&#x27;</span>]&#123;&#125;	#选择首字母是abc的<span class="hljs-keyword">class</span><br>[<span class="hljs-keyword">class</span> $= <span class="hljs-string">&#x27;def&#x27;</span>]&#123;&#125;	#选择尾字母是def的<span class="hljs-keyword">class</span><br>[<span class="hljs-keyword">class</span> *= <span class="hljs-string">&#x27;ghi&#x27;</span>]&#123;&#125;	#选择包含ghi的<span class="hljs-keyword">class</span><br></code></pre></td></tr></table></figure>
+
+
+<p>非内容选择器（not()）</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:not</span>(.tan,.sky)&#123;<span class="hljs-attribute">color</span>:red;&#125;	#选择所有<span class="hljs-selector-tag">div</span>，然后去掉<span class="hljs-selector-tag">tan</span>和<span class="hljs-selector-tag">sky</span><br></code></pre></td></tr></table></figure>
+
+
+<p>启用禁用选择器</p>
+<p>有输入，点击效果的标签才能使用</p>
+<p>enabled/disabled    </p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">*:disabled&#123;border:<span class="hljs-number">1</span>px solid orange;&#125;<br><br>&lt;button <span class="hljs-keyword">type</span>=&quot;button&quot; disabled&gt;&lt;/button&gt;<br>&lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=&quot;text&quot; disabled <span class="hljs-type">name</span>=&quot;&quot; id=&quot;&quot; <span class="hljs-keyword">value</span>=&quot;&quot;/&gt;<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="高亮选择（-selection）"><a href="#高亮选择（-selection）" class="headerlink" title="高亮选择（::selection）"></a>高亮选择（::selection）</h6><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.tan</span><span class="hljs-selector-pseudo">::selection</span>&#123;<span class="hljs-attribute">color</span>:red; <span class="hljs-attribute">background</span>:green;&#125;<br><br>支持四个属性<span class="hljs-attribute">color</span>/<span class="hljs-attribute">background</span>/<span class="hljs-attribute">cursor</span>/<span class="hljs-attribute">outline</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="javascript-query选择器"><a href="#javascript-query选择器" class="headerlink" title="javascript-query选择器"></a>javascript-query选择器</h6><figure class="highlight dart"><table><tr><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">querySelector</span>()	放入css选择器，返回符合条件的第一个<br><span class="hljs-built_in">querySelectorAll</span>()	返回所有符合条件的<br><br><span class="hljs-keyword">var</span> alldiv = <span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(<span class="hljs-string">&#x27;[id=&quot;tan&quot;]&#x27;</span>);<br>	console.log(alldiv);<br>	<br><span class="hljs-keyword">var</span> alldiv = <span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelectorAll</span>(<span class="hljs-string">&#x27;[id=&quot;tan&quot;]&#x27;</span>);<br>		console.log(alldiv);<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="javascript-classList"><a href="#javascript-classList" class="headerlink" title="javascript-classList"></a>javascript-classList</h6><p>ie10才兼容</p>
+<p>常用属性：add/remove/toggle/contains/forEach/item</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><code class="hljs php">leo.classList.add(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>)	<span class="hljs-comment">#添加 给leo这个元素添加a,b两个class名称</span><br>leo.calssList.remove(<span class="hljs-string">&#x27;a&#x27;</span>,b)	<span class="hljs-comment">#删除 这两个class名称</span><br>leo.classList.toggle(<span class="hljs-string">&#x27;a&#x27;</span>)	<span class="hljs-comment"># 切换 判断leo中有没有a，有就删除，没有就添加</span><br>leo.classList.contains(<span class="hljs-string">&#x27;a&#x27;</span>)	<span class="hljs-comment"># 判断是否有这个class名	返回true和false，只能放一个参数</span><br>leo.classList.<span class="hljs-keyword">forEach</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x,y,z</span>)</span>&#123;&#125;)	<span class="hljs-comment">#与数组的foEach使用一样</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="视频标签（video）"><a href="#视频标签（video）" class="headerlink" title="视频标签（video）"></a>视频标签（video）</h6><p>ie8及以上支持</p>
+<p>controls 控制台/poster 封面/loop 默认循环/autoplay 自动播放/muted 禁音</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./video/斗破苍穹.mp4&quot;</span> <span class="hljs-attr">controls</span> <span class="hljs-attr">autoplay</span> <span class="hljs-attr">muted</span> <span class="hljs-attr">poster</span>=<span class="hljs-string">&quot;.image/dpcq封面.png&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br><br>兼容多种格式<br><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">controle</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>	= <span class="hljs-string">&#x27;1.mp4&#x27;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>	= <span class="hljs-string">&#x27;1.ogv&#x27;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="音频标签（audio）"><a href="#音频标签（audio）" class="headerlink" title="音频标签（audio）"></a>音频标签（audio）</h6><p>属性：contrlos/autoplay/muted</p>
+<h6 id="屏幕单位（vh-vw）"><a href="#屏幕单位（vh-vw）" class="headerlink" title="屏幕单位（vh/vw）"></a>屏幕单位（vh/vw）</h6><p>1vh代表1%的屏幕高度</p>
+<p>20vw代表20%的屏幕宽度</p>
+<h6 id="计算样式（calc-）"><a href="#计算样式（calc-）" class="headerlink" title="计算样式（calc()）"></a>计算样式（calc()）</h6><p>支持ie9及以上</p>
+<p>可以放入加减乘除进行计算，需要前后用空格隔开</p>
+<p>可以放入常用单位进行混合计算</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">width</span>:calc(<span class="hljs-number">10</span>% + <span class="hljs-number">20</span>vw +<span class="hljs-number">300</span>px);  屏幕的<span class="hljs-number">30</span>%+<span class="hljs-number">300</span>px<br></code></pre></td></tr></table></figure>
+
+
+<h6 id="移动端设置"><a href="#移动端设置" class="headerlink" title="移动端设置"></a>移动端设置</h6><figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix">&lt;meta&gt;<span class="hljs-attr">content=&quot;width=device-width,</span> <span class="hljs-attr">initial-scale=1.0,</span> <span class="hljs-attr">maximum-scale=1.0,</span> <span class="hljs-attr">user-scalable=0&quot;</span> <span class="hljs-attr">name=&quot;viewport&quot;&lt;/meta&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="响应式基本布局（-media）"><a href="#响应式基本布局（-media）" class="headerlink" title="响应式基本布局（@media）"></a>响应式基本布局（@media）</h6><p>支持ie9及以上</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@media all and (<span class="hljs-params">width:300px</span>)&#123;语句<span class="hljs-number">1</span>&#125;		</span><span class="hljs-comment">#检测屏幕为300px时，执行语句1</span><br><span class="hljs-meta">@media screen and (<span class="hljs-params">width:300px</span>)&#123;语句<span class="hljs-number">1</span>&#125;	</span><span class="hljs-comment">#检测浏览器可视宽度为300px时，执行语句1</span><br><br><span class="hljs-meta">@media all and (<span class="hljs-params"><span class="hljs-built_in">min</span>-width:400px</span>)(<span class="hljs-params">语句<span class="hljs-number">1</span></span>)	</span><span class="hljs-comment">#检测屏幕 大于等于 400px时</span><br><span class="hljs-meta">@media all and (<span class="hljs-params"><span class="hljs-built_in">min</span>-width:400px</span>) and (<span class="hljs-params"><span class="hljs-built_in">max</span>-width:600px</span>)	</span><span class="hljs-comment">#检测屏幕 大于等于400px 小于等于600px时生效</span><br><br>link引入方式，<span class="hljs-built_in">min</span>.css里写入需要的样式<br>&lt;link rel=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> href=<span class="hljs-string">&quot;min.css&quot;</span>/ media=<span class="hljs-string">&quot;all and (min-width:500px)&quot;</span>&gt;<br><br>横竖屏<br><span class="hljs-meta">@media all and (<span class="hljs-params">orientation:portait</span>)	竖屏</span><br><span class="hljs-meta">@media all and (<span class="hljs-params">orientation:landscape</span>)	横屏</span><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="弹性盒子-flex"><a href="#弹性盒子-flex" class="headerlink" title="弹性盒子(flex)"></a>弹性盒子(flex)</h6><p>支持 ie10</p>
+<p>最外层元素：display:flex;</p>
+<p>对内层元素发号施令</p>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment">#元素方向</span><br>flex-<span class="hljs-keyword">direction:row;	</span>	<span class="hljs-comment">#从左到右，默认值就是这个</span><br>flex-<span class="hljs-keyword">direcction:row-reverse;	</span><span class="hljs-comment">#从右到左</span><br>flex-<span class="hljs-keyword">direction:column;	</span>		<span class="hljs-comment">#从上到下</span><br>flex-<span class="hljs-keyword">direction:column-reverse;	</span><span class="hljs-comment">#从下到上</span><br></code></pre></td></tr></table></figure>
+
+
+<p>分块（flex-grow）</p>
+<p>不需要设置宽度</p>
+<p>只针对宽度进行分块，对高度无效</p>
+<p>如果所有元素都不给宽度，那么第一个元素会稍短一点</p>
+<p>第一个元素给宽度，那么后面的元素就会平均分配多于的宽度</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><code class="hljs 1c">.<span class="hljs-built_in">tan</span>&#123;<br>	flex-grow:<span class="hljs-number">2</span>;		<span class="hljs-meta">#这个元素占两份</span><br>&#125;<br>.<span class="hljs-built_in">tan</span>&#123;<br>	flex-grow:<span class="hljs-number">4</span>;		<span class="hljs-meta">#这个元素占4份</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>分层（flex-wrap）</p>
+<p>需要设置宽度，并且flex-wrap</p>
+<p>默认值是nowrap</p>
+<p>当值为wrap时，元素会被挤到下一层，flex-grow会以当层计算</p>
+<p>flex-wrap:wrap-reverse;反向分层排序</p>
+<p>轴线对齐</p>
+<p>横向</p>
+<p>justify-content</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">justify-content:flex-start;	<span class="hljs-comment">#轴线左对齐 默认值</span><br>justify-content:center;		<span class="hljs-comment">#轴线中心对齐</span><br>justify-content:flex-<span class="hljs-keyword">end</span>;	<span class="hljs-comment">#轴线右对齐</span><br>justify-content:<span class="hljs-literal">space</span>-<span class="hljs-keyword">between</span>;	<span class="hljs-comment">#轴线两端对齐 中间等距隔开</span><br>justify-content:<span class="hljs-literal">space</span>-<span class="hljs-keyword">around</span>;	<span class="hljs-comment">#环绕对齐	中间等距隔开，两端隔开为中间距离一半</span><br></code></pre></td></tr></table></figure>
+<p>纵向</p>
+<p>align-items</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">align-items</span>:flex-start;		#纵轴线 以上方对齐<br><span class="hljs-attribute">align-items</span>:center;			#以中间对齐<br><span class="hljs-attribute">align-items</span>:flex-end;		#以下方对齐<br><span class="hljs-attribute">align-items</span>:stretch;		#拉伸 如果只有一层横向轴，直接拉满纵向轴，只作用于没有高度的元素<br><span class="hljs-attribute">align-items</span>:baseline;		#以最高的<span class="hljs-attribute">line-height</span>为基准移动其他元素<br><br><span class="hljs-attribute">align-self</span>:<br></code></pre></td></tr></table></figure>
+
+
+<p>自定义对齐</p>
+<p>align-self:center;</p>
+<p>值为align-items里的方法</p>
+<p>多层排序</p>
+<p>align-content</p>
+<p>必须多层，单层没有意义</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><code class="hljs elixir">align-<span class="hljs-symbol">content:</span>inherit;		<span class="hljs-comment">#默认值 默认平均分配高度给每一层</span><br>			 <span class="hljs-symbol">:flex-start</span>;	<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以上边界开始</span><br>			 <span class="hljs-symbol">:flex-end</span>;		<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以下边界开始</span><br>			 <span class="hljs-symbol">:center</span>;		<span class="hljs-comment">#下一层元素紧跟在上面一层，中间没有间隔 以中间开始</span><br>			 <span class="hljs-symbol">:space-beteen</span>; <span class="hljs-comment">#上下对齐，中间相等距离隔开</span><br>			 <span class="hljs-symbol">:space-around</span>;	<span class="hljs-comment">#上下环绕对齐</span><br></code></pre></td></tr></table></figure>
+
+
+<p>排序</p>
+<p>order:0;</p>
+<p>定义元素的先后顺序，默认值为0</p>
+<p>值越小，排序越靠前</p>
+<p>值可以是负数</p>
+<p>缩小比例</p>
+<p>flex-shrink:1;</p>
+<p>默认值为1，如果为0，则不进行缩放，负数无效</p>
+<p>值越大，被压缩的比例就越大</p>
+<p>如果项目控制在一层，flex-shrink为0，超出父元素宽度，会溢出</p>
+<h6 id="相对单位（rem）"><a href="#相对单位（rem）" class="headerlink" title="相对单位（rem）"></a>相对单位（rem）</h6><p>rem是根据HTML标签中的font-size的大小改变的</p>
+<p>html标签的font-size默认是16px,谷歌最小显示12px</p>
+<p>1rem = font-size的值</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">html&#123;font-size:16px;&#125;<br><br><span class="hljs-attribute">1rem</span>=16px<br><span class="hljs-attribute">10rem</span>=160px<br></code></pre></td></tr></table></figure>
+
+
+<p>rem算法</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">//总宽度 = 基数 * 倍数		倍数最好大于12，因为有些低版本浏览器字体最小只能是12px<br>//320   = 16  *  20		基数一般使用16<br><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>	font-size:16px;<br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-built_in">document</span>.documentElement.style.fontSize = innerWidth/<span class="hljs-number">16</span>+<span class="hljs-string">&#x27;px&#x27;</span>;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<h5 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h5><p>主要语句</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-attribute">animation-name</span>:name;	动画名字<br><span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">2s</span>;	动画时间<br><br><span class="hljs-attribute">animation-timing-function</span>:ease;<br>动画曲线:linear,ease,ease-in.ease-out,ease-in-out,cubic-bezier<br>		匀速,先快后慢，加速，减速，正常，先快后慢（强），贝塞尔曲线<br>animation-timing-function:steps(<span class="hljs-number">3</span>,start);	步进 steps(<span class="hljs-number">3</span>,start)先走在停 steps(<span class="hljs-number">3</span>,end)先停再走<br><br><span class="hljs-attribute">animation-direction</span>:normal;	控制动画方向:normal(正常),reverse(反转),alternate(平滑轮回)，alternate-reverse(轮回反转)<br>animation-delay:<span class="hljs-number">4s</span>;		动画延时时间<br><span class="hljs-attribute">animation-iteration-count</span>:infinite;		无限循环 属性:infinite 无限，属性:<span class="hljs-number">2</span> 循环两次<br>animation-fill-mode:forwards;	填充 动画停留在哪一帧<br>forwards(初始，停留最后<span class="hljs-number">1</span>帧) backwards(从<span class="hljs-number">0</span>帧开始,停留在初始状态) both(从<span class="hljs-number">0</span>帧开始，停留在最后一帧)<br><br><span class="hljs-attribute">animation-play-state</span>:running;	动画播放(running)与暂停(paused)<br><br>简写<br><span class="hljs-attribute">animation</span>: name forwards <span class="hljs-number">2s</span> <span class="hljs-number">0.3s</span>;	<span class="hljs-comment">//前面是动画时间，后边是延时时间，其他的位置顺序可以改变</span><br><br></code></pre></td></tr></table></figure>
+
+
+<h6 id="帧动画"><a href="#帧动画" class="headerlink" title="帧动画"></a>帧动画</h6><figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;<br>	<span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">background-color</span>:white;<br>	<span class="hljs-attribute">animation-name</span>:changes;		*第一步<br>	<span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">3s</span>;		*<br>&#125;<br><br>*第二步<br><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-selector-tag">from</span>&#123;<br>		<span class="hljs-attribute">background-color</span>:white;<br>	&#125;<br>	<span class="hljs-selector-tag">to</span>&#123;<br>		<span class="hljs-attribute">background-color</span>:red;<br>	&#125;<br>&#125;<br><br>第二步可以写成这样<br><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-number">0%</span>&#123;<span class="hljs-attribute">background-color</span>:white;&#125;		*<span class="hljs-number">0%</span>可以不写，默认为元素背景色<br>	<span class="hljs-number">30%</span>&#123;&#125;<br>	<span class="hljs-number">70%</span>&#123;&#125;<br>	<span class="hljs-number">100%</span>&#123;<span class="hljs-attribute">background-color</span>:red;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>当有相同语句时可以合并写</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@keyframes</span> changes&#123;<br>	<span class="hljs-number">0%</span>&#123;<span class="hljs-attribute">background-color</span>:white;&#125;<br>	<span class="hljs-number">30%</span>&#123;&#125;<br>	<span class="hljs-number">70%</span>&#123;&#125;<br>	<span class="hljs-number">100%</span>&#123;<span class="hljs-attribute">background-color</span>:red;&#125;<br>	<br>	<span class="hljs-number">30%</span>,<span class="hljs-number">70%</span>&#123;<span class="hljs-attribute">border-radius</span>:<span class="hljs-number">50%</span>&#125;	*合并写<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>多个动画应用到一个元素上</p>
+<p>当属性重叠时，优先使用后添加上名字的动画</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.box</span>&#123;<br>	<span class="hljs-attribute">width</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;<br>	<span class="hljs-attribute">background-color</span>:white;<br>	<span class="hljs-attribute">animation-name</span>:changes,radius,translate;		*放多个动画，都会生效，当某些属性重叠时，优先使用translate<br>	<span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">3s</span>,<span class="hljs-number">2s</span>,<span class="hljs-number">1s</span>;		*定义每个动画的时间，如果某个动画没定义时间，就按第一个时间算<br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Web前端(网易学习)</category>
+      </categories>
+      <tags>
+        <tag>html5</tag>
       </tags>
   </entry>
   <entry>
