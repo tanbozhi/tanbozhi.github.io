@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-22T06:58:19.000Z">
-<meta property="article:modified_time" content="2022-09-12T13:54:38.194Z">
+<meta property="article:modified_time" content="2022-09-12T13:55:57.216Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.4k 字
+          6.4k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          70 分钟
+          54 分钟
         
       </span>
     
@@ -330,73 +330,6 @@
 <h5 id="代码分割（code-split）"><a href="#代码分割（code-split）" class="headerlink" title="代码分割（code split）"></a>代码分割（<code>code split</code>）</h5><p>打包代码时会将所有js文件打包到一个文件中，体积会太大。。如果我们只加载首页，就应该只加载首页的js文件，其他文件不应该加载。所以我们要将打包生成的文件进行代码分割，生成多个js文件，渲染哪个页面就渲染哪个js文件，这样加载的资源就少，速度就更快。</p>
 <h6 id="下载包-2"><a href="#下载包-2" class="headerlink" title="下载包"></a>下载包</h6><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">npm <span class="hljs-selector-tag">i</span> <span class="hljs-selector-tag">html</span>-webpack-plugin -D<br></code></pre></td></tr></table></figure>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> webpack.config.js<br>const path = require(<span class="hljs-string">&quot;path&quot;</span>);<br>const HtmlWebpackPlugin = require(<span class="hljs-string">&quot;html-webpack-plugin&quot;</span>);<br><br>module.exports = &#123;<br>  <span class="hljs-regexp">//</span> 单入口<br>  <span class="hljs-regexp">//</span> entry: <span class="hljs-string">&#x27;./src/main.js&#x27;</span>,<br>  <span class="hljs-regexp">//</span> 多入口<br>  entry: &#123;<br>    main: <span class="hljs-string">&quot;./src/main.js&quot;</span>,<br>    app: <span class="hljs-string">&quot;./src/app.js&quot;</span>,<br>  &#125;,<br>  output: &#123;<br>    path: path.resolve(__dirname, <span class="hljs-string">&quot;./dist&quot;</span>),<br>    <span class="hljs-regexp">//</span> [name]是webpack命名规则，使用chunk的name作为输出的文件名。<br>    <span class="hljs-regexp">//</span> 什么是chunk？打包的资源就是chunk，输出出去叫bundle。<br>    <span class="hljs-regexp">//</span> chunk的name是啥呢？ 比如： entry中xxx: <span class="hljs-string">&quot;./src/xxx.js&quot;</span>, name就是xxx。注意是前面的xxx，和文件名无关。<br>    <span class="hljs-regexp">//</span> 为什么需要这样命名呢？如果还是之前写法main.js，那么打包生成两个js文件都会叫做main.js会发生覆盖。(实际上会直接报错的)<br>    filename: <span class="hljs-string">&quot;js/[name].js&quot;</span>,<br>    clear: true,<br>  &#125;,<br>  plugins: [<br>    new HtmlWebpackPlugin(&#123;<br>      template: <span class="hljs-string">&quot;./public/index.html&quot;</span>,<br>    &#125;),<br>  ],<br>  mode: <span class="hljs-string">&quot;production&quot;</span>,<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h5 id="提取重复代码"><a href="#提取重复代码" class="headerlink" title="提取重复代码"></a>提取重复代码</h5><h5 id="按需加载，动态导入（重命名）"><a href="#按需加载，动态导入（重命名）" class="headerlink" title="按需加载，动态导入（重命名）"></a>按需加载，动态导入（重命名）</h5><h5 id="Preload-Prefetch"><a href="#Preload-Prefetch" class="headerlink" title="Preload / Prefetch"></a><code>Preload / Prefetch</code></h5><p>我们前面已经做了代码分割，同时会使用 <code>import</code> 动态导入语法来进行代码按需加载（我们也叫懒加载，比如路由懒加载就是这样实现的）。</p>
-<p>但是加载速度还不够好，比如：是用户点击按钮时才加载这个资源的，如果资源体积很大，那么用户会感觉到明显卡顿效果。</p>
-<p>我们想在浏览器空闲时间，加载后续需要使用的资源。我们就需要用上 <code>Preload</code> 或 <code>Prefetch</code> 技术。</p>
-<p><code>Preload</code>：告诉浏览器立即加载资源。</p>
-<p><code>Prefetch</code>：告诉浏览器在空闲时才开始加载资源。</p>
-<h5 id="Network-Cache"><a href="#Network-Cache" class="headerlink" title="Network Cache"></a><code>Network Cache</code></h5><p>将来开发时我们对静态资源会使用缓存来优化，这样浏览器第二次请求资源就能读取缓存了，速度很快。</p>
-<p>但是这样的话就会有一个问题, 因为前后输出的文件名是一样的，都叫 <code>main.js</code>，一旦将来发布新版本，因为文件名没有变化导致浏览器会直接读取缓存，不会加载新资源，项目也就没法更新了。</p>
-<p>所以我们从文件名入手，确保更新前后文件名不一样，这样就可以做缓存了。</p>
-<p>它们都会生成一个唯一的 <code>hash </code>值。</p>
-<ul>
-<li><code>fullhash（webpack4 是 hash）</code></li>
-</ul>
-<p>每次修改任何一个文件，所有文件名的<code> hash</code> 至都将改变。所以一旦修改了任何一个文件，整个项目的文件缓存都将失效。</p>
-<ul>
-<li><code>chunkhash</code></li>
-</ul>
-<p>根据不同的入口文件<code>(Entry)</code>进行依赖文件解析、构建对应的 <code>chunk</code>，生成对应的哈希值。我们 <code>js </code>和 <code>css </code>是同一个引入，会共享一个 hash 值。</p>
-<ul>
-<li><code>contenthash</code></li>
-</ul>
-<p>根据文件内容生成 <code>hash </code>值，只有文件内容变化了，<code>hash</code>才会变化。所有文件 <code>hash</code> 值是独享且不同的。</p>
-<h5 id="Core-js"><a href="#Core-js" class="headerlink" title="Core-js"></a><code>Core-js</code></h5><p>过去我们使用 <code>babel</code> 对 <code>js </code>代码进行了兼容性处理，其中使用<code>@babel/preset-env </code>智能预设来处理兼容性问题。</p>
-<p>它能将<code>ES6</code>的一些语法进行编译转换，比如箭头函数、点点点运算符等。但是如果是 <code>async</code> 函数、<code>promise</code> 对象、数组的一些方法<code>（includes）</code>等，它没办法处理。</p>
-<p>所以此时我们 <code>js </code>代码仍然存在兼容性问题，一旦遇到低版本浏览器会直接报错。所以我们想要将<code>js</code> 兼容性问题彻底解决</p>
-<p><code>core-js</code> 是专门用来做 <code>ES6 </code>以及以上 <code>API </code>的 <code>polyfill</code>。</p>
-<p><code>polyfill</code>翻译过来叫做垫片/补丁。就是用社区上提供的一段代码，让我们在不兼容某些新特性的浏览器上，使用该新特性。</p>
-<h5 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a><code>PWA</code></h5><p>开发 <code>Web App </code>项目，项目一旦处于网络离线情况，就没法访问了。</p>
-<p>我们希望给项目提供离线体验。</p>
-<p>渐进式网络应用程序(<code>progressive web application - PWA</code>)：是一种可以提供类似于 <code>native app</code>(原生应用程序) 体验的 <code>Web App </code>的技术。</p>
-<p>其中最重要的是，在 <strong>离线(<code>offline)</code></strong> 时应用程序能够继续运行功能。</p>
-<p>内部通过 <code>Service Workers</code> 技术实现的。</p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>我们从 4 个角度对<code> webpack</code> 和代码进行了优化：</p>
-<ol>
-<li>提升开发体验</li>
-</ol>
-<ul>
-<li>使用 <code>Source Map</code> 让开发或上线时代码报错能有更加准确的错误提示。</li>
-</ul>
-<ol>
-<li>提升 <code>webpack</code> 提升打包构建速度</li>
-</ol>
-<ul>
-<li>使用 <code>HotModuleReplacement</code> 让开发时只重新编译打包更新变化了的代码，不变的代码使用缓存，从而使更新速度更快。</li>
-<li>使用 <code>OneOf</code> 让资源文件一旦被某个<code>loader</code>处理了，就不会继续遍历了，打包速度更快。</li>
-<li>使用 <code>Include/Exclude</code> 排除或只检测某些文件，处理的文件更少，速度更快。</li>
-<li>使用 <code>Cache</code> 对 <code>eslint </code>和<code>babel</code>处理的结果进行缓存，让第二次打包速度更快。</li>
-<li>使用 <code>Thead</code> 多进程处理 <code>eslint </code>和<code>babel</code>任务，速度更快。（需要注意的是，进程启动通信都有开销的，要在比较多代码处理时使用才有效果）</li>
-</ul>
-<ol>
-<li>减少代码体积</li>
-</ol>
-<ul>
-<li>使用 <code>Tree Shaking</code> 剔除了没有使用的多余代码，让代码体积更小。</li>
-<li>使用 <code>@babel/plugin-transform-runtime</code> 插件对<code> babel</code> 进行处理，让辅助代码从中引入，而不是每个文件都生成辅助代码，从而体积更小。</li>
-<li>使用 <code>Image Minimizer</code> 对项目中图片进行压缩，体积更小，请求速度更快。（需要注意的是，如果项目中图片都是在线链接，那么就不需要了。本地项目静态图片才需要进行压缩。）</li>
-</ul>
-<ol>
-<li>优化代码运行性能</li>
-</ol>
-<ul>
-<li>使用 <code>Code Split</code> 对代码进行分割成多个<code> js</code> 文件，从而使单个文件体积更小，并行加载<code>js</code>速度更快。并通过<code> import</code> 动态导入语法进行按需加载，从而达到需要使用时才加载该资源，不用时不加载资源。</li>
-<li>使用 <code>Preload / Prefetch</code> 对代码进行提前加载，等未来需要使用时就能直接使用，从而用户体验更好。</li>
-<li>使用 <code>Network Cache</code> 能对输出资源文件进行更好的命名，将来好做缓存，从而用户体验更好。</li>
-<li>使用 <code>Core-js</code> 对<code> js</code> 进行兼容性处理，让我们代码能运行在低版本浏览器。</li>
-<li>使用 <code>PWA</code> 能让代码离线也能访问，从而提升用户体验。</li>
-</ul>
-
               
             </div>
             <hr/>
