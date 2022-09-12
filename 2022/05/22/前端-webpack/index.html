@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-22T06:58:19.000Z">
-<meta property="article:modified_time" content="2022-09-12T13:49:07.338Z">
+<meta property="article:modified_time" content="2022-09-12T13:52:42.041Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
@@ -356,7 +356,7 @@
 <h5 id="Core-js"><a href="#Core-js" class="headerlink" title="Core-js"></a><code>Core-js</code></h5><p>过去我们使用 <code>babel</code> 对 <code>js </code>代码进行了兼容性处理，其中使用<code>@babel/preset-env </code>智能预设来处理兼容性问题。</p>
 <p>它能将<code>ES6</code>的一些语法进行编译转换，比如箭头函数、点点点运算符等。但是如果是 <code>async</code> 函数、<code>promise</code> 对象、数组的一些方法<code>（includes）</code>等，它没办法处理。</p>
 <p>所以此时我们 <code>js </code>代码仍然存在兼容性问题，一旦遇到低版本浏览器会直接报错。所以我们想要将<code>js</code> 兼容性问题彻底解决</p>
-<p><code>core-js</code> 是专门用来做 ES6 以及以上 API 的 <code>polyfill</code>。</p>
+<p><code>core-js</code> 是专门用来做 <code>ES6 </code>以及以上 <code>API </code>的 <code>polyfill</code>。</p>
 <p><code>polyfill</code>翻译过来叫做垫片/补丁。就是用社区上提供的一段代码，让我们在不兼容某些新特性的浏览器上，使用该新特性。</p>
 <h5 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a><code>PWA</code></h5><p>开发 <code>Web App </code>项目，项目一旦处于网络离线情况，就没法访问了。</p>
 <p>我们希望给项目提供离线体验。</p>
@@ -395,7 +395,7 @@
 <li>使用 <code>Code Split</code> 对代码进行分割成多个<code> js</code> 文件，从而使单个文件体积更小，并行加载<code>js</code>速度更快。并通过<code> import</code> 动态导入语法进行按需加载，从而达到需要使用时才加载该资源，不用时不加载资源。</li>
 <li>使用 <code>Preload / Prefetch</code> 对代码进行提前加载，等未来需要使用时就能直接使用，从而用户体验更好。</li>
 <li>使用 <code>Network Cache</code> 能对输出资源文件进行更好的命名，将来好做缓存，从而用户体验更好。</li>
-<li>使用 <code>Core-js</code> 对 js 进行兼容性处理，让我们代码能运行在低版本浏览器。</li>
+<li>使用 <code>Core-js</code> 对<code> js</code> 进行兼容性处理，让我们代码能运行在低版本浏览器。</li>
 <li>使用 <code>PWA</code> 能让代码离线也能访问，从而提升用户体验。</li>
 </ul>
 
