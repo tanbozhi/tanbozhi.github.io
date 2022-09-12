@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-22T06:58:19.000Z">
-<meta property="article:modified_time" content="2022-09-12T13:52:42.041Z">
+<meta property="article:modified_time" content="2022-09-12T13:54:38.194Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary_large_image">
@@ -330,13 +330,11 @@
 <h5 id="代码分割（code-split）"><a href="#代码分割（code-split）" class="headerlink" title="代码分割（code split）"></a>代码分割（<code>code split</code>）</h5><p>打包代码时会将所有js文件打包到一个文件中，体积会太大。。如果我们只加载首页，就应该只加载首页的js文件，其他文件不应该加载。所以我们要将打包生成的文件进行代码分割，生成多个js文件，渲染哪个页面就渲染哪个js文件，这样加载的资源就少，速度就更快。</p>
 <h6 id="下载包-2"><a href="#下载包-2" class="headerlink" title="下载包"></a>下载包</h6><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">npm <span class="hljs-selector-tag">i</span> <span class="hljs-selector-tag">html</span>-webpack-plugin -D<br></code></pre></td></tr></table></figure>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> webpack.config.js<br>const path = require(<span class="hljs-string">&quot;path&quot;</span>);<br>const HtmlWebpackPlugin = require(<span class="hljs-string">&quot;html-webpack-plugin&quot;</span>);<br><br>module.exports = &#123;<br>  <span class="hljs-regexp">//</span> 单入口<br>  <span class="hljs-regexp">//</span> entry: <span class="hljs-string">&#x27;./src/main.js&#x27;</span>,<br>  <span class="hljs-regexp">//</span> 多入口<br>  entry: &#123;<br>    main: <span class="hljs-string">&quot;./src/main.js&quot;</span>,<br>    app: <span class="hljs-string">&quot;./src/app.js&quot;</span>,<br>  &#125;,<br>  output: &#123;<br>    path: path.resolve(__dirname, <span class="hljs-string">&quot;./dist&quot;</span>),<br>    <span class="hljs-regexp">//</span> [name]是webpack命名规则，使用chunk的name作为输出的文件名。<br>    <span class="hljs-regexp">//</span> 什么是chunk？打包的资源就是chunk，输出出去叫bundle。<br>    <span class="hljs-regexp">//</span> chunk的name是啥呢？ 比如： entry中xxx: <span class="hljs-string">&quot;./src/xxx.js&quot;</span>, name就是xxx。注意是前面的xxx，和文件名无关。<br>    <span class="hljs-regexp">//</span> 为什么需要这样命名呢？如果还是之前写法main.js，那么打包生成两个js文件都会叫做main.js会发生覆盖。(实际上会直接报错的)<br>    filename: <span class="hljs-string">&quot;js/[name].js&quot;</span>,<br>    clear: true,<br>  &#125;,<br>  plugins: [<br>    new HtmlWebpackPlugin(&#123;<br>      template: <span class="hljs-string">&quot;./public/index.html&quot;</span>,<br>    &#125;),<br>  ],<br>  mode: <span class="hljs-string">&quot;production&quot;</span>,<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h5 id="提取重复代码"><a href="#提取重复代码" class="headerlink" title="提取重复代码"></a>提取重复代码</h5><h5 id="按需加载，动态导入（重命名）"><a href="#按需加载，动态导入（重命名）" class="headerlink" title="按需加载，动态导入（重命名）"></a>按需加载，动态导入（重命名）</h5><h5 id="Preload-Prefetch"><a href="#Preload-Prefetch" class="headerlink" title="Preload / Prefetch"></a><code>Preload / Prefetch</code></h5><p>我们前面已经做了代码分割，同时会使用 import 动态导入语法来进行代码按需加载（我们也叫懒加载，比如路由懒加载就是这样实现的）。</p>
+<h5 id="提取重复代码"><a href="#提取重复代码" class="headerlink" title="提取重复代码"></a>提取重复代码</h5><h5 id="按需加载，动态导入（重命名）"><a href="#按需加载，动态导入（重命名）" class="headerlink" title="按需加载，动态导入（重命名）"></a>按需加载，动态导入（重命名）</h5><h5 id="Preload-Prefetch"><a href="#Preload-Prefetch" class="headerlink" title="Preload / Prefetch"></a><code>Preload / Prefetch</code></h5><p>我们前面已经做了代码分割，同时会使用 <code>import</code> 动态导入语法来进行代码按需加载（我们也叫懒加载，比如路由懒加载就是这样实现的）。</p>
 <p>但是加载速度还不够好，比如：是用户点击按钮时才加载这个资源的，如果资源体积很大，那么用户会感觉到明显卡顿效果。</p>
 <p>我们想在浏览器空闲时间，加载后续需要使用的资源。我们就需要用上 <code>Preload</code> 或 <code>Prefetch</code> 技术。</p>
-<ul>
-<li><code>Preload</code>：告诉浏览器立即加载资源。</li>
-<li><code>Prefetch</code>：告诉浏览器在空闲时才开始加载资源。</li>
-</ul>
+<p><code>Preload</code>：告诉浏览器立即加载资源。</p>
+<p><code>Prefetch</code>：告诉浏览器在空闲时才开始加载资源。</p>
 <h5 id="Network-Cache"><a href="#Network-Cache" class="headerlink" title="Network Cache"></a><code>Network Cache</code></h5><p>将来开发时我们对静态资源会使用缓存来优化，这样浏览器第二次请求资源就能读取缓存了，速度很快。</p>
 <p>但是这样的话就会有一个问题, 因为前后输出的文件名是一样的，都叫 <code>main.js</code>，一旦将来发布新版本，因为文件名没有变化导致浏览器会直接读取缓存，不会加载新资源，项目也就没法更新了。</p>
 <p>所以我们从文件名入手，确保更新前后文件名不一样，这样就可以做缓存了。</p>
@@ -344,7 +342,7 @@
 <ul>
 <li><code>fullhash（webpack4 是 hash）</code></li>
 </ul>
-<p>每次修改任何一个文件，所有文件名的 hash 至都将改变。所以一旦修改了任何一个文件，整个项目的文件缓存都将失效。</p>
+<p>每次修改任何一个文件，所有文件名的<code> hash</code> 至都将改变。所以一旦修改了任何一个文件，整个项目的文件缓存都将失效。</p>
 <ul>
 <li><code>chunkhash</code></li>
 </ul>
