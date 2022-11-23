@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-08T13:58:43.000Z">
-<meta property="article:modified_time" content="2022-08-14T09:51:00.993Z">
+<meta property="article:modified_time" content="2022-11-11T17:54:37.769Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.4k 字
+          9.7k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          79 分钟
+          81 分钟
         
       </span>
     
@@ -562,6 +562,10 @@
 <p>​    B:父类/超类/基类/<code>superclass</code></p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs scala">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span></span>&#123;<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
 <h5 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h5><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs markdown">重写的规定:<br>方法的声明:权限修饰符返回值类型方法名(形参列表) throws异常的类型&#123;<br>//方法体<br>&#125;<br>约定俗称:子类中的叫重写的方法，父类中的叫被重写的方法<br>子类重写的方法的方法名和形参列表与父类被重写的方法的方法名和形参列表相同子类重写的方法的权限修饰符不小于父类被重写的方法的权限修饰符<br>&gt;特殊情况:子类不能重写父类中声明为private权限的方法返回值类型:<br>&gt;父类被重写的方法的返回值类型是void，则子类重写的方法的返回值类型只能是void<br>&gt;父类被重写的方法的返回值类型是A类型，则子类重写的方法的返回值类型可以是A类或A类的子类<br>&gt;父类被重写的方法的返回值类型是基本数据类型(比如:double)，则子类重写的方法的返回值类型必须是相F子类重写的方法抛出的异常类型不大于父类被重写的方法抛出的异常类型（具体放到异常处理时候讲)<br><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">****</span><span class="hljs-strong">**</span><br><span class="hljs-strong">子类和父类中的同名同参数的方法要么都声明为非static的（考虑重写），要么都声明为static的。</span><br><span class="hljs-strong"></span><br></code></pre></td></tr></table></figure>
+<h5 id="super"><a href="#super" class="headerlink" title="super"></a>super</h5><p>使用super可以调用父类里的属性和方法</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">super</span>.父类属性<br><span class="hljs-keyword">super</span>.父类方法   <span class="hljs-comment">//通常省略super.</span><br><br><span class="hljs-comment">//当子类与父类有重名属性时</span><br>子类用 <span class="hljs-keyword">this</span>.属性<br>父类用 <span class="hljs-keyword">super</span>.属性<br></code></pre></td></tr></table></figure>
+<p>调用父类的构造器</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss">super(name,age) <span class="hljs-comment">//参数须要与夫类构造器相同</span><br><br>1.我们可以在子类的构造器中使用super(形参列表)的方式,调用父类的构造器<br>2<span class="hljs-selector-class">.super</span>(形参列表)必须在子类构造器的首行<br>3.在类的构造器中，this(形参)与super(形参列表)只能写一个<br>4.没有写this(形参)与super(形参列表)时，默认调用super()<br></code></pre></td></tr></table></figure>
 
               
             </div>

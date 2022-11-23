@@ -24,7 +24,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-19T02:44:32.000Z">
-<meta property="article:modified_time" content="2022-04-27T10:53:48.177Z">
+<meta property="article:modified_time" content="2022-11-23T16:27:09.712Z">
 <meta property="article:author" content="博博">
 <meta property="article:tag" content="node">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          19k 字
+          21k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          162 分钟
+          175 分钟
         
       </span>
     
@@ -327,7 +327,11 @@
 <h5 id="将文件内容给客户端"><a href="#将文件内容给客户端" class="headerlink" title="将文件内容给客户端"></a>将文件内容给客户端</h5><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs qml">①导入需要的模块<br>②常见基本的web服务器<br>③将资源的请求<span class="hljs-built_in">url</span>地址映射为文件的存放路径<br>④读取文件的内容响应给客户端<br>⑤优化资源的请求路径<br></code></pre></td></tr></table></figure>
 
 
-<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><h6 id="三大类："><a href="#三大类：" class="headerlink" title="三大类："></a>三大类：</h6><p>内置模块（官方定义，例fs,path.http模块）</p>
+<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><h6 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h6><p>模块化是指解决一个复杂问题时，自顶向下逐层把系统划分成若干模块的过程。对于整个系统来说，模块是可组合、分解和更换的单元。</p>
+<h6 id="好处："><a href="#好处：" class="headerlink" title="好处："></a>好处：</h6><p>①提高代码的可复用性</p>
+<p>②提高代码的可维护性</p>
+<p>③实现按需加载</p>
+<h6 id="三大类："><a href="#三大类：" class="headerlink" title="三大类："></a>三大类：</h6><p>内置模块（官方定义，例fs,path.http模块）</p>
 <p>自定义模块（自己创建的js文件）</p>
 <p>第三方模块（由第三方发出来的模块，需要下载）</p>
 <h6 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">内置: <span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>自定义: <span class="hljs-keyword">const</span> custom = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./custom.js&#x27;</span>)	<span class="hljs-comment">//需要提供路径，可以省略.js</span><br>第三方: <span class="hljs-keyword">const</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;moment&#x27;</span>)		<span class="hljs-comment">//与内置模块加载一样，需要提前下载</span><br></code></pre></td></tr></table></figure>
@@ -462,10 +466,32 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment">//app.js</span><br><span class="hljs-comment">//--------------------</span><br><span class="hljs-keyword">const</span> apiRouter = <span class="hljs-keyword">require</span>(<span class="hljs-string">&#x27;./router.js&#x27;</span>)<br>app.<span class="hljs-keyword">use</span>(<span class="hljs-string">&#x27;/api&#x27;</span>,router)<br></code></pre></td></tr></table></figure>
 <h5 id="编写GET接口"><a href="#编写GET接口" class="headerlink" title="编写GET接口"></a>编写GET接口</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//apiRouter.js</span><br><span class="hljs-comment">//---------------------------</span><br><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)<br><span class="hljs-keyword">const</span> router = express.Router()<br><br>router.get(<span class="hljs-string">&#x27;/get&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">req,res</span>)=&gt;</span>&#123;<br>	<span class="hljs-keyword">const</span> query = req.query	<span class="hljs-comment">//获取客服端查询字符</span><br>	res.send(&#123;<br>		status:<span class="hljs-number">0</span>,<br>		msg:<span class="hljs-string">&#x27;GET请求成功&#x27;</span>,<br>		data: query<br>	&#125;)<br>&#125;)<br><br><span class="hljs-built_in">module</span>.export = router<br></code></pre></td></tr></table></figure>
 <h5 id="编写POST接口"><a href="#编写POST接口" class="headerlink" title="编写POST接口"></a>编写POST接口</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//apiRouter.js</span><br><span class="hljs-comment">//---------------------------</span><br><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)<br><span class="hljs-keyword">const</span> router = express.Router()<br><br>router.get(<span class="hljs-string">&#x27;/post&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">req,res</span>)=&gt;</span>&#123;<br>	<span class="hljs-comment">//这之前要配置解析中间件</span><br>	<span class="hljs-keyword">const</span> query = req.body	<span class="hljs-comment">//获取客服端查询字符</span><br>	res.send(&#123;<br>		status:<span class="hljs-number">0</span>,<br>		msg:<span class="hljs-string">&#x27;POST请求成功&#x27;</span>,<br>		data: query<br>	&#125;)<br>&#125;)<br><br><span class="hljs-built_in">module</span>.export = router<br></code></pre></td></tr></table></figure>
+<h5 id="JSONP接口"><a href="#JSONP接口" class="headerlink" title="JSONP接口"></a><code>JSONP</code>接口</h5><p>为了防止冲突，<code>jsonp</code>接口必须放到<code>cors</code>中间件之前</p>
+<p><code>jsop</code>只支持<code>get</code>请求</p>
+<p>实现J<code>SONP</code>接口的步骤</p>
+<p>①获取客户端发送过来的回调函数的名字</p>
+<p>②得到要通过<code>JSONP</code>形式发送给客户端的数据</p>
+<p>③根据前两步得到的数据，拼接出一个函数调用的字符串</p>
+<p>④把上一步拼接得到的字符串，响应给客户端的<code>&lt;script&gt;</code>标签进行解析执行</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">app</span>.<span class="hljs-built_in">get</span>(&#x27;/api/jsonp&#x27;(req,res)=&gt;&#123;<br>	<span class="hljs-keyword">const</span> funcName = req.<span class="hljs-keyword">query</span>.callback <span class="hljs-comment">//得到函数名</span><br>	<span class="hljs-keyword">const</span> data = &#123;name:&#x27;zs&#x27;,age:22&#125;   <span class="hljs-comment">//发给客户端的数据</span><br>	<span class="hljs-keyword">const</span> scriptStr = `<span class="hljs-variable">$&#123;funcName&#125;</span>(<span class="hljs-variable">$&#123;JSON</span>.stringify(data)&#125;)` <span class="hljs-comment">//拼接出函数的调用</span><br>	res.send(scriptStr) <span class="hljs-comment">//响应给客户端</span><br>&#125;)<br><br><span class="hljs-keyword">app</span>.<span class="hljs-keyword">use</span>(cors()) <span class="hljs-comment">//后面使用cors</span><br></code></pre></td></tr></table></figure>
+
+
 <h5 id="解决跨域问题"><a href="#解决跨域问题" class="headerlink" title="解决跨域问题"></a>解决跨域问题</h5><p>安装cors</p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> i cors<br></code></pre></td></tr></table></figure>
 <p>导入并注册</p>
 <figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-comment">//要在路由之前导入注册</span><br><span class="hljs-variable">const</span> <span class="hljs-variable">cors</span> = <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-string">&#x27;cors&#x27;</span>)</span><br><span class="hljs-variable">app.use</span>(<span class="hljs-function"><span class="hljs-title">cors</span>())</span><br></code></pre></td></tr></table></figure>
+<h5 id="跨域资源共享（cors三个响应头）"><a href="#跨域资源共享（cors三个响应头）" class="headerlink" title="跨域资源共享（cors三个响应头）"></a>跨域资源共享（<code>cors</code>三个响应头）</h5><p>1.<code>Access-Control-Allow-Origin</code></p>
+<p>指定允许访问该资源的外域<code>URL</code></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">res.setHeader(<span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span>,<span class="hljs-string">&#x27;http://baibu.com&#x27;</span>) <span class="hljs-regexp">//</span>只允许百度访问<br><br>res.setHeader(<span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span>,<span class="hljs-string">&#x27;*&#x27;</span>) <span class="hljs-regexp">//</span>所有网站都可以访问<br></code></pre></td></tr></table></figure>
+<p>2.<code>Access-Control-Allow-Headers</code></p>
+<p>默认情况下，<code>cors</code>仅支持客户端向服务器发送9个请求头</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">Accept、 Accept-Language、 Content-Language、 DPR、 Downlink、 Save-Data、 Viewport-Width、 Width 、Content-<span class="hljs-constructor">Type(值仅限于<span class="hljs-params">text</span><span class="hljs-operator">/</span><span class="hljs-params">plain</span>、<span class="hljs-params">multipart</span><span class="hljs-operator">/</span><span class="hljs-params">form</span>-<span class="hljs-params">data</span>、<span class="hljs-params">application</span><span class="hljs-operator">/</span><span class="hljs-params">x</span>-<span class="hljs-params">www</span>-<span class="hljs-params">form</span>-<span class="hljs-params">urlencoded</span> 三者之一)</span><br><br><span class="hljs-comment">//使用</span><br>res.set<span class="hljs-constructor">Header(&#x27;Access-Control-Allow-Headers&#x27;,&#x27;Content-Type, X-Custom-Header&#x27;)</span><br></code></pre></td></tr></table></figure>
+<p>如果客户端向服务器发送了额外的请求头信息，则需要在服务器端，通过 <code>Access-Control-Allow-Headers</code> 对额外的请求头进行声明，否则这次请求会失败！</p>
+<p>3.<code>Access-Control-Alow-Methods</code></p>
+<p>默认情况下，<code>CORS</code>仅支持客户端发起<code>GET</code>、<code>POST</code>、<code>HEAD</code>请求。如果客户端希望通过<code>PUT</code>、<code>DELETE</code>等方式请求服务器的资源，则需要在服务器端，通过<code>Access-Control-Alow-Methods</code>来指明实际请求所允许使用的 <code>HTTP</code>方法。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">res.setHeader(<span class="hljs-string">&#x27;Access-Control-Allow-Methods&#x27;</span>,<span class="hljs-string">&#x27;*&#x27;</span>) <span class="hljs-regexp">//</span>允许所有的请求方法<br><br>res.setHeader(<span class="hljs-string">&#x27;Access-Control-Allow-Methods&#x27;</span>,<span class="hljs-string">&#x27;POST,GET,DELETE&#x27;</span>) <span class="hljs-regexp">//</span>只允许post,get，<span class="hljs-keyword">delete</span>方法<br></code></pre></td></tr></table></figure>
+
+
 <h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>用来组织、存储、和管理数据的仓库</p>
 <p>数据结构：数据库(database)、数据表(table)、数据行(row)、字段(filed)</p>
 <h5 id="相关软件"><a href="#相关软件" class="headerlink" title="相关软件"></a>相关软件</h5><p>MySQL Server：专门用来提供数据存储和服务的软件</p>
