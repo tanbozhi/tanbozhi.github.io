@@ -462,24 +462,40 @@
     <url>/2022/05/22/%E5%89%8D%E7%AB%AF-webpack/</url>
     <content><![CDATA[<h4 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a><code>webpack</code></h4><p>开发时，我们会使用框架（<code>Vue,react</code>）,<code>Es6</code>语法，<code>less/sass</code>等<code>css</code>预处理器等语法进行开发。</p>
 <p>这些代码想要在浏览器运行，必须编译成浏览器能够识别的代码。</p>
-<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p>创建需要的文件</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><code class="hljs x86asm">webback<br>	<span class="hljs-meta">public</span>	放入一些静态文件，index<span class="hljs-number">.</span>html也放在里面<br>	src		所有东西都放到这里面<br>		main<span class="hljs-number">.</span><span class="hljs-keyword">js</span>	入口文件<br>		<span class="hljs-keyword">js</span>文件夹 写一些<span class="hljs-keyword">js</span>文件<br>		<br></code></pre></td></tr></table></figure>
-<p>创建包描述文件</p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> init -y<br></code></pre></td></tr></table></figure>
-<p>下载两个<code>webpack</code>包</p>
-<figure class="highlight avrasm"><table><tr><td class="code"><pre><code class="hljs avrasm">npm i webpack webpack-<span class="hljs-keyword">cli</span> -D<br></code></pre></td></tr></table></figure>
-<p>打包</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">npx webpack .<span class="hljs-regexp">/src/m</span>ain.js --mode=development<br>			<span class="hljs-regexp">//</span>地址是入口文件		开发模式打包<br>			<br>npx webpack .<span class="hljs-regexp">/src/m</span>ain.js --mode=production<br>								 生产模式打包<br></code></pre></td></tr></table></figure>
+<p>在<code>node</code>环境运行</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载两个<code>webpack</code>包</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">npm init -y <span class="hljs-regexp">//</span>创建包描述文件<br><br>npm i webpack webpack-cli -D <span class="hljs-regexp">//</span>安装依赖<br></code></pre></td></tr></table></figure>
+<h4 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h4><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>打包命令一般都会放到package.json中的script标签中<br><br>npx webpack <span class="hljs-regexp">//</span>默认打包 入口地址为 package.json中main配置的路径<br><br>npx webpack --mode=development <span class="hljs-regexp">//</span>开发模式打包  （常用）<br><br>npx webpack --mode=development --watch <span class="hljs-regexp">//</span>开发模式打包 监听src目录下的文件改变，重新打包<br><br>npx webpack .<span class="hljs-regexp">/src/m</span>ain.js --mode=development <span class="hljs-regexp">//</span>指定入口文件入口文件 开发模式打包<br>			<br>npx webpack .<span class="hljs-regexp">/src/m</span>ain.js --mode=production	<span class="hljs-regexp">//</span>指定入口文件入口文件 生产模式打包<br></code></pre></td></tr></table></figure>
 <h4 id="五大核心概念"><a href="#五大核心概念" class="headerlink" title="五大核心概念"></a>五大核心概念</h4><p><code>entry</code>(入口)    从哪个文件开始打包</p>
 <p><code>output</code>(输出)    打包好的文件输出到哪里去，如何命名</p>
 <p><code>loader</code>(加载器)    <code>webpack</code>本身只能处理<code>js,json</code>等资源，其他资需要借助loader才能解析</p>
 <p><code>plugins</code>(插件)    扩展<code>webpack</code>的功能</p>
-<p>mode(模式)    开发模式:development，生产模式:production</p>
-<h4 id="Webpack-配置文件"><a href="#Webpack-配置文件" class="headerlink" title="Webpack 配置文件"></a><code>Webpack </code>配置文件</h4><p>在项目根目录下新建文件：<code>webpack.config.js</code></p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> Node.js的核心模块，专门用来处理文件路径<br>const path = require(<span class="hljs-string">&quot;path&quot;</span>);<br><br>module.exports = &#123;<br>  <span class="hljs-regexp">//</span> 入口<br>  <span class="hljs-regexp">//</span> 相对路径和绝对路径都行<br>  entry: <span class="hljs-string">&quot;./src/main.js&quot;</span>,<br>  <span class="hljs-regexp">//</span> 输出<br>  output: &#123;<br>    <span class="hljs-regexp">//</span> path: 文件输出目录，必须是绝对路径<br>    <span class="hljs-regexp">//</span> path.resolve()方法返回一个绝对路径<br>    <span class="hljs-regexp">//</span> __dirname 当前文件的文件夹绝对路径<br>    path: path.resolve(__dirname, <span class="hljs-string">&quot;dist&quot;</span>),<br>    <span class="hljs-regexp">//</span> filename: 输出文件名<br>    filename: <span class="hljs-string">&quot;main.js&quot;</span>,<br>  &#125;,<br>  <span class="hljs-regexp">//</span> 加载器<br>  module: &#123;<br>    rules: [],<br>  &#125;,<br>  <span class="hljs-regexp">//</span> 插件<br>  plugins: [],<br>  <span class="hljs-regexp">//</span> 模式<br>  mode: <span class="hljs-string">&quot;development&quot;</span>, <span class="hljs-regexp">//</span> 开发模式<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>运行指令</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">npx webpack //配置文件里面指定了模式，就可以这样运行<br></code></pre></td></tr></table></figure>
-<h4 id="处理-Css-资源"><a href="#处理-Css-资源" class="headerlink" title="处理 Css 资源"></a>处理 <code>Css </code>资源</h4><h6 id="下载包"><a href="#下载包" class="headerlink" title="下载包"></a>下载包</h6><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">npm i css-loader style-loader -D<br></code></pre></td></tr></table></figure>
+<p>mode(编译模式)    开发模式:development，生产模式:production</p>
+<h4 id="Webpack-配置文件"><a href="#Webpack-配置文件" class="headerlink" title="Webpack 配置文件"></a><code>Webpack </code>配置文件</h4><p>默认情况下<code>webpack</code>会读取<code>webpack.config.js</code>文件作为配置文件</p>
+<p>配置文件必须使用<code>commonjs</code>导出一个对象</p>
+<p>命令行设置的参数优先级高，会覆盖配置文件的参数</p>
+<p>也可以指定配置文件,通过<code>--config</code></p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino">npx webpack --<span class="hljs-built_in">config</span> configtest.js <span class="hljs-comment">//指定configtest.js为配置文件</span><br></code></pre></td></tr></table></figure>
+
+
+<p><code>webpack.config.js</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">module</span>.exports = &#123;<br>  <span class="hljs-comment">// 模式</span><br>  mode: <span class="hljs-string">&quot;development&quot;</span>, <span class="hljs-comment">// 开发模式</span><br>  <span class="hljs-comment">//入口 相对路径和绝对路径都行</span><br>  entry: <span class="hljs-string">&quot;./src/main.js&quot;</span>,<br>  <span class="hljs-comment">// 出口</span><br>  output: &#123;<br>    filename: <span class="hljs-string">&quot;main.js&quot;</span>, <span class="hljs-comment">// 输出文件名</span><br>  &#125;,<br>  <span class="hljs-comment">// 加载器</span><br>  <span class="hljs-built_in">module</span>: &#123;<br>    rules: [],<br>  &#125;,<br>  <span class="hljs-comment">// 插件</span><br>  plugins: [],<br>    <br>  <span class="hljs-comment">//配置源码地图的展示方式</span><br>  <span class="hljs-comment">//devtools:&#x27;&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="devtools配置"><a href="#devtools配置" class="headerlink" title="devtools配置"></a><code>devtools</code>配置</h4><h6 id="源码地图-source-map"><a href="#源码地图-source-map" class="headerlink" title="源码地图(source map)"></a>源码地图(<code>source map</code>)</h6><p><code>source map</code>应该在开发环境中使用，作为一种调试的手段</p>
+<p><code>source map</code>不应该在生产环境使用，文件一般较大，还容易暴露源代码 </p>
+<p>生产环境下默认是<code>none</code></p>
+<p>开发模式下默认是<code>eval</code></p>
+<p>最佳实践(个人认为)</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">生产模式下 默认 就行<br>开发环境下可以使用<span class="hljs-built_in">eval</span>-<span class="hljs-keyword">source</span>-<span class="hljs-keyword">map</span> 显示最完整<br>devtool<span class="hljs-variable">s:</span><span class="hljs-string">&#x27;eval-source-map&#x27;</span><br></code></pre></td></tr></table></figure>
+<h4 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h4><p>1.初始化 <code>--&gt;</code>2. 编译 <code>--&gt;</code>3.输出</p>
+<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><p><code>webpack</code>会将<code>cli</code>参数，配置文件，默认配置进行融合，形成一个最终的配置对象</p>
+<h5 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h5><h6 id="1-创建chunk"><a href="#1-创建chunk" class="headerlink" title="1.创建chunk"></a>1.创建<code>chunk</code></h6><p>通过入口文件找到所有依赖的统称</p>
+<p>每个<code>chunk</code>都有<code>name</code>(默认<code>main</code>)和<code>id</code></p>
+<h6 id="2-构建所有依赖模块"><a href="#2-构建所有依赖模块" class="headerlink" title="2.构建所有依赖模块"></a>2.构建所有依赖模块</h6><p>入口 <code>--&gt;</code> 模块文件 <code>--&gt;</code>检查记录(已记录则结束，未记录则继续)<code>--&gt;</code>读取摁键内容<code>--&gt;``AST</code>抽象语法树分析<code>--&gt;</code>记录依赖<code>--&gt;</code>将依赖保存到<code>dependencies</code>中<code>--&gt;</code>替换依赖函数<code>--&gt;</code>保存转换后的代码</p>
+<h6 id="3-产生chunk-assets"><a href="#3-产生chunk-assets" class="headerlink" title="3.产生chunk assets"></a>3.产生<code>chunk assets</code></h6><p>完成第二步后 会产生一个模块列表，列表包含模块<code>id</code>和模块转换后的代码</p>
+<p>通过模块列表创建一个资源列表(包含文件名，文件内容)，还会根据资源列表生成一个hash值</p>
+<h6 id="4-合并chunk-assets"><a href="#4-合并chunk-assets" class="headerlink" title="4.合并chunk assets"></a>4.合并<code>chunk assets</code></h6><p>将多个<code>chunk</code>的<code>assets</code>合并到一起，并产生一个总的<code>hash</code>值</p>
+<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><p><code>webpack</code>利用<code>node</code>中的<code>fs</code>模块根据总的<code>assets</code>，生成相应的文件</p>
+<h4 id="入口和出口"><a href="#入口和出口" class="headerlink" title="入口和出口"></a>入口和出口</h4><h4 id="处理-Css-资源"><a href="#处理-Css-资源" class="headerlink" title="处理 Css 资源"></a>处理 <code>Css </code>资源</h4><h6 id="下载包"><a href="#下载包" class="headerlink" title="下载包"></a>下载包</h6><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">npm i css-loader style-loader -D<br></code></pre></td></tr></table></figure>
 <p>注意：需要下载两个 loader</p>
 <h6 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h6><ul>
 <li><code>css-loader</code>：负责将 <code>Css</code> 文件编译成 <code>Webpack </code>能识别的模块</li>
