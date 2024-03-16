@@ -98,7 +98,7 @@
   </entry>
   <entry>
     <title>JAVA基础</title>
-    <url>/2022/07/08/JAVA%E5%9F%BA%E7%A1%80/</url>
+    <url>/2024/03/01/JAVA%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h6 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h6><figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">main/psvm sout <span class="hljs-comment">//快捷输入相关代码</span><br>Ctrl + D <span class="hljs-comment">//复制当前行到下一行</span><br>Ctrl + Y <span class="hljs-comment">//删除所在行，建议用Ctrl + X</span><br>Ctrl + Alt + L <span class="hljs-comment">//格式化代码</span><br>ALT + Shift + 向上箭头 ， ALT + Shift + 向下箭头 <span class="hljs-comment">//上下移动当前代码</span><br>Ctrl + <span class="hljs-regexp">/ , Ctrl + Shift + /</span>   <span class="hljs-comment">//对代码进行注释</span><br></code></pre></td></tr></table></figure>
 <h3 id="cmd基础命令（Windows）"><a href="#cmd基础命令（Windows）" class="headerlink" title="cmd基础命令（Windows）"></a>cmd基础命令（Windows）</h3><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">dir 列出当前目录下的文件与文件夹<br>md 文件夹名 创建文件夹<br>rd 文件夹名 删除目录<br>cd 目录名 		进入指定目录<br>cd ..		返回上一级目录<br>cd/			退回到根目录<br><br>del 文件名		删除文件 <br>del *.txt 删除.txt文件结尾的文件<br>del 文件夹名 删除该文件夹下的所有文件<br><br><span class="hljs-keyword">exit</span> 		退出dos命令行<br><br>Java -version 在安装目录下，查看java版本<br></code></pre></td></tr></table></figure>
 <h3 id="java语言环境搭建"><a href="#java语言环境搭建" class="headerlink" title="java语言环境搭建"></a><code>java</code>语言环境搭建</h3><p><code>JDk</code>:包含了开发工具也包括了JRE</p>
