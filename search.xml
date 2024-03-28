@@ -901,7 +901,7 @@
 <h5 id="注解的解析"><a href="#注解的解析" class="headerlink" title="注解的解析"></a>注解的解析</h5><p>就是判断类上、方法上、成员变量上是否存在注解，并把注解里面的内容解析出来</p>
 <figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">// 解析注解</span><br>    @Test<br>    public void test<span class="hljs-constructor">GetAnnotations()</span> throws Exception &#123;<br>        <span class="hljs-comment">// 1.获取类的Class对象</span><br>        Class c = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">MtTestTest</span>.</span></span><span class="hljs-keyword">class</span>;<br>        <br>        <span class="hljs-comment">// 判断类上是否存在 MyTest 注解</span><br>        <span class="hljs-keyword">if</span>(c.is<span class="hljs-constructor">AnnotationPresent(MyTest.<span class="hljs-params">class</span>)</span>)&#123;<br>            MyTest myTest = (MyTest) c.get<span class="hljs-constructor">DeclaredAnnotation(MyTest.<span class="hljs-params">class</span>)</span>;<br>            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(myTest.aaa<span class="hljs-literal">()</span>);<br>            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(myTest.bbb<span class="hljs-literal">()</span>);<br>            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Arrays</span>.</span></span><span class="hljs-keyword">to</span><span class="hljs-constructor">String(<span class="hljs-params">myTest</span>.<span class="hljs-params">ccc</span>()</span>));<br>        &#125;<br><br>    &#125;<br></code></pre></td></tr></table></figure>
 <h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><p>主函数</p>
-<figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino">package com.itheima.proxyTest;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> &#123;</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span> </span>&#123;<br>        BigStar s = <span class="hljs-keyword">new</span> BigStar(<span class="hljs-string">&quot;杨超越&quot;</span>);<br><br>        Star sp = ProxyUtil.createProxy(s);<br><br>        <span class="hljs-keyword">String</span> rs = sp.sing(<span class="hljs-string">&quot;青花瓷&quot;</span>);<br>        System.out.<span class="hljs-built_in">println</span>(rs);<br>        sp.dance();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino">package com.itheima.proxyTest;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> &#123;</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span> </span>&#123;<br>        <span class="hljs-comment">// Star sp = new BigStar(&quot;杨超越&quot;); //不使用代理</span><br>        Star sp = ProxyUtil.createProxy(<span class="hljs-keyword">new</span> BigStar(<span class="hljs-string">&quot;杨超越&quot;</span>)); <span class="hljs-comment">// 使用代理</span><br><br>        <span class="hljs-keyword">String</span> rs = sp.sing(<span class="hljs-string">&quot;青花瓷&quot;</span>);<br>        System.out.<span class="hljs-built_in">println</span>(rs);<br>        sp.dance();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <p>接口</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.proxyTest;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Star</span> </span>&#123;<br>    <span class="hljs-function">String <span class="hljs-title">sing</span><span class="hljs-params">(String name)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dance</span><span class="hljs-params">()</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>创建代理(重要)</p>
@@ -5328,6 +5328,41 @@ C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125;
       </categories>
       <tags>
         <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaWeb</title>
+    <url>/2024/03/28/JavaWeb/</url>
+    <content><![CDATA[<h3 id="HTML、JS、CSS"><a href="#HTML、JS、CSS" class="headerlink" title="HTML、JS、CSS"></a>HTML、JS、CSS</h3><p>略</p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><h4 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h4><p>Nginx是一款轻量级的web服务器/反向代理服务器及电子邮件(IMAP/POP3)代理服务器.</p>
+<p>特点：占有内存少，并发能力强</p>
+<p>文件说明</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">conf		<span class="hljs-regexp">//</span> 配置文件目录<br>contrib<br>docs<br>html		<span class="hljs-regexp">//</span> 静态资源文件目录<br>logs		<span class="hljs-regexp">//</span> 日志文件目录<br>temp		<span class="hljs-regexp">//</span> 临时文件目录<br>nginx.exe	<span class="hljs-regexp">//</span> 启动exe<br></code></pre></td></tr></table></figure>
+<p>查看端口被哪个进程占用</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><code class="hljs 1c">netstat -ano <span class="hljs-string">| findStr 80</span><br></code></pre></td></tr></table></figure>
+<p>修改nginx启动端口号</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">conf</span> -&gt; nginx.conf 修改<span class="hljs-number">36</span>行的listen <span class="hljs-number">80</span><br></code></pre></td></tr></table></figure>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><p>Maven是apache旗下的一个开源项目，是一款用于管理和构建Java项目的工具。</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>1、依赖管理</p>
+<p>方便快捷的管理项目依赖的资源（<code>jar</code>包），比卖你版本冲突问题。</p>
+<p>2、统一项目结构</p>
+<p>提供标准、统一的项目结构</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">src<br>	main		<span class="hljs-regexp">//</span> 实际项目资源<br>		java	<span class="hljs-regexp">//</span> Java源代码目录<br>		resource	<span class="hljs-regexp">//</span> 配置文件目录<br>	test		<span class="hljs-regexp">//</span> 测试项目资源<br>		java<br>		resource<br>	pom.xml		<span class="hljs-regexp">//</span> 项目配置文件<br></code></pre></td></tr></table></figure>
+<p>3、项目构建</p>
+<p>标准跨平台(<code>Linx、Window、Mac OS</code>)的自动化项目构建方式</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean">清理 -&gt; 编译 -&gt; 测试 -&gt; 打包 -&gt; 发布<br>compile		<span class="hljs-comment">// 编译</span><br>package		<span class="hljs-comment">// 打包</span><br></code></pre></td></tr></table></figure>
+<h4 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h4><p>用于存储资源，管理各种jar包</p>
+<p>先查询本地，在查询私服在，在查询中央仓库</p>
+<p>本地仓库：自己计算机上的一个目录</p>
+<p>中央仓库：由maven团队维护的全球唯一的。仓库地址：<code>https://repo1.maven.org/maven2/</code></p>
+<p>远程仓库：（私服）一般由公司团队搭建的私有仓库。</p>
+<h4 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h4><figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>.下载并解压apache-maven-<span class="hljs-number">3</span>.<span class="hljs-number">9</span>.<span class="hljs-number">6</span>-bin.zip<br><span class="hljs-attribute">2</span>.配置本地仓库：修改conf/setting.xml中<span class="hljs-number">53</span>行的&lt;localRepository&gt;为一个指定目录<br>  <span class="hljs-section">&lt;localRepository&gt;</span><span class="hljs-attribute">D</span>:\JAVA_exe\apache-maven-<span class="hljs-number">3</span>.<span class="hljs-number">9</span>.<span class="hljs-number">6</span>-bin\apache-maven-<span class="hljs-number">3</span>.<span class="hljs-number">9</span>.<span class="hljs-number">6</span>\mvn_repo&lt;/localRepository&gt;<br><span class="hljs-attribute">3</span>.配置阿里云私服：修改conf/setting.xml中<span class="hljs-number">160</span>行的&lt;mirrors&gt;标签<br>  <span class="hljs-section">&lt;mirror&gt;</span><br>      <span class="hljs-section">&lt;id&gt;</span><span class="hljs-attribute">alimaven</span>&lt;/id&gt;<br>      <span class="hljs-section">&lt;name&gt;</span><span class="hljs-attribute">aliyun</span> maven&lt;/name&gt;<br>      <span class="hljs-section">&lt;url&gt;</span><span class="hljs-attribute">http</span>://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;<br>      <span class="hljs-section">&lt;MirrorOf&gt;</span><span class="hljs-attribute">central</span>&lt;/MirrorOf&gt;<br>  <span class="hljs-section">&lt;/mirror&gt;</span><br><span class="hljs-attribute">4</span>.配置环境变量：MAVEN_HOME为maven的解压目录，并将bin目录加入PATH环境变量<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
       </tags>
   </entry>
 </search>
