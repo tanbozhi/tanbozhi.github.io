@@ -5454,8 +5454,7 @@ C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125;
 <p>注释：</p>
 <p>​    单行注释：<code>-- 注释内容  或者 # 注释内容(Mysql独有)</code></p>
 <p>​    多行注释：<code>/* 注释内容 */</code></p>
-<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>四大类</p>
-<table>
+<h4 id="分类-四大类"><a href="#分类-四大类" class="headerlink" title="分类(四大类)"></a>分类(四大类)</h4><table>
 <thead>
 <tr>
 <th align="center">分类</th>
@@ -5704,6 +5703,22 @@ C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125;
 <h6 id="update语法（更新数据）"><a href="#update语法（更新数据）" class="headerlink" title="update语法（更新数据）"></a><code>update</code>语法（更新数据）</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># 修改数据<br># update 表名 set 字段名1 &#x3D; 值1, 字段名2 &#x3D; 值2, ... [where 条件];<br>update table_emp set username&#x3D;&#39;曦&#39;,password&#x3D;&#39;456789&#39; where id&#x3D;2;<br><br># 批量修改 不加 where <br>update table_emp set password&#x3D;&#39;123456789&#39;;<br></code></pre></td></tr></table></figure>
 <h6 id="delete语法（删除数据）"><a href="#delete语法（删除数据）" class="headerlink" title="delete语法（删除数据）"></a><code>delete</code>语法（删除数据）</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># 删除数据<br># delete from 表名 [where 条件];<br>delete from table_emp where id&#x3D;6;<br><br># 删除表中的所有数据<br>delete from table_emp;<br></code></pre></td></tr></table></figure>
 <h5 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h5><p>数据查询语言：用来查询数据库中表的记录</p>
+<p>运算符</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql">&gt;	&gt;&#x3D;	&lt;	&lt;&#x3D;	&#x3D;<br>&lt;&gt; 或 !&#x3D;  不等于<br>between ... and ...	# 在某个范围之内(含最小、最大值)<br>in(...)		# 在in之后的列表中的值，多选一<br>like 占位符	# 模糊匹配( _匹配单个字符，%匹配多个字符)<br>is null 	# 是null<br>and 或 &amp;&amp; 	# 并且，多个条件同时成立<br>or 或 || 	# 或者，多个条件任意一个成立<br>not 或 !		# 非，不是<br></code></pre></td></tr></table></figure>
+<h6 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># 1.查询指定字段 name entrydate<br>select name,entrydate from tb_emp;<br><br># 2.查询返回所有字段<br># 推荐<br>select id, username, password, name, gender, image, job, entrydate, create_time, update_time from tb_emp;<br># 或者<br># 不推荐，性能低<br>select * from tb_emp;<br><br># 3.查询所有员工的name,entrydate,并起别名<br>select name as 姓名,entrydate as 入职日期 from tb_emp;<br># as可以省略<br>select name 姓名,entrydate 入职日期 from tb_emp;<br><br># 4.去重 distinct<br>select distinct job from tb_emp;<br></code></pre></td></tr></table></figure>
+<h6 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h6><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># 查询全部<br>select * from tb_emp;<br><br># 1.查询姓名为杨逍的用户<br>select * from tb_emp where name&#x3D;&#39;杨逍&#39;;<br><br># 2.查询 id 小于等于5 的用户<br>select * from tb_emp where id&lt;&#x3D;5;<br><br># 3.查询 没有职位 的用户<br>select * from tb_emp where job is null;<br><br># 4.查询 有职位 的用户<br>select * from tb_emp where job is not null;<br><br># 5.查询 2000-01-01 到 2010-01-01 之间的用户<br>select * from tb_emp where entrydate between &#39;2000-01-01&#39; and &#39;2010-01-01&#39;;<br># 或者<br>select * from tb_emp where entrydate &gt;&#x3D; &#39;2000-01-01&#39; and entrydate &lt;&#x3D; &#39;2010-01-01&#39;;<br><br># 6.查询 2000-01-01 到 2010-01-01 之间 并且性别为女 的用户<br>select * from tb_emp where entrydate between &#39;2000-01-01&#39; and &#39;2010-01-01&#39; and gender &#x3D; 2;<br><br># 7.查询 职位是 2(讲师) 3(学工主管) 4(教研主管) 的用户<br>select * from tb_emp where job&#x3D;2 or job&#x3D;3 or job&#x3D;4;<br># 或者<br>select * from tb_emp where job in(2,3,4);<br><br># 8.查询姓名为两个字的用户<br>select * from tb_emp where name like &#39;__&#39;;<br><br># 9.查询 姓张 的用户<br>select * from tb_emp where name like &#39;张%&#39;;<br></code></pre></td></tr></table></figure>
+<p>聚合函数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># 1.用于统计数量<br># 不对null值进行统计<br>select count(id) from tb_emp;<br>select count(&#39;A&#39;) from tb_emp;<br># 推荐使用 mysql底层有优化<br>select count(*)from tb_emp;<br><br># 2.统计最早入职时间<br>select min(entrydate) from tb_emp;<br># 3.统计最晚入职时间<br>select max(entrydate) from tb_emp;<br><br># 4.统计平均值<br>select avg(id) from tb_emp;<br><br># 5.求和<br>select sum(id) from tb_emp;<br></code></pre></td></tr></table></figure>
+<p>流程控制语句</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># if(条件表达式，true取值，false取值) as 别名<br>select if(gender &#x3D; 1, &#39;男&#39; ， &#39;女&#39;) as &#39;性别&#39;, count(*) from tb_emp group by gender;<br><br># case 表达式 when 值1  then &#39;班主任&#39; when 值2 then &#39;讲师&#39; when 值3 then &#39;学工主管&#39; else &#39;未分配职位&#39; end<br>select<br>	(case job<br>	when 1 then &#39;班主任&#39; <br>	when 2 then &#39;讲师&#39;<br>	when 3 then &#39;学工主管&#39;<br>    else &#39;未分配职位&#39; end) as &#39;职位&#39;,<br>	count(*)<br>from tb_emp group by job;<br></code></pre></td></tr></table></figure>
+<p>分组查询</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># select 字段列表 from 表名 [where 条件] group by 分组字段名 [having 分组后过滤条件];<br><br># 根据性别分组，统计男性和女性员工的数量<br>select gender,count(*) from tb_emp group by gender;<br><br># 查询入职时间在 &#39;2015-01-01&#39; 以前的员工，并根据职位进行分组，获取员工数量大于等于二的职位<br>select job,count(*) from tb_emp where entrydate &lt;&#x3D; &#39;2015-01-01&#39; group by job having count(*) &gt;&#x3D;2;<br></code></pre></td></tr></table></figure>
+<p>排序查询</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># 排序查询<br># select 字段列表 from 表名 [where 条件] [group by 分组字段名] order by 字段一，字段二...;<br><br># ASC:升序<br># DESC:降序<br>select * from tb_emp order by entrydate asc;<br>select * from tb_emp order by entrydate desc;<br><br># 根据入职时间 降序排序，入职时间相同，则按照更新时间进行 升序排序<br>select * from tb_emp order by entrydate desc ,update_time asc;<br><br># 注意事项<br># 如果是多字段排序，当第一个字段值相同时，才会根据第二个字段进行排序<br></code></pre></td></tr></table></figure>
+<p>分页查询</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs mysql"># select 字段列表 from 表名 limit 起始索引,查询记录数;<br># 起始索引 &#x3D; （页码-1）* 查询记录数<br><br># 从起始索引开始查询，每页展示5条数据<br>select * from tb_emp limit 0,5;<br># 或<br>select * from tb_emp limit 5;<br><br># 查询第二页，第5到第10条数据<br>select * from tb_emp limit 5,5;<br><br># 查询第三页，第5到第10条数据<br>select * from tb_emp limit 10,5;<br></code></pre></td></tr></table></figure>
+
+
 <h5 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h5><p>数据控制语言：用来创建数据库用户，控制数据库的访问权限</p>
 ]]></content>
       <categories>
